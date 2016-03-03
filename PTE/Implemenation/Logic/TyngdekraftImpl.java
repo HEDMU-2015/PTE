@@ -2,7 +2,7 @@ package Logic;
 
 public class TyngdekraftImpl implements Tyngdekraft {
 
-	private double tyngdekraft;
+	private double tyngdekraft = 9.816;
 	
 	@Override
 	public double getTyngdekraft() {
