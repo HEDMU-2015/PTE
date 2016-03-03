@@ -30,6 +30,11 @@ public class ForskydningskraftImpl implements Forskydningskraft  {
 		}
 		else throw new UdefineretProfilException("Udefineret Profil");
 	}
+	double getForskydningskraft(double vinkel, double dimensionerendeKraft) {
+		forskydningskraft = Math.cos(vinkel) * dimensionerendeKraft;
+
+		return forskydningskraft;
+	}
 
 	@Override
 	public void nulstil() {

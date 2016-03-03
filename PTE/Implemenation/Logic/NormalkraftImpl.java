@@ -13,7 +13,12 @@ public class NormalkraftImpl implements Normalkraft {
 	
 	@Override
 	public double getNormalkraft() {
-		normalkraft = Math.sin(vinkel.getVinkel()) * dimensionerendeKraft.getDimensionerendeKraft();
+		normalkraft = getNormalkraft(vinkel.getVinkel(), dimensionerendeKraft.getDimensionerendeKraft());
+
+		return normalkraft;
+	}
+	double getNormalkraft(double vinkel, double dimensionerendeKraft) {
+		normalkraft = Math.sin(Math.toRadians(vinkel)) * dimensionerendeKraft;
 
 		return normalkraft;
 	}
