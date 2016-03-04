@@ -32,7 +32,7 @@ class DimensionerendeKraftImpl implements DimensionerendeKraft {
 	@Override
 	public void setDimensionerendeKraftTilVargt(double vaegtFraDimensionerendeKraft) {
 		this.vaegtFraDimensionerendeKraft = vaegtFraDimensionerendeKraft;
-	}
+	} 
 
 	@Override
 	public void nulstil() {
