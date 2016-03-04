@@ -4,7 +4,7 @@ public class LogicFactoryImpl implements LogicFactory {
 
 	@Override
 	public Vinkel createVinkel() {
-		return new VinkelImpl();
+		return new VinkelImpl(); 
 	}
 
 	@Override

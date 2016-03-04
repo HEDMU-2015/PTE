@@ -11,7 +11,7 @@ import Exceptions.UdefineretProfilException;
  */
 public class PTEControllerImpl implements PTEController {
 	
-	private Vinkel vinkel;
+	private Vinkel vinkel; 
 	private Vaegt vaegt;
 	private DimensionerendeKraft dimensionerendeKraft;
 	private Normalkraft normalKraft;
