@@ -9,7 +9,7 @@ import Logic.DimensionerendeKraftTest.VaegtStubHalvKg;
 import Logic.DimensionerendeKraftTest.VaegtStubTiKg;
 
 public class DimensionerendeKraftTest {
-
+ 
 	
 
 	
