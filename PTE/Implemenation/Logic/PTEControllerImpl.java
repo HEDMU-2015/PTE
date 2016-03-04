@@ -148,4 +148,9 @@ public class PTEControllerImpl implements PTEController {
 		this.vinkel.nulstil();
 	}
 
+	@Override
+	public void dimensionerendeKraftTilVaegt() {
+		 vaegt.setVaegt(this.dimensionerendeKraft.dimensionerendeKraftTilVaegt());
+	}
+	
 }
