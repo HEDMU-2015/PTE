@@ -46,9 +46,25 @@ private TekstFormattering tekstfeltFormat = new TekstFormatteringImpl();
 	@FXML
 	private void haandterUdregnKnap(ActionEvent event) {
 		
+		System.out.println("vaegt : " + tekstFeltVaegt.getText());
+		System.out.println("vinkel : " + tekstFeltVinkel.getText());
+		System.out.println("newton : " + tekstFeltDimensionerendeKraft.getText());
+		System.out.println("*****");
+
+
+		
 		getProfil();
 		getData();
 		setTextFn_FT();
+		
+		System.out.println("profil : " + pteController.getProfil());
+		System.out.println("vaegt : " + pteController.getVaegt());
+		System.out.println("vinkel : " + pteController.getVinkel());
+		System.out.println("newton : " + pteController.getDimensionerendeKraft());
+		System.out.println("--------");
+
+
+
 	}
 	
 	private void setTextFn_FT() {
@@ -63,12 +79,12 @@ private TekstFormattering tekstfeltFormat = new TekstFormatteringImpl();
 	
 	
 	private void getData() {
-		pteController.setVaegt(tekstfeltFormat.formaterStringTilDouble(tekstFeltVaegt.getText()));
 		pteController.setVinkel(tekstfeltFormat.formaterStringTilDouble(tekstFeltVinkel.getText()));
 		
 		if(tekstFeltDimensionerendeKraft.getText().isEmpty()){
+			pteController.setVaegt(tekstfeltFormat.formaterStringTilDouble(tekstFeltVaegt.getText()));
 			tekstFeltDimensionerendeKraft.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getDimensionerendeKraft()));
-		}else{
+		}else if(tekstFeltVaegt.getText().isEmpty()){
 			pteController.setDimensioneredndeKraft(tekstfeltFormat.formaterStringTilDouble(tekstFeltDimensionerendeKraft.getText()));
 			tekstFeltVaegt.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getVaegt()));
 		}
@@ -81,8 +97,10 @@ private TekstFormattering tekstfeltFormat = new TekstFormatteringImpl();
 	private void getProfil() {
 		if(vandret.isSelected()){
 			pteController.setProfil(Profil.VANDRET);
+			System.out.println("vandret");
 		}else{
 			pteController.setProfil(Profil.LODRET);
+			System.out.println("lodred");
 		}
 		
 	}
