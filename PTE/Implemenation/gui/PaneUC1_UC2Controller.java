@@ -63,12 +63,12 @@ private TekstFormattering tekstfeltFormat = new TekstFormatteringImpl();
 	
 	
 	private void getData() {
-		pteController.setVaegt(tekstfeltFormat.formaterStringTilDouble(tekstFeltVaegt.getText()));
 		pteController.setVinkel(tekstfeltFormat.formaterStringTilDouble(tekstFeltVinkel.getText()));
 		
 		if(tekstFeltDimensionerendeKraft.getText().isEmpty()){
+			pteController.setVaegt(tekstfeltFormat.formaterStringTilDouble(tekstFeltVaegt.getText()));
 			tekstFeltDimensionerendeKraft.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getDimensionerendeKraft()));
-		}else{
+		}else if(tekstFeltVaegt.getText().isEmpty()){
 			pteController.setDimensioneredndeKraft(tekstfeltFormat.formaterStringTilDouble(tekstFeltDimensionerendeKraft.getText()));
 			tekstFeltVaegt.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getVaegt()));
 		}
