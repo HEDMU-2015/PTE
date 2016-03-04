@@ -6,5 +6,9 @@ interface DimensionerendeKraft {
 	
 	public void setDimensionerendeKraft(double dimensionerendeKraft);
 	
+	public double getDimensionerendeKraftTilVaegt();
+	
+	public void setDimensionerendeKraftTilVargt(double vaegtFraDimensionerendeKraft);
+	
 	public void nulstil();
 }
