@@ -1,0 +1,19 @@
+Hvis du gerne vil lave et 'release', så kan du 'forke' med et beskrivende navn.
+
+1. Klik på 'fork'
+2. Vælg at forke til din egen, da man ikke kan gøre det i organisationen "HEDMU-2015"
+3. Klik på 'Branch: master'
+4. Skriv: 'release_#_#' (alt efter hvad nummer release vi er kommet til)
+5. Gå i Eclipse. File -> Import -> Udvid Git mappen -> Projects from Git -> Clone URI(https://github.com/"github-navn"/PTE)
+   -> Vælg samme lokation som workspace -> Navngiv det, så det passer til branch navnet (PTERelease_#_#)
+   -> Import using the New Project wizard -> Java Project -> Finish
+6. I 'New Java Project' navngiv det: "PTERelease_#_#" -> Finish
+7. Hvis der kommer rødt kryds på PTE/Test mappen, følg step 8 ellers hop til step 9
+8. Højre klik projekt mappen -> Properties -> gå til 'Libraries' -> klik 'Add Library...' -> vælg 'JUnit -> Next & Finish
+9. Højre klik projekt mappen -> Properties -> gå til 'Source' -> Fjern '...PTE/Test' -> klik Ok
+
+For at lave en Runnable Jar:
+
+1. Højre klik projekt mappen -> Export -> Udvid Java mappen -> Runnable Jar file
+   -> Launch configuration: vælg main klassen til projektet
+   -> Library handling: vælg 'Package required libraries into generated JAR' -> Finish
