@@ -1,5 +1,7 @@
 package Logic;
 
+import Exceptions.UdefineretProfilException;
+
 public class NormalkraftImpl implements Normalkraft {
 
 	private double normalkraft = 0;
@@ -12,15 +14,19 @@ public class NormalkraftImpl implements Normalkraft {
 	}
 	
 	@Override
-	public double getNormalkraft() {
+	public double getNormalkraft() throws UdefineretProfilException {
 		normalkraft = getNormalkraft(vinkel.getVinkel(), dimensionerendeKraft.getDimensionerendeKraft());
 
 		return normalkraft;
 	}
-	double getNormalkraft(double vinkel, double dimensionerendeKraft) {
-		normalkraft = Math.sin(Math.toRadians(vinkel)) * dimensionerendeKraft;
-
-		return normalkraft;
+	double getNormalkraft(double vinkel, double dimensionerendeKraft) throws UdefineretProfilException {
+		if (this.vinkel.getProfil() == Profil.VANDRET){
+			return (Math.cos(Math.toRadians(vinkel))*this.dimensionerendeKraft.getDimensionerendeKraft());
+		}
+		else if (this.vinkel.getProfil() == Profil.LODRET){
+			return (Math.sin((Math.toRadians(vinkel)))*this.dimensionerendeKraft.getDimensionerendeKraft());
+		}
+		else throw new UdefineretProfilException("Udefineret Profil");
 	}
 
 	@Override

@@ -113,7 +113,13 @@ public class PTEControllerImpl implements PTEController {
 
 	@Override
 	public double getNormalkraft() {
-		return this.normalKraft.getNormalkraft();
+		double normalkraft = 0;
+		try {
+			normalkraft=this.normalKraft.getNormalkraft();
+		} catch (UdefineretProfilException e) {
+			//Det sker aldrig
+		}
+		return normalkraft;
 	}
 
 	@Override
