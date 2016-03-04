@@ -17,6 +17,7 @@ import Logic.Profil;
 
 public class PaneUC1_UC2Controller implements Initializable{
 private PTEController pteController = new PTEControllerImpl();
+private TekstFormattering tekstfeltFormat = new TekstFormatteringImpl();
 
 	@FXML
 	private TextField tekstFeltVaegt;
@@ -46,17 +47,42 @@ private PTEController pteController = new PTEControllerImpl();
 	private void haandterUdregnKnap(ActionEvent event) {
 		
 		getProfil();
-		//getData();
-		//udregn();
-		//setTextFn_FT();
+		getData();
+		setTextFn_FT();
+	}
+	
+	private void setTextFn_FT() {
+		tekstFeltNormalkraft.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getNormalkraft()));
+		tekstFeltForskydningskraft.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getForskydningkraft()));
+		
+	}
+
+	private void formaterTekstfelt(TextField input){
+		tekstfeltFormat.formaterTekstfeltInput(input);
 	}
 	
 	
-	
-	
+	private void getData() {
+		pteController.setVaegt(tekstfeltFormat.formaterStringTilDouble(tekstFeltVaegt.getText()));
+		pteController.setVinkel(tekstfeltFormat.formaterStringTilDouble(tekstFeltVinkel.getText()));
+		
+		if(tekstFeltDimensionerendeKraft.getText().isEmpty()){
+			tekstFeltDimensionerendeKraft.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getDimensionerendeKraft()));
+		}else{
+			pteController.setDimensioneredndeKraft(tekstfeltFormat.formaterStringTilDouble(tekstFeltDimensionerendeKraft.getText()));
+			tekstFeltVaegt.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getVaegt()));
+		}
+		
+	}
+
+
+
+
 	private void getProfil() {
 		if(vandret.isSelected()){
 			pteController.setProfil(Profil.VANDRET);
+		}else{
+			pteController.setProfil(Profil.LODRET);
 		}
 		
 	}
@@ -66,7 +92,9 @@ private PTEController pteController = new PTEControllerImpl();
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
+		formaterTekstfelt(tekstFeltDimensionerendeKraft);
+		formaterTekstfelt(tekstFeltVaegt);
+		formaterTekstfelt(tekstFeltVinkel);
 		
 	}
 
