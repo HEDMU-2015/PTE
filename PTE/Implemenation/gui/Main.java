@@ -2,6 +2,8 @@ package gui;
 
 import java.io.IOException;
 
+import Logic.PTEController;
+import Logic.PTEControllerImpl;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
@@ -53,7 +55,12 @@ public class Main extends Application{
 			TitledPane tpUC1_UC2 = new TitledPane("Normalkraft / Forskydningskraft",paneUC1_UC2);
 			
 			vboxICenter.getChildren().add(tpUC1_UC2);
+
+			PTEPane controller = loader.<PTEPane>getController();
 			
+			PTEController pteController = new PTEControllerImpl();
+			controller.setPTEController(pteController);
+
 			mainWindow.setCenter(vboxICenter);
 			
 		} catch (IOException e) {

@@ -1,8 +1,10 @@
 package gui;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
+import Logic.Observer;
 import Logic.PTEController;
 import Logic.PTEControllerImpl;
 import javafx.event.ActionEvent;
@@ -14,9 +16,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import Logic.Profil;
+import Logic.Tilstand;
 
-public class PaneUC1_UC2Controller implements Initializable{
-private PTEController pteController = new PTEControllerImpl();
+public class PaneUC1_UC2Controller extends PTEPane implements Initializable, Observer {
 private TekstFormattering tekstfeltFormat = new TekstFormatteringImpl();
 
 	@FXML
@@ -44,27 +46,10 @@ private TekstFormattering tekstfeltFormat = new TekstFormatteringImpl();
 	private ToggleGroup profil;
 	
 	@FXML
-	private void haandterUdregnKnap(ActionEvent event) {
-		
-		System.out.println("vaegt : " + tekstFeltVaegt.getText());
-		System.out.println("vinkel : " + tekstFeltVinkel.getText());
-		System.out.println("newton : " + tekstFeltDimensionerendeKraft.getText());
-		System.out.println("*****");
-
-
-		
+	private void haandterUdregnKnap(ActionEvent event) {	
 		getProfil();
 		getData();
 		setTextFn_FT();
-		
-		System.out.println("profil : " + pteController.getProfil());
-		System.out.println("vaegt : " + pteController.getVaegt());
-		System.out.println("vinkel : " + pteController.getVinkel());
-		System.out.println("newton : " + pteController.getDimensionerendeKraft());
-		System.out.println("--------");
-
-
-
 	}
 	
 	@FXML
@@ -90,6 +75,7 @@ private TekstFormattering tekstfeltFormat = new TekstFormatteringImpl();
 	
 	
 	private void getData() {
+		//get til set
 		pteController.setVinkel(tekstfeltFormat.formaterStringTilDouble(tekstFeltVinkel.getText()));
 		
 		if(tekstFeltDimensionerendeKraft.getText().isEmpty()){
@@ -125,6 +111,12 @@ private TekstFormattering tekstfeltFormat = new TekstFormatteringImpl();
 		formaterTekstfelt(tekstFeltDimensionerendeKraft);
 		formaterTekstfelt(tekstFeltVaegt);
 		formaterTekstfelt(tekstFeltVinkel);
+		
+	}
+
+	@Override
+	public void update(List<Tilstand> tilstande) {
+		// TODO Auto-generated method stub
 		
 	}
 
