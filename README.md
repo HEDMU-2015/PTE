@@ -23,5 +23,6 @@ Når i tilføjer nye mapper, filer osv. så sørg selvfølglig for at det ikke k
 Alle jeres diverse filer og bilag må I meget godt smide i de tilsvarende mapper, så vi har det hele samlet på Github.
 I uploader ved at gå i den mappe som filen skal være i og trykker på 'upload files'. Husk at tilføje en beskrivende commit.
 
-
+#Lav en release version
+Der ligger en readme til hvordan man laver en release i root af PTE.
 
