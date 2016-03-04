@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
- 
+
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -17,11 +17,11 @@
       <RadioButton fx:id="lodret" layoutX="33.0" layoutY="155.0" mnemonicParsing="false" text="Lodret" toggleGroup="$profil" />
       <TextField fx:id="tekstFeltVaegt" layoutX="33.0" layoutY="22.0" prefHeight="25.0" prefWidth="56.0" />
       <Label layoutX="93.0" layoutY="26.0" text="Kg" />
-      <TextField fx:id="tekstFeltDimensionerendeKraft" layoutX="155.0" layoutY="22.0" prefHeight="25.0" prefWidth="56.0" />
-      <Label layoutX="215.0" layoutY="26.0" text="N" />
+      <TextField fx:id="tekstFeltDimensionerendeKraft" layoutX="155.0" layoutY="22.0" prefHeight="25.0" prefWidth="79.0" />
+      <Label layoutX="237.0" layoutY="26.0" text="N" />
       <TextField fx:id="tekstFeltVinkel" layoutX="33.0" layoutY="86.0" prefHeight="25.0" prefWidth="56.0" />
       <Label layoutX="91.0" layoutY="78.0" text="o" />
-      <Button layoutX="282.0" layoutY="151.0" mnemonicParsing="false" onAction="#haandterUdregnKnap" text="Udregn" />
+      <Button layoutX="178.0" layoutY="151.0" mnemonicParsing="false" onAction="#haandterUdregnKnap" text="Udregn" />
       <Label layoutX="155.0" layoutY="68.0" text="F" />
       <TextField fx:id="tekstFeltNormalkraft" editable="false" layoutX="155.0" layoutY="86.0" prefHeight="25.0" prefWidth="79.0" />
       <Label layoutX="161.0" layoutY="74.0" text="N">
@@ -38,5 +38,6 @@
       </Label>
       <Label layoutX="342.0" layoutY="90.0" text="N" />
       <Label layoutX="237.0" layoutY="90.0" text="N" />
+      <Button layoutX="301.0" layoutY="151.0" mnemonicParsing="false" onAction="#haandterResetKnap" text="Reset" />
    </children>
 </AnchorPane>

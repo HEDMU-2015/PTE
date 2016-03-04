@@ -41,4 +41,6 @@ public interface PTEController {
 	
 	public void nulstil();
 	
+	public void dimensionerendeKraftTilVaegt();
+	
 }

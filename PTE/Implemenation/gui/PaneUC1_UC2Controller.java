@@ -67,6 +67,17 @@ private TekstFormattering tekstfeltFormat = new TekstFormatteringImpl();
 
 	}
 	
+	@FXML
+	private void haandterResetKnap(ActionEvent event) {
+		
+		this.tekstFeltVaegt.setText("");
+		this.tekstFeltDimensionerendeKraft.setText("");
+		this.tekstFeltVinkel.setText("");
+		this.tekstFeltNormalkraft.setText("");
+		this.tekstFeltForskydningskraft.setText("");
+		
+	}
+	
 	private void setTextFn_FT() {
 		tekstFeltNormalkraft.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getNormalkraft()));
 		tekstFeltForskydningskraft.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getForskydningkraft()));
@@ -86,6 +97,7 @@ private TekstFormattering tekstfeltFormat = new TekstFormatteringImpl();
 			tekstFeltDimensionerendeKraft.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getDimensionerendeKraft()));
 		}else if(tekstFeltVaegt.getText().isEmpty()){
 			pteController.setDimensioneredndeKraft(tekstfeltFormat.formaterStringTilDouble(tekstFeltDimensionerendeKraft.getText()));
+			pteController.dimensionerendeKraftTilVaegt();
 			tekstFeltVaegt.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getVaegt()));
 		}
 		

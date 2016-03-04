@@ -2,7 +2,6 @@ package Logic;
 
 import java.util.ArrayList;
 import java.util.List;
-import Logic.Observer;
 
 import Exceptions.UdefineretProfilException;
 
@@ -12,48 +11,25 @@ import Exceptions.UdefineretProfilException;
  */
 public class PTEControllerImpl implements PTEController {
 	
-	private Vinkel vinkel;
-	private Profil profil;
+	private Vinkel vinkel; 
 	private Vaegt vaegt;
 	private DimensionerendeKraft dimensionerendeKraft;
 	private Normalkraft normalKraft;
 	private Tyngdekraft tyngdeKraft;
 	private Forskydningskraft forskydningsKraft;
 	private List<Observer> observers;
+	private LogicFactory logicFactory;
 	
 	public PTEControllerImpl() {
-		vinkel = newVinkel();
+		logicFactory = new LogicFactoryImpl();
+		vinkel = logicFactory.createVinkel();
 		vinkel.setProfil(Profil.UDEFINERET);
-		vaegt = newVaegt();
-		tyngdeKraft = newTyngdeKraft();
-		dimensionerendeKraft = newDimensionerendeKraft();
-		normalKraft = newNormalKraft();
-		forskydningsKraft = newForskydningsKraft();
+		vaegt = logicFactory.createVaegt();
+		tyngdeKraft = logicFactory.craeteTyngdeKraft();
+		dimensionerendeKraft = logicFactory.craeteDimensionerendeKraft(vaegt, tyngdeKraft);
+		normalKraft = logicFactory.createNormalKraft(dimensionerendeKraft, vinkel);
+		forskydningsKraft = logicFactory.createForskydningskraft(vinkel, dimensionerendeKraft);
 		observers = new ArrayList<Logic.Observer>();
-	}
-	
-	protected Vinkel newVinkel() {
-		return new VinkelImpl();
-	}
-	
-	protected Vaegt newVaegt() {
-		return new VaegtImpl();
-	}
-	
-	protected Tyngdekraft newTyngdeKraft() {
-		return new TyngdekraftImpl();
-	}
-	
-	protected DimensionerendeKraft newDimensionerendeKraft() {
-		return new DimensionerendeKraftImpl(vaegt, tyngdeKraft);
-	}
-	
-	protected Normalkraft newNormalKraft() {
-		return new NormalkraftImpl(dimensionerendeKraft, vinkel);
-	}
-	
-	protected Forskydningskraft newForskydningsKraft() {
-		return new ForskydningskraftImpl(vinkel, dimensionerendeKraft);
 	}
 	
 	@Override
@@ -172,4 +148,9 @@ public class PTEControllerImpl implements PTEController {
 		this.vinkel.nulstil();
 	}
 
+	@Override
+	public void dimensionerendeKraftTilVaegt() {
+		 vaegt.setVaegt(this.dimensionerendeKraft.dimensionerendeKraftTilVaegt());
+	}
+	
 }
