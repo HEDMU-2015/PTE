@@ -36,8 +36,8 @@ class DimensionerendeKraftImpl implements DimensionerendeKraft {
 
 	@Override
 	public void nulstil() {
-		vaegt.nulstil();
-		tyngdekraft.nulstil();
+		setDimensionerendeKraft(0);
+		
 	}
 
 }
