@@ -132,7 +132,7 @@ public class PTEControllerImpl implements PTEController {
 
 	@Override
 	public void setVaegt(double vaegt) {
-		this.vaegt.getVaegt();
+		this.vaegt.setVaegt(vaegt);
 	}
 
 	@Override
