@@ -15,9 +15,9 @@ pdf.setPageTitle("Test title with custom font", FontFactory.getFont(FontFamily.C
 pdf.setPageTitle("Test title with font style", FontStyle.UNDERLINE);
 pdf.setPageTitle("Test title with font size", 40);
 
-pdf.addParagraph("Test title");
-pdf.addParagraph("Test title with custom font", FontFactory.getFont(FontFamily.COURIER.toString(), 24, BaseColor.BLUE));
-pdf.addParagraph("Test title with font style", FontStyle.UNDERLINE);
-pdf.addParagraph("Test title with font size", 40);
+pdf.addParagraph("Test paragraph");
+pdf.addParagraph("Test paragraph with custom font", FontFactory.getFont(FontFamily.COURIER.toString(), 24, BaseColor.BLUE));
+pdf.addParagraph("Test paragraph with font style", FontStyle.UNDERLINE);
+pdf.addParagraph("Test paragraph with font size", 40);
 pdf.close();
 ```
