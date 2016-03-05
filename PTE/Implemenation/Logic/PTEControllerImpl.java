@@ -155,8 +155,8 @@ public class PTEControllerImpl implements PTEController {
 	}
 
 	@Override
-	public void dimensionerendeKraftTilVaegt() {
-		 vaegt.setVaegt(this.dimensionerendeKraft.dimensionerendeKraftTilVaegt());
+	public double dimensionerendeKraftTilVaegt() {
+		 return dimensionerendeKraft.dimensionerendeKraftTilVaegt();
 	}
 	
 }

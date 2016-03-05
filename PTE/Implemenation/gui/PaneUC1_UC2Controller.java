@@ -83,8 +83,9 @@ private TekstFormattering tekstfeltFormat = new TekstFormatteringImpl();
 			tekstFeltDimensionerendeKraft.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getDimensionerendeKraft()));
 		}else if(tekstFeltVaegt.getText().isEmpty()){
 			pteController.setDimensioneredndeKraft(tekstfeltFormat.formaterStringTilDouble(tekstFeltDimensionerendeKraft.getText()));
-			pteController.dimensionerendeKraftTilVaegt();
-			tekstFeltVaegt.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getVaegt()));
+			double vaegt = pteController.dimensionerendeKraftTilVaegt();
+			pteController.setVaegt(vaegt);
+			tekstFeltVaegt.setText(tekstfeltFormat.formaterDoubleTilString(vaegt));
 		}
 		
 	}
