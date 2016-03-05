@@ -1,4 +1,4 @@
-####BEMÆRK 
+####BEMÆRK! 
 #####SimplePdfWriterImpl er wrapper klasse for ITEXTPDF java bibliotek, det betyder, at man skal tilføje itextpdf-x.x.x.jar til sin java buidpath!
 
 ######Det her er en eksempel, der viser hvordan man bruger FileUtilsImpl og SimplePdfWriterImpl klasser.
