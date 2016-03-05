@@ -25,8 +25,7 @@ class DimensionerendeKraftImpl implements DimensionerendeKraft {
 
 	@Override
 	public double dimensionerendeKraftTilVaegt() {
-		vaegtFraDimensionerendeKraft = (dimensionerendeKraft / tyngdekraft.getTyngdekraft());
-		return vaegtFraDimensionerendeKraft;
+		return (dimensionerendeKraft / tyngdekraft.getTyngdekraft());
 	}
 	
 	@Override
