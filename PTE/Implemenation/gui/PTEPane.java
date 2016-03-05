@@ -7,7 +7,7 @@ public abstract class PTEPane {
 
 
 	public void setPTEController(PTEController pteController){
-this.pteController = pteController;
+		this.pteController = pteController;
 	
 	}
 }

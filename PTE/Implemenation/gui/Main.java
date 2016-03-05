@@ -1,27 +1,44 @@
 package gui;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
+import Logic.Observer;
 import Logic.PTEController;
 import Logic.PTEControllerImpl;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 
-public class Main extends Application{
+public class Main extends Application  {
 	private Stage stage;
 	private BorderPane mainWindow;
+	private List<Observer> observers;
+
 	
+	
+	public Main() {
+		observers = new ArrayList<Logic.Observer>();
+	}
+	
+
+	public void tilmeldObserver(Observer observer) {
+		this.observers.add(observer);
+	}
+	
+	
+
 	@Override
 	public void start(Stage stage) throws Exception {
 		this.stage = stage;
 		this.stage.setTitle("PTE Calculator");
+		
 		
 		initMainWindow();
 		
@@ -60,6 +77,7 @@ public class Main extends Application{
 			
 			PTEController pteController = new PTEControllerImpl();
 			controller.setPTEController(pteController);
+			
 
 			mainWindow.setCenter(vboxICenter);
 			
@@ -74,6 +92,7 @@ public class Main extends Application{
 		// TODO Auto-generated method stub
 		launch(args);
 	}
+
 
 
 

@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="199.0" prefWidth="383.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.PaneUC1_UC2Controller">
+<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="199.0" prefWidth="383.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.PaneUC1_UC2Controller">
    <children>
       <Label layoutX="33.0" layoutY="4.0" text="Indtast vægt" />
       <Label layoutX="155.0" layoutY="4.0" text="Indtast dimensionerende kraft" />
@@ -15,9 +15,9 @@
             <ToggleGroup fx:id="profil" />
          </toggleGroup></RadioButton>
       <RadioButton fx:id="lodret" layoutX="33.0" layoutY="155.0" mnemonicParsing="false" text="Lodret" toggleGroup="$profil" />
-      <TextField fx:id="tekstFeltVaegt" layoutX="33.0" layoutY="22.0" prefHeight="25.0" prefWidth="56.0" />
+      <TextField fx:id="tekstFeltVaegt" layoutX="33.0" layoutY="22.0" onMouseClicked="#haandterCleartekstFeltDimensionerndeKraft" prefHeight="25.0" prefWidth="56.0" />
       <Label layoutX="93.0" layoutY="26.0" text="Kg" />
-      <TextField fx:id="tekstFeltDimensionerendeKraft" layoutX="155.0" layoutY="22.0" prefHeight="25.0" prefWidth="79.0" />
+      <TextField fx:id="tekstFeltDimensionerendeKraft" layoutX="155.0" layoutY="22.0" onMouseClicked="#haandterCleartekstFeltVaegt" prefHeight="25.0" prefWidth="79.0" />
       <Label layoutX="237.0" layoutY="26.0" text="N" />
       <TextField fx:id="tekstFeltVinkel" layoutX="33.0" layoutY="86.0" prefHeight="25.0" prefWidth="56.0" />
       <Label layoutX="91.0" layoutY="78.0" text="o" />
