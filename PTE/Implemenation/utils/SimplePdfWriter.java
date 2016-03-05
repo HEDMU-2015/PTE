@@ -5,7 +5,6 @@ import com.itextpdf.text.Font.FontFamily;
 import com.itextpdf.text.Font.FontStyle;
 /**
  * @author Tsvetelin Tsonev <tsvetelin.tsonev@yahoo.co.uk>
- * This class is a simple wrapper for ITEXPDF library and is providing simple API to work with PDF documents.
  */
 public interface SimplePdfWriter {
 	/**

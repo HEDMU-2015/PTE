@@ -14,7 +14,10 @@ import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
-
+/**
+ * @author Tsvetelin Tsonev <tsvetelin.tsonev@yahoo.co.uk>
+ * This class is a simple wrapper for ITEXPDF library and is providing simple API to work with PDF documents.
+ */
 public class SimplePdfWriterImpl implements SimplePdfWriter {
 	
 	String filePath = null;
@@ -42,9 +45,9 @@ public class SimplePdfWriterImpl implements SimplePdfWriter {
 				PdfWriter.getInstance(document, new FileOutputStream(this.filePath));
 			}
 		} catch (FileNotFoundException e) {
-			// Should never happen
+			// Should never happen :)
 		} catch (DocumentException e) {
-			// Not sure when it will be thrown, couldn't find it in the itext API. 
+			// Not sure when it will be thrown, couldn't find it in the ITEXTPDF API. 
 		}
 		document.open();
 	}
