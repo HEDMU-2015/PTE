@@ -7,15 +7,22 @@ import java.util.ResourceBundle;
 import Logic.Observer;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
 import Logic.Profil;
 import Logic.Tilstand;
 
 public class PaneUC1_UC2Controller extends PTEPane implements Initializable, Observer {
 
 	private TekstFormattering tekstfeltFormat = new TekstFormatteringImpl();
+	
+	private Stage window;
 
 	@FXML
 	private TextField tekstFeltVaegt;
@@ -44,12 +51,18 @@ public class PaneUC1_UC2Controller extends PTEPane implements Initializable, Obs
 
 	@FXML
 	private void haandterUdregnKnap() {
-		if(!tekstFeltVinkel.getText().isEmpty()){
+		if ((tekstFeltVaegt.getText().isEmpty())&& 
+				(tekstFeltDimensionerendeKraft.getText().isEmpty())){
+			DialogBox alert = new DialogBox(window);
+			alert.visAdvarselDialog();
+	        
+		} else if(tekstFeltVinkel.getText().isEmpty()){
+				regneVaegtEllerDimensionerendeKraft();
+
+		} else {
 			setProfil();
 			setData();
 			getTextFn_FT();
-		}else{
-			regneVaegtEllerDimensionerendeKraft();
 		}
 	}
 
@@ -82,14 +95,17 @@ public class PaneUC1_UC2Controller extends PTEPane implements Initializable, Obs
 	}
 
 	private void getTextFn_FT() {
-		tekstFeltNormalkraft.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getNormalkraft()));
-		tekstFeltForskydningskraft.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getForskydningkraft()));		
+		tekstFeltNormalkraft.setText
+			(tekstfeltFormat.formaterDoubleTilString(pteController.getNormalkraft()));
+		tekstFeltForskydningskraft.setText
+			(tekstfeltFormat.formaterDoubleTilString(pteController.getForskydningkraft()));		
 	}
 
 	private void setData() {
 		regneVaegtEllerDimensionerendeKraft();
 
-		pteController.setVinkel(tekstfeltFormat.formaterStringTilDouble(tekstFeltVinkel.getText()));
+		pteController.setVinkel
+			(tekstfeltFormat.formaterStringTilDouble(tekstFeltVinkel.getText()));
 
 	}
 
@@ -97,11 +113,14 @@ public class PaneUC1_UC2Controller extends PTEPane implements Initializable, Obs
 
 		if(tekstFeltDimensionerendeKraft.getText().isEmpty()){
 						
-			pteController.setVaegt(tekstfeltFormat.formaterStringTilDouble(tekstFeltVaegt.getText()));
-			tekstFeltDimensionerendeKraft.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getDimensionerendeKraft()));
+			pteController.setVaegt
+				(tekstfeltFormat.formaterStringTilDouble(tekstFeltVaegt.getText()));
+			tekstFeltDimensionerendeKraft.setText
+				(tekstfeltFormat.formaterDoubleTilString(pteController.getDimensionerendeKraft()));
 
 		}else if(tekstFeltVaegt.getText().isEmpty()){			
-			pteController.setDimensioneredndeKraft(tekstfeltFormat.formaterStringTilDouble(tekstFeltDimensionerendeKraft.getText()));
+			pteController.setDimensioneredndeKraft
+				(tekstfeltFormat.formaterStringTilDouble(tekstFeltDimensionerendeKraft.getText()));
 			double vaegt = pteController.dimensionerendeKraftTilVaegt();
 			pteController.setVaegt(vaegt);
 			tekstFeltVaegt.setText(tekstfeltFormat.formaterDoubleTilString(vaegt));
@@ -111,10 +130,8 @@ public class PaneUC1_UC2Controller extends PTEPane implements Initializable, Obs
 	private void setProfil() {
 		if(vandret.isSelected()){
 			pteController.setProfil(Profil.VANDRET);
-			System.out.println("vandret");
 		}else{
 			pteController.setProfil(Profil.LODRET);
-			System.out.println("lodred");
 		}
 	}
 
@@ -131,20 +148,24 @@ public class PaneUC1_UC2Controller extends PTEPane implements Initializable, Obs
 	public void update(List<Tilstand> tilstande) {
 		if(tilstande.contains(Tilstand.VAEGT)){
 			pteController.dimensionerendeKraftTilVaegt();
-			tekstFeltVaegt.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getVaegt()));
+			tekstFeltVaegt.setText
+				(tekstfeltFormat.formaterDoubleTilString(pteController.getVaegt()));
 		}
 
 		if(tilstande.contains(Tilstand.DIMENSIONERENDE_KRAFT)){
 			tekstFeltDimensionerendeKraft.setText
-			(tekstfeltFormat.formaterDoubleTilString(pteController.getDimensionerendeKraft()));
+			(tekstfeltFormat.formaterDoubleTilString
+				(pteController.getDimensionerendeKraft()));
 		}
 
 		if(tilstande.contains(Tilstand.FORSKYDNINGSKRAFT)){
-			tekstFeltForskydningskraft.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getForskydningkraft()));
+			tekstFeltForskydningskraft.setText
+				(tekstfeltFormat.formaterDoubleTilString(pteController.getForskydningkraft()));
 		}
 
 		if(tilstande.contains(Tilstand.NORMALKRAFT)){
-			tekstFeltNormalkraft.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getNormalkraft()));
+			tekstFeltNormalkraft.setText
+				(tekstfeltFormat.formaterDoubleTilString(pteController.getNormalkraft()));
 		}
 
 	}

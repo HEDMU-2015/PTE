@@ -40,7 +40,7 @@ public class Main extends Application  {
 		this.stage = stage;
 		this.stage.setTitle("PTE Calculator");
 		
-	    this.stage.getIcons().add(new Image("file:resources/simple_calculator_icon.png"));
+	    this.stage.getIcons().add(new Image("file:gui.resources/simple_calculator_icon.png"));
 	
 		initMainWindow();
 		
@@ -79,6 +79,7 @@ public class Main extends Application  {
 			
 			PTEController pteController = new PTEControllerImpl();
 			controller.setPTEController(pteController);
+			
 
 			mainWindow.setCenter(vboxICenter);
 			
