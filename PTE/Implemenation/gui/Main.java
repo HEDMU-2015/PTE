@@ -95,7 +95,9 @@ public class Main extends Application  {
 		launch(args);
 	}
 
-
+	public Stage getStage(){
+		return stage;	
+	}
 
 
 }
