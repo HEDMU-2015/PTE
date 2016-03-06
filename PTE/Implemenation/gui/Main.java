@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.TitledPane;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
@@ -39,7 +40,8 @@ public class Main extends Application  {
 		this.stage = stage;
 		this.stage.setTitle("PTE Calculator");
 		
-		
+	    this.stage.getIcons().add(new Image("file:resources/simple_calculator_icon.png"));
+	
 		initMainWindow();
 		
 		loadUC();
@@ -77,7 +79,6 @@ public class Main extends Application  {
 			
 			PTEController pteController = new PTEControllerImpl();
 			controller.setPTEController(pteController);
-			
 
 			mainWindow.setCenter(vboxICenter);
 			
