@@ -58,23 +58,32 @@ public class PaneUC1_UC2Controller extends PTEPane implements Initializable {
 
 	@FXML
 	private void haandterUdregnKnap() {
-		System.out.println("udregn: "+ vaegtErAEndret);
-		if(vaegtErAEndret){
-			vaegtErAEndret=false;
+		if(vaegtErAEndret && tekstFeltDimensionerendeKraft.getText().isEmpty()){
 			pteController.setVaegt(tekstfeltFormat.formaterStringTilDouble(tekstFeltVaegt.getText()));
 		}
-		if(dimensionerendeKraftErAEndret){
-			dimensionerendeKraftErAEndret=false;
+		
+		if(!tekstFeltDimensionerendeKraft.getText().isEmpty() && tekstFeltVaegt.getText().isEmpty()){
 			pteController.setDimensioneredndeKraft(tekstfeltFormat.formaterStringTilDouble(tekstFeltDimensionerendeKraft.getText()));
+			System.out.println("Vi er HEr");
 		}
-		if(vinkelErAEndret){
-			vinkelErAEndret=false;
-			pteController.setVinkel(tekstfeltFormat.formaterStringTilDouble(tekstFeltVinkel.getText()));
-		}
-		if((vandret.isSelected() && pteController.getProfil() != Profil.VANDRET) 
-				|| (lodret.isSelected() && pteController.getProfil() != Profil.LODRET)){
-			setProfil();
-		}
+		
+//		System.out.println("udregn: "+ vaegtErAEndret);
+//		if(vaegtErAEndret){
+//			vaegtErAEndret=false;
+//			pteController.setVaegt(tekstfeltFormat.formaterStringTilDouble(tekstFeltVaegt.getText()));
+//		}
+//		if(dimensionerendeKraftErAEndret){
+//			dimensionerendeKraftErAEndret=false;
+//			pteController.setDimensioneredndeKraft(tekstfeltFormat.formaterStringTilDouble(tekstFeltDimensionerendeKraft.getText()));
+//		}
+//		if(vinkelErAEndret){
+//			vinkelErAEndret=false;
+//			pteController.setVinkel(tekstfeltFormat.formaterStringTilDouble(tekstFeltVinkel.getText()));
+//		}
+//		if((vandret.isSelected() && pteController.getProfil() != Profil.VANDRET) 
+//				|| (lodret.isSelected() && pteController.getProfil() != Profil.LODRET)){
+//			setProfil();
+//		}
 		
 		
 //		if ((tekstFeltVaegt.getText().isEmpty())&& 
@@ -122,31 +131,31 @@ public class PaneUC1_UC2Controller extends PTEPane implements Initializable {
 			(tekstfeltFormat.formaterDoubleTilString(pteController.getForskydningkraft()));		
 	}
 
-	private void setData() {
-		regneVaegtEllerDimensionerendeKraft();
+//	private void setData() {
+//		regneVaegtEllerDimensionerendeKraft();
+//
+//		pteController.setVinkel
+//			(tekstfeltFormat.formaterStringTilDouble(tekstFeltVinkel.getText()));
+//
+//	}
 
-		pteController.setVinkel
-			(tekstfeltFormat.formaterStringTilDouble(tekstFeltVinkel.getText()));
-
-	}
-
-	private void regneVaegtEllerDimensionerendeKraft() {
-
-		if(tekstFeltDimensionerendeKraft.getText().isEmpty()){
-						
-			pteController.setVaegt
-				(tekstfeltFormat.formaterStringTilDouble(tekstFeltVaegt.getText()));
-			tekstFeltDimensionerendeKraft.setText
-				(tekstfeltFormat.formaterDoubleTilString(pteController.getDimensionerendeKraft()));
-
-		}else if(tekstFeltVaegt.getText().isEmpty()){			
-			pteController.setDimensioneredndeKraft
-				(tekstfeltFormat.formaterStringTilDouble(tekstFeltDimensionerendeKraft.getText()));
-			double vaegt = pteController.dimensionerendeKraftTilVaegt();
-			pteController.setVaegt(vaegt);
-			tekstFeltVaegt.setText(tekstfeltFormat.formaterDoubleTilString(vaegt));
-		}	
-	}
+//	private void regneVaegtEllerDimensionerendeKraft() {
+//
+//		if(tekstFeltDimensionerendeKraft.getText().isEmpty()){
+//						
+//			pteController.setVaegt
+//				(tekstfeltFormat.formaterStringTilDouble(tekstFeltVaegt.getText()));
+//			tekstFeltDimensionerendeKraft.setText
+//				(tekstfeltFormat.formaterDoubleTilString(pteController.getDimensionerendeKraft()));
+//
+//		}else if(tekstFeltVaegt.getText().isEmpty()){			
+//			pteController.setDimensioneredndeKraft
+//				(tekstfeltFormat.formaterStringTilDouble(tekstFeltDimensionerendeKraft.getText()));
+//			double vaegt = pteController.dimensionerendeKraftTilVaegt();
+//			pteController.setVaegt(vaegt);
+//			tekstFeltVaegt.setText(tekstfeltFormat.formaterDoubleTilString(vaegt));
+//		}	
+//	}
 
 	private void setProfil() {
 		if(vandret.isSelected()){
@@ -187,15 +196,23 @@ public class PaneUC1_UC2Controller extends PTEPane implements Initializable {
 	public void update(List<Tilstand> tilstande) {
 		System.out.println("Update " + tilstande);
 		if(tilstande.contains(Tilstand.VAEGT)){
-			pteController.dimensionerendeKraftTilVaegt();
+			//pteController.dimensionerendeKraftTilVaegt();
 			tekstFeltVaegt.setText
 				(tekstfeltFormat.formaterDoubleTilString(pteController.getVaegt()));
+			
+			tekstFeltDimensionerendeKraft.setText
+			(tekstfeltFormat.formaterDoubleTilString
+				(pteController.getDimensionerendeKraft()));
 		}
 
 		if(tilstande.contains(Tilstand.DIMENSIONERENDE_KRAFT)){
 			tekstFeltDimensionerendeKraft.setText
 			(tekstfeltFormat.formaterDoubleTilString
 				(pteController.getDimensionerendeKraft()));
+			
+			tekstFeltVaegt.setText
+			(tekstfeltFormat.formaterDoubleTilString(pteController.getVaegt()));
+			
 		}
 
 		if(tilstande.contains(Tilstand.FORSKYDNINGSKRAFT)){

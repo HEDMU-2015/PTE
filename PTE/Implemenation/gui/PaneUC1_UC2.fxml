@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="199.0" prefWidth="383.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.PaneUC1_UC2Controller">
+<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="199.0" prefWidth="383.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.PaneUC1_UC2Controller">
    <children>
       <Label layoutX="33.0" layoutY="4.0" text="Indtast vægt" />
       <Label layoutX="155.0" layoutY="4.0" text="Indtast dimensionerende kraft" />
@@ -23,21 +23,21 @@
       <Label layoutX="91.0" layoutY="78.0" text="o" />
       <Button layoutX="178.0" layoutY="151.0" mnemonicParsing="false" onAction="#haandterUdregnKnap" text="Udregn" />
       <Label layoutX="155.0" layoutY="68.0" text="F" />
-      <TextField fx:id="tekstFeltNormalkraft" editable="false" layoutX="155.0" layoutY="86.0" prefHeight="25.0" prefWidth="79.0" />
+      <TextField fx:id="tekstFeltNormalkraft" editable="false" layoutX="155.0" layoutY="86.0" prefHeight="25.0" prefWidth="79.0" styleClass="test" stylesheets="@gui.css" />
       <Label layoutX="161.0" layoutY="74.0" text="N">
          <font>
             <Font size="8.0" />
          </font>
       </Label>
-      <TextField fx:id="tekstFeltForskydningskraft" editable="false" layoutX="261.0" layoutY="86.0" prefHeight="25.0" prefWidth="79.0" />
+      <TextField fx:id="tekstFeltForskydningskraft" editable="false" layoutX="261.0" layoutY="86.0" prefHeight="25.0" prefWidth="79.0" styleClass="test" stylesheets="@gui.css" />
       <Label layoutX="261.0" layoutY="68.0" text="F" />
       <Label layoutX="267.0" layoutY="74.0" text="T">
          <font>
             <Font size="8.0" />
          </font>
       </Label>
-      <Label layoutX="342.0" layoutY="90.0" text="N" />
-      <Label layoutX="237.0" layoutY="90.0" text="N" />
+      <Label layoutX="342.0" layoutY="90.0" text="[N]" />
+      <Label layoutX="237.0" layoutY="90.0" text="[N]" />
       <Button layoutX="301.0" layoutY="151.0" mnemonicParsing="false" onAction="#haandterResetKnap" text="Reset" />
    </children>
 </AnchorPane>

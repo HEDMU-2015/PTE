@@ -10,6 +10,8 @@ class DimensionerendeKraftImpl  extends PTEEntityImpl implements Dimensionerende
 	public DimensionerendeKraftImpl(Vaegt vaegt, Tyngdekraft tyngdekraft) {
 		this.vaegt = vaegt;
 		this.tyngdekraft = tyngdekraft;
+		this.vaegt.tilfoejAfhaengigEntitet(this);
+		this.tyngdekraft.tilfoejAfhaengigEntitet(this);
 	}
 
 	@Override
