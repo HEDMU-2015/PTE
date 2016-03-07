@@ -2,15 +2,17 @@ package Logic;
 
 import Exceptions.UdefineretProfilException;
 
-public class NormalkraftImpl implements Normalkraft {
+class NormalkraftImpl extends PTEEntityImpl implements Normalkraft {
 
 	private double normalkraft = 0;
 	private DimensionerendeKraft dimensionerendeKraft;
 	private Vinkel vinkel;
 	
-	public NormalkraftImpl(Vinkel vinkel, DimensionerendeKraft dimensionerendeKraft){
+	public NormalkraftImpl(DimensionerendeKraft dimensionerendeKraft, Vinkel vinkel){
 		this.dimensionerendeKraft = dimensionerendeKraft;
 		this.vinkel = vinkel;
+		this.dimensionerendeKraft.tilfoejAfhaengigEntitet(this);
+		this.vinkel.tilfoejAfhaengigEntitet(this);
 	}
 	
 	@Override
@@ -38,6 +40,11 @@ public class NormalkraftImpl implements Normalkraft {
 	@Override
 	public void nulstil() {
 		setNormalkraft(0);
+	}
+
+	@Override
+	protected Tilstand getEgenAfhaengighed() {
+		return Tilstand.NORMALKRAFT;
 	}
 
 }

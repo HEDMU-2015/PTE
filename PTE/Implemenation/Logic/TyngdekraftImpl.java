@@ -1,6 +1,6 @@
 package Logic;
 
-public class TyngdekraftImpl implements Tyngdekraft {
+class TyngdekraftImpl extends PTEEntityImpl implements Tyngdekraft {
 
 	private double tyngdekraft = 9.816;
 	
@@ -18,6 +18,11 @@ public class TyngdekraftImpl implements Tyngdekraft {
 	@Override
 	public void nulstil() {
 		setTyngdekraft(0);
+	}
+
+	@Override
+	protected Tilstand getEgenAfhaengighed() {
+		return Tilstand.TYNGDEKRAFT;
 	}
 
 }

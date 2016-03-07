@@ -2,12 +2,14 @@ package Logic;
 
 import Exceptions.UdefineretProfilException;
 
-public class ForskydningskraftImpl implements Forskydningskraft  {
+class ForskydningskraftImpl extends PTEEntityImpl implements Forskydningskraft  {
 	Vinkel v;
 	DimensionerendeKraft dk;
 	public ForskydningskraftImpl(Vinkel v, DimensionerendeKraft dk){
 		this.v = v;
 		this.dk = dk;
+		this.v.tilfoejAfhaengigEntitet(this);
+		this.dk.tilfoejAfhaengigEntitet(this);
 	}
 	double forskydningskraft;
 	
@@ -40,6 +42,11 @@ public class ForskydningskraftImpl implements Forskydningskraft  {
 	public void nulstil() {
 		//SD ikke fundet, lavet ud fra gætværk
 		forskydningskraft = 0;
+	}
+
+	@Override
+	protected Tilstand getEgenAfhaengighed() {
+		return Tilstand.FORSKYDNINGSKRAFT;
 	}
 	
 	

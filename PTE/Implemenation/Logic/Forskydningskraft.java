@@ -2,7 +2,7 @@ package Logic;
 
 import Exceptions.UdefineretProfilException;
 
-interface Forskydningskraft {
+interface Forskydningskraft extends PTEEntity{
 	
 	public void setForskydningskraft(double forskydningskraft);
 	

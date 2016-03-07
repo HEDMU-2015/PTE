@@ -39,8 +39,5 @@ public interface PTEController {
 	
 	public void setDimensioneredndeKraft(double dimensioneredndeKraft);
 	
-	public void nulstil();
-	
-	public double dimensionerendeKraftTilVaegt();
-	
+	public void nulstil();	
 }

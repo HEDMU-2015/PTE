@@ -1,6 +1,6 @@
 package Logic;
 
-class DimensionerendeKraftImpl implements DimensionerendeKraft {
+class DimensionerendeKraftImpl  extends PTEEntityImpl implements DimensionerendeKraft {
 
 	private double dimensionerendeKraft = 0;
 	double vaegtFraDimensionerendeKraft = 0;
@@ -31,6 +31,11 @@ class DimensionerendeKraftImpl implements DimensionerendeKraft {
 	@Override
 	public void nulstil() {
 		setDimensionerendeKraft(0);
+	}
+
+	@Override
+	protected Tilstand getEgenAfhaengighed() {
+		return Tilstand.DIMENSIONERENDE_KRAFT;
 	}
 
 }

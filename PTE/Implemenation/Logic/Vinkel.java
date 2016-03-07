@@ -1,6 +1,6 @@
 package Logic;
 
-interface Vinkel {
+interface Vinkel extends PTEEntity {
 
 	public void setVinkel(double vinkel);
 

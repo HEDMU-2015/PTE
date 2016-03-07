@@ -1,6 +1,6 @@
 package Logic;
 
-public class VinkelImpl implements Vinkel {
+class VinkelImpl extends PTEEntityImpl implements Vinkel {
 	double vinkel;
 	Profil profil;
 	
@@ -30,6 +30,11 @@ public class VinkelImpl implements Vinkel {
 		profil = null;
 		vinkel = 0;
 
+	}
+
+	@Override
+	protected Tilstand getEgenAfhaengighed() {
+		return Tilstand.VINKEL;
 	}
 
 }

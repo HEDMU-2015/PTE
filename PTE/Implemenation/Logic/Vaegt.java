@@ -1,6 +1,6 @@
 package Logic;
 
-interface Vaegt {
+interface Vaegt extends PTEEntity {
 
 	public double getVaegt();
 	

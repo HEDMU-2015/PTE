@@ -1,6 +1,6 @@
 package Logic;
 
-interface DimensionerendeKraft {
+interface DimensionerendeKraft extends PTEEntity {
 
 	public double getDimensionerendeKraft();
 	

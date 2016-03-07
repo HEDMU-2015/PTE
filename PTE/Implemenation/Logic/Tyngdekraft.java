@@ -1,6 +1,6 @@
 package Logic;
 
-interface Tyngdekraft {
+interface Tyngdekraft extends PTEEntity {
 
 	public double getTyngdekraft();
 

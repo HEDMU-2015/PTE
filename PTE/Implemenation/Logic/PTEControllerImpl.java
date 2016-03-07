@@ -10,8 +10,8 @@ import Exceptions.UdefineretProfilException;
  *
  */
 public class PTEControllerImpl implements PTEController {
-	
-	private Vinkel vinkel; 
+
+	private Vinkel vinkel;
 	private Vaegt vaegt;
 	private DimensionerendeKraft dimensionerendeKraft;
 	private Normalkraft normalKraft;
@@ -19,7 +19,7 @@ public class PTEControllerImpl implements PTEController {
 	private Forskydningskraft forskydningsKraft;
 	private List<Observer> observers;
 	private LogicFactory logicFactory;
-	
+
 	public PTEControllerImpl() {
 		logicFactory = new LogicFactoryImpl();
 		vinkel = logicFactory.createVinkel();
@@ -31,10 +31,11 @@ public class PTEControllerImpl implements PTEController {
 		forskydningsKraft = logicFactory.createForskydningskraft(vinkel, dimensionerendeKraft);
 		observers = new ArrayList<Logic.Observer>();
 	}
-	
+
 	@Override
 	public void vaelgProfil(Profil profil) {
 		this.vinkel.setProfil(profil);
+		notifyObservers(vinkel.getAfhaengigheder());
 	}
 
 	@Override
@@ -44,7 +45,7 @@ public class PTEControllerImpl implements PTEController {
 
 	@Override
 	public void notifyObservers(List<Tilstand> tilstande) {
-		for(Logic.Observer o : observers) {
+		for (Logic.Observer o : observers) {
 			o.update(tilstande);
 		}
 	}
@@ -55,7 +56,7 @@ public class PTEControllerImpl implements PTEController {
 		try {
 			fN = this.forskydningsKraft.getForskydningskraft();
 		} catch (UdefineretProfilException e) {
-			//TODO
+			// TODO
 		}
 		return fN;
 	}
@@ -63,6 +64,7 @@ public class PTEControllerImpl implements PTEController {
 	@Override
 	public void setForskydningskraft(double forskydningskraft) {
 		this.forskydningsKraft.setForskydningskraft(forskydningskraft);
+		notifyObservers(forskydningsKraft.getAfhaengigheder());
 	}
 
 	@Override
@@ -73,17 +75,14 @@ public class PTEControllerImpl implements PTEController {
 	@Override
 	public void setTyngdekraft(double tyngdekraft) {
 		this.setTyngdekraft(tyngdekraft);
-		
+		notifyObservers(tyngdeKraft.getAfhaengigheder());
+
 	}
 
 	@Override
 	public void setVinkel(double vinkel) {
 		this.vinkel.setVinkel(vinkel);
-		List<Tilstand> tilstande = new ArrayList<Tilstand>();
-		tilstande.add(Tilstand.VINKEL);
-		tilstande.add(Tilstand.NORMALKRAFT);
-		tilstande.add(Tilstand.FORSKYDNINGSKRAFT);
-		this.notifyObservers(tilstande);
+		notifyObservers(this.vinkel.getAfhaengigheder());
 	}
 
 	@Override
@@ -94,6 +93,7 @@ public class PTEControllerImpl implements PTEController {
 	@Override
 	public void setProfil(Profil profil) {
 		this.vinkel.setProfil(profil);
+		notifyObservers(vinkel.getAfhaengigheder());
 	}
 
 	@Override
@@ -109,15 +109,16 @@ public class PTEControllerImpl implements PTEController {
 	@Override
 	public void setVaegt(double vaegt) {
 		this.vaegt.setVaegt(vaegt);
+		notifyObservers(this.vaegt.getAfhaengigheder());
 	}
 
 	@Override
 	public double getNormalkraft() {
 		double normalkraft = 0;
 		try {
-			normalkraft=this.normalKraft.getNormalkraft();
+			normalkraft = this.normalKraft.getNormalkraft();
 		} catch (UdefineretProfilException e) {
-			//Det sker aldrig
+			// Det sker aldrig
 		}
 		return normalkraft;
 	}
@@ -125,6 +126,7 @@ public class PTEControllerImpl implements PTEController {
 	@Override
 	public void setNormalkraft(double normalkraft) {
 		this.normalKraft.setNormalkraft(normalkraft);
+		notifyObservers(normalKraft.getAfhaengigheder());
 	}
 
 	@Override
@@ -133,30 +135,34 @@ public class PTEControllerImpl implements PTEController {
 	}
 
 	@Override
-	public void setDimensioneredndeKraft(double dimensioneredndeKraft) {
-		this.dimensionerendeKraft.setDimensionerendeKraft(dimensioneredndeKraft);
-		List<Tilstand> tilstande = new ArrayList<Tilstand>();
-		tilstande.add(Tilstand.VAEGT);
-		tilstande.add(Tilstand.TYNGDEKRAFT);
-		tilstande.add(Tilstand.DIMENSIONERENDE_KRAFT);
-		tilstande.add(Tilstand.NORMALKRAFT);
-		tilstande.add(Tilstand.FORSKYDNINGSKRAFT);
-		this.notifyObservers(tilstande);
+	public void setDimensioneredndeKraft(double dimensionerendeKraft) {
+		vaegt.setVaegt(this.dimensionerendeKraft.dimensionerendeKraftTilVaegt());
+		notifyObservers(this.vaegt.getAfhaengigheder());
 	}
 
 	@Override
 	public void nulstil() {
-		this.dimensionerendeKraft.nulstil();
-		this.forskydningsKraft.nulstil();
-		this.normalKraft.nulstil();
-		this.tyngdeKraft.nulstil();
+		List<Tilstand> tilstande = new ArrayList<Tilstand>();
+
 		this.vaegt.nulstil();
+		tilstande.addAll(vaegt.getAfhaengigheder());
+
 		this.vinkel.nulstil();
+		tilstande.addAll(vinkel.getAfhaengigheder());
+
+		this.tyngdeKraft.nulstil();
+		tilstande.addAll(tyngdeKraft.getAfhaengigheder());
+
+		this.dimensionerendeKraft.nulstil();
+		tilstande.addAll(dimensionerendeKraft.getAfhaengigheder());
+
+		this.normalKraft.nulstil();
+		tilstande.addAll(normalKraft.getAfhaengigheder());
+
+		this.forskydningsKraft.nulstil();
+		tilstande.addAll(forskydningsKraft.getAfhaengigheder());
+
+		notifyObservers(tilstande);
 	}
 
-	@Override
-	public double dimensionerendeKraftTilVaegt() {
-		 return dimensionerendeKraft.dimensionerendeKraftTilVaegt();
-	}
-	
 }

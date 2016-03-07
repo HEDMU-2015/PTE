@@ -1,7 +1,7 @@
 package Logic;
 
-public class VaegtImpl implements Vaegt {
-
+class VaegtImpl extends PTEEntityImpl implements Vaegt {
+	
 	private double vaegt;
 	
 	@Override
@@ -17,6 +17,11 @@ public class VaegtImpl implements Vaegt {
 	@Override
 	public void nulstil() {
 		setVaegt(0);
+	}
+
+	@Override
+	protected Tilstand getEgenAfhaengighed() {
+		return Tilstand.VAEGT;
 	}
 
 }
