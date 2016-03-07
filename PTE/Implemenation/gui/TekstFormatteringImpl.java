@@ -34,6 +34,10 @@ public class TekstFormatteringImpl implements TekstFormattering {
 	@Override
 	public String formaterDoubleTilString(Double resultat) {
 		
+		if (Double.isNaN(resultat)) {
+			return "";
+		}
+		
 		return format.format(resultat).replace('.', ',');
 	}
 

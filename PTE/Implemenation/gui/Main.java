@@ -20,20 +20,8 @@ import javafx.scene.layout.VBox;
 public class Main extends Application  {
 	private Stage stage;
 	private BorderPane mainWindow;
-	private List<Observer> observers;
 
-	
-	
-	public Main() {
-		observers = new ArrayList<Logic.Observer>();
-	}
-	
 
-	public void tilmeldObserver(Observer observer) {
-		this.observers.add(observer);
-	}
-	
-	
 
 	@Override
 	public void start(Stage stage) throws Exception {
