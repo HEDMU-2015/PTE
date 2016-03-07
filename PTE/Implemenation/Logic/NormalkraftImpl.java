@@ -8,7 +8,7 @@ public class NormalkraftImpl implements Normalkraft {
 	private DimensionerendeKraft dimensionerendeKraft;
 	private Vinkel vinkel;
 	
-	public NormalkraftImpl(DimensionerendeKraft dimensionerendeKraft, Vinkel vinkel){
+	public NormalkraftImpl(Vinkel vinkel, DimensionerendeKraft dimensionerendeKraft){
 		this.dimensionerendeKraft = dimensionerendeKraft;
 		this.vinkel = vinkel;
 	}
