@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import Logic.Observer;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -18,11 +20,16 @@ import javafx.stage.Stage;
 import Logic.Profil;
 import Logic.Tilstand;
 
-public class PaneUC1_UC2Controller extends PTEPane implements Initializable, Observer {
+public class PaneUC1_UC2Controller extends PTEPane implements Initializable {
 
 	private TekstFormattering tekstfeltFormat = new TekstFormatteringImpl();
 	
-	private Stage window;
+	//private Stage window;
+	
+	private boolean vaegtErAEndret=false; 
+	private boolean dimensionerendeKraftErAEndret=false;
+
+	private boolean vinkelErAEndret=false;
 
 	@FXML
 	private TextField tekstFeltVaegt;
@@ -51,31 +58,45 @@ public class PaneUC1_UC2Controller extends PTEPane implements Initializable, Obs
 
 	@FXML
 	private void haandterUdregnKnap() {
-		if ((tekstFeltVaegt.getText().isEmpty())&& 
-				(tekstFeltDimensionerendeKraft.getText().isEmpty())){
-			DialogBox alert = new DialogBox(window);
-			alert.visAdvarselDialog();
-	        
-		} else if(tekstFeltVinkel.getText().isEmpty()){
-				regneVaegtEllerDimensionerendeKraft();
-
-		} else {
-			setProfil();
-			setData();
-			getTextFn_FT();
+		System.out.println("udregn: "+ vaegtErAEndret);
+		if(vaegtErAEndret){
+			vaegtErAEndret=false;
+			pteController.setVaegt(tekstfeltFormat.formaterStringTilDouble(tekstFeltVaegt.getText()));
 		}
+		if(dimensionerendeKraftErAEndret){
+			dimensionerendeKraftErAEndret=false;
+			pteController.setDimensioneredndeKraft(tekstfeltFormat.formaterStringTilDouble(tekstFeltDimensionerendeKraft.getText()));
+		}
+		if(vinkelErAEndret){
+			vinkelErAEndret=false;
+			pteController.setVinkel(tekstfeltFormat.formaterStringTilDouble(tekstFeltVinkel.getText()));
+		}
+		if((vandret.isSelected() && pteController.getProfil() != Profil.VANDRET) 
+				|| (lodret.isSelected() && pteController.getProfil() != Profil.LODRET)){
+			setProfil();
+		}
+		
+		
+//		if ((tekstFeltVaegt.getText().isEmpty())&& 
+//				(tekstFeltDimensionerendeKraft.getText().isEmpty())){
+//			DialogBox alert = new DialogBox(window);
+//			alert.visAdvarselDialog();
+//	        
+//		} else if(tekstFeltVinkel.getText().isEmpty()){
+//				regneVaegtEllerDimensionerendeKraft();
+//
+//		} else {
+//			setProfil();
+//			setData();
+//			getTextFn_FT();
+//		}
 	}
 
 
 	@FXML
 	private void haandterResetKnap() {
 
-		this.tekstFeltVaegt.setText("");
-		this.tekstFeltDimensionerendeKraft.setText("");
-		this.tekstFeltVinkel.setText("");
-		this.tekstFeltNormalkraft.setText("");
-		this.tekstFeltForskydningskraft.setText("");
-
+		pteController.nulstil();
 	}
 	
 	@FXML
@@ -141,11 +162,30 @@ public class PaneUC1_UC2Controller extends PTEPane implements Initializable, Obs
 		formaterTekstfelt(tekstFeltDimensionerendeKraft);
 		formaterTekstfelt(tekstFeltVaegt);
 		formaterTekstfelt(tekstFeltVinkel);
+		
+		tekstFeltVaegt.focusedProperty().addListener(new ChangeListener<Boolean>(){	
+			@Override
+			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+				vaegtErAEndret = true;
+		}});
+		
+		tekstFeltDimensionerendeKraft.focusedProperty().addListener(new ChangeListener<Boolean>(){	
+			@Override
+			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+				dimensionerendeKraftErAEndret = true;
+		}});
 
+		tekstFeltVinkel.focusedProperty().addListener(new ChangeListener<Boolean>(){	
+			@Override
+			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+				vinkelErAEndret = true;
+		}});
+		
 	}
 
 	@Override
 	public void update(List<Tilstand> tilstande) {
+		System.out.println("Update " + tilstande);
 		if(tilstande.contains(Tilstand.VAEGT)){
 			pteController.dimensionerendeKraftTilVaegt();
 			tekstFeltVaegt.setText
