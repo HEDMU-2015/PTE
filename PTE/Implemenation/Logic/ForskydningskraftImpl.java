@@ -40,8 +40,7 @@ class ForskydningskraftImpl extends PTEEntityImpl implements Forskydningskraft  
 
 	@Override
 	public void nulstil() {
-		//SD ikke fundet, lavet ud fra gætværk
-		forskydningskraft = 0;
+		setForskydningskraft(Double.NaN);
 	}
 
 	@Override

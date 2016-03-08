@@ -17,7 +17,7 @@ class TyngdekraftImpl extends PTEEntityImpl implements Tyngdekraft {
 
 	@Override
 	public void nulstil() {
-		setTyngdekraft(0);
+		setTyngdekraft(Double.NaN);
 	}
 
 	@Override

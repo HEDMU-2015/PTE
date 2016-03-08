@@ -16,7 +16,7 @@ class VaegtImpl extends PTEEntityImpl implements Vaegt {
 
 	@Override
 	public void nulstil() {
-		setVaegt(0);
+		setVaegt(Double.NaN);
 	}
 
 	@Override

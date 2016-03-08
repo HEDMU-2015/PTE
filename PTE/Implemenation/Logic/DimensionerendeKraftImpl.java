@@ -32,7 +32,7 @@ class DimensionerendeKraftImpl  extends PTEEntityImpl implements Dimensionerende
 	
 	@Override
 	public void nulstil() {
-		setDimensionerendeKraft(0);
+		setDimensionerendeKraft(Double.NaN);
 	}
 
 	@Override

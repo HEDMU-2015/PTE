@@ -26,10 +26,8 @@ class VinkelImpl extends PTEEntityImpl implements Vinkel {
 
 	@Override
 	public void nulstil() {
-		//SD ikke fundet, lavet ud fra gætværk
-		profil = null;
-		vinkel = 0;
-
+		setVinkel(Double.NaN);
+		profil = Profil.UDEFINERET;
 	}
 
 	@Override
