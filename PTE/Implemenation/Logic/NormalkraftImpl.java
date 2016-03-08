@@ -22,7 +22,7 @@ class NormalkraftImpl extends PTEEntityImpl implements Normalkraft {
 		return normalkraft;
 	}
 	double getNormalkraft(double vinkel, double dimensionerendeKraft) throws UdefineretProfilException {
-		if(vinkel == 0.0) {
+		if(vinkel == Double.NaN) {
 			return normalkraft;
 		}
 		if (this.vinkel.getProfil() == Profil.VANDRET){
