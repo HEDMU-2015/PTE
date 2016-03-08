@@ -22,6 +22,9 @@ class NormalkraftImpl extends PTEEntityImpl implements Normalkraft {
 		return normalkraft;
 	}
 	double getNormalkraft(double vinkel, double dimensionerendeKraft) throws UdefineretProfilException {
+		if(vinkel == 0.0) {
+			return normalkraft;
+		}
 		if (this.vinkel.getProfil() == Profil.VANDRET){
 			return (Math.cos(Math.toRadians(vinkel))*this.dimensionerendeKraft.getDimensionerendeKraft());
 		}

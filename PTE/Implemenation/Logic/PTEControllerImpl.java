@@ -56,7 +56,7 @@ public class PTEControllerImpl implements PTEController {
 		try {
 			fN = this.forskydningsKraft.getForskydningskraft();
 		} catch (UdefineretProfilException e) {
-			// TODO
+
 		}
 		return fN;
 	}

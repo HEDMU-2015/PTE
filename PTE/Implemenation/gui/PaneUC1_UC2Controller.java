@@ -4,21 +4,15 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import Logic.Observer;
+import Logic.Profil;
+import Logic.Tilstand;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Dialog;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.image.Image;
-import javafx.stage.Stage;
-import Logic.Profil;
-import Logic.Tilstand;
 
 public class PaneUC1_UC2Controller extends PTEPane implements Initializable {
 
@@ -236,17 +230,20 @@ public class PaneUC1_UC2Controller extends PTEPane implements Initializable {
 		}
 
 		if(tilstande.contains(Tilstand.FORSKYDNINGSKRAFT)){
-			tekstFeltForskydningskraft.setText
+			if(pteController.getForskydningkraft() == (double) 0 && tekstFeltVinkel.getText().isEmpty()){
+				tekstFeltForskydningskraft.setText("");
+			} else  {
+				tekstFeltForskydningskraft.setText
 				(tekstfeltFormat.formaterDoubleTilString(pteController.getForskydningkraft()));
+			} 
+			
 		}
 
 		if(tilstande.contains(Tilstand.NORMALKRAFT)){
-			// TODO : if (tekstFeltVinkel er empty ) 
-			// : until fix with Fn (ellers : only looking for Fdim - vaegt : it gives Fn as Fdim
-			if(tekstFeltVinkel.getText().isEmpty()){
+			if(pteController.getNormalkraft() == (double) 0 && tekstFeltVinkel.getText().isEmpty()){
 				tekstFeltNormalkraft.setText("");
-			}else{
-			tekstFeltNormalkraft.setText
+			} else {
+				tekstFeltNormalkraft.setText
 				(tekstfeltFormat.formaterDoubleTilString(pteController.getNormalkraft()));
 			}
 		}
