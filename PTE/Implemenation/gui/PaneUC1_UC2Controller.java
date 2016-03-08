@@ -81,6 +81,8 @@ public class PaneUC1_UC2Controller extends PTEPane implements Initializable {
 			pteController.setVinkel(tekstfeltFormat.formaterStringTilDouble(tekstFeltVinkel.getText()));
 		}
 		
+		
+		
 		/*if(vaegtErAEndret){
 			vaegtErAEndret=false;
 			pteController.setVaegt(tekstfeltFormat.formaterStringTilDouble(tekstFeltVaegt.getText()));
