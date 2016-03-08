@@ -59,31 +59,48 @@ public class PaneUC1_UC2Controller extends PTEPane implements Initializable {
 	@FXML
 	private void haandterUdregnKnap() {
 		if(vaegtErAEndret && tekstFeltDimensionerendeKraft.getText().isEmpty()){
+			vaegtErAEndret=false;
+
 			pteController.setVaegt(tekstfeltFormat.formaterStringTilDouble(tekstFeltVaegt.getText()));
 		}
 		
 		if(!tekstFeltDimensionerendeKraft.getText().isEmpty() && tekstFeltVaegt.getText().isEmpty()){
+			dimensionerendeKraftErAEndret=false;
+			
 			pteController.setDimensioneredndeKraft(tekstfeltFormat.formaterStringTilDouble(tekstFeltDimensionerendeKraft.getText()));
-			System.out.println("Vi er HEr");
+		}
+//		System.out.println("udregn: "+ vaegtErAEndret);
+		
+		if(!tekstFeltVaegt.getText().isEmpty() && !tekstFeltVinkel.getText().isEmpty()) {
+			pteController.setVaegt(tekstfeltFormat.formaterStringTilDouble(tekstFeltVaegt.getText()));
+			pteController.setVinkel(tekstfeltFormat.formaterStringTilDouble(tekstFeltVinkel.getText()));
 		}
 		
-//		System.out.println("udregn: "+ vaegtErAEndret);
-//		if(vaegtErAEndret){
-//			vaegtErAEndret=false;
-//			pteController.setVaegt(tekstfeltFormat.formaterStringTilDouble(tekstFeltVaegt.getText()));
-//		}
-//		if(dimensionerendeKraftErAEndret){
-//			dimensionerendeKraftErAEndret=false;
-//			pteController.setDimensioneredndeKraft(tekstfeltFormat.formaterStringTilDouble(tekstFeltDimensionerendeKraft.getText()));
-//		}
-//		if(vinkelErAEndret){
-//			vinkelErAEndret=false;
-//			pteController.setVinkel(tekstfeltFormat.formaterStringTilDouble(tekstFeltVinkel.getText()));
-//		}
-//		if((vandret.isSelected() && pteController.getProfil() != Profil.VANDRET) 
-//				|| (lodret.isSelected() && pteController.getProfil() != Profil.LODRET)){
-//			setProfil();
-//		}
+		if(!tekstFeltDimensionerendeKraft.getText().isEmpty() && !tekstFeltVinkel.getText().isEmpty()) {
+			pteController.setDimensioneredndeKraft(tekstfeltFormat.formaterStringTilDouble(tekstFeltDimensionerendeKraft.getText()));
+			pteController.setVinkel(tekstfeltFormat.formaterStringTilDouble(tekstFeltVinkel.getText()));
+		}
+		
+		/*if(vaegtErAEndret){
+			vaegtErAEndret=false;
+			pteController.setVaegt(tekstfeltFormat.formaterStringTilDouble(tekstFeltVaegt.getText()));
+		}
+		if(dimensionerendeKraftErAEndret){
+			dimensionerendeKraftErAEndret=false;
+			pteController.setDimensioneredndeKraft(tekstfeltFormat.formaterStringTilDouble(tekstFeltDimensionerendeKraft.getText()));
+		}
+		*/
+		if(vinkelErAEndret){ 
+			//if( vinkelErAEndret && !tekstFeltVinkel.getText().isEmpty()) 
+			// eller tekstFormatting return 0.0 : ellers når man click vinkel og udregns knap, får man NumberformatException
+			vinkelErAEndret=false;
+			pteController.setVinkel(tekstfeltFormat.formaterStringTilDouble(tekstFeltVinkel.getText()));
+		}
+		
+		if((vandret.isSelected() && pteController.getProfil() != Profil.VANDRET) 
+				|| (lodret.isSelected() && pteController.getProfil() != Profil.LODRET)){
+			setProfil();
+		}
 		
 		
 //		if ((tekstFeltVaegt.getText().isEmpty())&& 
@@ -104,6 +121,7 @@ public class PaneUC1_UC2Controller extends PTEPane implements Initializable {
 
 	@FXML
 	private void haandterResetKnap() {
+		//TODO : nulstil virker ikke til vinkel
 
 		pteController.nulstil();
 	}
@@ -124,12 +142,12 @@ public class PaneUC1_UC2Controller extends PTEPane implements Initializable {
 		tekstfeltFormat.formaterTekstfeltInput(input);
 	}
 
-	private void getTextFn_FT() {
-		tekstFeltNormalkraft.setText
-			(tekstfeltFormat.formaterDoubleTilString(pteController.getNormalkraft()));
-		tekstFeltForskydningskraft.setText
-			(tekstfeltFormat.formaterDoubleTilString(pteController.getForskydningkraft()));		
-	}
+//	private void getTextFn_FT() {
+//		tekstFeltNormalkraft.setText
+//			(tekstfeltFormat.formaterDoubleTilString(pteController.getNormalkraft()));
+//		tekstFeltForskydningskraft.setText
+//			(tekstfeltFormat.formaterDoubleTilString(pteController.getForskydningkraft()));		
+//	}
 
 //	private void setData() {
 //		regneVaegtEllerDimensionerendeKraft();
@@ -221,8 +239,14 @@ public class PaneUC1_UC2Controller extends PTEPane implements Initializable {
 		}
 
 		if(tilstande.contains(Tilstand.NORMALKRAFT)){
+			// TODO : if (tekstFeltVinkel er empty ) 
+			// : until fix with Fn (ellers : only looking for Fdim - vaegt : it gives Fn as Fdim
+			if(tekstFeltVinkel.getText().isEmpty()){
+				tekstFeltNormalkraft.setText("");
+			}else{
 			tekstFeltNormalkraft.setText
 				(tekstfeltFormat.formaterDoubleTilString(pteController.getNormalkraft()));
+			}
 		}
 
 	}
