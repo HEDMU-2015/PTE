@@ -214,39 +214,34 @@ public class PaneUC1_UC2Controller extends PTEPane implements Initializable {
 		
 		if (tilstande.contains(Tilstand.VAEGT)) {
 			
-				tekstFeltVaegt.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getVaegt()));
+			tekstFeltVaegt.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getVaegt()));
 
-				tekstFeltDimensionerendeKraft
-				.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getDimensionerendeKraft()));
-			
+			tekstFeltDimensionerendeKraft
+				.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getDimensionerendeKraft()));	
 		}
 
 		if (tilstande.contains(Tilstand.DIMENSIONERENDE_KRAFT)) {
 			
-				tekstFeltDimensionerendeKraft
+			tekstFeltDimensionerendeKraft
 				.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getDimensionerendeKraft()));
 
-				tekstFeltVaegt.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getVaegt()));
-			
+			tekstFeltVaegt.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getVaegt()));
 		}
 
 		if (tilstande.contains(Tilstand.FORSKYDNINGSKRAFT)) {
 
 			tekstFeltForskydningskraft
-			.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getForskydningkraft()));
-		
-			
+				.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getForskydningkraft()));
 		}
 
 		if (tilstande.contains(Tilstand.NORMALKRAFT)) {
+			
 			tekstFeltNormalkraft.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getNormalkraft()));
-
 		}
 
 		if (tilstande.contains(Tilstand.VINKEL)) {
 			
-				tekstFeltVinkel.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getVinkel()));
-			
+			tekstFeltVinkel.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getVinkel()));
 		}
 	}
 		
