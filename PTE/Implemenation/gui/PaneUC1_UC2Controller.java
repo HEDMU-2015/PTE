@@ -51,7 +51,9 @@ public class PaneUC1_UC2Controller extends PTEPane implements Initializable {
 
 	@FXML
 	private void haandterUdregnKnap() {
-		if (vaegtErAEndret && tekstFeltDimensionerendeKraft.getText().isEmpty()) {
+		if (vaegtErAEndret ) {
+
+		//if (vaegtErAEndret && tekstFeltDimensionerendeKraft.getText().isEmpty()) {
 			vaegtErAEndret = false;
 
 			pteController.setVaegt(tekstfeltFormat.formaterStringTilDouble(tekstFeltVaegt.getText()));
@@ -129,20 +131,7 @@ public class PaneUC1_UC2Controller extends PTEPane implements Initializable {
 
 	}
 
-	private void haandterCleartekstFeltNormalKraft() {
-		this.tekstFeltNormalkraft.setText("");
-
-	}
-
-	private void haandterCleartekstFeltVinkel() {
-		this.tekstFeltVinkel.setText("");
-
-	}
-
-	private void haandterCleartekstFeltForskydningsKraft() {
-		this.tekstFeltForskydningskraft.setText("");
-
-	}
+	
 
 	private void formaterTekstfelt(TextField input) {
 		tekstfeltFormat.formaterTekstfeltInput(input);
@@ -243,25 +232,15 @@ public class PaneUC1_UC2Controller extends PTEPane implements Initializable {
 
 		if (tilstande.contains(Tilstand.FORSKYDNINGSKRAFT)) {
 
-			
-				if (tekstFeltVinkel.getText().isEmpty()) {
-					haandterCleartekstFeltForskydningsKraft();
-				} else {
-					tekstFeltForskydningskraft
-					.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getForskydningkraft()));
-				}
-
+			tekstFeltForskydningskraft
+			.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getForskydningkraft()));
+		
 			
 		}
 
 		if (tilstande.contains(Tilstand.NORMALKRAFT)) {
-			
-				if ( tekstFeltVinkel.getText().isEmpty()) {
-					haandterCleartekstFeltNormalKraft();
-				} else {
-					tekstFeltNormalkraft.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getNormalkraft()));
-				}
-			
+			tekstFeltNormalkraft.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getNormalkraft()));
+
 		}
 
 		if (tilstande.contains(Tilstand.VINKEL)) {
