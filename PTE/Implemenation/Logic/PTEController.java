@@ -39,5 +39,7 @@ public interface PTEController {
 	
 	public void setDimensioneredndeKraft(double dimensioneredndeKraft);
 	
+	public void setLaengde(double armslaengde);
+	
 	public void nulstil();	
 }
