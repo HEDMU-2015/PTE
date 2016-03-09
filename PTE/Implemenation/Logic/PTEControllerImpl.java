@@ -177,7 +177,7 @@ public class PTEControllerImpl implements PTEController {
 	}
 
 	@Override
-	public void setTau_Forskydningsspaending(Double tau_Forskydningsspaending) {
+	public void setTau_Forskydningsspaending(double tau_Forskydningsspaending) {
 		this.tau_Forskydningsspaending.setTau_Forskydningsspaending(tau_Forskydningsspaending);
 		notifyObservers(this.tau_Forskydningsspaending.getAfhaengigheder());		
 	}
