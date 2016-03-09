@@ -27,7 +27,6 @@ public class Main extends Application  {
 	public void start(Stage stage) throws Exception {
 		this.stage = stage;
 		this.stage.setTitle("PTE Calculator");
-		
 	    this.stage.getIcons().add(new Image("file:gui.resources/simple_calculator_icon.png"));
 	
 		initMainWindow();

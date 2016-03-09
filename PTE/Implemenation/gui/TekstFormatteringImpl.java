@@ -29,7 +29,7 @@ public class TekstFormatteringImpl implements TekstFormattering {
 	public Double formaterStringTilDouble(String tekstinput) {
 
 		if (tekstinput.isEmpty()) {
-			return Double.NaN; // null : null pointer exception
+			return Double.NaN; 
 		} else {
 			return Double.parseDouble(tekstinput.replace(',', '.'));
 		}

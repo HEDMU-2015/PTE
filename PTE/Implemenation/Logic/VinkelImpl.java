@@ -1,7 +1,7 @@
 package Logic;
 
 class VinkelImpl extends PTEEntityImpl implements Vinkel {
-	double vinkel;
+	double vinkel = Double.NaN;
 	Profil profil;
 	
 	@Override
