@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="199.0" prefWidth="383.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.PaneUC3Controller">
+   <children>
+      <Label layoutX="36.0" layoutY="19.0" text="Kraft:" />
+      <Label fx:id="labelKraft" layoutX="36.0" layoutY="43.0" text="Kraft" />
+      <Label layoutX="180.0" layoutY="19.0" text="Længde (mm):" />
+      <TextField fx:id="tekstFeltLaengde" layoutX="181.0" layoutY="39.0" promptText="Indtast længde her" />
+      <RadioButton fx:id="vinkelretPåFt" layoutX="36.0" layoutY="83.0" mnemonicParsing="false" selected="true" text="90° på Ft" />
+      <RadioButton fx:id="vinkelretPåFdim" layoutX="36.0" layoutY="108.0" mnemonicParsing="false" text="90° på Fdim" />
+      <Label layoutX="180.0" layoutY="83.0" text="Bøjningsmoment (MB):" />
+      <TextField fx:id="tekstFeltBoejningsmoment" layoutX="181.0" layoutY="104.0" promptText="Resultat" />
+      <Button fx:id="btnUdregn" layoutX="219.0" layoutY="135.0" mnemonicParsing="false" onAction="#haandterUdregnKnap" text="Udregn" />
+      <Button fx:id="btnReset" layoutX="285.0" layoutY="135.0" mnemonicParsing="false" onAction="#haandterResetKnap" text="Reset" />
+   </children>
+</AnchorPane>

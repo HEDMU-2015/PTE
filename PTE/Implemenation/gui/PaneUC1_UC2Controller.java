@@ -10,6 +10,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
@@ -38,17 +39,17 @@ public class PaneUC1_UC2Controller extends PTEPane implements Initializable {
 	private TextField tekstFeltForskydningskraft;
 
 	@FXML
-	private Toggle vandret;
+	private RadioButton vandret;
 
 	@FXML
-	private Toggle lodret;
+	private RadioButton lodret;
 
 	@FXML
 	private ToggleGroup profil;
 
 	@FXML
 	private void haandterUdregnKnap() {
-		if (vaegtErAEndret ) {
+		if (vaegtErAEndret) {
 
 			vaegtErAEndret = false;
 

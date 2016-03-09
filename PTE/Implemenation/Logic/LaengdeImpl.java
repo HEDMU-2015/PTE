@@ -1,21 +1,21 @@
 package Logic;
 
 class LaengdeImpl extends PTEEntityImpl implements Laengde {
-	private double Laengde;
+	private double laengde;
 
 	@Override
 	public double getLaengde() {
-		return Laengde;
+		return laengde;
 	}
 
 	@Override
-	public void setLaengde(double Laengde) {
-		this.Laengde = Laengde;
+	public void setLaengde(double laengde) {
+		this.laengde = laengde;
 	}
  
 	@Override
 	public double Laengde() {
-		return Laengde;
+		return laengde;
 	}
 
 	@Override

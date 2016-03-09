@@ -19,9 +19,12 @@ public class PTEControllerImpl implements PTEController {
 	private Forskydningskraft forskydningsKraft;
 	private Areal areal;
 	private Tau_Forskydningsspaending tau_Forskydningsspaending;
-	
+	private Laengde laengde;
 	private List<Observer> observers;
 	private LogicFactory logicFactory;
+	private LaengdeRetning laengdeRetning;
+	private BoejningsMoment boejningsMoment;
+	
 
 	public PTEControllerImpl() {
 		logicFactory = new LogicFactoryImpl();
@@ -208,13 +211,43 @@ public class PTEControllerImpl implements PTEController {
 		notifyObservers(tilstande);
 	}
 
-	
-	public double getLaengdeRetning(double LaengdeRetning) {
-		return this.getLaengdeRetning(Double.NaN);
+	@Override
+	public LaengdeRetning getLaengdeRetning() {
+		return this.vinkel.getLaengdeRetning();
 	}
 
+	@Override
+	public void setLaengdeRetning(LaengdeRetning laengdeRetning) {
+		this.laengdeRetning = laengdeRetning;
+		notifyObservers(this.vinkel.getAfhaengigheder());
+	}
 
+	@Override
+	public double getLaengde() {
+		return this.laengde.getLaengde();
+	}
 
-	
+	@Override
+	public void setLaengde(double laengde) {
+		this.laengde.setLaengde(laengde);
+		notifyObservers(this.laengde.getAfhaengigheder());
+	}
+
+	@Override
+	public double getBoejningsMoment() {
+		double boejningsMoment = Double.NaN;
+		try {
+			boejningsMoment = this.boejningsMoment.getBoejningsMoment();
+		} catch (UdefineretProfilException e) {
+			e.printStackTrace();
+		}
+		return boejningsMoment;
+	}
+
+	@Override
+	public void setBoejningsMoment(BoejningsMoment boejningsMoment) {
+		this.boejningsMoment = boejningsMoment;
+		notifyObservers(this.boejningsMoment.getAfhaengigheder());
+	}
 
 }

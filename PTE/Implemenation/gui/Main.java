@@ -53,21 +53,37 @@ public class Main extends Application  {
 
 
 	private void loadUC(){
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(Main.class.getResource("PaneUC1_UC2.fxml"));
+		
+		VBox vboxICenter = new VBox();
+		PTEController pteController = new PTEControllerImpl();
 		try {
-			AnchorPane paneUC1_UC2 = (AnchorPane)loader.load();
-			VBox vboxICenter = new VBox(); 
+			// Pane UC1 og UC2 
+			FXMLLoader loaderUC1_UC2 = new FXMLLoader();
+			loaderUC1_UC2.setLocation(Main.class.getResource("PaneUC1_UC2.fxml"));
+			AnchorPane paneUC1_UC2 = (AnchorPane)loaderUC1_UC2.load();
 			TitledPane tpUC1_UC2 = new TitledPane("Normalkraft / Forskydningskraft",paneUC1_UC2);
+			PTEPane controllerPaneUC1_UC2 = loaderUC1_UC2.<PTEPane>getController();
+			controllerPaneUC1_UC2.setPTEController(pteController);
 			
-			vboxICenter.getChildren().add(tpUC1_UC2);
-
-			PTEPane controller = loader.<PTEPane>getController();
+			// Pane UC3
+			FXMLLoader loaderUC3 = new FXMLLoader();
+			loaderUC3.setLocation(Main.class.getResource("PaneUC3.fxml"));
+			AnchorPane paneUC3 = (AnchorPane)loaderUC3.load();
+			TitledPane tpUC3 = new TitledPane("Bøjningsmoment",paneUC3);
+			tpUC3.setExpanded(false);
+			PTEPane controllerPaneUC3 = loaderUC3.<PTEPane>getController();
+			controllerPaneUC3.setPTEController(pteController);
 			
-			PTEController pteController = new PTEControllerImpl();
-			controller.setPTEController(pteController);
+			// Pane UC4
+//			FXMLLoader loaderUC4 = new FXMLLoader();
+//			loaderUC4.setLocation(Main.class.getResource("PaneUC4.fxml"));
+//			AnchorPane paneUC4 = (AnchorPane)loaderUC4.load();
+//			TitledPane tpUC4 = new TitledPane("Forskydningsspændingen",paneUC4);
+//			tpUC4.setExpanded(false);
+//			PTEPane controllerPaneUC4 = loaderUC4.<PTEPane>getController();
+//			controllerPaneUC4.setPTEController(pteController);
 			
-
+			vboxICenter.getChildren().addAll(tpUC1_UC2, tpUC3);
 			mainWindow.setCenter(vboxICenter);
 			
 		} catch (IOException e) {

@@ -39,7 +39,7 @@ public interface PTEController {
 	
 	public void setDimensioneredndeKraft(double dimensioneredndeKraft);
 	
-	public void setLaengde(double armslaengde);
+	public void setLaengdeRetning(LaengdeRetning laengdeRetning);
 	
 	public double getAreal();
 	
@@ -49,6 +49,15 @@ public interface PTEController {
 	
 	public void setTau_Forskydningsspaending(Double tau_Forskydningsspaending);
 	
+	public void nulstil();
 	
-	public void nulstil();	
+	public LaengdeRetning getLaengdeRetning();
+	
+	public double getLaengde();
+	
+	public void setLaengde(double laengde);
+	
+	public double getBoejningsMoment();
+	
+	public void setBoejningsMoment(BoejningsMoment boejningsMoment);
 }
