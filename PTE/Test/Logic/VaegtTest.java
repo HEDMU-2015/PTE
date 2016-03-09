@@ -34,7 +34,7 @@ public class VaegtTest {
 			fail("Exception bliver ikke kastet.");
 			
 		} catch (VaegtException e) {
-			// succes
+			// success
 		}
 
 	}
@@ -48,7 +48,7 @@ public class VaegtTest {
 			fail("Exception bliver ikke kastet.");
 			
 		} catch (VaegtException e) {
-			// succes
+			// success
 		}
 	}
 
