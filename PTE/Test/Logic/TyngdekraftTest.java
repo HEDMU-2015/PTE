@@ -18,7 +18,7 @@ public class TyngdekraftTest {
 	}
 
 	@Test
-	public void setTyngdekraftNulstil() {
+	public void setTyngdekraftNulstill() {
 
 		t.setTyngdekraft(9.816);
 		
