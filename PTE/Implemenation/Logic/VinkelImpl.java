@@ -5,6 +5,7 @@ import Exceptions.VinkelException;
 class VinkelImpl extends PTEEntityImpl implements Vinkel {
 	double vinkel = Double.NaN;
 	Profil profil;
+	LaengdeRetning laengdeRetning;
 
 	@Override
 	public void setVinkel(double vinkel) {
@@ -44,6 +45,15 @@ class VinkelImpl extends PTEEntityImpl implements Vinkel {
 	@Override
 	protected Tilstand getEgenAfhaengighed() {
 		return Tilstand.VINKEL;
+	}
+	@Override
+	public void setLaengdeRetning(LaengdeRetning laengdeRetning) {
+		this.laengdeRetning = laengdeRetning;		
+	}
+
+	@Override
+	public LaengdeRetning getLaengdeRetning() {
+		return laengdeRetning;
 	}
 
 }
