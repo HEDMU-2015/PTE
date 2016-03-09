@@ -4,7 +4,7 @@ import Exceptions.UdefineretProfilException;
 
 class NormalkraftImpl extends PTEEntityImpl implements Normalkraft {
 
-	private double normalkraft = 0;
+	private double normalkraft = Double.NaN;
 	private DimensionerendeKraft dimensionerendeKraft;
 	private Vinkel vinkel;
 	

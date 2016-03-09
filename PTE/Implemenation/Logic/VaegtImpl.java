@@ -2,7 +2,7 @@ package Logic;
 
 class VaegtImpl extends PTEEntityImpl implements Vaegt {
 	
-	private double vaegt;
+	private double vaegt = Double.NaN;
 	
 	@Override
 	public double getVaegt() {

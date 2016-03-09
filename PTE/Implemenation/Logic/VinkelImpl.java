@@ -7,6 +7,7 @@ class VinkelImpl extends PTEEntityImpl implements Vinkel {
 	@Override
 	public void setVinkel(double vinkel) {
 		this.vinkel = vinkel;
+		vinkel = Double.NaN;
 	}
 
 	@Override

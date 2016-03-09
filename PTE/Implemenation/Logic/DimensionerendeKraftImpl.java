@@ -2,8 +2,8 @@ package Logic;
 
 class DimensionerendeKraftImpl  extends PTEEntityImpl implements DimensionerendeKraft {
 
-	private double dimensionerendeKraft = 0;
-	double vaegtFraDimensionerendeKraft = 0;
+	private double dimensionerendeKraft = Double.NaN;
+	double vaegtFraDimensionerendeKraft = Double.NaN;
 	private Vaegt vaegt;
 	private Tyngdekraft tyngdekraft;
 

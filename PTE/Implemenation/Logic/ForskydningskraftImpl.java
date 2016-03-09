@@ -3,15 +3,17 @@ package Logic;
 import Exceptions.UdefineretProfilException;
 
 class ForskydningskraftImpl extends PTEEntityImpl implements Forskydningskraft  {
-	Vinkel v;
-	DimensionerendeKraft dk;
+	
+	private double forskydningskraft = Double.NaN;
+	private Vinkel v;
+	private DimensionerendeKraft dk;
+	
 	public ForskydningskraftImpl(Vinkel v, DimensionerendeKraft dk){
 		this.v = v;
 		this.dk = dk;
 		this.v.tilfoejAfhaengigEntitet(this);
 		this.dk.tilfoejAfhaengigEntitet(this);
 	}
-	double forskydningskraft;
 	
 	@Override
 	public void setForskydningskraft(double forskydningskraft) {

@@ -52,7 +52,7 @@ public class PTEControllerImpl implements PTEController {
 
 	@Override
 	public double getForskydningkraft() {
-		double fN = 0;
+		double fN = Double.NaN;
 		try {
 			fN = this.forskydningsKraft.getForskydningskraft();
 		} catch (UdefineretProfilException e) {
@@ -114,7 +114,7 @@ public class PTEControllerImpl implements PTEController {
 
 	@Override
 	public double getNormalkraft() {
-		double normalkraft = 0;
+		double normalkraft = Double.NaN;
 		try {
 			normalkraft = this.normalKraft.getNormalkraft();
 		} catch (UdefineretProfilException e) {
