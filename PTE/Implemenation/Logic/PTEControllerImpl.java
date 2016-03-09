@@ -209,10 +209,12 @@ public class PTEControllerImpl implements PTEController {
 	}
 
 	
-	@Override
-	public void setLaengde(double armslaengde) {
-		// TODO Auto-generated method stub
-		
+	public double getLaengdeRetning(double LaengdeRetning) {
+		return this.getLaengdeRetning(Double.NaN);
 	}
+
+
+
+	
 
 }
