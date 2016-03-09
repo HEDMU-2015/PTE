@@ -1,4 +1,9 @@
 package Logic;
+/**
+ * 
+ * @author Juyoung Choi
+ *
+ */
 
 
 public class ArealImpl  extends PTEEntityImpl implements Areal {

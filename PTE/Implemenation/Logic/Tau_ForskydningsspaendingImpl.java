@@ -2,6 +2,11 @@ package Logic;
 
 
 import Exceptions.UdefineretProfilException;
+/**
+ * 
+ * @author Juyoung Choi
+ *
+ */
 
 public class Tau_ForskydningsspaendingImpl extends PTEEntityImpl implements Tau_Forskydningsspaending {
 	private double tau_Forskydningsspaending = Double.NaN;

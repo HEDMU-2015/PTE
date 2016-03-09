@@ -17,6 +17,9 @@ public class PTEControllerImpl implements PTEController {
 	private Normalkraft normalKraft;
 	private Tyngdekraft tyngdeKraft;
 	private Forskydningskraft forskydningsKraft;
+	private Areal areal;
+	private Tau_Forskydningsspaending tau_Forskydningsspaending;
+	
 	private List<Observer> observers;
 	private LogicFactory logicFactory;
 
@@ -29,6 +32,8 @@ public class PTEControllerImpl implements PTEController {
 		dimensionerendeKraft = logicFactory.craeteDimensionerendeKraft(vaegt, tyngdeKraft);
 		normalKraft = logicFactory.createNormalKraft(dimensionerendeKraft, vinkel);
 		forskydningsKraft = logicFactory.createForskydningskraft(vinkel, dimensionerendeKraft);
+		areal = logicFactory.createAreal();
+		tau_Forskydningsspaending = logicFactory.createTau_Forskydningsspaending(areal, forskydningsKraft);	
 		observers = new ArrayList<Logic.Observer>();
 	}
 
@@ -140,6 +145,37 @@ public class PTEControllerImpl implements PTEController {
 		vaegt.setVaegt(this.dimensionerendeKraft.dimensionerendeKraftTilVaegt());
 		notifyObservers(this.vaegt.getAfhaengigheder());
 	}
+	
+	
+	@Override
+	public double getAreal() {
+		return this.areal.getAreal();
+	}
+
+	@Override
+	public void setAreal(double areal) {
+		this.areal.setAreal(areal);
+		notifyObservers(this.areal.getAfhaengigheder());
+	}
+		
+	
+
+	@Override
+	public double getTau_Forskydningsspaending() {
+		double tau_Forskydningsspaending = Double.NaN;
+		try {
+			tau_Forskydningsspaending = this.tau_Forskydningsspaending.getTau_Forskydningsspaending();
+		} catch (UdefineretProfilException e) {
+
+		}
+		return tau_Forskydningsspaending;
+	}
+
+	@Override
+	public void setTau_Forskydningsspaending(Double tau_Forskydningsspaending) {
+		this.tau_Forskydningsspaending.setTau_Forskydningsspaending(tau_Forskydningsspaending);
+		notifyObservers(this.tau_Forskydningsspaending.getAfhaengigheder());		
+	}
 
 	@Override
 	public void nulstil() {
@@ -162,8 +198,21 @@ public class PTEControllerImpl implements PTEController {
 
 		this.forskydningsKraft.nulstil();
 		tilstande.addAll(forskydningsKraft.getAfhaengigheder());
+		
+		this.areal.nulstil();
+		tilstande.addAll(areal.getAfhaengigheder());
+		
+		this.tau_Forskydningsspaending.nulstil();
+		tilstande.addAll(tau_Forskydningsspaending.getAfhaengigheder());
 
 		notifyObservers(tilstande);
+	}
+
+	
+	@Override
+	public void setLaengde(double armslaengde) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

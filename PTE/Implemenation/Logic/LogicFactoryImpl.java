@@ -32,4 +32,17 @@ public class LogicFactoryImpl implements LogicFactory {
 		return new NormalkraftImpl(dimensionerendeKraft, vinkel);
 	}
 
+	
+	//Juyoung : Areal + Tau_Forskydningsspaending
+	@Override
+	public Areal createAreal() {
+		
+		return new ArealImpl();
+	}
+
+	@Override
+	public Tau_Forskydningsspaending createTau_Forskydningsspaending(Areal areal, Forskydningskraft forskydningskraft) {
+		return new Tau_ForskydningsspaendingImpl(areal, forskydningskraft);
+	}
+
 }

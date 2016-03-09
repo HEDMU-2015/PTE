@@ -41,5 +41,12 @@ public interface PTEController {
 	
 	public void setLaengde(double armslaengde);
 	
+	public double getAreal();
+	public void setAreal(double areal);
+	
+	public double getTau_Forskydningsspaending();
+	public void setTau_Forskydningsspaending(Double tau_Forskydningsspaending);
+	
+	
 	public void nulstil();	
 }
