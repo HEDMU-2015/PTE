@@ -12,6 +12,8 @@ public class Tau_ForskydningsspaendingImpl extends PTEEntityImpl implements Tau_
 	private double tau_Forskydningsspaending = Double.NaN;
 	private Forskydningskraft forsykdningskraft;
 	private Areal areal;
+	
+	
 
 	public Tau_ForskydningsspaendingImpl (Areal areal, Forskydningskraft forskydningskraft){		
 		this.areal = areal;
@@ -29,7 +31,10 @@ public class Tau_ForskydningsspaendingImpl extends PTEEntityImpl implements Tau_
 
 	@Override
 	public double getTau_Forskydningsspaending() throws UdefineretProfilException {
-		tau_Forskydningsspaending = areal.getAreal() * forsykdningskraft.getForskydningskraft();
+		
+		//We check if the areal <= 0 before, so no need to have if{} here
+		tau_Forskydningsspaending = forsykdningskraft.getForskydningskraft() / areal.getAreal();
+		System.out.println(tau_Forskydningsspaending);
 		return tau_Forskydningsspaending;
 	}
 
