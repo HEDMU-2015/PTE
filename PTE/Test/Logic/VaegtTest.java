@@ -30,10 +30,8 @@ public class VaegtTest {
 		v.setVaegt(-5);
 
 		try {
-			if (v.getVaegt() <= 0) {
-				
-			} else {
-				fail("Vægt må ikke være negativt tal");
+			v.getVaegt() 
+			fail("Exception bliver ikke kastet.");
 			}
 		} catch (VaegtException e) {
 			// succes
@@ -43,17 +41,14 @@ public class VaegtTest {
 
 	@Test
 	public void setVaegtNul() {
-		v.setVaegt(5);
+		v.setVaegt(0);
 
 		try {
-			if (v.getVaegt() <= 0) {
-				
-			} else {
-				fail("Vægt må ikke være negativt tal");	
+			v.getVaegt() 
+			fail("Exception bliver ikke kastet.");
 			}
 		} catch (VaegtException e) {
 			// succes
-			System.out.println("test");
 		}
 	}
 
