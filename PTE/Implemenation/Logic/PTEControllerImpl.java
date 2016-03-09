@@ -18,7 +18,7 @@ public class PTEControllerImpl implements PTEController {
 	private Tyngdekraft tyngdeKraft;
 	private Forskydningskraft forskydningsKraft;
 	private Areal areal;
-	private Tau_Forskydningsspaending tau_Forskydningsspaending;
+	private Tau_ForskydningsSpaending tau_ForskydningsSpaending;
 	private Laengde laengde;
 	private List<Observer> observers;
 	private LogicFactory logicFactory;
@@ -36,7 +36,7 @@ public class PTEControllerImpl implements PTEController {
 		normalKraft = logicFactory.createNormalKraft(dimensionerendeKraft, vinkel);
 		forskydningsKraft = logicFactory.createForskydningskraft(vinkel, dimensionerendeKraft);
 		areal = logicFactory.createAreal();
-		tau_Forskydningsspaending = logicFactory.createTau_Forskydningsspaending(areal, forskydningsKraft);	
+		tau_ForskydningsSpaending = logicFactory.createTau_ForskydningsSpaending(areal, forskydningsKraft);	
 		laengde = logicFactory.createLaengde();
 		boejningsMoment = logicFactory.createBoejningsMoment(vinkel, laengde);
 		observers = new ArrayList<Logic.Observer>();
@@ -166,20 +166,16 @@ public class PTEControllerImpl implements PTEController {
 	
 
 	@Override
-	public double getTau_Forskydningsspaending() {
-		double tau_Forskydningsspaending = Double.NaN;
-		try {
-			tau_Forskydningsspaending = this.tau_Forskydningsspaending.getTau_Forskydningsspaending();
-		} catch (UdefineretProfilException e) {
-
-		}
-		return tau_Forskydningsspaending;
+	public double getTau_ForskydningsSpaending() {
+		double tau_ForskydningsSpaending = Double.NaN;
+		tau_ForskydningsSpaending = this.tau_ForskydningsSpaending.getTau_ForskydningsSpaending();
+		return tau_ForskydningsSpaending;
 	}
 
 	@Override
-	public void setTau_Forskydningsspaending(double tau_Forskydningsspaending) {
-		this.tau_Forskydningsspaending.setTau_Forskydningsspaending(tau_Forskydningsspaending);
-		notifyObservers(this.tau_Forskydningsspaending.getAfhaengigheder());		
+	public void setTau_ForskydningsSpaending(double tau_ForskydningsSpaending) {
+		this.tau_ForskydningsSpaending.setTau_ForskydningsSpaending(tau_ForskydningsSpaending);
+		notifyObservers(this.tau_ForskydningsSpaending.getAfhaengigheder());		
 	}
 
 	@Override
@@ -207,8 +203,8 @@ public class PTEControllerImpl implements PTEController {
 		this.areal.nulstil();
 		tilstande.addAll(areal.getAfhaengigheder());
 		
-		this.tau_Forskydningsspaending.nulstil();
-		tilstande.addAll(tau_Forskydningsspaending.getAfhaengigheder());
+		this.tau_ForskydningsSpaending.nulstil();
+		tilstande.addAll(tau_ForskydningsSpaending.getAfhaengigheder());
 
 		notifyObservers(tilstande);
 	}

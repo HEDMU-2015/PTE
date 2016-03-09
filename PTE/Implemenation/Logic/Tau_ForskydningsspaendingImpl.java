@@ -8,14 +8,14 @@ import Exceptions.UdefineretProfilException;
  *
  */
 
-public class Tau_ForskydningsspaendingImpl extends PTEEntityImpl implements Tau_Forskydningsspaending {
-	private double tau_Forskydningsspaending = Double.NaN;
+public class Tau_ForskydningsSpaendingImpl extends PTEEntityImpl implements Tau_ForskydningsSpaending {
+	private double tau_ForskydningsSpaending = Double.NaN;
 	private Forskydningskraft forsykdningskraft;
 	private Areal areal;
 	
 	
 
-	public Tau_ForskydningsspaendingImpl (Areal areal, Forskydningskraft forskydningskraft){		
+	public Tau_ForskydningsSpaendingImpl (Areal areal, Forskydningskraft forskydningskraft){		
 		this.areal = areal;
 		this.forsykdningskraft = forskydningskraft;
 		this.areal.tilfoejAfhaengigEntitet(this);
@@ -25,27 +25,31 @@ public class Tau_ForskydningsspaendingImpl extends PTEEntityImpl implements Tau_
 
 
 	@Override
-	public void setTau_Forskydningsspaending(double tau_Forskydningsspaending) {
-		this.tau_Forskydningsspaending = tau_Forskydningsspaending;		
+	public void setTau_ForskydningsSpaending(double tau_ForskydningsSpaending) {
+		this.tau_ForskydningsSpaending = tau_ForskydningsSpaending;		
 	}
 
 	@Override
-	public double getTau_Forskydningsspaending() throws UdefineretProfilException {
-		
+	public double getTau_ForskydningsSpaending() {
+		//What is the difference between throws or try-catch? interface doesn't show it... isn't it better?
 		//We check if the areal <= 0 before, so no need to have if{} here
-		tau_Forskydningsspaending = forsykdningskraft.getForskydningskraft() / areal.getAreal();
-		System.out.println(tau_Forskydningsspaending);
-		return tau_Forskydningsspaending;
+		try {
+			tau_ForskydningsSpaending = forsykdningskraft.getForskydningskraft() / areal.getAreal();
+		} catch (UdefineretProfilException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return tau_ForskydningsSpaending;
 	}
 
 	@Override
 	public void nulstil() {
-		setTau_Forskydningsspaending(Double.NaN);
+		setTau_ForskydningsSpaending(Double.NaN);
 	}
 
 
 	@Override
 	protected Tilstand getEgenAfhaengighed() {
-		return Tilstand.TAU_FORSKYDNINGSSPAEDING;
+		return Tilstand.TAU_FORSKYDNINGSSPAENDING;
 	}
 }

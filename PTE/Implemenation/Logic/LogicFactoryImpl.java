@@ -41,8 +41,8 @@ public class LogicFactoryImpl implements LogicFactory {
 	}
 
 	@Override
-	public Tau_Forskydningsspaending createTau_Forskydningsspaending(Areal areal, Forskydningskraft forskydningskraft) {
-		return new Tau_ForskydningsspaendingImpl(areal, forskydningskraft);
+	public Tau_ForskydningsSpaending createTau_ForskydningsSpaending(Areal areal, Forskydningskraft forskydningskraft) {
+		return new Tau_ForskydningsSpaendingImpl(areal, forskydningskraft);
 	}
 	
 	@Override

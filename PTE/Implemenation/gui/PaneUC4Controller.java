@@ -43,7 +43,7 @@ public class PaneUC4Controller extends PTEPane implements Initializable  {
 		if (tilstande.contains(Tilstand.AREAL)) {
 			tekstFeltAreal.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getAreal()));
 
-			tekstFeltForskydningsspaendingen.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getTau_Forskydningsspaending()));	
+			tekstFeltForskydningsspaendingen.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getTau_ForskydningsSpaending()));	
 		}
 	}
 
