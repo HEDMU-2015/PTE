@@ -30,9 +30,9 @@ public class VaegtTest {
 		v.setVaegt(-5);
 
 		try {
-			v.getVaegt() 
+			v.getVaegt();
 			fail("Exception bliver ikke kastet.");
-			}
+			
 		} catch (VaegtException e) {
 			// succes
 		}
@@ -44,9 +44,9 @@ public class VaegtTest {
 		v.setVaegt(0);
 
 		try {
-			v.getVaegt() 
+			v.getVaegt(); 
 			fail("Exception bliver ikke kastet.");
-			}
+			
 		} catch (VaegtException e) {
 			// succes
 		}
