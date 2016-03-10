@@ -1,40 +1,35 @@
 package Logic;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import Exceptions.DimensionerendeKraftException;
 import Exceptions.ForskydningskraftException;
 import Exceptions.UdefineretProfilException;
 import Exceptions.VinkelException;
 
-public class ForskydningskraftTest {
-
+public class NormalkraftTest{
 	VaegtImpl v;
 	VinkelImpl vi;
 	Tyngdekraft t;
 	DimensionerendeKraftImpl dk;
-	ForskydningskraftImpl ft;
+	NormalkraftImpl fn;
 
 	@Before
 	public void setUp() {
-		v = new VaegtImpl();
 		vi = new VinkelImpl();
-		t = new TyngdekraftImpl();
 		dk = new DimensionerendeKraftImpl(v, t);
-		ft = new ForskydningskraftImpl(vi, dk);
+		fn = new NormalkraftImpl(dk, vi);
 
 	}
 
 	@Test
 	public void getForskydningskraftNulstilTest() throws UdefineretProfilException {
 		vi.setProfil(Profil.VANDRET);
-		ft.setForskydningskraft(5);
-		ft.nulstil();
-		assertEquals(Double.NaN, ft.getForskydningskraft(), 0.001);
+		fn.setNormalkraft(5);
+		fn.nulstil();
+		assertEquals(Double.NaN, fn.getNormalkraft(), 0.001);
 	}
 
 	@Test
@@ -43,7 +38,7 @@ public class ForskydningskraftTest {
 		vi.setVinkel(-5);
 		dk.setDimensionerendeKraft(10);
 		try {
-			ft.getForskydningskraft();
+			fn.getNormalkraft();
 			fail("Exception bliver ikke kastet.");
 
 		} catch (ForskydningskraftException e) {
