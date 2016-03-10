@@ -10,18 +10,18 @@ class VinkelImpl extends PTEEntityImpl implements Vinkel {
 	@Override
 	public void setVinkel(double vinkel) {
 		this.vinkel = vinkel;
-		vinkel = Double.NaN;
+		
 	}
 
 	@Override
 	public double getVinkel() {
 		if (vinkel > 90) {
 			throw new VinkelException();
-		} else {
-			if (vinkel < 0) {
-				throw new VinkelException();
+		} 
+		if (vinkel < 0) {
+			throw new VinkelException();
 			}
-		}
+		
 
 		return vinkel;
 	}

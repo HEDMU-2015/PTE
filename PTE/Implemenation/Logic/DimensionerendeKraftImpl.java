@@ -20,11 +20,12 @@ class DimensionerendeKraftImpl  extends PTEEntityImpl implements Dimensionerende
 	public double getDimensionerendeKraft() {
 		if(vaegt.getVaegt()<=0){
 			throw new DimensionerendeKraftException();
-		}else{if(tyngdekraft.getTyngdekraft()<=0){
+		}
+		if(tyngdekraft.getTyngdekraft()<=0){
 			throw new DimensionerendeKraftException();
 		}
 			
-		}
+		
 		dimensionerendeKraft = vaegt.getVaegt() * tyngdekraft.getTyngdekraft();
 		return dimensionerendeKraft;
 	}

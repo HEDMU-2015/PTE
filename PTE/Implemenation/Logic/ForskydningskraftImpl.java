@@ -1,5 +1,6 @@
 package Logic;
 
+import Exceptions.ForskydningskraftException;
 import Exceptions.UdefineretProfilException;
 
 class ForskydningskraftImpl extends PTEEntityImpl implements Forskydningskraft {
@@ -23,13 +24,20 @@ class ForskydningskraftImpl extends PTEEntityImpl implements Forskydningskraft {
 
 	@Override
 	public double getForskydningskraft() throws UdefineretProfilException {
-		double vinkel = v.getVinkel();
-		Profil profil = v.getProfil();
+	
 
-		if (profil == Profil.VANDRET) {
-			return (Math.cos(Math.toRadians(vinkel)) * dk.getDimensionerendeKraft());
-		} else if (profil == Profil.LODRET) {
-			return (Math.sin(Math.toRadians(vinkel)) * dk.getDimensionerendeKraft());
+		if(dk.getDimensionerendeKraft()<=0 
+				|| dk.getDimensionerendeKraft()== Double.NaN 
+				|| v.getVinkel()<0 
+				|| v.getVinkel()>90 
+				|| v.getVinkel() == Double.NaN){
+			throw new ForskydningskraftException();
+		}
+		
+		if (v.getProfil() == Profil.VANDRET) {
+			return (Math.cos(Math.toRadians(v.getVinkel())) * dk.getDimensionerendeKraft());
+		} else if (v.getProfil() == Profil.LODRET) {
+			return (Math.sin(Math.toRadians(v.getVinkel())) * dk.getDimensionerendeKraft());
 		} else
 			throw new UdefineretProfilException("Udefineret Profil");
 	}
