@@ -73,7 +73,6 @@ public class PaneUC3Controller extends PTEPane implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-
 		tekstFeltLaengde.focusedProperty().addListener(new ChangeListener<Boolean>() {
 			@Override
 			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
