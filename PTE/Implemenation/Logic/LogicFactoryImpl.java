@@ -55,4 +55,9 @@ public class LogicFactoryImpl implements LogicFactory {
 		return new BoejningsMomentImpl(v, l);
 	}
 
+	@Override
+	public SigmaN createSigmaN(Areal areal, Normalkraft normalKraft) {
+		return new SigmaNImpl(areal, normalKraft);
+	}
+
 }

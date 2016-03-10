@@ -23,6 +23,7 @@ public class PTEControllerImpl implements PTEController {
 	private List<Observer> observers;
 	private LogicFactory logicFactory;
 	private BoejningsMoment boejningsMoment;
+	private SigmaN sigmaN;
 	
 
 	public PTEControllerImpl() {
@@ -39,6 +40,7 @@ public class PTEControllerImpl implements PTEController {
 		tau_ForskydningsSpaending = logicFactory.createTau_ForskydningsSpaending(areal, forskydningsKraft);	
 		laengde = logicFactory.createLaengde();
 		boejningsMoment = logicFactory.createBoejningsMoment(vinkel, laengde);
+		sigmaN = logicFactory.createSigmaN(areal, normalKraft);
 		observers = new ArrayList<Logic.Observer>();
 	}
 
@@ -206,6 +208,9 @@ public class PTEControllerImpl implements PTEController {
 		this.tau_ForskydningsSpaending.nulstil();
 		tilstande.addAll(tau_ForskydningsSpaending.getAfhaengigheder());
 
+		this.sigmaN.nulstil();
+		tilstande.addAll(sigmaN.getAfhaengigheder());
+		
 		notifyObservers(tilstande);
 	}
 
@@ -249,6 +254,20 @@ public class PTEControllerImpl implements PTEController {
 	public void setBoejningsMoment(double boejningsMoment) {
 		this.boejningsMoment.setBoejningsMoment(boejningsMoment);
 		notifyObservers(this.boejningsMoment.getAfhaengigheder());
+	}
+
+	@Override
+	public double getSigmaN() {
+		double sigmaN = Double.NaN;
+		sigmaN = this.sigmaN.getSigmaN();
+		return sigmaN;
+	}
+
+	@Override
+	public void setSigmaN(double sigmaN) {
+		this.sigmaN.setSigmaN(sigmaN);
+		notifyObservers(this.sigmaN.getAfhaengigheder());	
+		
 	}
 
 }

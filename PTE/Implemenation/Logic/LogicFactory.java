@@ -11,4 +11,6 @@ public interface LogicFactory {
 	public Tau_ForskydningsSpaending createTau_ForskydningsSpaending(Areal areal, Forskydningskraft forskydningsKraft);
 	public Laengde createLaengde();
 	public BoejningsMoment createBoejningsMoment(Vinkel v, Laengde l);
+	public SigmaN createSigmaN(Areal areal, Normalkraft normalKraft);
+
 }

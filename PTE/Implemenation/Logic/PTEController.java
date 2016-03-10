@@ -60,4 +60,9 @@ public interface PTEController {
 	public double getBoejningsMoment();
 	
 	public void setBoejningsMoment(double boejningsMoment);
+	
+	public double getSigmaN();
+	
+	public void setSigmaN(double sigmaN);
 }
+
