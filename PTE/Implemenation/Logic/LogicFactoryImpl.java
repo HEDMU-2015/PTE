@@ -51,8 +51,8 @@ public class LogicFactoryImpl implements LogicFactory {
 	}
 	
 	@Override
-	public BoejningsMoment createBoejningsMoment(Vinkel v, Laengde l, DimensionerendeKraft dimensionerendeKraft, Forskydningskraft forskydningskraft) {
-		return new BoejningsMomentImpl(v, l, dimensionerendeKraft, forskydningskraft);
+	public BoejningsMoment createBoejningsMoment(Vinkel v, Laengde l) {
+		return new BoejningsMomentImpl(v, l);
 	}
 
 }

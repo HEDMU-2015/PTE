@@ -8,6 +8,10 @@ public interface BoejningsMoment extends PTEEntity{
 
 	public void setBoejningsMoment(double BoejningsMoment);
 	
+	public void setDimensionerendeKraft(DimensionerendeKraft dimensionerendeKraft);
+	
+	public void setForskydningskraft(Forskydningskraft forskydningskraft);
+	
 	public void nulstil();
 	
 }

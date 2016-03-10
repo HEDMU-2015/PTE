@@ -10,15 +10,23 @@ class BoejningsMomentImpl extends PTEEntityImpl implements BoejningsMoment {
 	private Vinkel v;
 	private Laengde l;
 
-	public BoejningsMomentImpl(Vinkel v, Laengde l, DimensionerendeKraft dimensionerendeKraft, Forskydningskraft forskydningskraft) {
+	public BoejningsMomentImpl(Vinkel v, Laengde l) {
 		this.v = v;
 		this.l = l;
+	}
+	
+	@Override
+	public void setDimensionerendeKraft(DimensionerendeKraft dimensionerendeKraft) {
 		this.dimensionerendeKraft = dimensionerendeKraft;
 		this.dimensionerendeKraft.tilfoejAfhaengigEntitet(this);
+	}
+	
+	@Override
+	public void setForskydningskraft(Forskydningskraft forskydningskraft) {
 		this.forskydningskraft = forskydningskraft;
 		this.forskydningskraft.tilfoejAfhaengigEntitet(this);
 	}
-	
+
 	@Override
 	public void setBoejningsMoment(double boejningsMoment) {
 		this.boejningsMoment = boejningsMoment;

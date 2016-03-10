@@ -32,7 +32,7 @@ class ForskydningskraftImpl extends PTEEntityImpl implements Forskydningskraft {
 				|| v.getVinkel()<0 
 				|| v.getVinkel()>90 
 				){
-//			throw new ForskydningskraftException();
+			throw new ForskydningskraftException();
 		}
 		
 		if (v.getProfil() == Profil.VANDRET) {

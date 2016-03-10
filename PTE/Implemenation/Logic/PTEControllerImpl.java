@@ -3,7 +3,6 @@ package Logic;
 import java.util.ArrayList;
 import java.util.List;
 
-import Exceptions.ForskydningskraftException;
 import Exceptions.UdefineretProfilException;
 
 /**
@@ -39,7 +38,7 @@ public class PTEControllerImpl implements PTEController {
 		areal = logicFactory.createAreal();
 		tau_ForskydningsSpaending = logicFactory.createTau_ForskydningsSpaending(areal, forskydningsKraft);	
 		laengde = logicFactory.createLaengde();
-		boejningsMoment = logicFactory.createBoejningsMoment(vinkel, laengde, dimensionerendeKraft, forskydningsKraft);
+		boejningsMoment = logicFactory.createBoejningsMoment(vinkel, laengde);
 		observers = new ArrayList<Logic.Observer>();
 	}
 
@@ -66,8 +65,8 @@ public class PTEControllerImpl implements PTEController {
 		double fN = Double.NaN;
 		try {
 			fN = this.forskydningsKraft.getForskydningskraft();
-		} catch (UdefineretProfilException | ForskydningskraftException  e) {
-			
+		} catch (UdefineretProfilException e) {
+
 		}
 		return fN;
 	}
@@ -236,6 +235,8 @@ public class PTEControllerImpl implements PTEController {
 	public double getBoejningsMoment() {
 		double boejningsMoment = Double.NaN;
 		try {
+				this.boejningsMoment.setDimensionerendeKraft(dimensionerendeKraft);
+				this.boejningsMoment.setForskydningskraft(forskydningsKraft);
 				boejningsMoment = this.boejningsMoment.getBoejningsMoment();
 			
 		} catch (UdefineretProfilException e) {

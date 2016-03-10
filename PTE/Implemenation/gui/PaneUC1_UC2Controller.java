@@ -48,7 +48,6 @@ public class PaneUC1_UC2Controller extends PTEPane implements Initializable {
 
 	@FXML
 	private void haandterUdregnKnap() {
-		setProfil();
 		if (vaegtErAEndret) {
 
 			vaegtErAEndret = false;
@@ -71,7 +70,7 @@ public class PaneUC1_UC2Controller extends PTEPane implements Initializable {
 
 		if ((vandret.isSelected() && pteController.getProfil() != Profil.VANDRET)
 				|| (lodret.isSelected() && pteController.getProfil() != Profil.LODRET)) {
-			
+			setProfil();
 		}
 	}
 
@@ -100,7 +99,6 @@ public class PaneUC1_UC2Controller extends PTEPane implements Initializable {
 		} else {
 			pteController.setProfil(Profil.LODRET);
 		}
-		System.out.println(pteController.getProfil());
 	}
 
 	@Override
