@@ -1,5 +1,7 @@
 package Logic;
 
+import Exceptions.DimensionerendeKraftException;
+
 class DimensionerendeKraftImpl  extends PTEEntityImpl implements DimensionerendeKraft {
 
 	private double dimensionerendeKraft = Double.NaN;
@@ -16,6 +18,13 @@ class DimensionerendeKraftImpl  extends PTEEntityImpl implements Dimensionerende
 
 	@Override
 	public double getDimensionerendeKraft() {
+		if(vaegt.getVaegt()<=0){
+			throw new DimensionerendeKraftException();
+		}else{if(tyngdekraft.getTyngdekraft()<=0){
+			throw new DimensionerendeKraftException();
+		}
+			
+		}
 		dimensionerendeKraft = vaegt.getVaegt() * tyngdekraft.getTyngdekraft();
 		return dimensionerendeKraft;
 	}

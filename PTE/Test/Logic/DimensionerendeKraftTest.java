@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import Exceptions.DimensionerendeKraftException;
+import Exceptions.TyngdekraftException;
 import Exceptions.UdefineretProfilException;
 import Exceptions.VaegtException;
 
@@ -14,8 +15,6 @@ public class DimensionerendeKraftTest {
 	VinkelImpl vi;
 	VaegtImpl v;
 	TyngdekraftImpl t;
-	ForskydningskraftImpl ft;
-	NormalkraftImpl fn;
 	DimensionerendeKraftImpl dk;
 
 	@Before
@@ -24,8 +23,6 @@ public class DimensionerendeKraftTest {
 		v = new VaegtImpl();
 		t = new TyngdekraftImpl();
 		vi = new VinkelImpl();
-		ft = new ForskydningskraftImpl(vi, dk);
-		fn = new NormalkraftImpl(dk, vi);
 		dk = new DimensionerendeKraftImpl(v, t);
 
 	}
@@ -35,8 +32,7 @@ public class DimensionerendeKraftTest {
 		dk.setDimensionerendeKraft(5);
 		dk.nulstil();
 		assertEquals(Double.NaN, dk.getDimensionerendeKraft(), 0.001);
-//		assertEquals(Double.NaN, fn.getNormalkraft(), 0.001);
-//		assertEquals(Double.NaN, ft.getForskydningskraft(), 0.001);
+
 	}
 
 	@Test
@@ -50,6 +46,8 @@ public class DimensionerendeKraftTest {
 
 		} catch (DimensionerendeKraftException e) {
 			// success
+		} catch (VaegtException e){
+			//success
 		}
 	}
 
@@ -64,6 +62,8 @@ public class DimensionerendeKraftTest {
 
 		} catch (DimensionerendeKraftException e) {
 			// success
+		}catch (VaegtException e){
+			//success
 		}
 	}
 
@@ -78,6 +78,8 @@ public class DimensionerendeKraftTest {
 
 		} catch (DimensionerendeKraftException e) {
 			// success
+		}catch (TyngdekraftException e){
+			//success
 		}
 	}
 
@@ -85,7 +87,6 @@ public class DimensionerendeKraftTest {
 	public void GetDimensionerendeKraftEnsVaegtOgTyngdeKraftTest() {
 		v.setVaegt(5);
 		t.setTyngdekraft(5);
-		System.out.println(dk.getDimensionerendeKraft());
 		assertEquals(25, dk.getDimensionerendeKraft(), 0.001);
 
 	}
@@ -94,8 +95,6 @@ public class DimensionerendeKraftTest {
 	public void GetDimensionerendeKraftAfrundTest() {
 		v.setVaegt(3.03456);
 		t.setTyngdekraft(10);
-	
-		System.out.println(dk.getDimensionerendeKraft());
 		assertEquals(30.346, dk.getDimensionerendeKraft(), 0.001);
 	}
 
