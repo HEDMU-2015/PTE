@@ -217,7 +217,6 @@ public class PTEControllerImpl implements PTEController {
 	@Override
 	public void setLaengdeRetning(LaengdeRetning laengdeRetning) {
 		this.vinkel.setLaengdeRetning(laengdeRetning);
-		System.out.println(this.vinkel.getLaengdeRetning() + "dette er set metoden");
 		notifyObservers(this.vinkel.getAfhaengigheder());
 	}
 
@@ -235,7 +234,6 @@ public class PTEControllerImpl implements PTEController {
 	@Override
 	public double getBoejningsMoment() {
 		double boejningsMoment = Double.NaN;
-		System.out.println(vinkel.getLaengdeRetning());
 		try {
 
 			if (vinkel.getLaengdeRetning() == LaengdeRetning.VINKELRET_TIL_FDIM) {
