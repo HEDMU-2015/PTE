@@ -1,10 +1,16 @@
 package Logic;
 
+import Exceptions.LaengdeException;
+
 class LaengdeImpl extends PTEEntityImpl implements Laengde {
 	private double laengde;
 
 	@Override
 	public double getLaengde() {
+		if(laengde <= 0){
+			throw new LaengdeException();
+		}
+		
 		return laengde;
 	}
 
