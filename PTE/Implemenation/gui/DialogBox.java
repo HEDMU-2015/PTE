@@ -18,7 +18,6 @@ public class DialogBox {
 		alert.setHeaderText("Mangler nogle oplysninger");
 		alert.setContentText("Tjek venligst tekstfelterne");
 		alert.showAndWait();
-
 	}
 
 }

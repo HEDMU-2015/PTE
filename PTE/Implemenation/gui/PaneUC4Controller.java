@@ -12,44 +12,44 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-public class PaneUC4Controller extends PTEPane implements Initializable  {
+public class PaneUC4Controller extends PTEPane implements Initializable {
 
 	private TekstFormattering tekstfeltFormat = new TekstFormatteringImpl();
-	
+
 	private boolean arealErAEndret = false;
-	
+
 	@FXML
 	private TextField tekstFeltAreal;
-	
+
 	@FXML
-	private TextField tekstFeltForskydningsspaendingen;
-	
+	private TextField tekstFeltForskydningsspændingen;
+
 	@FXML
 	private Label labelKraft;
-	
+
 	public void haandterUdregnKnap() {
 		if (arealErAEndret) {
 			arealErAEndret = false;
 			pteController.setAreal(tekstfeltFormat.formaterStringTilDouble(tekstFeltAreal.getText()));
 		}
 	}
-	
-	public void haandterResetKnap () {
+
+	public void haandterResetKnap() {
 		pteController.nulstil();
 	}
-	
+
 	@Override
 	public void update(List<Tilstand> tilstande) {
 		if (tilstande.contains(Tilstand.AREAL)) {
 			tekstFeltAreal.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getAreal()));
 
-			tekstFeltForskydningsspaendingen.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getTau_ForskydningsSpaending()));	
+			tekstFeltForskydningsspændingen
+					.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getTau_ForskydningsSpaending()));
 		}
 	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		
 		tekstFeltAreal.focusedProperty().addListener(new ChangeListener<Boolean>() {
 			@Override
 			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {

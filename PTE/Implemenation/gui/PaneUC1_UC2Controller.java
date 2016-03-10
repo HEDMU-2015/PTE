@@ -12,7 +12,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 
 public class PaneUC1_UC2Controller extends PTEPane implements Initializable {
@@ -63,9 +62,8 @@ public class PaneUC1_UC2Controller extends PTEPane implements Initializable {
 					tekstfeltFormat.formaterStringTilDouble(tekstFeltDimensionerendeKraft.getText()));
 		}
 
-		
 		if (vinkelErAEndret) {
-			
+
 			vinkelErAEndret = false;
 			pteController.setVinkel(tekstfeltFormat.formaterStringTilDouble(tekstFeltVinkel.getText()));
 		}
@@ -74,8 +72,6 @@ public class PaneUC1_UC2Controller extends PTEPane implements Initializable {
 				|| (lodret.isSelected() && pteController.getProfil() != Profil.LODRET)) {
 			setProfil();
 		}
-
-	
 	}
 
 	@FXML
@@ -86,22 +82,17 @@ public class PaneUC1_UC2Controller extends PTEPane implements Initializable {
 	@FXML
 	private void haandterCleartekstFeltDimensionerndeKraft() {
 		this.tekstFeltDimensionerendeKraft.setText("");
-
 	}
 
 	@FXML
 	private void haandterCleartekstFeltVaegt() {
 		this.tekstFeltVaegt.setText("");
-
 	}
-
-	
 
 	private void formaterTekstfelt(TextField input) {
 		tekstfeltFormat.formaterTekstfeltInput(input);
 	}
 
-	
 	private void setProfil() {
 		if (vandret.isSelected()) {
 			pteController.setProfil(Profil.VANDRET);
@@ -136,26 +127,24 @@ public class PaneUC1_UC2Controller extends PTEPane implements Initializable {
 				vinkelErAEndret = true;
 			}
 		});
-
 	}
 
 	@Override
 	public void update(List<Tilstand> tilstande) {
 		System.out.println("Update " + tilstande);
-		
-		
+
 		if (tilstande.contains(Tilstand.VAEGT)) {
-			
+
 			tekstFeltVaegt.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getVaegt()));
 
 			tekstFeltDimensionerendeKraft
-				.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getDimensionerendeKraft()));	
+					.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getDimensionerendeKraft()));
 		}
 
 		if (tilstande.contains(Tilstand.DIMENSIONERENDE_KRAFT)) {
-			
+
 			tekstFeltDimensionerendeKraft
-				.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getDimensionerendeKraft()));
+					.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getDimensionerendeKraft()));
 
 			tekstFeltVaegt.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getVaegt()));
 		}
@@ -163,18 +152,18 @@ public class PaneUC1_UC2Controller extends PTEPane implements Initializable {
 		if (tilstande.contains(Tilstand.FORSKYDNINGSKRAFT)) {
 
 			tekstFeltForskydningskraft
-				.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getForskydningkraft()));
+					.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getForskydningkraft()));
 		}
 
 		if (tilstande.contains(Tilstand.NORMALKRAFT)) {
-			
+
 			tekstFeltNormalkraft.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getNormalkraft()));
 		}
 
 		if (tilstande.contains(Tilstand.VINKEL)) {
-			
+
 			tekstFeltVinkel.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getVinkel()));
 		}
 	}
-		
+
 }

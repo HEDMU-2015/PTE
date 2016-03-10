@@ -29,7 +29,7 @@ public class TekstFormatteringImpl implements TekstFormattering {
 	public Double formaterStringTilDouble(String tekstinput) {
 
 		if (tekstinput.isEmpty()) {
-			return Double.NaN; 
+			return Double.NaN;
 		} else {
 			return Double.parseDouble(tekstinput.replace(',', '.'));
 		}
@@ -41,7 +41,6 @@ public class TekstFormatteringImpl implements TekstFormattering {
 		if (Double.isNaN(resultat)) {
 			return "";
 		}
-
 		return format.format(resultat).replace('.', ',');
 	}
 
