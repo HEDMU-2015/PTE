@@ -26,11 +26,12 @@ class ForskydningskraftImpl extends PTEEntityImpl implements Forskydningskraft {
 	public double getForskydningskraft() throws UdefineretProfilException {
 	
 
-		if(dk.getDimensionerendeKraft()<=0 
+		if(v.getVinkel() == Double.NaN
+				|| dk.getDimensionerendeKraft()<=0
 				|| dk.getDimensionerendeKraft()== Double.NaN 
 				|| v.getVinkel()<0 
 				|| v.getVinkel()>90 
-				|| v.getVinkel() == Double.NaN){
+				){
 			throw new ForskydningskraftException();
 		}
 		
