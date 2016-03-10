@@ -28,6 +28,7 @@ public class PaneUC4Controller extends PTEPane implements Initializable {
 	private Label labelKraft;
 
 	public void haandterUdregnKnap() {
+		labelKraft.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getForskydningkraft()));
 		if (arealErAEndret) {
 			arealErAEndret = false;
 			pteController.setAreal(tekstfeltFormat.formaterStringTilDouble(tekstFeltAreal.getText()));
