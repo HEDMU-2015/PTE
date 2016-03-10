@@ -3,6 +3,7 @@ package Logic;
 import java.util.ArrayList;
 import java.util.List;
 
+import Exceptions.ForskydningskraftException;
 import Exceptions.UdefineretProfilException;
 
 /**
@@ -38,7 +39,7 @@ public class PTEControllerImpl implements PTEController {
 		areal = logicFactory.createAreal();
 		tau_ForskydningsSpaending = logicFactory.createTau_ForskydningsSpaending(areal, forskydningsKraft);	
 		laengde = logicFactory.createLaengde();
-		boejningsMoment = logicFactory.createBoejningsMoment(vinkel, laengde);
+		boejningsMoment = logicFactory.createBoejningsMoment(vinkel, laengde, dimensionerendeKraft, forskydningsKraft);
 		observers = new ArrayList<Logic.Observer>();
 	}
 
@@ -65,8 +66,8 @@ public class PTEControllerImpl implements PTEController {
 		double fN = Double.NaN;
 		try {
 			fN = this.forskydningsKraft.getForskydningskraft();
-		} catch (UdefineretProfilException e) {
-
+		} catch (UdefineretProfilException | ForskydningskraftException  e) {
+			
 		}
 		return fN;
 	}
@@ -235,15 +236,8 @@ public class PTEControllerImpl implements PTEController {
 	public double getBoejningsMoment() {
 		double boejningsMoment = Double.NaN;
 		try {
-
-			if (vinkel.getLaengdeRetning() == LaengdeRetning.VINKELRET_TIL_FDIM) {
-				this.boejningsMoment.setDimensionerendeKraft(dimensionerendeKraft);
 				boejningsMoment = this.boejningsMoment.getBoejningsMoment();
-			} else if (vinkel.getLaengdeRetning() == LaengdeRetning.VINKELRET_TIL_FT) {
-				this.boejningsMoment.setForskydningskraft(forskydningsKraft);
-				boejningsMoment = this.boejningsMoment.getBoejningsMoment();
-			} else
-				throw new UdefineretProfilException("Udefineret Profil");
+			
 		} catch (UdefineretProfilException e) {
 			e.printStackTrace();
 		}
@@ -251,8 +245,8 @@ public class PTEControllerImpl implements PTEController {
 	}
 
 	@Override
-	public void setBoejningsMoment(BoejningsMoment boejningsMoment) {
-		this.boejningsMoment = boejningsMoment;
+	public void setBoejningsMoment(double boejningsMoment) {
+		this.boejningsMoment.setBoejningsMoment(boejningsMoment);
 		notifyObservers(this.boejningsMoment.getAfhaengigheder());
 	}
 

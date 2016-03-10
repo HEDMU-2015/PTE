@@ -10,23 +10,15 @@ class BoejningsMomentImpl extends PTEEntityImpl implements BoejningsMoment {
 	private Vinkel v;
 	private Laengde l;
 
-	public BoejningsMomentImpl(Vinkel v, Laengde l) {
+	public BoejningsMomentImpl(Vinkel v, Laengde l, DimensionerendeKraft dimensionerendeKraft, Forskydningskraft forskydningskraft) {
 		this.v = v;
 		this.l = l;
-	}
-	
-	@Override
-	public void setDimensionerendeKraft(DimensionerendeKraft dimensionerendeKraft) {
 		this.dimensionerendeKraft = dimensionerendeKraft;
 		this.dimensionerendeKraft.tilfoejAfhaengigEntitet(this);
-	}
-	
-	@Override
-	public void setForskydningskraft(Forskydningskraft forskydningskraft) {
 		this.forskydningskraft = forskydningskraft;
 		this.forskydningskraft.tilfoejAfhaengigEntitet(this);
 	}
-
+	
 	@Override
 	public void setBoejningsMoment(double boejningsMoment) {
 		this.boejningsMoment = boejningsMoment;
@@ -36,9 +28,9 @@ class BoejningsMomentImpl extends PTEEntityImpl implements BoejningsMoment {
 	public double getBoejningsMoment() throws UdefineretProfilException {
 		double laengde = l.getLaengde();
 
-		if (dimensionerendeKraft != null) {
+		if (dimensionerendeKraft != null && v.getLaengdeRetning() == LaengdeRetning.VINKELRET_TIL_FDIM) {
 			return (laengde * dimensionerendeKraft.getDimensionerendeKraft());
-		} else if (forskydningskraft != null) {
+		} else if (forskydningskraft != null && v.getLaengdeRetning() == LaengdeRetning.VINKELRET_TIL_FT) {
 			return (laengde * forskydningskraft.getForskydningskraft());
 		} else
 			throw new UdefineretProfilException("Udefineret Profil");

@@ -59,5 +59,5 @@ public interface PTEController {
 	
 	public double getBoejningsMoment();
 	
-	public void setBoejningsMoment(BoejningsMoment boejningsMoment);
+	public void setBoejningsMoment(double boejningsMoment);
 }
