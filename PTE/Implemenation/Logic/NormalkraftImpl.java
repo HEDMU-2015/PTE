@@ -1,5 +1,7 @@
 package Logic;
 
+import Exceptions.ForskydningskraftException;
+import Exceptions.NormalkraftException;
 import Exceptions.UdefineretProfilException;
 
 class NormalkraftImpl extends PTEEntityImpl implements Normalkraft {
@@ -24,6 +26,14 @@ class NormalkraftImpl extends PTEEntityImpl implements Normalkraft {
 	double getNormalkraft(double vinkel, double dimensionerendeKraft) throws UdefineretProfilException {
 		if(vinkel == Double.NaN) {
 			return normalkraft;
+		}
+		
+		if(dimensionerendeKraft<=0 
+				|| dimensionerendeKraft== Double.NaN 
+				|| vinkel<0 
+				|| vinkel>90 
+				|| vinkel == Double.NaN){
+			throw new NormalkraftException();
 		}
 		if (this.vinkel.getProfil() == Profil.VANDRET){
 			return (Math.sin(Math.toRadians(vinkel))*this.dimensionerendeKraft.getDimensionerendeKraft());

@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import Exceptions.ForskydningskraftException;
+import Exceptions.NormalkraftException;
 import Exceptions.UdefineretProfilException;
 import Exceptions.VinkelException;
 
@@ -25,7 +26,7 @@ public class NormalkraftTest{
 	}
 
 	@Test
-	public void getForskydningskraftNulstilTest() throws UdefineretProfilException {
+	public void getNormalkraftNulstilTest() throws UdefineretProfilException {
 		vi.setProfil(Profil.VANDRET);
 		fn.setNormalkraft(5);
 		fn.nulstil();
@@ -33,7 +34,7 @@ public class NormalkraftTest{
 	}
 
 	@Test
-	public void getForskydningskraftNegativVinkelTest() throws UdefineretProfilException {
+	public void getNormalkraftNegativVinkelTest() throws UdefineretProfilException {
 		vi.setProfil(Profil.VANDRET);
 		vi.setVinkel(-5);
 		dk.setDimensionerendeKraft(10);
@@ -41,7 +42,7 @@ public class NormalkraftTest{
 			fn.getNormalkraft();
 			fail("Exception bliver ikke kastet.");
 
-		} catch (ForskydningskraftException e) {
+		} catch (NormalkraftException e) {
 			// success
 		} catch (VinkelException e) {
 			// success
@@ -49,20 +50,20 @@ public class NormalkraftTest{
 	}
 
 	@Test
-	public void getForskydningskraftNulVinkelTest() throws UdefineretProfilException {
+	public void getNormalkraftNulVinkelTest() throws UdefineretProfilException {
 		vi.setProfil(Profil.LODRET);
 		vi.setVinkel(1);
 		dk.setDimensionerendeKraft(10);
-		assertEquals(0.175, ft.getForskydningskraft(), 0.001);
+		assertEquals(0.175, fn.getNormalkraft(), 0.001);
 	}
 
 	@Test
-	public void getForskydningskraftNulForskydningskraftTest() throws UdefineretProfilException {
+	public void getNormalkraftNulForskydningskraftTest() throws UdefineretProfilException {
 		vi.setProfil(Profil.VANDRET);
 		vi.setVinkel(5);
 		dk.setDimensionerendeKraft(0);
 		try {
-			ft.getForskydningskraft();
+			fn.getNormalkraft();
 			fail("Exception bliver ikke kastet.");
 
 		} catch (ForskydningskraftException e) {
@@ -71,10 +72,10 @@ public class NormalkraftTest{
 	}
 
 	@Test
-	public void getForskydningskraftNormalTest() throws UdefineretProfilException {
+	public void getNormalkraftNormalTest() throws UdefineretProfilException {
 		vi.setProfil(Profil.VANDRET);
 		vi.setVinkel(5);
 		dk.setDimensionerendeKraft(5);
-		assertEquals(4.981, ft.getForskydningskraft(), 0.001);
+		assertEquals(4.981, fn.getNormalkraft(), 0.001);
 	}
 }

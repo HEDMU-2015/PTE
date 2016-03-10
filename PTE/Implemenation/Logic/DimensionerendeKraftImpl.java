@@ -18,6 +18,11 @@ class DimensionerendeKraftImpl  extends PTEEntityImpl implements Dimensionerende
 
 	@Override
 	public double getDimensionerendeKraft() {
+		if(vaegt.getVaegt()==Double.NaN){
+			System.out.println(dimensionerendeKraft);
+			return dimensionerendeKraft;
+		}
+			
 		if(vaegt.getVaegt()<=0){
 			throw new DimensionerendeKraftException();
 		}
@@ -30,11 +35,8 @@ class DimensionerendeKraftImpl  extends PTEEntityImpl implements Dimensionerende
 		return dimensionerendeKraft;
 	}
 	
-	@Override
-	public double getDimensionerendeKraftUdenVægtOgTyngde() {
-		return dimensionerendeKraft;
-	}
-
+	
+	
 	@Override
 	public void setDimensionerendeKraft(double dimensionerendeKraft) {
 		this.dimensionerendeKraft = dimensionerendeKraft;

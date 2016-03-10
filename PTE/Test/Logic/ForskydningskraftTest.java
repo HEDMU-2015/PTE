@@ -55,10 +55,11 @@ public class ForskydningskraftTest {
 
 	@Test
 	public void getForskydningskraftNulVinkelTest() throws UdefineretProfilException {
+		v.setVaegt(10);
+		t.setTyngdekraft(10);		
 		vi.setProfil(Profil.LODRET);
-		vi.setVinkel(1);
-		dk.setDimensionerendeKraft(10);
-		assertEquals(0.175, ft.getForskydningskraft(), 0.001);
+		vi.setVinkel(0);
+		assertEquals(100, ft.getForskydningskraft(), 0.001);
 	}
 
 	@Test
