@@ -35,7 +35,7 @@ public class PaneUC4Controller extends PTEPane implements Initializable {
 		}
 	}
 
-	public void haandterResetKnap() {
+	public void haandterResetKnap() { 
 		pteController.nulstil();
 	}
 
