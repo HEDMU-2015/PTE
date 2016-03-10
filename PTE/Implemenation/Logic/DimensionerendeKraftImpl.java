@@ -29,6 +29,11 @@ class DimensionerendeKraftImpl  extends PTEEntityImpl implements Dimensionerende
 		dimensionerendeKraft = vaegt.getVaegt() * tyngdekraft.getTyngdekraft();
 		return dimensionerendeKraft;
 	}
+	
+	@Override
+	public double getDimensionerendeKraftUdenVægtOgTyngde() {
+		return dimensionerendeKraft;
+	}
 
 	@Override
 	public void setDimensionerendeKraft(double dimensionerendeKraft) {
