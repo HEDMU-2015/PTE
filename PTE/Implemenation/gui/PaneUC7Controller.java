@@ -16,8 +16,6 @@ public class PaneUC7Controller extends PTEPane implements Initializable {
 
 	private TekstFormattering tekstfeltFormat = new TekstFormatteringImpl();
 
-	private boolean arealErAEndret = false;
-
 	@FXML
 	private TextField tekstFeltForskydningspunkt;
 	
@@ -40,23 +38,10 @@ public class PaneUC7Controller extends PTEPane implements Initializable {
 
 	@Override
 	public void update(List<Tilstand> tilstande) {
-		/*if (tilstande.contains(Tilstand.AREAL)) {
-			tekstFeltAreal.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getAreal()));
-
-			tekstFeltFn
-					.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getNormalkraft()));
-		}*/
-	}
+			}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		tekstFeltAreal.focusedProperty().addListener(new ChangeListener<Boolean>() 
-		{
-			@Override
-			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-				arealErAEndret = true;
-			}
-		});
 	}
 
 }

@@ -9,11 +9,11 @@
    <children>
       <Label layoutX="27.0" layoutY="16.0" text="Forskydningspunkt" />
       <Label layoutX="192.0" layoutY="16.0" text="Inertimoment (I)" />
-      <Label layoutX="28.0" layoutY="74.0" text="Sigma n (σb)" />
+      <Label fx:id="tekstFeltSigmaB" layoutX="28.0" layoutY="74.0" text="Sigma b (σb)" />
       <Button layoutX="238.0" layoutY="96.0" mnemonicParsing="false" onAction="#haandterUdregnKnap" text="Udregn" />
       <Button layoutX="302.0" layoutY="96.0" mnemonicParsing="false" onAction="#haandterResetKnap" text="Reset" />
-      <TextField fx:id="tekstFeltAreal" layoutX="193.0" layoutY="33.0" prefHeight="25.0" prefWidth="155.0" promptText="Indtast I her" />
-      <TextField fx:id="tekstFeltSigmaN" editable="false" layoutX="28.0" layoutY="96.0" prefHeight="25.0" prefWidth="155.0" promptText="Resultat" styleClass="test" stylesheets="@util/gui.css" />
-      <TextField fx:id="tekstFeltTyngdepunkt" editable="false" layoutX="28.0" layoutY="33.0" prefHeight="25.0" prefWidth="155.0" promptText="Indtast forskydningspunkt her" />
+      <TextField fx:id="tekstFeltIntertimoment" layoutX="193.0" layoutY="33.0" prefHeight="25.0" prefWidth="155.0" promptText="Indtast I her" />
+      <TextField fx:id="tekstFeltSigmaB" editable="false" layoutX="28.0" layoutY="96.0" prefHeight="25.0" prefWidth="155.0" promptText="Resultat" styleClass="test" stylesheets="@util/gui.css" />
+      <TextField fx:id="tekstFeltForskydningspunkt" editable="false" layoutX="28.0" layoutY="33.0" prefHeight="25.0" prefWidth="155.0" promptText="Indtast forskydningspunkt her" />
    </children>
 </AnchorPane>
