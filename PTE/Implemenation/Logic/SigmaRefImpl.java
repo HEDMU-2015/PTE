@@ -15,10 +15,8 @@ public class SigmaRefImpl extends PTEEntityImpl implements SigmaRef {
 
 	@Override
 	public double getSigmaRef() {
-		double sigmaRefResultat = Math.sqrt(Math.pow(sigmaB.getSigmaB() + sigmaN.getSigmaN(), 2)
+		return sigmaRef = Math.sqrt(Math.pow(sigmaB.getSigmaB() + sigmaN.getSigmaN(), 2)
 				+ 3 * tau_ForskydningsSpaendingen.getTau_ForskydningsSpaending());
-
-		return sigmaRefResultat;
 	}
 
 	@Override
