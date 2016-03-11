@@ -1,6 +1,6 @@
 package Logic;
 
-public interface SigmaRef {
+public interface SigmaRef extends PTEEntity {
 
 	public double getSigmaRef();
 	
