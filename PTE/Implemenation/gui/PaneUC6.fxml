@@ -5,7 +5,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="108.0" prefWidth="383.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.PaneUC1_UC2Controller">
+<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="108.0" prefWidth="383.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.PaneUC6Controller">
    <children>
       <Label layoutX="14.0" layoutY="6.0" prefHeight="17.0" prefWidth="31.0" text="Areal:" />
       <Label layoutX="354.0" layoutY="30.0" text="m²" />
