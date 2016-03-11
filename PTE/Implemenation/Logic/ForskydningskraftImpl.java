@@ -46,9 +46,9 @@ class ForskydningskraftImpl extends PTEEntityImpl implements Forskydningskraft {
 			return (Math.cos(Math.toRadians(vinkel)) * dimensionerendeKraft);
 		} else if (profil == Profil.LODRET) {
 			return (Math.sin(Math.toRadians(vinkel)) * dimensionerendeKraft);
-		} else
+		} else {
 			throw new UdefineretProfilException("Udefineret Profil");
-		
+		}
 		
 	}
 
