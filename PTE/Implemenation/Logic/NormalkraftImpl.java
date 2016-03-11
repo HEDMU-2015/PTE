@@ -1,6 +1,5 @@
 package Logic;
 
-import Exceptions.ForskydningskraftException;
 import Exceptions.NormalkraftException;
 import Exceptions.UdefineretProfilException;
 
@@ -18,7 +17,7 @@ class NormalkraftImpl extends PTEEntityImpl implements Normalkraft {
 	}
 	
 	@Override
-	public double getNormalkraft() throws UdefineretProfilException {
+	public double getNormalkraft() {
 		normalkraft = getNormalkraft(vinkel.getVinkel(), dimensionerendeKraft.getDimensionerendeKraft());
 
 		return normalkraft;

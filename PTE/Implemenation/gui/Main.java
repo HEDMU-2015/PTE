@@ -2,6 +2,7 @@ package gui;
 
 import java.io.IOException;
 
+import Logic.LogicFactoryImpl;
 import Logic.PTEController;
 import Logic.PTEControllerImpl;
 import javafx.application.Application;
@@ -44,7 +45,7 @@ public class Main extends Application {
 
 	private void loadUC() {
 		VBox vboxICenter = new VBox();
-		PTEController pteController = new PTEControllerImpl();
+		PTEController pteController = new PTEControllerImpl(new LogicFactoryImpl());
 		try {
 			// Pane UC1 og UC2
 			FXMLLoader loaderUC1_UC2 = new FXMLLoader();

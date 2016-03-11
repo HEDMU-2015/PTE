@@ -1,7 +1,6 @@
 package Logic;
 
 import Exceptions.TyngdekraftException;
-import Exceptions.VaegtException;
 
 class TyngdekraftImpl extends PTEEntityImpl implements Tyngdekraft {
 
@@ -22,7 +21,9 @@ class TyngdekraftImpl extends PTEEntityImpl implements Tyngdekraft {
 	}
 
 	@Override
-	public void nulstil() {}
+	public void nulstil() {
+		tyngdekraft = 9.816;
+	}
 
 	@Override
 	protected Tilstand getEgenAfhaengighed() {

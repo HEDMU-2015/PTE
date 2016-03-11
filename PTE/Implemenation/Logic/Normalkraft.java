@@ -1,10 +1,8 @@
 package Logic;
 
-import Exceptions.UdefineretProfilException;
-
 interface Normalkraft  extends PTEEntity {
 
-	public double getNormalkraft()  throws UdefineretProfilException ;
+	public double getNormalkraft();
 	
 	public void setNormalkraft(double normalkraft);
 	

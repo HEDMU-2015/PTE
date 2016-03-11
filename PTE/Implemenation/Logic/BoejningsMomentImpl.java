@@ -1,5 +1,6 @@
 package Logic;
 
+import Exceptions.UdefineretLaengdeRetningException;
 import Exceptions.UdefineretProfilException;
 
 class BoejningsMomentImpl extends PTEEntityImpl implements BoejningsMoment {
@@ -10,50 +11,54 @@ class BoejningsMomentImpl extends PTEEntityImpl implements BoejningsMoment {
 	private Vinkel v;
 	private Laengde l;
 
-	public BoejningsMomentImpl(Vinkel v, Laengde l) {
+	public BoejningsMomentImpl(Vinkel v, Laengde l, DimensionerendeKraft dimensionerendeKraft, Forskydningskraft forskydningskraft) {
+		if (v == null || l == null || dimensionerendeKraft == null || forskydningskraft == null) {
+			throw new IllegalArgumentException();
+		}
 		this.v = v;
+		this.v.tilfoejAfhaengigEntitet(this);
 		this.l = l;
-	}
-	
-	@Override
-	public void setDimensionerendeKraft(DimensionerendeKraft dimensionerendeKraft) {
+		this.l.tilfoejAfhaengigEntitet(this);
 		this.dimensionerendeKraft = dimensionerendeKraft;
 		this.dimensionerendeKraft.tilfoejAfhaengigEntitet(this);
-	}
-	
-	@Override
-	public void setForskydningskraft(Forskydningskraft forskydningskraft) {
 		this.forskydningskraft = forskydningskraft;
 		this.forskydningskraft.tilfoejAfhaengigEntitet(this);
 	}
-
+	
 	@Override
 	public void setBoejningsMoment(double boejningsMoment) {
 		this.boejningsMoment = boejningsMoment;
+		nulstilBoern();
 	}
 
 	@Override
-	public double getBoejningsMoment() throws UdefineretProfilException {
-		double laengde = l.getLaengde();
-
-		if (dimensionerendeKraft != null && v.getLaengdeRetning() == LaengdeRetning.VINKELRET_TIL_FDIM) {
-			return (laengde * dimensionerendeKraft.getDimensionerendeKraft());
-		} else if (forskydningskraft != null && v.getLaengdeRetning() == LaengdeRetning.VINKELRET_TIL_FT) {
-			return (laengde * forskydningskraft.getForskydningskraft());
-		} else
-			throw new UdefineretProfilException("Udefineret Profil");
+	public double getBoejningsMoment() {
+		return getBoejningsMoment(v.getLaengdeRetning(), l.getLaengde(), dimensionerendeKraft.getDimensionerendeKraft(),
+				forskydningskraft.getForskydningskraft());
 
 	}
 
-	double getBoejningsMoment(double laengde) {
-		boejningsMoment = 0; // tilføj formlen
-		return boejningsMoment;
+	double getBoejningsMoment(LaengdeRetning lr, double l, double dimensionerendeKraft, double forskydningskraft) {
+		
+		if (lr == LaengdeRetning.VINKELRET_TIL_FDIM) {
+			return (l * dimensionerendeKraft);
+		} else if (lr == LaengdeRetning.VINKELRET_TIL_FT) {
+			return (l * forskydningskraft);
+		} else
+			throw new UdefineretLaengdeRetningException("Udefineret laengde retning");
 	}
 
 	@Override
 	public void nulstil() {
 		setBoejningsMoment(Double.NaN);
-
+		nulstilBoern();
+	}
+	
+	private void nulstilBoern() {
+		v.nulstil();
+		l.nulstil();
+		dimensionerendeKraft.nulstil();
+		forskydningskraft.nulstil();
 	}
 
 	@Override

@@ -23,7 +23,7 @@ class ForskydningskraftImpl extends PTEEntityImpl implements Forskydningskraft {
 	}
 
 	@Override
-	public double getForskydningskraft() throws UdefineretProfilException {
+	public double getForskydningskraft() {
 	
 
 		if(v.getVinkel() == Double.NaN

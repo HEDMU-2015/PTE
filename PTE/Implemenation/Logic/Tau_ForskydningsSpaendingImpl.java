@@ -1,6 +1,8 @@
 package Logic;
 
 
+import com.sun.org.apache.bcel.internal.generic.GETSTATIC;
+
 import Exceptions.UdefineretProfilException;
 /**
  * 
@@ -26,25 +28,37 @@ public class Tau_ForskydningsSpaendingImpl extends PTEEntityImpl implements Tau_
 
 	@Override
 	public void setTau_ForskydningsSpaending(double tau_ForskydningsSpaending) {
-		this.tau_ForskydningsSpaending = tau_ForskydningsSpaending;		
+		this.tau_ForskydningsSpaending = tau_ForskydningsSpaending;	
+		nulstilBoern();
 	}
+
+	private void nulstilBoern() {
+		forskydningskraft.nulstil();
+		areal.nulstil();
+		
+	}
+
 
 	@Override
 	public double getTau_ForskydningsSpaending() {
-		//What is the difference between throws or try-catch? interface doesn't show it... isn't it better?
-		//We check if the areal <= 0 before, so no need to have if{} here
-		try {
-			tau_ForskydningsSpaending = forskydningskraft.getForskydningskraft() / areal.getAreal();
-		} catch (UdefineretProfilException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if (!Double.isNaN(tau_ForskydningsSpaending)) {
+			return tau_ForskydningsSpaending;
 		}
-		return tau_ForskydningsSpaending;
+		return getTau_ForskydningsSpaending(forskydningskraft.getForskydningskraft(), areal.getAreal());
+	}
+	
+	double getTau_ForskydningsSpaending(double forskydningskraft, double areal) {
+		try {
+			return forskydningskraft / areal;
+		} catch (Exception e) {
+			return Double.NaN;
+		}
 	}
 
 	@Override
 	public void nulstil() {
 		setTau_ForskydningsSpaending(Double.NaN);
+		nulstilBoern();
 	}
 
 

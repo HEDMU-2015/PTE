@@ -1,6 +1,6 @@
 package Exceptions;
 
-public class UdefineretProfilException extends Exception {
+public class UdefineretProfilException extends RuntimeException {
 
 	
 	/**
