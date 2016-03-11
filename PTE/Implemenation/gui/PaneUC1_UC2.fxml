@@ -39,6 +39,6 @@
       </Label>
       <Label layoutX="342.0" layoutY="90.0" text="[N]" />
       <Label layoutX="237.0" layoutY="90.0" text="[N]" />
-      <Button layoutX="301.0" layoutY="151.0" mnemonicParsing="false" onAction="#haandterResetKnap" text="Reset" />
+      <Button layoutX="301.0" layoutY="151.0" mnemonicParsing="false" cancelButton="true" onAction="#haandterResetKnap" text="Reset" />
    </children>
 </AnchorPane>

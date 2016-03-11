@@ -74,13 +74,23 @@ public class Main extends Application {
 			controllerPaneUC4.setPTEController(pteController);
 
 			// Pane UC5
-						FXMLLoader loaderUC5 = new FXMLLoader();
-						loaderUC5.setLocation(Main.class.getResource("PaneUC5.fxml"));
-						AnchorPane paneUC5 = (AnchorPane) loaderUC5.load();
-						TitledPane tpUC5 = new TitledPane("SigmaN", paneUC5);
-						tpUC5.setExpanded(false);
-						PTEPane controllerPaneUC5 = loaderUC5.<PTEPane> getController();
-						controllerPaneUC5.setPTEController(pteController);
+			FXMLLoader loaderUC5 = new FXMLLoader();
+			loaderUC5.setLocation(Main.class.getResource("PaneUC5.fxml"));
+			AnchorPane paneUC5 = (AnchorPane) loaderUC5.load();
+			TitledPane tpUC5 = new TitledPane("SigmaN", paneUC5);
+			tpUC5.setExpanded(false);
+			PTEPane controllerPaneUC5 = loaderUC5.<PTEPane> getController();
+			controllerPaneUC5.setPTEController(pteController);
+						
+			// Pane UC7
+						
+			/*FXMLLoader loaderUC7 = new FXMLLoader();
+						loaderUC7.setLocation(Main.class.getResource("PaneUC7.fxml"));
+						AnchorPane paneUC7 = (AnchorPane) loaderUC7.load();
+						TitledPane tpUC7 = new TitledPane("SigmaB", paneUC7);
+						tpUC7.setExpanded(false);
+						PTEPane controllerPaneUC7 = loaderUC7.<PTEPane> getController();
+						controllerPaneUC7.setPTEController(pteController);*/
 			
 			vboxICenter.getChildren().addAll(tpUC1_UC2, tpUC3, tpUC4, tpUC5);
 			mainWindow.setCenter(vboxICenter);
