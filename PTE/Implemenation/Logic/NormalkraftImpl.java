@@ -42,7 +42,9 @@ class NormalkraftImpl extends PTEEntityImpl implements Normalkraft {
 		else if (this.vinkel.getProfil() == Profil.LODRET){
 			return (Math.cos((Math.toRadians(vinkel)))*this.dimensionerendeKraft.getDimensionerendeKraft());
 		}
-		else throw new UdefineretProfilException("Udefineret Profil");
+		else {
+			throw new UdefineretProfilException("Udefineret Profil");
+		}
 	}
 
 	@Override
