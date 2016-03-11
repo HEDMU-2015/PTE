@@ -75,7 +75,11 @@ public interface PTEController {
 	
 	public double getSigmaB();
 	
-	public void setSigmaB(double sigmaB);
+	public void setSigmaB(double sigmaRef);
+	
+	public double getSigmaRef();
+	
+	public void setSigmaRef(double sigmaRef);
 	
 
 	

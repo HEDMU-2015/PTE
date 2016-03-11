@@ -15,5 +15,5 @@ public interface LogicFactory {
 	public Forskydningspunkt createForskydningspunkt();
 	public Inertimoment createInertimoment();
 	public SigmaB createSigmaB(BoejningsMoment boejningsMoment, Forskydningspunkt forskydningspunkt, Inertimoment inertimoment);
-
+	public SigmaRef createSigmaRef(SigmaB sigmaB, SigmaN sigmaN, Tau_ForskydningsSpaending tau_ForskydningsSpaendingen);
 }

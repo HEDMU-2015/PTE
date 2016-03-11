@@ -77,4 +77,10 @@ public class LogicFactoryImpl implements LogicFactory {
 		return new SigmaBImpl(boejningsMoment, forskydningspunkt, inertimoment);
 	}
 
+	@Override
+	public SigmaRef createSigmaRef(SigmaB sigmaB, SigmaN sigmaN,
+			Tau_ForskydningsSpaending tau_ForskydningsSpaendingen) {
+		return new SigmaRefImpl(sigmaB, sigmaN, tau_ForskydningsSpaendingen);
+	}
+
 }

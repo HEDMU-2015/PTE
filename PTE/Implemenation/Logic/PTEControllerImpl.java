@@ -27,6 +27,7 @@ public class PTEControllerImpl implements PTEController {
 	private Forskydningspunkt forskydningspunkt;
 	private Inertimoment inertimoment;
 	private SigmaB sigmaB;
+	private SigmaRef sigmaRef;
 
 	public PTEControllerImpl() {
 		logicFactory = new LogicFactoryImpl();
@@ -46,6 +47,7 @@ public class PTEControllerImpl implements PTEController {
 		forskydningspunkt = logicFactory.createForskydningspunkt();
 		inertimoment = logicFactory.createInertimoment();
 		sigmaB = logicFactory.createSigmaB(boejningsMoment, forskydningspunkt, inertimoment);
+		sigmaRef = logicFactory.createSigmaRef(sigmaB, sigmaN, tau_ForskydningsSpaending);
 		
 		observers = new ArrayList<Logic.Observer>();
 	}
@@ -328,6 +330,19 @@ public class PTEControllerImpl implements PTEController {
 		this.sigmaB.setSigmaB(sigmaB);
 		notifyObservers(this.sigmaB.getAfhaengigheder());
 		
+	}
+
+	@Override
+	public double getSigmaRef() {
+		double sigmaRef = Double.NaN;
+		sigmaRef = this.sigmaRef.getSigmaRef();
+		return sigmaRef;
+	}
+
+	@Override
+	public void setSigmaRef(double sigmaRef) {
+		this.sigmaRef.setSigmaRef(sigmaRef);
+		notifyObservers(this.sigmaB.getAfhaengigheder());
 	}
 
 	
