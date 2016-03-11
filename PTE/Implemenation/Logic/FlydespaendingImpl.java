@@ -1,6 +1,6 @@
 package Logic;
 
-public class FlydespaendingImpl extends PTEEntityImpl implements Flydespaending {
+class FlydespaendingImpl extends PTEEntityImpl implements Flydespaending {
 	
 	double flydespaending = Double.NaN;
 	
