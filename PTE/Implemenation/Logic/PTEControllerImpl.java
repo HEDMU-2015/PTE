@@ -24,6 +24,8 @@ public class PTEControllerImpl implements PTEController {
 	private LogicFactory logicFactory;
 	private BoejningsMoment boejningsMoment;
 	private SigmaN sigmaN;
+	private Forskydningspunkt forskydningspunkt;
+	private Inertimoment inertimoment;
 	
 
 	public PTEControllerImpl() {
@@ -41,6 +43,10 @@ public class PTEControllerImpl implements PTEController {
 		laengde = logicFactory.createLaengde();
 		boejningsMoment = logicFactory.createBoejningsMoment(vinkel, laengde);
 		sigmaN = logicFactory.createSigmaN(areal, normalKraft);
+		forskydningspunkt = logicFactory.createForskydningspunkt();
+		inertimoment = logicFactory.createInertimoment();
+		
+		
 		observers = new ArrayList<Logic.Observer>();
 	}
 
@@ -61,6 +67,48 @@ public class PTEControllerImpl implements PTEController {
 			o.update(tilstande);
 		}
 	}
+	
+	@Override
+	public void nulstil() {
+		List<Tilstand> tilstande = new ArrayList<Tilstand>();
+
+		this.vaegt.nulstil();
+		tilstande.addAll(vaegt.getAfhaengigheder());
+
+		this.vinkel.nulstil();
+		tilstande.addAll(vinkel.getAfhaengigheder());
+
+		this.tyngdeKraft.nulstil();
+		tilstande.addAll(tyngdeKraft.getAfhaengigheder());
+
+		this.dimensionerendeKraft.nulstil();
+		tilstande.addAll(dimensionerendeKraft.getAfhaengigheder());
+
+		this.normalKraft.nulstil();
+		tilstande.addAll(normalKraft.getAfhaengigheder());
+
+		this.forskydningsKraft.nulstil();
+		tilstande.addAll(forskydningsKraft.getAfhaengigheder());
+		
+		this.areal.nulstil();
+		tilstande.addAll(areal.getAfhaengigheder());
+		
+		this.tau_ForskydningsSpaending.nulstil();
+		tilstande.addAll(tau_ForskydningsSpaending.getAfhaengigheder());
+
+		this.sigmaN.nulstil();
+		tilstande.addAll(sigmaN.getAfhaengigheder());
+		
+		this.forskydningspunkt.nulstil();
+		tilstande.addAll(forskydningspunkt.getAfhaengigheder());
+		
+		this.inertimoment.nulstil();
+		tilstande.addAll(inertimoment.getAfhaengigheder());
+		
+		notifyObservers(tilstande);
+	}
+
+	
 
 	@Override
 	public double getForskydningkraft() {
@@ -180,40 +228,7 @@ public class PTEControllerImpl implements PTEController {
 		notifyObservers(this.tau_ForskydningsSpaending.getAfhaengigheder());		
 	}
 
-	@Override
-	public void nulstil() {
-		List<Tilstand> tilstande = new ArrayList<Tilstand>();
-
-		this.vaegt.nulstil();
-		tilstande.addAll(vaegt.getAfhaengigheder());
-
-		this.vinkel.nulstil();
-		tilstande.addAll(vinkel.getAfhaengigheder());
-
-		this.tyngdeKraft.nulstil();
-		tilstande.addAll(tyngdeKraft.getAfhaengigheder());
-
-		this.dimensionerendeKraft.nulstil();
-		tilstande.addAll(dimensionerendeKraft.getAfhaengigheder());
-
-		this.normalKraft.nulstil();
-		tilstande.addAll(normalKraft.getAfhaengigheder());
-
-		this.forskydningsKraft.nulstil();
-		tilstande.addAll(forskydningsKraft.getAfhaengigheder());
-		
-		this.areal.nulstil();
-		tilstande.addAll(areal.getAfhaengigheder());
-		
-		this.tau_ForskydningsSpaending.nulstil();
-		tilstande.addAll(tau_ForskydningsSpaending.getAfhaengigheder());
-
-		this.sigmaN.nulstil();
-		tilstande.addAll(sigmaN.getAfhaengigheder());
-		
-		notifyObservers(tilstande);
-	}
-
+	
 	@Override
 	public LaengdeRetning getLaengdeRetning() {
 		return this.vinkel.getLaengdeRetning();
@@ -267,6 +282,34 @@ public class PTEControllerImpl implements PTEController {
 	public void setSigmaN(double sigmaN) {
 		this.sigmaN.setSigmaN(sigmaN);
 		notifyObservers(this.sigmaN.getAfhaengigheder());	
+		
+	}
+
+	@Override
+	public double getForskydningspunkt() {
+		double forskydningspunkt = Double.NaN;
+		forskydningspunkt = this.forskydningspunkt.getForskydningspunkt();
+		return forskydningspunkt;
+	}
+
+	@Override
+	public void setForskydningspunkt(double forskydningspunkt) {
+		this.forskydningspunkt.setForskydningspunkt(forskydningspunkt);;
+		notifyObservers(this.forskydningspunkt.getAfhaengigheder());
+		
+	}
+
+	@Override
+	public double getInertimoment() {
+		double inertimoment = Double.NaN;
+		inertimoment = this.inertimoment.getInertimoment();
+		return inertimoment;
+	}
+
+	@Override
+	public void setInertimoment(double inertimoment) {
+		this.inertimoment.setInertimoment(inertimoment);
+		notifyObservers(this.inertimoment.getAfhaengigheder());
 		
 	}
 

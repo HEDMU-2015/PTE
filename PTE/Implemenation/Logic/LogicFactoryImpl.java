@@ -33,7 +33,6 @@ public class LogicFactoryImpl implements LogicFactory {
 	}
 
 	
-	//Juyoung : Areal + Tau_Forskydningsspaending
 	@Override
 	public Areal createAreal() {
 		
@@ -58,6 +57,18 @@ public class LogicFactoryImpl implements LogicFactory {
 	@Override
 	public SigmaN createSigmaN(Areal areal, Normalkraft normalKraft) {
 		return new SigmaNImpl(areal, normalKraft);
+	}
+
+	@Override
+	public Forskydningspunkt createForskydningspunkt() {
+		
+		return new ForskydningspunktImpl();
+	}
+
+	@Override
+	public Inertimoment createInertimoment() {
+		
+		return new InertimomentImpl();
 	}
 
 }

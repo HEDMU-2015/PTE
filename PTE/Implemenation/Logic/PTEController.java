@@ -64,5 +64,16 @@ public interface PTEController {
 	public double getSigmaN();
 	
 	public void setSigmaN(double sigmaN);
+	
+	public double getForskydningspunkt();
+	
+	public void setForskydningspunkt(double forskydningspunkt);
+	
+	public double getInertimoment();
+
+	public void setInertimoment(double inertimoment);
+	
+
+	
 }
 
