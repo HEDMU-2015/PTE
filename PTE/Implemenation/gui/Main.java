@@ -83,15 +83,16 @@ public class Main extends Application {
 			controllerPaneUC5.setPTEController(pteController);
 						
 			// Pane UC7
-						FXMLLoader loaderUC7 = new FXMLLoader();
+						
+			/*FXMLLoader loaderUC7 = new FXMLLoader();
 						loaderUC7.setLocation(Main.class.getResource("PaneUC7.fxml"));
 						AnchorPane paneUC7 = (AnchorPane) loaderUC7.load();
 						TitledPane tpUC7 = new TitledPane("SigmaB", paneUC7);
 						tpUC7.setExpanded(false);
 						PTEPane controllerPaneUC7 = loaderUC7.<PTEPane> getController();
-						controllerPaneUC7.setPTEController(pteController);
+						controllerPaneUC7.setPTEController(pteController);*/
 			
-			vboxICenter.getChildren().addAll(tpUC1_UC2, tpUC3, tpUC4, tpUC5, tpUC7);
+			vboxICenter.getChildren().addAll(tpUC1_UC2, tpUC3, tpUC4, tpUC5);
 			mainWindow.setCenter(vboxICenter);
 		} catch (IOException exc) {
 		}
