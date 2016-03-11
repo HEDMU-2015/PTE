@@ -48,13 +48,18 @@ public class PaneUC1_UC2Controller extends PTEPane implements Initializable {
 
 	@FXML
 	private void haandterUdregnKnap() {
+		System.out.println("10. tekstFeltVinkel = " + tekstFeltVinkel.getText() + " <-- indhold");
 		if (vaegtErAEndret) {
+			System.out.println("12. tekstFeltVinkel = " + tekstFeltVinkel.getText() + " <-- indhold");
 
 			vaegtErAEndret = false;
+			System.out.println("13. tekstFeltVinkel = " + tekstFeltVinkel.getText() + " <-- indhold");
 
 			pteController.setVaegt(tekstfeltFormat.formaterStringTilDouble(tekstFeltVaegt.getText()));
+			System.out.println("14. tekstFeltVinkel = " + tekstFeltVinkel.getText() + " <-- indhold");
 		}
 
+		System.out.println("20. tekstFeltVinkel = " + tekstFeltVinkel.getText() + " <-- indhold");
 		if (dimensionerendeKraftErAEndret) {
 			dimensionerendeKraftErAEndret = false;
 
@@ -62,14 +67,17 @@ public class PaneUC1_UC2Controller extends PTEPane implements Initializable {
 					tekstfeltFormat.formaterStringTilDouble(tekstFeltDimensionerendeKraft.getText()));
 		}
 
+		System.out.println("30. tekstFeltVinkel = " + tekstFeltVinkel.getText() + " <-- indhold");
 		if (vinkelErAEndret) {
-
+			System.out.println("40. tekstFeltVinkel = " + tekstFeltVinkel.getText() + " <-- indhold");
 			vinkelErAEndret = false;
 			pteController.setVinkel(tekstfeltFormat.formaterStringTilDouble(tekstFeltVinkel.getText()));
+
 		}
 
 		if ((vandret.isSelected() && pteController.getProfil() != Profil.VANDRET)
 				|| (lodret.isSelected() && pteController.getProfil() != Profil.LODRET)) {
+
 			setProfil();
 		}
 	}
@@ -137,13 +145,14 @@ public class PaneUC1_UC2Controller extends PTEPane implements Initializable {
 		if (tilstande.contains(Tilstand.VAEGT)) {
 
 			tekstFeltVaegt.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getVaegt()));
-			profil.getSelectedToggle();
 		}
 
 		if (tilstande.contains(Tilstand.DIMENSIONERENDE_KRAFT)) {
 
 			tekstFeltDimensionerendeKraft
 					.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getDimensionerendeKraft()));
+
+			tekstFeltVaegt.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getVaegt()));
 		}
 
 		if (tilstande.contains(Tilstand.FORSKYDNINGSKRAFT)) {

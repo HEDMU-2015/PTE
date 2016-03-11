@@ -25,25 +25,19 @@ class NormalkraftImpl extends PTEEntityImpl implements Normalkraft {
 
 	}
 	double getNormalkraft(double vinkel, double dimensionerendeKraft) {
-		if(vinkel == Double.NaN) {
+		if(!Double.isNaN(normalkraft)) {
 			return normalkraft;
 		}
 		
-		if(dimensionerendeKraft<=0 
-				|| dimensionerendeKraft== Double.NaN 
-				|| vinkel<0 
-				|| vinkel>90 
+		if(dimensionerendeKraft== Double.NaN 
 				|| vinkel == Double.NaN){
-			throw new NormalkraftException();
+			return Double.NaN;
 		}
 		if (this.vinkel.getProfil() == Profil.VANDRET){
 			return (Math.sin(Math.toRadians(vinkel))*this.dimensionerendeKraft.getDimensionerendeKraft());
 		}
-		else if (this.vinkel.getProfil() == Profil.LODRET){
+		else { // this.vinkel.getProfil() == Profil.LODRET
 			return (Math.cos((Math.toRadians(vinkel)))*this.dimensionerendeKraft.getDimensionerendeKraft());
-		}
-		else {
-			throw new UdefineretProfilException("Udefineret Profil");
 		}
 	}
 

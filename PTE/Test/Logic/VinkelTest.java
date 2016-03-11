@@ -27,9 +27,8 @@ public class VinkelTest {
 
 	@Test
 	public void setVinkelNegativTest() {
-		v.setVinkel(-60);
 		try {
-			v.getVinkel();
+			v.setVinkel(-60);
 			fail("Vinklen er negativ");
 		} catch (VinkelException e) {
 			// Success
@@ -53,9 +52,8 @@ public class VinkelTest {
 
 	@Test
 	public void setVinkelOverRetTest() {
-		v.setVinkel(100);
 		try {
-			v.getVinkel();
+			v.setVinkel(100);
 			fail("Vinklen overstiger 90 grader");
 		} catch (VinkelException e) {
 			// Success

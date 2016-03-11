@@ -34,20 +34,16 @@ class ForskydningskraftImpl extends PTEEntityImpl implements Forskydningskraft {
 	double getForskydningskraft(Profil profil, double vinkel, double dimensionerendeKraft) {
 		
 		if(vinkel == Double.NaN
-				|| dimensionerendeKraft <= 0
 				|| dimensionerendeKraft == Double.NaN 
-				|| vinkel < 0 
-				|| vinkel > 90 
+				|| profil == Profil.UDEFINERET
 				){
-			throw new ForskydningskraftException();
+			return Double.NaN;
 		}
-		
+		System.out.println(profil);
 		if (profil == Profil.VANDRET) {
 			return (Math.cos(Math.toRadians(vinkel)) * dimensionerendeKraft);
-		} else if (profil == Profil.LODRET) {
+		} else {// profil == Profil.LODRET 
 			return (Math.sin(Math.toRadians(vinkel)) * dimensionerendeKraft);
-		} else {
-			throw new UdefineretProfilException("Udefineret Profil");
 		}
 		
 	}
