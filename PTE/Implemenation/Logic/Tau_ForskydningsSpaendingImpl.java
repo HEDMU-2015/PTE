@@ -17,7 +17,10 @@ public class Tau_ForskydningsSpaendingImpl extends PTEEntityImpl implements Tau_
 	
 	
 
-	public Tau_ForskydningsSpaendingImpl (Areal areal, Forskydningskraft forskydningskraft){		
+	public Tau_ForskydningsSpaendingImpl (Areal areal, Forskydningskraft forskydningskraft){
+		if (areal == null || forskydningskraft == null) {
+			throw new IllegalArgumentException();
+		}
 		this.areal = areal;
 		this.forskydningskraft = forskydningskraft;
 		this.areal.tilfoejAfhaengigEntitet(this);

@@ -10,6 +10,9 @@ class DimensionerendeKraftImpl  extends PTEEntityImpl implements Dimensionerende
 	private Tyngdekraft tyngdekraft;
 
 	public DimensionerendeKraftImpl(Vaegt vaegt, Tyngdekraft tyngdekraft) {
+		if (vaegt == null || tyngdekraft == null) {
+			throw new IllegalArgumentException();
+		}
 		this.vaegt = vaegt;
 		this.tyngdekraft = tyngdekraft;
 		this.vaegt.tilfoejAfhaengigEntitet(this);
@@ -18,20 +21,20 @@ class DimensionerendeKraftImpl  extends PTEEntityImpl implements Dimensionerende
 
 	@Override
 	public double getDimensionerendeKraft() {
-		if(vaegt.getVaegt()==Double.NaN){
-			System.out.println(dimensionerendeKraft);
+		return getDimensionerendeKraft(vaegt.getVaegt(), tyngdekraft.getTyngdekraft());
+	}
+	
+	double getDimensionerendeKraft(double vaegt, double tyngdekraft) {
+		if(vaegt == Double.NaN){
+			System.out.println(dimensionerendeKraft); //TODO slet syso
 			return dimensionerendeKraft;
 		}
 			
-		if(vaegt.getVaegt()<=0){
+		if(vaegt <= 0 || tyngdekraft <= 0){
 			throw new DimensionerendeKraftException();
 		}
-		if(tyngdekraft.getTyngdekraft()<=0){
-			throw new DimensionerendeKraftException();
-		}
-			
 		
-		dimensionerendeKraft = vaegt.getVaegt() * tyngdekraft.getTyngdekraft();
+		dimensionerendeKraft = vaegt * tyngdekraft;
 		return dimensionerendeKraft;
 	}
 	
@@ -40,6 +43,7 @@ class DimensionerendeKraftImpl  extends PTEEntityImpl implements Dimensionerende
 	@Override
 	public void setDimensionerendeKraft(double dimensionerendeKraft) {
 		this.dimensionerendeKraft = dimensionerendeKraft;
+		nulstilBoern();
 	}
 
 	@Override
@@ -50,6 +54,12 @@ class DimensionerendeKraftImpl  extends PTEEntityImpl implements Dimensionerende
 	@Override
 	public void nulstil() {
 		setDimensionerendeKraft(Double.NaN);
+		nulstilBoern();
+	}
+	
+	private void nulstilBoern() {
+		vaegt.nulstil();
+		tyngdekraft.nulstil();
 	}
 
 	@Override

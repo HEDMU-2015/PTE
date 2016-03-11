@@ -10,6 +10,9 @@ class NormalkraftImpl extends PTEEntityImpl implements Normalkraft {
 	private Vinkel vinkel;
 	
 	public NormalkraftImpl(DimensionerendeKraft dimensionerendeKraft, Vinkel vinkel){
+		if (dimensionerendeKraft == null || vinkel == null) {
+			throw new IllegalArgumentException();
+		}
 		this.dimensionerendeKraft = dimensionerendeKraft;
 		this.vinkel = vinkel;
 		this.dimensionerendeKraft.tilfoejAfhaengigEntitet(this);
@@ -18,11 +21,10 @@ class NormalkraftImpl extends PTEEntityImpl implements Normalkraft {
 	
 	@Override
 	public double getNormalkraft() {
-		normalkraft = getNormalkraft(vinkel.getVinkel(), dimensionerendeKraft.getDimensionerendeKraft());
+		return getNormalkraft(vinkel.getVinkel(), dimensionerendeKraft.getDimensionerendeKraft());
 
-		return normalkraft;
 	}
-	double getNormalkraft(double vinkel, double dimensionerendeKraft) throws UdefineretProfilException {
+	double getNormalkraft(double vinkel, double dimensionerendeKraft) {
 		if(vinkel == Double.NaN) {
 			return normalkraft;
 		}
@@ -46,12 +48,18 @@ class NormalkraftImpl extends PTEEntityImpl implements Normalkraft {
 	@Override
 	public void setNormalkraft(double normalkraft) {
 		this.normalkraft = normalkraft;
-		
+		nulstilBoern();
 	}
 	
 	@Override
 	public void nulstil() {
 		setNormalkraft(Double.NaN);
+		nulstilBoern();
+	}
+	
+	private void nulstilBoern() {
+		dimensionerendeKraft.nulstil();
+		vinkel.nulstil();
 	}
 
 	@Override
