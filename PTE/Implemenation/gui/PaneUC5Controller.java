@@ -31,6 +31,7 @@ public class PaneUC5Controller extends PTEPane implements Initializable {
 	public void haandterUdregnKnap() {
 		pteController.setAreal(Double.parseDouble(tekstFeltAreal.getText()));
 		tekstFeltSigmaN.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getSigmaN()));
+		pteController.setSigmaN(pteController.getSigmaN());
 		if (arealErAEndret) {
 			arealErAEndret = false;
 			pteController.setAreal(tekstfeltFormat.formaterStringTilDouble(tekstFeltAreal.getText()));

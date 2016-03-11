@@ -1,6 +1,5 @@
 package gui;
 
-
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -13,25 +12,24 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-public class PaneUC7Controller extends PTEPane implements Initializable {
+public class PaneUC8Controller extends PTEPane implements Initializable {
 
 	private TekstFormattering tekstfeltFormat = new TekstFormatteringImpl();
 
-	@FXML
-	private TextField tekstFeltForskydningspunkt;
-	
-	@FXML
-	private TextField tekstFeltIntertimoment;
-	
+	private boolean arealErAEndret = false;
+
 	@FXML
 	private TextField tekstFeltSigmaB;
 	
 	@FXML
+	private TextField tekstFeltSigmaN;
+	
+	@FXML
+	private TextField tekstFeltSigmaRef;
+	
+	@FXML
 	public void haandterUdregnKnap() {
-		pteController.setForskydningspunkt(Double.parseDouble(tekstFeltForskydningspunkt.getText()));
-		pteController.setInertimoment(Double.parseDouble(tekstFeltIntertimoment.getText()));
-		tekstFeltSigmaB.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getSigmaB()));
-		pteController.setSigmaB(pteController.getSigmaB());
+		tekstFeltSigmaRef.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getSigmaRef()));
 	}
 	@FXML
 	public void haandterResetKnap() { 
@@ -40,7 +38,13 @@ public class PaneUC7Controller extends PTEPane implements Initializable {
 
 	@Override
 	public void update(List<Tilstand> tilstande) {
-			}
+		if (tilstande.contains(Tilstand.SIGMAB)) {
+			tekstFeltSigmaB.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getSigmaB()));
+		}
+		if (tilstande.contains(Tilstand.SIGMAN)){
+			tekstFeltSigmaN.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getSigmaN()));
+		}
+	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
