@@ -19,22 +19,24 @@ public class PaneUC5Controller extends PTEPane implements Initializable {
 	private boolean arealErAEndret = false;
 
 	@FXML
+	private TextField tekstFeltFn;
+	
+	@FXML
 	private TextField tekstFeltAreal;
-
+	
 	@FXML
-	private TextField tekstFeltForskydningsspændingen;
-
+	private TextField tekstFeltSigmaN;
+	
 	@FXML
-	private Label labelKraft;
-
 	public void haandterUdregnKnap() {
-		labelKraft.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getForskydningkraft()));
+		pteController.setAreal(Double.parseDouble(tekstFeltAreal.getText()));
+		tekstFeltSigmaN.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getSigmaN()));
 		if (arealErAEndret) {
 			arealErAEndret = false;
 			pteController.setAreal(tekstfeltFormat.formaterStringTilDouble(tekstFeltAreal.getText()));
 		}
 	}
-
+	@FXML
 	public void haandterResetKnap() { 
 		pteController.nulstil();
 	}
@@ -44,8 +46,8 @@ public class PaneUC5Controller extends PTEPane implements Initializable {
 		if (tilstande.contains(Tilstand.AREAL)) {
 			tekstFeltAreal.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getAreal()));
 
-			tekstFeltForskydningsspændingen
-					.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getTau_ForskydningsSpaending()));
+			tekstFeltFn
+					.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getNormalkraft()));
 		}
 	}
 

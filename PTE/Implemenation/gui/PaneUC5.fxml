@@ -4,23 +4,16 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="134.0" prefWidth="383.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.PaneUC5Controller">
+<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="139.0" prefWidth="383.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.PaneUC5Controller">
    <children>
-      <Label layoutX="26.0" layoutY="6.0" prefHeight="17.0" prefWidth="31.0" text="Fn:" />
-      <Label layoutX="194.0" layoutY="6.0" prefHeight="17.0" prefWidth="31.0" text="Areal:" />
-      <Label layoutX="349.0" layoutY="30.0" text="m²" />
-      <Button fx:id="knapUdregn" layoutX="233.0" layoutY="88.0" mnemonicParsing="false" onAction="#haandterUdregnKnap" prefHeight="25.0" prefWidth="65.0" text="Udregn" />
-      <Label layoutX="189.0" layoutY="93.0" prefHeight="15.0" prefWidth="0.0" text="n">
-         <font>
-            <Font size="10.0" />
-         </font>
-      </Label>
-      <Button fx:id="knapReset" layoutX="305.0" layoutY="88.0" mnemonicParsing="false" onAction="#haandterResetKnap" prefHeight="25.0" prefWidth="65.0" text="Reset" />
-      <Label layoutX="182.0" layoutY="86.0" prefHeight="17.0" prefWidth="6.0" text="σ" />
-      <TextField fx:id="tekstFeltAreal" layoutX="192.0" layoutY="26.0" onMouseReleased="#haandterCleartekstFeltDimensionerndeKraft" prefHeight="25.0" prefWidth="155.0" promptText="Indtast areal her" />
-      <TextField fx:id="tekstFeltSigmaN" editable="false" layoutX="25.0" layoutY="88.0" onMouseReleased="#haandterCleartekstFeltDimensionerndeKraft" prefHeight="25.0" prefWidth="155.0" promptText="Resultat" />
-      <TextField fx:id="tesktFeltFn" editable="false" layoutX="25.0" layoutY="26.0" onMouseReleased="#haandterCleartekstFeltDimensionerndeKraft" prefHeight="25.0" prefWidth="155.0" />
+      <Label layoutX="27.0" layoutY="16.0" text="Normalkraft" />
+      <Label layoutX="192.0" layoutY="16.0" text="Areal (m²):" />
+      <Label layoutX="28.0" layoutY="74.0" text="Sigma n (σn)" />
+      <Button layoutX="238.0" layoutY="96.0" mnemonicParsing="false" onAction="#haandterUdregnKnap" text="Udregn" />
+      <Button layoutX="302.0" layoutY="96.0" mnemonicParsing="false" onAction="#haandterResetKnap" text="Reset" />
+      <TextField fx:id="tekstFeltAreal" layoutX="193.0" layoutY="33.0" prefHeight="25.0" prefWidth="155.0" promptText="Indtast areal her" />
+      <TextField fx:id="tekstFeltSigmaN" editable="false" layoutX="28.0" layoutY="96.0" prefHeight="25.0" prefWidth="155.0" promptText="Resultat" styleClass="test" stylesheets="@util/gui.css" />
+      <TextField fx:id="tekstFeltFn" editable="false" layoutX="28.0" layoutY="33.0" prefHeight="25.0" prefWidth="155.0" />
    </children>
 </AnchorPane>

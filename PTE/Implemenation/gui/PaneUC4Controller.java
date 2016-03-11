@@ -27,6 +27,7 @@ public class PaneUC4Controller extends PTEPane implements Initializable {
 	@FXML
 	private Label labelKraft;
 
+	@FXML
 	public void haandterUdregnKnap() {
 		labelKraft.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getForskydningkraft()));
 		if (arealErAEndret) {
@@ -34,7 +35,8 @@ public class PaneUC4Controller extends PTEPane implements Initializable {
 			pteController.setAreal(tekstfeltFormat.formaterStringTilDouble(tekstFeltAreal.getText()));
 		}
 	}
-
+	
+	@FXML
 	public void haandterResetKnap() { 
 		pteController.nulstil();
 	}
