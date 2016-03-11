@@ -71,4 +71,10 @@ public class LogicFactoryImpl implements LogicFactory {
 		return new InertimomentImpl();
 	}
 
+	@Override
+	public SigmaB createSigmaB(BoejningsMoment boejningsMoment, Forskydningspunkt forskydningspunkt,
+			Inertimoment inertimoment) {
+		return new SigmaBImpl(boejningsMoment, forskydningspunkt, inertimoment);
+	}
+
 }

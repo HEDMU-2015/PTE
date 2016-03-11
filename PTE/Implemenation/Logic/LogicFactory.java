@@ -14,5 +14,6 @@ public interface LogicFactory {
 	public SigmaN createSigmaN(Areal areal, Normalkraft normalKraft);
 	public Forskydningspunkt createForskydningspunkt();
 	public Inertimoment createInertimoment();
+	public SigmaB createSigmaB(BoejningsMoment boejningsMoment, Forskydningspunkt forskydningspunkt, Inertimoment inertimoment);
 
 }

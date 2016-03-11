@@ -73,6 +73,10 @@ public interface PTEController {
 
 	public void setInertimoment(double inertimoment);
 	
+	public double getSigmaB();
+	
+	public void setSigmaB(double sigmaB);
+	
 
 	
 }

@@ -13,7 +13,7 @@ public class SigmaBImpl extends PTEEntityImpl implements SigmaB {
 
 
 
-	public SigmaBImpl(Forskydningspunkt forskydningspunkt, Inertimoment inertimoment, BoejningsMoment boejningsMoment) {
+	public SigmaBImpl(BoejningsMoment boejningsMoment, Forskydningspunkt forskydningspunkt, Inertimoment inertimoment) {
 		this.forskydningspunkt = forskydningspunkt;
 		this.inertimoment = inertimoment;
 		this.boejningsMoment = boejningsMoment;
