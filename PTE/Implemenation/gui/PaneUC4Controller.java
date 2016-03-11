@@ -34,6 +34,7 @@ public class PaneUC4Controller extends PTEPane implements Initializable {
 			arealErAEndret = false;
 			pteController.setAreal(tekstfeltFormat.formaterStringTilDouble(tekstFeltAreal.getText()));
 		}
+		tekstFeltForskydningsspændingen.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getTau_ForskydningsSpaending()));
 	}
 	
 	@FXML
