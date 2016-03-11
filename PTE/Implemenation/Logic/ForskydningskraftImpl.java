@@ -40,7 +40,7 @@ class ForskydningskraftImpl extends PTEEntityImpl implements Forskydningskraft {
 		} else if (v.getProfil() == Profil.LODRET) {
 			return (Math.sin(Math.toRadians(v.getVinkel())) * dk.getDimensionerendeKraft());
 		} else
-			throw new UdefineretProfilException("Udefineret Profil");
+				throw new UdefineretProfilException("Udefineret Profil");
 	}
 
 	double getForskydningskraft(double vinkel, double dimensionerendeKraft) {

@@ -137,17 +137,13 @@ public class PaneUC1_UC2Controller extends PTEPane implements Initializable {
 		if (tilstande.contains(Tilstand.VAEGT)) {
 
 			tekstFeltVaegt.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getVaegt()));
-
-			tekstFeltDimensionerendeKraft
-					.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getDimensionerendeKraft()));
+			profil.getSelectedToggle();
 		}
 
 		if (tilstande.contains(Tilstand.DIMENSIONERENDE_KRAFT)) {
 
 			tekstFeltDimensionerendeKraft
 					.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getDimensionerendeKraft()));
-
-			tekstFeltVaegt.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getVaegt()));
 		}
 
 		if (tilstande.contains(Tilstand.FORSKYDNINGSKRAFT)) {
