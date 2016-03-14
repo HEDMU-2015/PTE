@@ -117,11 +117,12 @@ public class PTEControllerImpl implements PTEController {
 		this.boejningsspaending.nulstil();
 		tilstande.addAll(boejningsspaending.getAfhaengigheder());
 		
+		this.laengde.nulstil();
+		tilstande.addAll(laengde.getAfhaengigheder());
+		
 		notifyObservers(tilstande);
 	}
-
 	
-
 	@Override
 	public double getForskydningkraft() {
 		return this.forskydningskraft.getForskydningskraft();

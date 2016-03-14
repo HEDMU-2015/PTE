@@ -40,9 +40,10 @@ class BoejningsMomentImpl extends PTEEntityImpl implements BoejningsMoment {
 	}
 
 	double getBoejningsMoment(LaengdeRetning lr, double l, double dimensionerendeKraft, double forskydningskraft) {
-		if(Double.isNaN(boejningsMoment)) {
+		if(!Double.isNaN(boejningsMoment)) {
 			return boejningsMoment;
 		}
+		
 		
 		if (lr == LaengdeRetning.VINKELRET_TIL_FDIM) {
 			return (l * dimensionerendeKraft);
