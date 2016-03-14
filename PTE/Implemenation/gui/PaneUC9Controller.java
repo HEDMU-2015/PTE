@@ -28,7 +28,7 @@ public class PaneUC9Controller extends PTEPane implements Initializable {
 	
 	@FXML
 	public void haandterUdregnKnap() {
-		pteController.setF
+		
 	}
 	@FXML
 	public void haandterResetKnap() { 
