@@ -73,8 +73,7 @@ public class PaneUC3Controller extends PTEPane implements Initializable {
 			tekstFeltBoejningsmoment
 			.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getBoejningsMoment()));
 		}
-		System.out.println("test vi er i boejningsmoment");
-//		if ()
+		
 	}
 
 	private void setLaengdeRetning() {

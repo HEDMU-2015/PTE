@@ -26,7 +26,7 @@ class DimensionerendeKraftImpl  extends PTEEntityImpl implements Dimensionerende
 	
 	double getDimensionerendeKraft(double vaegt, double tyngdekraft) {
 		if(vaegt == Double.NaN){
-			System.out.println(dimensionerendeKraft); //TODO slet syso
+			
 			return dimensionerendeKraft;
 		}
 			

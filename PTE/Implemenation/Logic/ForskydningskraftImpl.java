@@ -39,7 +39,7 @@ class ForskydningskraftImpl extends PTEEntityImpl implements Forskydningskraft {
 				){
 			return Double.NaN;
 		}
-		System.out.println(profil);
+		
 		if (profil == Profil.VANDRET) {
 			return (Math.cos(Math.toRadians(vinkel)) * dimensionerendeKraft);
 		} else {// profil == Profil.LODRET 

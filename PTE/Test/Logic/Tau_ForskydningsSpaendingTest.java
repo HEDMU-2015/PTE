@@ -1,56 +1,100 @@
 package Logic;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.internal.runners.statements.Fail;
+
+import Exceptions.ArealException;
+import Exceptions.TyngdekraftException;
+import Exceptions.VaegtException;
 
 public class Tau_ForskydningsSpaendingTest {
 
-	VaegtImpl v;
-	TyngdekraftImpl t;
-	DimensionerendeKraftImpl dk;
-	VinkelImpl vi;
-	ForskydningskraftImpl ft;
-	ArealImpl a;
-	Tau_ForskydningsSpaendingImpl tau;
+	VaegtImpl vaegt;
+	TyngdekraftImpl tyngdekraft;
+	DimensionerendeKraftImpl dimensioneredeKraft;
+	VinkelImpl vinkel;
+	ForskydningskraftImpl forskydningskraft;
+	ArealImpl areal;
+	Tau_ForskydningsSpaendingImpl forskydningsSpaending;
 	
 	@Before
 	public void setUp() throws Exception {
-	v = new VaegtImpl();
-	t = new TyngdekraftImpl();
-	vi = new VinkelImpl();
-	dk = new DimensionerendeKraftImpl(v, t);
-	ft = new ForskydningskraftImpl(vi, dk);
-	a = new ArealImpl();	
-	tau = new Tau_ForskydningsSpaendingImpl(a, ft);
+	vaegt = new VaegtImpl();
+	tyngdekraft = new TyngdekraftImpl();
+	vinkel = new VinkelImpl();
+	dimensioneredeKraft = new DimensionerendeKraftImpl(vaegt, tyngdekraft);
+	forskydningskraft = new ForskydningskraftImpl(vinkel, dimensioneredeKraft);
+	areal = new ArealImpl();	
+	forskydningsSpaending = new Tau_ForskydningsSpaendingImpl(areal, forskydningskraft);
 	}
 
 	@Test
 	public void getTauNulstilTest() {
-		vi.setProfil(Profil.VANDRET);
-		tau.setTau_ForskydningsSpaending(5);
-		tau.nulstil();
-		assertEquals(Double.NaN, tau.getTau_ForskydningsSpaending(), 0.001);
+		vinkel.setProfil(Profil.VANDRET);
+		forskydningsSpaending.setTau_ForskydningsSpaending(5);
+		forskydningsSpaending.nulstil();
+		assertEquals(Double.NaN, forskydningsSpaending.getTau_ForskydningsSpaending(), 0.001);
 	}
 	
 	@Test
 	public void GetTauNormalTest() {
-		vi.setProfil(Profil.VANDRET);
-		v.setVaegt(10);
-		t.setTyngdekraft(10);
-		vi.setVinkel(10);
-		a.setAreal(40);
-		assertEquals(1, tau.getTau_ForskydningsSpaending(), 0.001);
+		vinkel.setProfil(Profil.VANDRET);
+		vaegt.setVaegt(10);
+		tyngdekraft.setTyngdekraft(10);
+		vinkel.setVinkel(10);
+		areal.setAreal(10);
+		assertEquals(9.848, forskydningsSpaending.getTau_ForskydningsSpaending(), 0.001);
 	}
 	@Test
 	public void GetTauNegativVaegtTest() {
-		vi.setProfil(Profil.VANDRET);
-		v.setVaegt(-10);
-		t.setTyngdekraft(10);
-		vi.setVinkel(10);
-		a.setAreal(40);
-		assertEquals(1, tau.getTau_ForskydningsSpaending(), 0.001);
+		vinkel.setProfil(Profil.VANDRET);
+		vaegt.setVaegt(-10);
+		tyngdekraft.setTyngdekraft(10);
+		vinkel.setVinkel(10);
+		areal.setAreal(40);
+		
+		try {
+			forskydningsSpaending.getTau_ForskydningsSpaending();
+			fail("Exception blev ikke kastet");
+		} catch (VaegtException e) {
+			//success
+		}
+		
+	}
+	@Test
+	public void GetTauNegativTyngdekraftTest() {
+		vinkel.setProfil(Profil.VANDRET);
+		vaegt.setVaegt(10);
+		tyngdekraft.setTyngdekraft(-10);
+		vinkel.setVinkel(10);
+		areal.setAreal(40);
+		
+		try {
+			forskydningsSpaending.getTau_ForskydningsSpaending();
+			fail("Exception blev ikke kastet");
+		} catch (TyngdekraftException e) {
+			//success
+		}
+		
+	}
+	@Test
+	public void GetTauNegativArealTest() {
+		vinkel.setProfil(Profil.VANDRET);
+		vaegt.setVaegt(10);
+		tyngdekraft.setTyngdekraft(10);
+		vinkel.setVinkel(10);
+		areal.setAreal(-40);
+		
+		try {
+			forskydningsSpaending.getTau_ForskydningsSpaending();
+			fail("Exception blev ikke kastet");
+		} catch (ArealException e) {
+			//success
+		}
+		
 	}
 
 }
