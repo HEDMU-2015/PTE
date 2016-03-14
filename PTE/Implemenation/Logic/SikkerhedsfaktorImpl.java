@@ -18,9 +18,15 @@ class SikkerhedsfaktorImpl extends PTEEntityImpl implements Sikkerhedsfaktor {
 
 	@Override
 	public double getSikkerhedsfaktor() {
-		return flydespaending.getFlydespaending() / sigmaRef.getSigmaRef();
+		
+		return getSikkerhedsfaktor (flydespaending.getFlydespaending() , sigmaRef.getSigmaRef());
 	}
 
+	double getSikkerhedsfaktor(double flydespaending, double referencespaending){
+		return flydespaending / referencespaending;
+		
+	}
+	
 	@Override
 	protected Tilstand getEgenAfhaengighed() {
 		return Tilstand.SIKKERHEDSFAKTOR;
@@ -29,6 +35,11 @@ class SikkerhedsfaktorImpl extends PTEEntityImpl implements Sikkerhedsfaktor {
 	@Override
 	public boolean erSikkerhedsfaktorForLavt() {
 		return sikkerhedsfaktor <= 1;
+	}
+	
+	@Override
+	public void nulstil() {
+		sikkerhedsfaktor = Double.NaN;
 	}
 
 }

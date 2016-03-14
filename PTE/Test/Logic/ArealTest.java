@@ -10,16 +10,29 @@ import Exceptions.LaengdeException;
 
 public class ArealTest {
 
+	BreddeImpl bredde;
+	HoejdeImpl hoejde;
+	DiameterImpl diameter;
+	GodstykkelseImpl godstykkelse;
+	
+	
 	Areal areal;
 
 	@Before
 	public void setUp() throws Exception {
-		areal = new ArealImpl();
+		bredde = new BreddeImpl();
+		hoejde = new HoejdeImpl();
+		diameter = new DiameterImpl();
+		godstykkelse = new GodstykkelseImpl();
+		areal = new ArealImpl(bredde, diameter, godstykkelse, hoejde);
 
 	}
 
 	@Test
 	public void getArealNulstilTest() {
+		bredde.setBredde(10);
+		hoejde.setHoejde(5);
+		go
 		areal.setAreal(5);
 		areal.nulstil();
 		assertEquals(Double.NaN, areal.getAreal(), 0.001);
