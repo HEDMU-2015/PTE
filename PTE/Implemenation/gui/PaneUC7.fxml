@@ -10,10 +10,10 @@
       <Label layoutX="27.0" layoutY="16.0" text="Forskydningspunkt" />
       <Label layoutX="192.0" layoutY="16.0" text="Inertimoment (I)" />
       <Label fx:id="labelSigmaB" layoutX="28.0" layoutY="74.0" text="Sigma b (σb)" />
-      <Button layoutX="238.0" layoutY="96.0" mnemonicParsing="false" defaultButton="true" onAction="#haandterUdregnKnap" text="Udregn" />
-      <Button layoutX="302.0" layoutY="96.0" mnemonicParsing="false" cancelButton="true" onAction="#haandterResetKnap" text="Reset" />
+      <Button defaultButton="true" layoutX="238.0" layoutY="96.0" mnemonicParsing="false" onAction="#haandterUdregnKnap" text="Udregn" />
+      <Button cancelButton="true" layoutX="302.0" layoutY="96.0" mnemonicParsing="false" onAction="#haandterResetKnap" text="Reset" />
       <TextField fx:id="tekstFeltIntertimoment" layoutX="193.0" layoutY="33.0" prefHeight="25.0" prefWidth="155.0" promptText="Indtast I her" />
       <TextField fx:id="tekstFeltSigmaB" editable="false" layoutX="28.0" layoutY="96.0" prefHeight="25.0" prefWidth="155.0" promptText="Resultat" styleClass="test" stylesheets="@util/gui.css" />
-      <TextField fx:id="tekstFeltForskydningspunkt" editable="false" layoutX="28.0" layoutY="33.0" prefHeight="25.0" prefWidth="155.0" promptText="Indtast forskydningspunkt her" />
+      <TextField fx:id="tekstFeltForskydningspunkt" layoutX="28.0" layoutY="33.0" prefHeight="25.0" prefWidth="155.0" promptText="Indtast forskydningspunkt her" />
    </children>
 </AnchorPane>

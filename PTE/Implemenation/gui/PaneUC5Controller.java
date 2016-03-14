@@ -47,8 +47,10 @@ public class PaneUC5Controller extends PTEPane implements Initializable {
 		if (tilstande.contains(Tilstand.AREAL)) {
 			tekstFeltAreal.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getAreal()));
 
-			tekstFeltFn
-					.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getNormalkraft()));
+			
+		}
+		if(tilstande.contains(Tilstand.NORMALKRAFT)){
+			tekstFeltFn.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getNormalkraft()));
 		}
 	}
 
