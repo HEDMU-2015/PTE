@@ -133,7 +133,19 @@ public class PTEControllerImpl implements PTEController {
 
 		this.godstykkelse.nulstil();
 		tilstande.addAll(godstykkelse.getAfhaengigheder());
-
+		
+		this.normalspaending.nulstil();
+		tilstande.addAll(normalspaending.getAfhaengigheder());
+		
+		this.forskydningspunkt.nulstil();
+		tilstande.addAll(forskydningspunkt.getAfhaengigheder());
+		
+		this.inertimoment.nulstil();
+		tilstande.addAll(inertimoment.getAfhaengigheder());
+		
+		this.referencespaending.nulstil();
+		tilstande.addAll(referencespaending.getAfhaengigheder());
+		
 		notifyObservers(tilstande);
 	}
 
