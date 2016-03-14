@@ -104,4 +104,8 @@ public interface PTEController {
 	public double getIndtastAreal();
 	
 	public void setIndtastAreal(double indtastAreal);
+	
+	public double getFlydespaending();
+	
+	public void setFlydespaending(double flydespaending);
 }

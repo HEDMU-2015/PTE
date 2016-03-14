@@ -22,4 +22,5 @@ public interface LogicFactory {
 	public Areal createAreal(Bredde bredde, Diameter diameter, Godstykkelse godstykkelse, Hoejde hoejde, Form form);
 	public Form createForm();
 	public IndtastAreal createIndtastAreal();
+	public Flydespaending createFlydespaendning();
 }

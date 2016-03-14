@@ -108,4 +108,9 @@ public class LogicFactoryImpl implements LogicFactory {
 	public IndtastAreal createIndtastAreal() {
 		return new IndtastArealImpl();
 	}
+
+	@Override
+	public Flydespaending createFlydespaendning() {
+		return new FlydespaendingImpl();
+	}
 }

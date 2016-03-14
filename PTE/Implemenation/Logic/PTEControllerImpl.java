@@ -31,6 +31,7 @@ public class PTEControllerImpl implements PTEController {
 	private Godstykkelse godstykkelse;
 	private Form form;
 	private IndtastAreal indtastAreal;
+	private Flydespaending flydeSpaending;
 
 	public PTEControllerImpl(LogicFactory logicFactory) {
 		vinkel = logicFactory.createVinkel();
@@ -38,6 +39,7 @@ public class PTEControllerImpl implements PTEController {
 		vinkel.setLaengdeRetning(LaengdeRetning.VINKELRET_TIL_FT);
 		form = logicFactory.createForm();
 		form.setProfilType(ProfilType.CIRKEL);
+		flydeSpaending = logicFactory.createFlydespaendning();
 		vaegt = logicFactory.createVaegt();
 		tyngdekraft = logicFactory.craeteTyngdeKraft();
 		dimensionerendeKraft = logicFactory.craeteDimensionerendeKraft(vaegt, tyngdekraft);
@@ -424,6 +426,16 @@ public class PTEControllerImpl implements PTEController {
 	public void setIndtastAreal(double indtastAreal) {
 		this.indtastAreal.setIndtastAreal(indtastAreal);
 		notifyObservers(this.indtastAreal.getAfhaengigheder());
+	}
+
+	@Override
+	public double getFlydespaending() {
+		return this.flydeSpaending.getFlydespaending();
+	}
+
+	@Override
+	public void setFlydespaending(double flydespaending) {
+		this.flydeSpaending.setFlydespaending(flydespaending);
 	}
 
 }
