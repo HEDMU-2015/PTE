@@ -1,5 +1,7 @@
 package Logic;
 
+import Exceptions.LaengdeException;
+
 public class DiameterImpl extends PTEEntityImpl implements Diameter {
 	
 	private double diameter = Double.NaN;

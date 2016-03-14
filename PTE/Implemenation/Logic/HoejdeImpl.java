@@ -1,5 +1,7 @@
 package Logic;
 
+import Exceptions.LaengdeException;
+
 public class HoejdeImpl extends PTEEntityImpl implements Hoejde {
 
 	private double hoejde = Double.NaN;

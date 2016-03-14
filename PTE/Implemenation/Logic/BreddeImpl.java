@@ -1,5 +1,7 @@
 package Logic;
 
+import Exceptions.LaengdeException;
+
 public class BreddeImpl extends PTEEntityImpl implements Bredde {
 
 	private double bredde = Double.NaN;

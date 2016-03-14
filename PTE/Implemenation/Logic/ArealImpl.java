@@ -9,18 +9,20 @@ public class ArealImpl extends PTEEntityImpl implements Areal {
 	private Godstykkelse godstykkelse;
 	private Hoejde hoejde;
 
-	public ArealImpl(Bredde bredde, Diameter diameter, Godstykkelse godstykkelse, Hoejde hoejde){
-//		if (bredde == null || diameter == null || godstykkelse == null || hoejde == null) {
-//			throw new IllegalArgumentException();
-//		}
-//		this.bredde = bredde;
-//		this.bredde.tilfoejAfhaengigEntitet(this);
-//		this.diameter = diameter;
-//		this.diameter.tilfoejAfhaengigEntitet(this);
-//		this.godstykkelse = godstykkelse;
-//		this.godstykkelse.tilfoejAfhaengigEntitet(this);
-//		this.hoejde = hoejde;
-//		this.hoejde.tilfoejAfhaengigEntitet(this);
+	public ArealImpl(Bredde bredde, Diameter diameter, Godstykkelse godstykkelse, Hoejde hoejde, Form form){
+		if (bredde == null || diameter == null || godstykkelse == null || hoejde == null || form == null) {
+			throw new IllegalArgumentException();
+		}
+		this.bredde = bredde;
+		this.bredde.tilfoejAfhaengigEntitet(this);
+		this.diameter = diameter;
+		this.diameter.tilfoejAfhaengigEntitet(this);
+		this.godstykkelse = godstykkelse;
+		this.godstykkelse.tilfoejAfhaengigEntitet(this);
+		this.hoejde = hoejde;
+		this.hoejde.tilfoejAfhaengigEntitet(this);
+		this.form = form;
+		this.form.tilfoejAfhaengigEntitet(this);
 	}
 
 	@Override
@@ -31,6 +33,10 @@ public class ArealImpl extends PTEEntityImpl implements Areal {
 	double getAreal(double bredde, double diameter, double godstykkelse, double hoejde) {
 		if (!Double.isNaN(areal)) {
 			return areal;
+		}
+		
+		if(bredde == Double.NaN || diameter == Double.NaN || godstykkelse == Double.NaN || hoejde == Double.NaN){
+			return Double.NaN;
 		}
 
 		if (this.form.getProfilType() == ProfilType.CIRKEL) {

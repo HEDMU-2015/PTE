@@ -95,7 +95,12 @@ public class LogicFactoryImpl implements LogicFactory {
 	}
 
 	@Override
-	public Areal createAreal(Bredde bredde, Diameter diameter, Godstykkelse godstykkelse, Hoejde hoejde) {
-		return new ArealImpl(bredde, diameter, godstykkelse, hoejde);
+	public Areal createAreal(Bredde bredde, Diameter diameter, Godstykkelse godstykkelse, Hoejde hoejde, Form form) {
+		return new ArealImpl(bredde, diameter, godstykkelse, hoejde, form);
+	}
+
+	@Override
+	public Form createForm() {
+		return new FormImpl();
 	}
 }

@@ -35,12 +35,18 @@ public class PTEControllerImpl implements PTEController {
 		vinkel = logicFactory.createVinkel();
 		vinkel.setProfil(Profil.UDEFINERET);
 		vinkel.setLaengdeRetning(LaengdeRetning.VINKELRET_TIL_FT);
+		form = logicFactory.createForm();
+		form.setProfilType(ProfilType.CIRKEL);
 		vaegt = logicFactory.createVaegt();
 		tyngdekraft = logicFactory.craeteTyngdeKraft();
 		dimensionerendeKraft = logicFactory.craeteDimensionerendeKraft(vaegt, tyngdekraft);
 		normalkraft = logicFactory.createNormalKraft(dimensionerendeKraft, vinkel);
 		forskydningskraft = logicFactory.createForskydningskraft(vinkel, dimensionerendeKraft);
-		areal = logicFactory.createAreal(bredde, diameter, godstykkelse, hoejde);
+		bredde = logicFactory.createBredde();
+		diameter = logicFactory.createDiameter();
+		godstykkelse = logicFactory.createGodstykkelse();
+		hoejde = logicFactory.createHoejde();
+		areal = logicFactory.createAreal(bredde, diameter, godstykkelse, hoejde, form);
 		forskydningsspaending = logicFactory.createTau_ForskydningsSpaending(areal, forskydningskraft);	
 		laengde = logicFactory.createLaengde();
 		boejningsmoment = logicFactory.createBoejningsMoment(vinkel, laengde, dimensionerendeKraft, forskydningskraft);
@@ -49,10 +55,6 @@ public class PTEControllerImpl implements PTEController {
 		inertimoment = logicFactory.createInertimoment();
 		boejningsspaending = logicFactory.createSigmaB(boejningsmoment, forskydningspunkt, inertimoment);
 		referencespaending = logicFactory.createSigmaRef(boejningsspaending, normalspaending, forskydningsspaending);
-		bredde = logicFactory.createBredde();
-		diameter = logicFactory.createDiameter();
-		godstykkelse = logicFactory.createGodstykkelse();
-		hoejde = logicFactory.createHoejde();
 		
 		observers = new ArrayList<Logic.Observer>();
 	}

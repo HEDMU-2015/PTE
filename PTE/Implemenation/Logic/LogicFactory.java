@@ -19,5 +19,6 @@ public interface LogicFactory {
 	public Diameter createDiameter();
 	public Godstykkelse createGodstykkelse();
 	public Hoejde createHoejde();
-	public Areal createAreal(Bredde bredde, Diameter diameter, Godstykkelse godstykkelse, Hoejde hoejde);
+	public Areal createAreal(Bredde bredde, Diameter diameter, Godstykkelse godstykkelse, Hoejde hoejde, Form form);
+	public Form createForm();
 }

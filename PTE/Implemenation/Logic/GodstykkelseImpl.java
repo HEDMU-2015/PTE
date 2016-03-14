@@ -1,5 +1,7 @@
 package Logic;
 
+import Exceptions.LaengdeException;
+
 public class GodstykkelseImpl extends PTEEntityImpl implements Godstykkelse{
 
 	private double godstykkelse = Double.NaN;
