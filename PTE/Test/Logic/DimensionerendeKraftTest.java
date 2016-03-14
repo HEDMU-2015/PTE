@@ -12,36 +12,36 @@ import Exceptions.VaegtException;
 
 public class DimensionerendeKraftTest {
 
-	VinkelImpl vi;
-	VaegtImpl v;
-	TyngdekraftImpl t;
-	DimensionerendeKraftImpl dk;
+	VinkelImpl vinkel;
+	VaegtImpl vaegt;
+	TyngdekraftImpl tyngdekraft;
+	DimensionerendeKraftImpl dimensioneredeKraft;
 
 	@Before
 	public void setUp() throws Exception {
 
-		v = new VaegtImpl();
-		t = new TyngdekraftImpl();
-		vi = new VinkelImpl();
-		dk = new DimensionerendeKraftImpl(v, t);
+		vaegt = new VaegtImpl();
+		tyngdekraft = new TyngdekraftImpl();
+		vinkel = new VinkelImpl();
+		dimensioneredeKraft = new DimensionerendeKraftImpl(vaegt, tyngdekraft);
 
 	}
 
 	@Test
 	public void getDimensionerendeKraftNulstilTest(){
-		dk.setDimensionerendeKraft(5);
-		dk.nulstil();
-		assertEquals(Double.NaN, dk.getDimensionerendeKraft(), 0.001);
+		dimensioneredeKraft.setDimensionerendeKraft(5);
+		dimensioneredeKraft.nulstil();
+		assertEquals(Double.NaN, dimensioneredeKraft.getDimensionerendeKraft(), 0.001);
 
 	}
 
 	@Test
 	public void GetDimensionerendeKraftNegativVaegtTest() {
-		v.setVaegt(-5);
-		t.setTyngdekraft(9.816);
+		vaegt.setVaegt(-5);
+		tyngdekraft.setTyngdekraft(9.816);
 
 		try {
-			dk.getDimensionerendeKraft();
+			dimensioneredeKraft.getDimensionerendeKraft();
 			fail("Exception bliver ikke kastet.");
 
 		} catch (DimensionerendeKraftException e) {
@@ -53,11 +53,11 @@ public class DimensionerendeKraftTest {
 
 	@Test
 	public void GetDimensionerendeKraftNulVaegtTest() {
-		v.setVaegt(0);
-		t.setTyngdekraft(9.816);
+		vaegt.setVaegt(0);
+		tyngdekraft.setTyngdekraft(9.816);
 		
 		try {
-			dk.getDimensionerendeKraft();
+			dimensioneredeKraft.getDimensionerendeKraft();
 			fail("Exception bliver ikke kastet.");
 
 		} catch (DimensionerendeKraftException e) {
@@ -69,11 +69,11 @@ public class DimensionerendeKraftTest {
 
 	@Test
 	public void GetDimensionerendeKraftNulTyngdekraftTest() {
-		v.setVaegt(5);
-		t.setTyngdekraft(0);
+		vaegt.setVaegt(5);
+		tyngdekraft.setTyngdekraft(0);
 
 		try {
-			dk.getDimensionerendeKraft();
+			dimensioneredeKraft.getDimensionerendeKraft();
 			fail("Exception bliver ikke kastet.");
 
 		} catch (DimensionerendeKraftException e) {
@@ -85,34 +85,34 @@ public class DimensionerendeKraftTest {
 
 	@Test
 	public void GetDimensionerendeKraftEnsVaegtOgTyngdeKraftTest() {
-		v.setVaegt(5);
-		t.setTyngdekraft(5);
-		assertEquals(25, dk.getDimensionerendeKraft(), 0.001);
+		vaegt.setVaegt(5);
+		tyngdekraft.setTyngdekraft(5);
+		assertEquals(25, dimensioneredeKraft.getDimensionerendeKraft(), 0.001);
 
 	}
 
 	@Test
 	public void GetDimensionerendeKraftAfrundTest() {
-		v.setVaegt(3.03456);
-		t.setTyngdekraft(10);
-		assertEquals(30.346, dk.getDimensionerendeKraft(), 0.001);
+		vaegt.setVaegt(3.03456);
+		tyngdekraft.setTyngdekraft(10);
+		assertEquals(30.346, dimensioneredeKraft.getDimensionerendeKraft(), 0.001);
 	}
 
 	@Test
 	public void GetDimensionerendeKraftTyngdekraftNaNTest() {
-		v.setVaegt(5);
-		t.setTyngdekraft(5);
-		t.setTyngdekraft(Double.NaN);
-		assertEquals(Double.NaN, dk.getDimensionerendeKraft(), 0.001);
+		vaegt.setVaegt(5);
+		tyngdekraft.setTyngdekraft(5);
+		tyngdekraft.setTyngdekraft(Double.NaN);
+		assertEquals(Double.NaN, dimensioneredeKraft.getDimensionerendeKraft(), 0.001);
 
 	}
 
 	@Test
 	public void GetDimensionerendeKraftVaegtNaNTest() {
-		v.setVaegt(5);
-		v.setVaegt(Double.NaN);
-		t.setTyngdekraft(5);
-		assertEquals(Double.NaN, dk.getDimensionerendeKraft(), 0.001);
+		vaegt.setVaegt(5);
+		vaegt.setVaegt(Double.NaN);
+		tyngdekraft.setTyngdekraft(5);
+		assertEquals(Double.NaN, dimensioneredeKraft.getDimensionerendeKraft(), 0.001);
 
 	}
 }

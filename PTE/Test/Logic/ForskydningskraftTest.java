@@ -16,64 +16,51 @@ import Exceptions.VinkelException;
 
 public class ForskydningskraftTest {
 
-	VaegtImpl v;
-	VinkelImpl vi;
-	Tyngdekraft t;
-	DimensionerendeKraftImpl dk;
-	ForskydningskraftImpl ft;
+	VaegtImpl vaegt;
+	VinkelImpl vinkel;
+	Tyngdekraft tyngdekraft;
+	DimensionerendeKraftImpl dimensioneredeKraft;
+	ForskydningskraftImpl forskydningskraft;
 
 	@Before
 	public void setUp() {
-		v = new VaegtImpl();
-		vi = new VinkelImpl();
-		t = new TyngdekraftImpl();
-		dk = new DimensionerendeKraftImpl(v, t);
-		ft = new ForskydningskraftImpl(vi, dk);
+		vaegt = new VaegtImpl();
+		vinkel = new VinkelImpl();
+		tyngdekraft = new TyngdekraftImpl();
+		dimensioneredeKraft = new DimensionerendeKraftImpl(vaegt, tyngdekraft);
+		forskydningskraft = new ForskydningskraftImpl(vinkel, dimensioneredeKraft);
 
 	}
 
 	@Test
 	public void getForskydningskraftNulstilTest() throws UdefineretProfilException {
-		vi.setProfil(Profil.VANDRET);
-		ft.setForskydningskraft(5);
-		ft.nulstil();
-		assertEquals(Double.NaN, ft.getForskydningskraft(), 0.001);
+		vinkel.setProfil(Profil.VANDRET);
+		forskydningskraft.setForskydningskraft(5);
+		forskydningskraft.nulstil();
+		assertEquals(Double.NaN, forskydningskraft.getForskydningskraft(), 0.001);
 	}
 
-	@Test
-	public void getForskydningskraftNegativVinkelTest() throws UdefineretProfilException {
-		vi.setProfil(Profil.VANDRET);
-		vi.setVinkel(-5);
-		dk.setDimensionerendeKraft(10);
-		try {
-			ft.getForskydningskraft();
-			fail("Exception bliver ikke kastet.");
-
-		} catch (ForskydningskraftException e) {
-			// success
-		} catch (VinkelException e) {
-			// success
-		}
-	}
+	
+	
 
 	@Test
 	public void getForskydningskraftNulVinkelTest() throws UdefineretProfilException {
-		v.setVaegt(10);
-		t.setTyngdekraft(10);
-		vi.setProfil(Profil.LODRET);
-		vi.setVinkel(0);
-		assertEquals(0, ft.getForskydningskraft(), 0.001);
+		vaegt.setVaegt(10);
+		tyngdekraft.setTyngdekraft(10);
+		vinkel.setProfil(Profil.LODRET);
+		vinkel.setVinkel(0);
+		assertEquals(0, forskydningskraft.getForskydningskraft(), 0.001);
 	}
 
 	@Test
 	public void getForskydningskraftNulTest() throws UdefineretProfilException {
-		v.setVaegt(0);
-		t.setTyngdekraft(10);
-		vi.setProfil(Profil.VANDRET);
-		vi.setVinkel(5);
+		vaegt.setVaegt(0);
+		tyngdekraft.setTyngdekraft(10);
+		vinkel.setProfil(Profil.VANDRET);
+		vinkel.setVinkel(5);
 
 		try {
-			ft.getForskydningskraft();
+			forskydningskraft.getForskydningskraft();
 			fail("Exception bliver ikke kastet.");
 
 		} catch (ForskydningskraftException e) {
@@ -85,65 +72,35 @@ public class ForskydningskraftTest {
 
 	@Test
 	public void getForskydningskraftNormalTest() throws UdefineretProfilException {
-		v.setVaegt(2);
-		t.setTyngdekraft(5);
-		vi.setProfil(Profil.VANDRET);
-		vi.setVinkel(5);
+		vaegt.setVaegt(2);
+		tyngdekraft.setTyngdekraft(5);
+		vinkel.setProfil(Profil.VANDRET);
+		vinkel.setVinkel(5);
 
-		assertEquals(9.962, ft.getForskydningskraft(), 0.001);
+		assertEquals(9.962, forskydningskraft.getForskydningskraft(), 0.001);
 	}
 
 	@Test
 	public void getForskydningskraftAfrundTest() throws UdefineretProfilException {
-		v.setVaegt(2);
-		t.setTyngdekraft(5);
-		vi.setProfil(Profil.LODRET);
-		vi.setVinkel(3.03456);
+		vaegt.setVaegt(2);
+		tyngdekraft.setTyngdekraft(5);
+		vinkel.setProfil(Profil.LODRET);
+		vinkel.setVinkel(3.03456);
 
-		assertEquals(0.529, ft.getForskydningskraft(), 0.001);
+		assertEquals(0.529, forskydningskraft.getForskydningskraft(), 0.001);
 	}
 
-	@Test
-	public void getForskydningskraftVinkelOverHalvFemsTest() throws UdefineretProfilException {
-		v.setVaegt(2);
-		t.setTyngdekraft(5);
-		vi.setProfil(Profil.VANDRET);
-		vi.setVinkel(91);
-
-		try {
-			ft.getForskydningskraft();
-			fail("Exception bliver ikke kastet.");
-
-		} catch (ForskydningskraftException e) {
-			// success
-		} catch (VinkelException e) {
-
-		}
-	}
+	
+	
 
 	@Test
 	public void getForskydningskraftVinkelDoubleNanTest() throws UdefineretProfilException {
-		v.setVaegt(Double.NaN);
-		t.setTyngdekraft(5);
-		vi.setProfil(Profil.VANDRET);
-		vi.setVinkel(5);
+		vaegt.setVaegt(Double.NaN);
+		tyngdekraft.setTyngdekraft(5);
+		vinkel.setProfil(Profil.VANDRET);
+		vinkel.setVinkel(5);
 
-		try {
-			ft.getForskydningskraft();
-			fail("ForskydningskraftException bliver ikke kastet.");
-
-		} catch (ForskydningskraftException e) {
-			// success
-		} catch (VinkelException e) {
-
-		} catch (DimensionerendeKraftException e) {
-
-		} catch (NormalkraftException e) {
-
-		} catch (TyngdekraftException e) {
-
-		} catch (VaegtException e) {
-
-		}
+		assertEquals(Double.NaN, forskydningskraft.getForskydningskraft(), 0.001);
+			
 	}
 }

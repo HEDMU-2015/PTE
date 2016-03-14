@@ -9,26 +9,26 @@ import Exceptions.VinkelException;
 
 public class VinkelTest {
 
-	Vinkel v;
+	Vinkel vinkel;
 
 	@Before
 	public void setUp() throws Exception {
 
-		v = new VinkelImpl();
+		vinkel = new VinkelImpl();
 	}
 
 	@Test
 	public void setVinkelNulstilTest() {
-		v.setVinkel(5);
-		v.nulstil();
-		assertEquals(Double.NaN, v.getVinkel(), 0.001);
+		vinkel.setVinkel(5);
+		vinkel.nulstil();
+		assertEquals(Double.NaN, vinkel.getVinkel(), 0.001);
 
 	}
 
 	@Test
 	public void setVinkelNegativTest() {
 		try {
-			v.setVinkel(-60);
+			vinkel.setVinkel(-60);
 			fail("Vinklen er negativ");
 		} catch (VinkelException e) {
 			// Success
@@ -38,22 +38,22 @@ public class VinkelTest {
 
 	@Test
 	public void setVinkelNormalTest() {
-		v.setVinkel(60);
-		assertEquals(60, v.getVinkel(), 0.001);
+		vinkel.setVinkel(60);
+		assertEquals(60, vinkel.getVinkel(), 0.001);
 
 	}
 
 	@Test
 	public void setVinkelRetTest() {
-		v.setVinkel(90);
-		assertEquals(90, v.getVinkel(), 0.001);
+		vinkel.setVinkel(90);
+		assertEquals(90, vinkel.getVinkel(), 0.001);
 
 	}
 
 	@Test
 	public void setVinkelOverRetTest() {
 		try {
-			v.setVinkel(100);
+			vinkel.setVinkel(100);
 			fail("Vinklen overstiger 90 grader");
 		} catch (VinkelException e) {
 			// Success
@@ -63,15 +63,15 @@ public class VinkelTest {
 
 	@Test
 	public void setVinkelKommaTest() {
-		v.setVinkel(55.37831);
-		assertEquals(55.378, v.getVinkel(), 0.001);
+		vinkel.setVinkel(55.37831);
+		assertEquals(55.378, vinkel.getVinkel(), 0.001);
 
 	}
 
 	@Test
 	public void setVinkelNulTest() {
-		v.setVinkel(0);
-		assertEquals(0, v.getVinkel(), 0.001);
+		vinkel.setVinkel(0);
+		assertEquals(0, vinkel.getVinkel(), 0.001);
 
 	}
 }

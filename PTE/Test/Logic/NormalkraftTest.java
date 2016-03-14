@@ -14,64 +14,50 @@ import Exceptions.VaegtException;
 import Exceptions.VinkelException;
 
 public class NormalkraftTest{
-	VaegtImpl v;
-	VinkelImpl vi;
-	Tyngdekraft t;
-	DimensionerendeKraftImpl dk;
-	NormalkraftImpl fn;
+	VaegtImpl vaegt;
+	VinkelImpl vinkel;
+	Tyngdekraft tyngdekraft;
+	DimensionerendeKraftImpl dimensionerendeKraft;
+	NormalkraftImpl normalkraft;
 
 	@Before
 	public void setUp() {
-		v = new VaegtImpl();
-		t = new TyngdekraftImpl();		
-		vi = new VinkelImpl();
-		dk = new DimensionerendeKraftImpl(v, t);
-		fn = new NormalkraftImpl(dk, vi);
+		vaegt = new VaegtImpl();
+		tyngdekraft = new TyngdekraftImpl();		
+		vinkel = new VinkelImpl();
+		dimensionerendeKraft = new DimensionerendeKraftImpl(vaegt, tyngdekraft);
+		normalkraft = new NormalkraftImpl(dimensionerendeKraft, vinkel);
 
 	}
 
 	@Test
 	public void getNormalkraftNulstilTest() throws UdefineretProfilException {
-		vi.setProfil(Profil.VANDRET);
-		fn.setNormalkraft(5);
-		fn.nulstil();
-		assertEquals(Double.NaN, fn.getNormalkraft(), 0.001);
+		vinkel.setProfil(Profil.VANDRET);
+		normalkraft.setNormalkraft(5);
+		normalkraft.nulstil();
+		assertEquals(Double.NaN, normalkraft.getNormalkraft(), 0.001);
 	}
 
-	@Test
-	public void getNormalkraftNegativVinkelTest() throws UdefineretProfilException {
-		vi.setProfil(Profil.VANDRET);
-		vi.setVinkel(-5);
-		dk.setDimensionerendeKraft(10);
-		try {
-			fn.getNormalkraft();
-			fail("Exception bliver ikke kastet.");
-
-		} catch (NormalkraftException e) {
-			// success
-		} catch (VinkelException e) {
-			// success
-		}
-	}
+	
 
 	@Test
 	public void getNormalkraftNulVinkelTest() throws UdefineretProfilException {
-		v.setVaegt(10);
-		t.setTyngdekraft(10);
-		vi.setProfil(Profil.LODRET);
-		vi.setVinkel(0);
-		assertEquals(100, fn.getNormalkraft(), 0.001);
+		vaegt.setVaegt(10);
+		tyngdekraft.setTyngdekraft(10);
+		vinkel.setProfil(Profil.LODRET);
+		vinkel.setVinkel(0);
+		assertEquals(100, normalkraft.getNormalkraft(), 0.001);
 	}
 
 	@Test
 	public void getNormalNulTest() throws UdefineretProfilException {
-		v.setVaegt(0);
-		t.setTyngdekraft(10);
-		vi.setProfil(Profil.VANDRET);
-		vi.setVinkel(5);
+		vaegt.setVaegt(0);
+		tyngdekraft.setTyngdekraft(10);
+		vinkel.setProfil(Profil.VANDRET);
+		vinkel.setVinkel(5);
 
 		try {
-			fn.getNormalkraft();
+			normalkraft.getNormalkraft();
 			fail("Exception bliver ikke kastet.");
 
 		} catch (NormalkraftException e) {
@@ -83,63 +69,33 @@ public class NormalkraftTest{
 
 	@Test
 	public void getNormalkraftNormalTest() throws UdefineretProfilException {
-		v.setVaegt(2);
-		t.setTyngdekraft(5);
-		vi.setProfil(Profil.VANDRET);
-		vi.setVinkel(5);
+		vaegt.setVaegt(2);
+		tyngdekraft.setTyngdekraft(5);
+		vinkel.setProfil(Profil.VANDRET);
+		vinkel.setVinkel(5);
 
-		assertEquals(0.872, fn.getNormalkraft(), 0.001);
+		assertEquals(0.872, normalkraft.getNormalkraft(), 0.001);
 	}
 
 	@Test
 	public void getNormalkraftAfrundTest() throws UdefineretProfilException {
-		v.setVaegt(2);
-		t.setTyngdekraft(5);
-		vi.setProfil(Profil.LODRET);
-		vi.setVinkel(3.03456);
+		vaegt.setVaegt(2);
+		tyngdekraft.setTyngdekraft(5);
+		vinkel.setProfil(Profil.LODRET);
+		vinkel.setVinkel(3.03456);
 
-		assertEquals(9.986, fn.getNormalkraft(), 0.001);
+		assertEquals(9.986, normalkraft.getNormalkraft(), 0.001);
 	}
 
-	@Test
-	public void getNormalkraftVinkelOverHalvFemsTest() throws UdefineretProfilException {
-		v.setVaegt(2);
-		t.setTyngdekraft(5);
-		vi.setProfil(Profil.VANDRET);
-		vi.setVinkel(91);
-
-		try {
-			fn.getNormalkraft();
-			fail("Exception bliver ikke kastet.");
-
-		} catch (NormalkraftException e) {
-			// success
-		} catch (VinkelException e) {
-
-		}
-	}
+	
 
 	@Test
 	public void getNormalkraftVinkelDoubleNanTest() throws UdefineretProfilException {
-		v.setVaegt(Double.NaN);
-		t.setTyngdekraft(5);
-		vi.setProfil(Profil.VANDRET);
-		vi.setVinkel(5);
-
-		try {
-			fn.getNormalkraft();
-			fail("NormalkraftException bliver ikke kastet.");
-
-		} catch (NormalkraftException e) {
-			// success
-		} catch (VinkelException e) {
-
-		} catch (DimensionerendeKraftException e) {
-
-		} catch (TyngdekraftException e) {
-
-		} catch (VaegtException e) {
-
-		}
+		vaegt.setVaegt(5);
+		vaegt.setVaegt(Double.NaN);
+		tyngdekraft.setTyngdekraft(5);
+		vinkel.setProfil(Profil.VANDRET);
+		vinkel.setVinkel(5);
+		assertEquals(Double.NaN, normalkraft.getNormalkraft(), 0.001);
 	}
 }

@@ -10,27 +10,27 @@ import Exceptions.VaegtException;
 
 public class TyngdekraftTest {
 
-	TyngdekraftImpl t;
+	TyngdekraftImpl tyngdekraft;
 	
 	@Before
 	public void setUp() throws Exception {
-		t = new TyngdekraftImpl();
+		tyngdekraft = new TyngdekraftImpl();
 	}
 
 	@Test
 	public void setTyngdekraftNulstill() {
 
-		t.setTyngdekraft(9.816);
+		tyngdekraft.setTyngdekraft(9.816);
 		
-		assertEquals(9.816, t.getTyngdekraft(), 0.001);
+		assertEquals(9.816, tyngdekraft.getTyngdekraft(), 0.001);
 	}
 
 	@Test
 	public void setTyngdekraftNegativ() {
-		t.setTyngdekraft(-5);
+		tyngdekraft.setTyngdekraft(-5);
 
 		try {
-			t.getTyngdekraft();
+			tyngdekraft.getTyngdekraft();
 			fail("Exception bliver ikke kastet.");
 			
 		} catch (TyngdekraftException e) {
@@ -41,10 +41,10 @@ public class TyngdekraftTest {
 
 	@Test
 	public void setTyngdekraftNul() {
-		t.setTyngdekraft(0);
+		tyngdekraft.setTyngdekraft(0);
 
 		try {
-			t.getTyngdekraft(); 
+			tyngdekraft.getTyngdekraft(); 
 			fail("Exception bliver ikke kastet.");
 			
 		} catch (TyngdekraftException e) {
@@ -55,14 +55,14 @@ public class TyngdekraftTest {
 	@Test
 	public void setTyngdekraftAfrunding() {
 		
-		t.setTyngdekraft(3.03456);
-		assertEquals(3.035, t.getTyngdekraft(), 0.001);
+		tyngdekraft.setTyngdekraft(3.03456);
+		assertEquals(3.035, tyngdekraft.getTyngdekraft(), 0.001);
 	}
 
 	@Test
 	public void setTyngdekraftDecimaltal() {
-		t.setTyngdekraft(0.001);
-		assertEquals(0.001, t.getTyngdekraft(), 0.001);
+		tyngdekraft.setTyngdekraft(0.001);
+		assertEquals(0.001, tyngdekraft.getTyngdekraft(), 0.001);
 	}
 
 }

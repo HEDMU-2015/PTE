@@ -10,26 +10,26 @@ import Exceptions.LaengdeException;
 
 public class ArealTest {
 
-	Areal a;
+	Areal areal;
 
 	@Before
 	public void setUp() throws Exception {
-		a = new ArealImpl();
+		areal = new ArealImpl();
 
 	}
 
 	@Test
 	public void getArealNulstilTest() {
-		a.setAreal(5);
-		a.nulstil();
-		assertEquals(Double.NaN, a.getAreal(), 0.001);
+		areal.setAreal(5);
+		areal.nulstil();
+		assertEquals(Double.NaN, areal.getAreal(), 0.001);
 	}
 
 	@Test
 	public void getArealNegativTest() {
-		a.setAreal(-60);
+		areal.setAreal(-60);
 		try {
-			a.getAreal();
+			areal.getAreal();
 			fail("Negativ areal");
 		} catch (ArealException e) {
 			// Success
@@ -39,22 +39,22 @@ public class ArealTest {
 
 	@Test
 	public void getArealNormalTest() {
-		a.setAreal(205);
-		assertEquals(205, a.getAreal(), 0.001);
+		areal.setAreal(205);
+		assertEquals(205, areal.getAreal(), 0.001);
 	}
 
 	@Test
 	public void setLaengdeKommaTest() {
-		a.setAreal(55.3779);
-		assertEquals(55.378, a.getAreal(), 0.001);
+		areal.setAreal(55.3779);
+		assertEquals(55.378, areal.getAreal(), 0.001);
 
 	}
 
 	@Test
 	public void getArealNulTest() {
-		a.setAreal(0);
+		areal.setAreal(0);
 		try {
-			a.getAreal();
+			areal.getAreal();
 			fail("Nul Areal");
 		} catch (ArealException e) {
 			// Success

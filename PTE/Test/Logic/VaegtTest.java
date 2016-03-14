@@ -9,28 +9,28 @@ import Exceptions.VaegtException;
 
 public class VaegtTest {
 
-	VaegtImpl v;
+	VaegtImpl vaegt;
 
 	@Before
 	public void setUp() throws Exception {
-		v = new VaegtImpl();
+		vaegt = new VaegtImpl();
 
 	}
 
 	@Test
 	public void setVaegtNulstil() {
 
-		v.setVaegt(5);
-		v.nulstil();
-		assertEquals(Double.NaN, v.getVaegt(), 0.001);
+		vaegt.setVaegt(5);
+		vaegt.nulstil();
+		assertEquals(Double.NaN, vaegt.getVaegt(), 0.001);
 	}
 
 	@Test
 	public void setVaegtNegativ() {
-		v.setVaegt(-5);
+		vaegt.setVaegt(-5);
 
 		try {
-			v.getVaegt();
+			vaegt.getVaegt();
 			fail("Exception bliver ikke kastet.");
 			
 		} catch (VaegtException e) {
@@ -41,10 +41,10 @@ public class VaegtTest {
 
 	@Test
 	public void setVaegtNul() {
-		v.setVaegt(0);
+		vaegt.setVaegt(0);
 
 		try {
-			v.getVaegt(); 
+			vaegt.getVaegt(); 
 			fail("Exception bliver ikke kastet.");
 			
 		} catch (VaegtException e) {
@@ -55,13 +55,13 @@ public class VaegtTest {
 	@Test
 	public void setVaegtAfrunding() {
 		
-		v.setVaegt(3.03456);
-		assertEquals(3.035, v.getVaegt(), 0.001);
+		vaegt.setVaegt(3.03456);
+		assertEquals(3.035, vaegt.getVaegt(), 0.001);
 	}
 
 	@Test
 	public void setVaegtDecimaltal() {
-		v.setVaegt(0.001);
-		assertEquals(0.001, v.getVaegt(), 0.001);
+		vaegt.setVaegt(0.001);
+		assertEquals(0.001, vaegt.getVaegt(), 0.001);
 	}
 }

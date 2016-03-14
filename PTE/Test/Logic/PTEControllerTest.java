@@ -8,9 +8,9 @@ public class PTEControllerTest {
 
 	@Test
 	public void test() {
-		PTEController pte = new PTEControllerImpl(new LogicFactoryImpl());
-		pte.setVinkel(50);
-		assertEquals(50, pte.getVinkel(), 0.001);
+		PTEController pteController = new PTEControllerImpl(new LogicFactoryImpl());
+		pteController.setVinkel(50);
+		assertEquals(50, pteController.getVinkel(), 0.001);
 	}
 
 }

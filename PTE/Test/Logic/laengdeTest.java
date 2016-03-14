@@ -10,26 +10,27 @@ import Exceptions.VinkelException;
 
 public class laengdeTest {
 
-	Laengde l;
-	
+	Laengde laengde;
+
 	@Before
 	public void setUp() throws Exception {
-	
-		l = new LaengdeImpl();
-		
+
+		laengde = new LaengdeImpl();
+
 	}
 
 	@Test
 	public void laengdetest() {
-		l.setLaengde(5);
-		l.nulstil();
-		assertEquals(Double.NaN, l.getLaengde(), 0.001);
+		laengde.setLaengde(5);
+		laengde.nulstil();
+		assertEquals(Double.NaN, laengde.getLaengde(), 0.001);
 	}
+
 	@Test
 	public void setLaengdeNegativTest() {
-		l.setLaengde(-60);
+		laengde.setLaengde(-60);
 		try {
-			l.getLaengde();
+			laengde.getLaengde();
 			fail("Negativ Længde");
 		} catch (LaengdeException e) {
 			// Success
@@ -39,33 +40,21 @@ public class laengdeTest {
 
 	@Test
 	public void setLaengde2NormalTest() {
-		l.setLaengde(60);
-		assertEquals(60, l.getLaengde(), 0.001);
+		laengde.setLaengde(60);
+		assertEquals(60, laengde.getLaengde(), 0.001);
 
 	}
 
 	@Test
 	public void setLaengdeNormalTest() {
-		l.setLaengde(205);
-		assertEquals(205, l.getLaengde(), 0.001);
+		laengde.setLaengde(205);
+		assertEquals(205, laengde.getLaengde(), 0.001);
 	}
+
 	@Test
 	public void setLaengdeKommaTest() {
-		l.setLaengde(55.3779);
-		assertEquals(55.378, l.getLaengde(), 0.001);
-
-	}
-
-	@Test
-	public void setLaengdeNulTest() {
-		l.setLaengde(0);
-		try {
-			l.getLaengde();
-			fail("Nul Længde");
-		} catch (LaengdeException e) {
-			// Success
-
-		}
+		laengde.setLaengde(55.3779);
+		assertEquals(55.378, laengde.getLaengde(), 0.001);
 
 	}
 
