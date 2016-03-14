@@ -100,4 +100,8 @@ public interface PTEController {
 	public ProfilType getProfilType();
 	
 	public void setProfilType(ProfilType profilType);
+	
+	public double getIndtastAreal();
+	
+	public void setIndtastAreal(double indtastAreal);
 }

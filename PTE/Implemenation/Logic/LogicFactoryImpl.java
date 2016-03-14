@@ -103,4 +103,9 @@ public class LogicFactoryImpl implements LogicFactory {
 	public Form createForm() {
 		return new FormImpl();
 	}
+
+	@Override
+	public IndtastAreal createIndtastAreal() {
+		return new IndtastArealImpl();
+	}
 }

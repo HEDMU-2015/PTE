@@ -30,6 +30,7 @@ public class PTEControllerImpl implements PTEController {
 	private Hoejde hoejde;
 	private Godstykkelse godstykkelse;
 	private Form form;
+	private IndtastAreal indtastAreal;
 
 	public PTEControllerImpl(LogicFactory logicFactory) {
 		vinkel = logicFactory.createVinkel();
@@ -55,7 +56,8 @@ public class PTEControllerImpl implements PTEController {
 		inertimoment = logicFactory.createInertimoment();
 		boejningsspaending = logicFactory.createSigmaB(boejningsmoment, forskydningspunkt, inertimoment);
 		referencespaending = logicFactory.createSigmaRef(boejningsspaending, normalspaending, forskydningsspaending);
-
+		indtastAreal = logicFactory.createIndtastAreal();
+		
 		observers = new ArrayList<Logic.Observer>();
 	}
 
@@ -399,6 +401,17 @@ public class PTEControllerImpl implements PTEController {
 	public void setAreal(double areal) {
 		this.areal.setAreal(areal);
 		notifyObservers(this.areal.getAfhaengigheder());
+	}
+
+	@Override
+	public double getIndtastAreal() {
+		return this.indtastAreal.getIndtastAreal();
+	}
+
+	@Override
+	public void setIndtastAreal(double indtastAreal) {
+		this.indtastAreal.setIndtastAreal(indtastAreal);
+		notifyObservers(this.indtastAreal.getAfhaengigheder());
 	}
 
 }
