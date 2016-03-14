@@ -43,7 +43,7 @@ public class ArealImpl extends PTEEntityImpl implements Areal {
 			return Math.PI * this.diameter.getDiameter();
 		} else if (this.form.getProfilType() == ProfilType.HULT_ROER) {
 			return this.diameter.getDiameter() * this.godstykkelse.getGodstykkelse();
-		} else if (this.form.getProfilType() == ProfilType.KVADRAT_ROER) {
+		} else if (this.form.getProfilType() == ProfilType.KVADRET_ROER) {
 			return this.hoejde.getHoejde() * this.bredde.getBredde()
 					- (this.hoejde.getHoejde() * (this.godstykkelse.getGodstykkelse() * 2)) * (this.bredde.getBredde()
 							* (2 * this.godstykkelse.getGodstykkelse()));
