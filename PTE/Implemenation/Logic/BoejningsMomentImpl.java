@@ -15,6 +15,7 @@ class BoejningsMomentImpl extends PTEEntityImpl implements BoejningsMoment {
 		if (v == null || l == null || dimensionerendeKraft == null || forskydningskraft == null) {
 			throw new IllegalArgumentException();
 		}
+		
 		this.v = v;
 		this.v.tilfoejAfhaengigEntitet(this);
 		this.l = l;
@@ -39,6 +40,9 @@ class BoejningsMomentImpl extends PTEEntityImpl implements BoejningsMoment {
 	}
 
 	double getBoejningsMoment(LaengdeRetning lr, double l, double dimensionerendeKraft, double forskydningskraft) {
+		if(Double.isNaN(boejningsMoment)) {
+			return boejningsMoment;
+		}
 		
 		if (lr == LaengdeRetning.VINKELRET_TIL_FDIM) {
 			return (l * dimensionerendeKraft);

@@ -237,7 +237,9 @@ public class PTEControllerImpl implements PTEController {
 
 	@Override
 	public double getBoejningsMoment() {
-		return this.boejningsmoment.getBoejningsMoment();
+		double boejningsMoment = Double.NaN;
+		boejningsMoment = this.boejningsmoment.getBoejningsMoment();
+		return boejningsMoment;
 	}
 
 	@Override
