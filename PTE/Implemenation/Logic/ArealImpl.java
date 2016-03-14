@@ -9,7 +9,7 @@ public class ArealImpl extends PTEEntityImpl implements Areal {
 	private Godstykkelse godstykkelse;
 	private Hoejde hoejde;
 
-	public ArealImpl(Bredde bredde, Diameter diameter, Godstykkelse godstykkelse, Hoejde hoejde, Form form){
+	public ArealImpl(Bredde bredde, Diameter diameter, Godstykkelse godstykkelse, Hoejde hoejde, Form form) {
 		if (bredde == null || diameter == null || godstykkelse == null || hoejde == null || form == null) {
 			throw new IllegalArgumentException();
 		}
@@ -34,17 +34,21 @@ public class ArealImpl extends PTEEntityImpl implements Areal {
 		if (!Double.isNaN(areal)) {
 			return areal;
 		}
-		
-		if(bredde == Double.NaN || diameter == Double.NaN || godstykkelse == Double.NaN || hoejde == Double.NaN){
+
+		if (bredde == Double.NaN || diameter == Double.NaN || godstykkelse == Double.NaN || hoejde == Double.NaN) {
 			return Double.NaN;
 		}
 
 		if (this.form.getProfilType() == ProfilType.CIRKEL) {
 			return Math.PI * this.diameter.getDiameter();
 		} else if (this.form.getProfilType() == ProfilType.HULT_ROER) {
-			return this.diameter.getDiameter() *  this.godstykkelse.getGodstykkelse();
+			return this.diameter.getDiameter() * this.godstykkelse.getGodstykkelse();
+		} else if (this.form.getProfilType() == ProfilType.KVADRAT_ROER) {
+			return this.hoejde.getHoejde() * this.bredde.getBredde()
+					- (this.hoejde.getHoejde() * (this.godstykkelse.getGodstykkelse() * 2)) * (this.bredde.getBredde()
+							* (2 * this.godstykkelse.getGodstykkelse()));
 		} else { // this.form.getProfilType() == ProfilType.KVADRAT
-			return  this.hoejde.getHoejde() *  this.bredde.getBredde();
+			return this.hoejde.getHoejde() * this.bredde.getBredde();
 		}
 	}
 
@@ -63,7 +67,7 @@ public class ArealImpl extends PTEEntityImpl implements Areal {
 		setAreal(Double.NaN);
 		nulstilBoern();
 	}
-	
+
 	private void nulstilBoern() {
 		bredde.nulstil();
 		diameter.nulstil();
