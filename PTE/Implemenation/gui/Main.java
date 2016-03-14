@@ -56,7 +56,7 @@ public class Main extends Application {
 			loaderUC1_UC2.setLocation(Main.class.getResource("PaneUC1_UC2.fxml"));
 			AnchorPane paneUC1_UC2 = (AnchorPane) loaderUC1_UC2.load();
 			TitledPane tpUC1_UC2 = new TitledPane("Normalkraft / Forskydningskraft", paneUC1_UC2);
-			tpUC1_UC2.setExpanded(true);
+			tpUC1_UC2.setExpanded(false);
 			tpUC1_UC2.setOnMouseReleased(e -> {
 				if (tpUC1_UC2.isExpanded()) {
 				tpUC1_UC2.setMinHeight(225);
