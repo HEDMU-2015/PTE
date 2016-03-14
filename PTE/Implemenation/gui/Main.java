@@ -42,7 +42,6 @@ public class Main extends Application {
 			mainWindow = (BorderPane) loader.load();
 			Scene scene = new Scene(mainWindow);
 			stage.setScene(scene);
-			stage.setResizable(false);
 			stage.show();
 		} catch (IOException exc) {
 		}
@@ -59,7 +58,7 @@ public class Main extends Application {
 			TitledPane tpUC1_UC2 = new TitledPane("Normalkraft / Forskydningskraft", paneUC1_UC2);
 			tpUC1_UC2.setExpanded(false);
 			tpUC1_UC2.setOnMouseReleased(e -> {
-				if (tpUC1_UC2.getHeight() < 225 ) {
+				if (tpUC1_UC2.isExpanded()) {
 				tpUC1_UC2.setMinHeight(225);
 				} else {
 					tpUC1_UC2.setMinHeight(25);
@@ -75,7 +74,7 @@ public class Main extends Application {
 			TitledPane tpUC3 = new TitledPane("Bøjningsmoment", paneUC3);
 			tpUC3.setExpanded(false);
 			tpUC3.setOnMouseReleased(e -> {
-				if (tpUC3.getHeight() < 199 ) {
+				if (tpUC3.isExpanded()) {
 				tpUC3.setMinHeight(199);
 				} else {
 					tpUC3.setMinHeight(25);
@@ -91,7 +90,7 @@ public class Main extends Application {
 			TitledPane tpUC4 = new TitledPane("Forskydningsspændingen", paneUC4);
 			tpUC4.setExpanded(false);
 			tpUC4.setOnMouseReleased(e -> {
-				if (tpUC4.getMinHeight() < 199 ) {
+				if (tpUC4.isExpanded()) {
 				tpUC4.setMinHeight(199);
 				} else {
 					tpUC4.setMinHeight(25);
@@ -107,7 +106,7 @@ public class Main extends Application {
 			TitledPane tpUC5 = new TitledPane("SigmaN", paneUC5);
 			tpUC5.setExpanded(false);
 			tpUC5.setOnMouseReleased(e -> {
-				if (tpUC5.getMinHeight() < 199 ) {
+				if (tpUC5.isExpanded()) {
 				tpUC5.setMinHeight(199);
 				} else {
 					tpUC5.setMinHeight(25);
@@ -123,7 +122,7 @@ public class Main extends Application {
 			TitledPane tpUC7 = new TitledPane("SigmaB", paneUC7);
 			tpUC7.setExpanded(false);
 			tpUC7.setOnMouseReleased(e -> {
-				if (tpUC7.getMinHeight() < 199 ) {
+				if (tpUC7.isExpanded()) {
 				tpUC7.setMinHeight(199);
 				} else {
 					tpUC7.setMinHeight(25);
@@ -139,7 +138,7 @@ public class Main extends Application {
 			TitledPane tpUC8 = new TitledPane("SigmaRef", paneUC8);
 			tpUC8.setExpanded(false);
 			tpUC8.setOnMouseReleased(e -> {
-				if (tpUC8.getMinHeight() < 199 ) {
+				if (tpUC8.isExpanded()) {
 				tpUC8.setMinHeight(199);
 				} else {
 					tpUC8.setMinHeight(25);
