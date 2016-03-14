@@ -10,17 +10,17 @@ public class ArealImpl extends PTEEntityImpl implements Areal {
 	private Hoejde hoejde;
 
 	public ArealImpl(Bredde bredde, Diameter diameter, Godstykkelse godstykkelse, Hoejde hoejde){
-		if (bredde == null || diameter == null || godstykkelse == null || hoejde == null) {
-			throw new IllegalArgumentException();
-		}
-		this.bredde = bredde;
-		this.bredde.tilfoejAfhaengigEntitet(this);
-		this.diameter = diameter;
-		this.diameter.tilfoejAfhaengigEntitet(this);
-		this.godstykkelse = godstykkelse;
-		this.godstykkelse.tilfoejAfhaengigEntitet(this);
-		this.hoejde = hoejde;
-		this.hoejde.tilfoejAfhaengigEntitet(this);
+//		if (bredde == null || diameter == null || godstykkelse == null || hoejde == null) {
+//			throw new IllegalArgumentException();
+//		}
+//		this.bredde = bredde;
+//		this.bredde.tilfoejAfhaengigEntitet(this);
+//		this.diameter = diameter;
+//		this.diameter.tilfoejAfhaengigEntitet(this);
+//		this.godstykkelse = godstykkelse;
+//		this.godstykkelse.tilfoejAfhaengigEntitet(this);
+//		this.hoejde = hoejde;
+//		this.hoejde.tilfoejAfhaengigEntitet(this);
 	}
 
 	@Override
