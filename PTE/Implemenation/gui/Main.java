@@ -91,7 +91,7 @@ public class Main extends Application {
 			tpUC4.setExpanded(false);
 			tpUC4.setOnMouseReleased(e -> {
 				if (tpUC4.isExpanded()) {
-				tpUC4.setMinHeight(199);
+				tpUC4.setMinHeight(164);
 				} else {
 					tpUC4.setMinHeight(25);
 				}
@@ -107,7 +107,7 @@ public class Main extends Application {
 			tpUC5.setExpanded(false);
 			tpUC5.setOnMouseReleased(e -> {
 				if (tpUC5.isExpanded()) {
-				tpUC5.setMinHeight(199);
+				tpUC5.setMinHeight(164);
 				} else {
 					tpUC5.setMinHeight(25);
 				}
@@ -123,7 +123,7 @@ public class Main extends Application {
 			tpUC7.setExpanded(false);
 			tpUC7.setOnMouseReleased(e -> {
 				if (tpUC7.isExpanded()) {
-				tpUC7.setMinHeight(199);
+				tpUC7.setMinHeight(164);
 				} else {
 					tpUC7.setMinHeight(25);
 				}
@@ -139,7 +139,7 @@ public class Main extends Application {
 			tpUC8.setExpanded(false);
 			tpUC8.setOnMouseReleased(e -> {
 				if (tpUC8.isExpanded()) {
-				tpUC8.setMinHeight(199);
+				tpUC8.setMinHeight(164);
 				} else {
 					tpUC8.setMinHeight(25);
 				}
