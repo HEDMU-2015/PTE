@@ -2,6 +2,8 @@ package Logic;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -10,32 +12,19 @@ import Exceptions.LaengdeException;
 
 public class ArealTest {
 
-	BreddeImpl bredde;
-	HoejdeImpl hoejde;
-	DiameterImpl diameter;
-	GodstykkelseImpl godstykkelse;
-	
-	
-	Areal areal;
-
-	@Before
-	public void setUp() throws Exception {
-		bredde = new BreddeImpl();
-		hoejde = new HoejdeImpl();
-		diameter = new DiameterImpl();
-		godstykkelse = new GodstykkelseImpl();
-		areal = new ArealImpl(bredde, diameter, godstykkelse, hoejde);
-
-	}
+	ArealImpl areal;
+	FormImpl form;
 
 	@Test
 	public void getArealNulstilTest() {
-		bredde.setBredde(10);
-		hoejde.setHoejde(5);
-		go
-		areal.setAreal(5);
-		areal.nulstil();
-		assertEquals(Double.NaN, areal.getAreal(), 0.001);
+		
+		form.getProfilType()
+		double bredde = 5;
+		double hoejde = 5;
+		double godstykkelse = 2;
+		double diameter = 2;
+
+		assertEquals(10, areal.getAreal(bredde, diameter, godstykkelse, hoejde), 0.001);
 	}
 
 	@Test
@@ -76,4 +65,165 @@ public class ArealTest {
 
 	}
 
+	@Before
+	public void setUp() throws Exception {
+		form = new FormImpl();
+		areal = new ArealImpl(new Bredde() {
+
+			@Override
+			public void tilfoejAfhaengigEntitet(PTEEntity entity) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public List<Tilstand> getAfhaengigheder() {
+				// TODO Auto-generated method stub
+				return null;
+			}
+
+			@Override
+			public void setBredde(double bredde) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void nulstil() {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public double getBredde() {
+				// TODO Auto-generated method stub
+				return 0;
+			}
+		}, new Diameter() {
+
+			@Override
+			public void tilfoejAfhaengigEntitet(PTEEntity entity) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public List<Tilstand> getAfhaengigheder() {
+				// TODO Auto-generated method stub
+				return null;
+			}
+
+			@Override
+			public void setDiameter(double diameter) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void nulstil() {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public double getDiameter() {
+				// TODO Auto-generated method stub
+				return 0;
+			}
+		}, new Godstykkelse() {
+
+			@Override
+			public void tilfoejAfhaengigEntitet(PTEEntity entity) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public List<Tilstand> getAfhaengigheder() {
+				// TODO Auto-generated method stub
+				return null;
+			}
+
+			@Override
+			public void setGodstykkelse(double godstykkelse) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void nulstil() {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public double getGodstykkelse() {
+				// TODO Auto-generated method stub
+				return 0;
+			}
+		}, new Hoejde() {
+
+			@Override
+			public void tilfoejAfhaengigEntitet(PTEEntity entity) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public List<Tilstand> getAfhaengigheder() {
+				// TODO Auto-generated method stub
+				return null;
+			}
+
+			@Override
+			public void setHoejde(double godstykkelse) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void nulstil() {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public double getHoejde() {
+				// TODO Auto-generated method stub
+				return 0;
+			}
+		}, new Form() {
+
+			@Override
+			public void tilfoejAfhaengigEntitet(PTEEntity entity) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public List<Tilstand> getAfhaengigheder() {
+				// TODO Auto-generated method stub
+				return null;
+			}
+
+			@Override
+			public void setProfilType(ProfilType profilType) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void nulstil() {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public ProfilType getProfilType() {
+				// TODO Auto-generated method stub
+				return null;
+			}
+		});
+
+	}
 }
