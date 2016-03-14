@@ -1,6 +1,6 @@
 package Logic;
 
-import Exceptions.LaengdeException;
+import Exceptions.GodstykkelseException;
 
 public class GodstykkelseImpl extends PTEEntityImpl implements Godstykkelse{
 
@@ -11,6 +11,9 @@ public class GodstykkelseImpl extends PTEEntityImpl implements Godstykkelse{
 	}
 	
 	public double getGodstykkelse(){
+		if (godstykkelse < 0) {
+			throw new GodstykkelseException();
+		}
 		return godstykkelse;
 	}
 	

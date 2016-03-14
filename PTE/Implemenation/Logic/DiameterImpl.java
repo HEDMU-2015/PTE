@@ -1,20 +1,23 @@
 package Logic;
 
-import Exceptions.LaengdeException;
+import Exceptions.DiameterException;
 
 public class DiameterImpl extends PTEEntityImpl implements Diameter {
-	
+
 	private double diameter = Double.NaN;
 
 	public void setDiameter(double diameter) {
 		this.diameter = diameter;
 	}
-	
-	public double getDiameter(){
+
+	public double getDiameter() {
+		if(diameter < 0){
+			throw new DiameterException();
+		}
 		return diameter;
 	}
-	
-	public void nulstil(){
+
+	public void nulstil() {
 		diameter = Double.NaN;
 	}
 
@@ -22,5 +25,5 @@ public class DiameterImpl extends PTEEntityImpl implements Diameter {
 	protected Tilstand getEgenAfhaengighed() {
 		return Tilstand.DIAMETER;
 	}
-	
+
 }

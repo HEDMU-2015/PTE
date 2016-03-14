@@ -1,6 +1,6 @@
 package Logic;
 
-import Exceptions.LaengdeException;
+import Exceptions.BreddeException;
 
 public class BreddeImpl extends PTEEntityImpl implements Bredde {
 
@@ -9,12 +9,16 @@ public class BreddeImpl extends PTEEntityImpl implements Bredde {
 	public void setBredde(double bredde) {
 		this.bredde = bredde;
 	}
-	
-	public double getBredde(){
+
+	public double getBredde() {
+		if (bredde < 0) {
+			throw new BreddeException();
+		}
+
 		return bredde;
 	}
-	
-	public void nulstil(){
+
+	public void nulstil() {
 		bredde = Double.NaN;
 	}
 
@@ -22,5 +26,5 @@ public class BreddeImpl extends PTEEntityImpl implements Bredde {
 	protected Tilstand getEgenAfhaengighed() {
 		return Tilstand.BREDDE;
 	}
-	
+
 }

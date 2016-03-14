@@ -1,6 +1,6 @@
 package Logic;
 
-import Exceptions.LaengdeException;
+import Exceptions.HoejdeException;
 
 public class HoejdeImpl extends PTEEntityImpl implements Hoejde {
 
@@ -9,12 +9,15 @@ public class HoejdeImpl extends PTEEntityImpl implements Hoejde {
 	public void setHoejde(double hoejde) {
 		this.hoejde = hoejde;
 	}
-	
-	public double getHoejde(){
+
+	public double getHoejde() {
+		if (hoejde < 0) {
+			throw new HoejdeException();
+		}
 		return hoejde;
 	}
-	
-	public void nulstil(){
+
+	public void nulstil() {
 		hoejde = Double.NaN;
 	}
 
@@ -22,5 +25,5 @@ public class HoejdeImpl extends PTEEntityImpl implements Hoejde {
 	protected Tilstand getEgenAfhaengighed() {
 		return Tilstand.HOEJDE;
 	}
-	
+
 }
