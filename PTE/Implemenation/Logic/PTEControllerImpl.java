@@ -47,7 +47,7 @@ public class PTEControllerImpl implements PTEController {
 		godstykkelse = logicFactory.createGodstykkelse();
 		hoejde = logicFactory.createHoejde();
 		areal = logicFactory.createAreal(bredde, diameter, godstykkelse, hoejde, form);
-		forskydningsspaending = logicFactory.createTau_ForskydningsSpaending(areal, forskydningskraft);	
+		forskydningsspaending = logicFactory.createTau_ForskydningsSpaending(areal, forskydningskraft);
 		laengde = logicFactory.createLaengde();
 		boejningsmoment = logicFactory.createBoejningsMoment(vinkel, laengde, dimensionerendeKraft, forskydningskraft);
 		normalspaending = logicFactory.createSigmaN(areal, normalkraft);
@@ -55,7 +55,7 @@ public class PTEControllerImpl implements PTEController {
 		inertimoment = logicFactory.createInertimoment();
 		boejningsspaending = logicFactory.createSigmaB(boejningsmoment, forskydningspunkt, inertimoment);
 		referencespaending = logicFactory.createSigmaRef(boejningsspaending, normalspaending, forskydningsspaending);
-		
+
 		observers = new ArrayList<Logic.Observer>();
 	}
 
@@ -76,7 +76,7 @@ public class PTEControllerImpl implements PTEController {
 			o.update(tilstande);
 		}
 	}
-	
+
 	@Override
 	public void nulstil() {
 		List<Tilstand> tilstande = new ArrayList<Tilstand>();
@@ -98,31 +98,43 @@ public class PTEControllerImpl implements PTEController {
 
 		this.forskydningskraft.nulstil();
 		tilstande.addAll(forskydningskraft.getAfhaengigheder());
-		
+
 		this.areal.nulstil();
 		tilstande.addAll(areal.getAfhaengigheder());
-		
+
 		this.forskydningsspaending.nulstil();
 		tilstande.addAll(forskydningsspaending.getAfhaengigheder());
 
 		this.normalspaending.nulstil();
 		tilstande.addAll(normalspaending.getAfhaengigheder());
-		
+
 		this.forskydningspunkt.nulstil();
 		tilstande.addAll(forskydningspunkt.getAfhaengigheder());
-		
+
 		this.inertimoment.nulstil();
 		tilstande.addAll(inertimoment.getAfhaengigheder());
-		
+
 		this.boejningsspaending.nulstil();
 		tilstande.addAll(boejningsspaending.getAfhaengigheder());
-		
+
 		this.laengde.nulstil();
 		tilstande.addAll(laengde.getAfhaengigheder());
-		
+
+		this.bredde.nulstil();
+		tilstande.addAll(bredde.getAfhaengigheder());
+
+		this.hoejde.nulstil();
+		tilstande.addAll(hoejde.getAfhaengigheder());
+
+		this.diameter.nulstil();
+		tilstande.addAll(diameter.getAfhaengigheder());
+
+		this.godstykkelse.nulstil();
+		tilstande.addAll(godstykkelse.getAfhaengigheder());
+
 		notifyObservers(tilstande);
 	}
-	
+
 	@Override
 	public double getForskydningkraft() {
 		return this.forskydningskraft.getForskydningskraft();
@@ -143,7 +155,6 @@ public class PTEControllerImpl implements PTEController {
 	public void setTyngdekraft(double tyngdekraft) {
 		this.setTyngdekraft(tyngdekraft);
 		notifyObservers(this.tyngdekraft.getAfhaengigheder());
-
 	}
 
 	@Override
@@ -210,10 +221,9 @@ public class PTEControllerImpl implements PTEController {
 	@Override
 	public void setTau_ForskydningsSpaending(double tau_ForskydningsSpaending) {
 		this.forskydningsspaending.setTau_ForskydningsSpaending(tau_ForskydningsSpaending);
-		notifyObservers(this.forskydningsspaending.getAfhaengigheder());		
+		notifyObservers(this.forskydningsspaending.getAfhaengigheder());
 	}
 
-	
 	@Override
 	public LaengdeRetning getLaengdeRetning() {
 		return this.vinkel.getLaengdeRetning();
@@ -259,8 +269,7 @@ public class PTEControllerImpl implements PTEController {
 	@Override
 	public void setSigmaN(double sigmaN) {
 		this.normalspaending.setSigmaN(sigmaN);
-		notifyObservers(this.normalspaending.getAfhaengigheder());	
-		
+		notifyObservers(this.normalspaending.getAfhaengigheder());
 	}
 
 	@Override
@@ -272,9 +281,10 @@ public class PTEControllerImpl implements PTEController {
 
 	@Override
 	public void setForskydningspunkt(double forskydningspunkt) {
-		this.forskydningspunkt.setForskydningspunkt(forskydningspunkt);;
+		this.forskydningspunkt.setForskydningspunkt(forskydningspunkt);
+		;
 		notifyObservers(this.forskydningspunkt.getAfhaengigheder());
-		
+
 	}
 
 	@Override
@@ -288,13 +298,12 @@ public class PTEControllerImpl implements PTEController {
 	public void setInertimoment(double inertimoment) {
 		this.inertimoment.setInertimoment(inertimoment);
 		notifyObservers(this.inertimoment.getAfhaengigheder());
-		
 	}
 
 	@Override
 	public double getSigmaB() {
 		double sigmaB = Double.NaN;
-		sigmaB = this.boejningsspaending.getSigmaB();		
+		sigmaB = this.boejningsspaending.getSigmaB();
 		return sigmaB;
 	}
 
@@ -302,7 +311,7 @@ public class PTEControllerImpl implements PTEController {
 	public void setSigmaB(double sigmaB) {
 		this.boejningsspaending.setSigmaB(sigmaB);
 		notifyObservers(this.boejningsspaending.getAfhaengigheder());
-		
+
 	}
 
 	@Override
@@ -380,7 +389,7 @@ public class PTEControllerImpl implements PTEController {
 		this.form.setProfilType(profilType);
 		notifyObservers(form.getAfhaengigheder());
 	}
-	
+
 	@Override
 	public double getAreal() {
 		return this.areal.getAreal();
