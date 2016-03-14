@@ -7,7 +7,6 @@ public interface LogicFactory {
 	public DimensionerendeKraft craeteDimensionerendeKraft(Vaegt vaegt, Tyngdekraft tyngdeKraft);
 	public Forskydningskraft createForskydningskraft(Vinkel vinkel, DimensionerendeKraft dimensionerendeKraft);
 	public Normalkraft createNormalKraft(DimensionerendeKraft dimensionerendeKraft, Vinkel vinkel);
-	public Areal createAreal();
 	public Tau_ForskydningsSpaending createTau_ForskydningsSpaending(Areal areal, Forskydningskraft forskydningsKraft);
 	public Laengde createLaengde();
 	public BoejningsMoment createBoejningsMoment(Vinkel v, Laengde l, DimensionerendeKraft dimensionerendeKraft, Forskydningskraft forskydningskraft);
@@ -16,4 +15,9 @@ public interface LogicFactory {
 	public Inertimoment createInertimoment();
 	public SigmaB createSigmaB(BoejningsMoment boejningsMoment, Forskydningspunkt forskydningspunkt, Inertimoment inertimoment);
 	public SigmaRef createSigmaRef(SigmaB sigmaB, SigmaN sigmaN, Tau_ForskydningsSpaending tau_ForskydningsSpaendingen);
+	public Bredde createBredde();
+	public Diameter createDiameter();
+	public Godstykkelse createGodstykkelse();
+	public Hoejde createHoejde();
+	public Areal createAreal(Bredde bredde, Diameter diameter, Godstykkelse godstykkelse, Hoejde hoejde);
 }

@@ -25,6 +25,11 @@ public class PTEControllerImpl implements PTEController {
 	private Inertimoment inertimoment;
 	private SigmaB boejningsspaending;
 	private SigmaRef referencespaending;
+	private Bredde bredde;
+	private Diameter diameter;
+	private Hoejde hoejde;
+	private Godstykkelse godstykkelse;
+	private Form form;
 
 	public PTEControllerImpl(LogicFactory logicFactory) {
 		vinkel = logicFactory.createVinkel();
@@ -35,7 +40,7 @@ public class PTEControllerImpl implements PTEController {
 		dimensionerendeKraft = logicFactory.craeteDimensionerendeKraft(vaegt, tyngdekraft);
 		normalkraft = logicFactory.createNormalKraft(dimensionerendeKraft, vinkel);
 		forskydningskraft = logicFactory.createForskydningskraft(vinkel, dimensionerendeKraft);
-		areal = logicFactory.createAreal();
+		areal = logicFactory.createAreal(bredde, diameter, godstykkelse, hoejde);
 		forskydningsspaending = logicFactory.createTau_ForskydningsSpaending(areal, forskydningskraft);	
 		laengde = logicFactory.createLaengde();
 		boejningsmoment = logicFactory.createBoejningsMoment(vinkel, laengde, dimensionerendeKraft, forskydningskraft);
@@ -44,6 +49,10 @@ public class PTEControllerImpl implements PTEController {
 		inertimoment = logicFactory.createInertimoment();
 		boejningsspaending = logicFactory.createSigmaB(boejningsmoment, forskydningspunkt, inertimoment);
 		referencespaending = logicFactory.createSigmaRef(boejningsspaending, normalspaending, forskydningsspaending);
+		bredde = logicFactory.createBredde();
+		diameter = logicFactory.createDiameter();
+		godstykkelse = logicFactory.createGodstykkelse();
+		hoejde = logicFactory.createHoejde();
 		
 		observers = new ArrayList<Logic.Observer>();
 	}
@@ -189,20 +198,6 @@ public class PTEControllerImpl implements PTEController {
 		vaegt.setVaegt(this.dimensionerendeKraft.dimensionerendeKraftTilVaegt());
 		notifyObservers(this.vaegt.getAfhaengigheder());
 	}
-	
-	
-	@Override
-	public double getAreal() {
-		return this.areal.getAreal();
-	}
-
-	@Override
-	public void setAreal(double areal) {
-		this.areal.setAreal(areal);
-		notifyObservers(this.areal.getAfhaengigheder());
-	}
-		
-	
 
 	@Override
 	public double getTau_ForskydningsSpaending() {
@@ -316,6 +311,80 @@ public class PTEControllerImpl implements PTEController {
 	public void setSigmaRef(double sigmaRef) {
 		this.referencespaending.setSigmaRef(sigmaRef);
 		notifyObservers(this.boejningsspaending.getAfhaengigheder());
+	}
+
+	@Override
+	public double getBredde() {
+		double bredde = Double.NaN;
+		bredde = this.bredde.getBredde();
+		return bredde;
+	}
+
+	@Override
+	public void setBredde(double bredde) {
+		this.bredde.setBredde(bredde);
+		notifyObservers(this.bredde.getAfhaengigheder());
+	}
+
+	@Override
+	public double getDiameter() {
+		double diameter = Double.NaN;
+		diameter = this.diameter.getDiameter();
+		return diameter;
+	}
+
+	@Override
+	public void setDiameter(double diameter) {
+		this.diameter.setDiameter(diameter);
+		notifyObservers(this.diameter.getAfhaengigheder());
+	}
+
+	@Override
+	public double getHoejde() {
+		double hoejde = Double.NaN;
+		hoejde = this.diameter.getDiameter();
+		return hoejde;
+	}
+
+	@Override
+	public void setHoejde(double hoejde) {
+		this.hoejde.setHoejde(hoejde);
+		notifyObservers(this.hoejde.getAfhaengigheder());
+	}
+
+	@Override
+	public double getGodstykkelse() {
+		double godstykkelse = Double.NaN;
+		godstykkelse = this.godstykkelse.getGodstykkelse();
+		return godstykkelse;
+	}
+
+	@Override
+	public void setGodstykkelse(double godstykkelse) {
+		this.godstykkelse.setGodstykkelse(godstykkelse);
+		notifyObservers(this.godstykkelse.getAfhaengigheder());
+	}
+
+	@Override
+	public ProfilType getProfilType() {
+		return this.form.getProfilType();
+	}
+
+	@Override
+	public void setProfilType(ProfilType profilType) {
+		this.form.setProfilType(profilType);
+		notifyObservers(form.getAfhaengigheder());
+	}
+	
+	@Override
+	public double getAreal() {
+		return this.areal.getAreal();
+	}
+
+	@Override
+	public void setAreal(double areal) {
+		this.areal.setAreal(areal);
+		notifyObservers(this.areal.getAfhaengigheder());
 	}
 
 }

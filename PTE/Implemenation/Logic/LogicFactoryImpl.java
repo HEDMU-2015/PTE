@@ -31,14 +31,7 @@ public class LogicFactoryImpl implements LogicFactory {
 	public Normalkraft createNormalKraft(DimensionerendeKraft dimensionerendeKraft, Vinkel vinkel) {
 		return new NormalkraftImpl(dimensionerendeKraft, vinkel);
 	}
-
 	
-	@Override
-	public Areal createAreal() {
-		
-		return new ArealImpl();
-	}
-
 	@Override
 	public Tau_ForskydningsSpaending createTau_ForskydningsSpaending(Areal areal, Forskydningskraft forskydningskraft) {
 		return new Tau_ForskydningsSpaendingImpl(areal, forskydningskraft);
@@ -61,13 +54,11 @@ public class LogicFactoryImpl implements LogicFactory {
 
 	@Override
 	public Forskydningspunkt createForskydningspunkt() {
-		
 		return new ForskydningspunktImpl();
 	}
 
 	@Override
 	public Inertimoment createInertimoment() {
-		
 		return new InertimomentImpl();
 	}
 
@@ -81,5 +72,30 @@ public class LogicFactoryImpl implements LogicFactory {
 	public SigmaRef createSigmaRef(SigmaB sigmaB, SigmaN sigmaN,
 			Tau_ForskydningsSpaending tau_ForskydningsSpaendingen) {
 		return new SigmaRefImpl(sigmaB, sigmaN, tau_ForskydningsSpaendingen);
+	}
+
+	@Override
+	public Bredde createBredde() {
+		return new BreddeImpl();
+	}
+
+	@Override
+	public Diameter createDiameter() {
+		return new DiameterImpl();
+	}
+
+	@Override
+	public Godstykkelse createGodstykkelse() {
+		return new GodstykkelseImpl();
+	}
+
+	@Override
+	public Hoejde createHoejde() {
+		return new HoejdeImpl();
+	}
+
+	@Override
+	public Areal createAreal(Bredde bredde, Diameter diameter, Godstykkelse godstykkelse, Hoejde hoejde) {
+		return new ArealImpl(bredde, diameter, godstykkelse, hoejde);
 	}
 }
