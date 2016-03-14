@@ -29,12 +29,12 @@ public class PaneUC5Controller extends PTEPane implements Initializable {
 	
 	@FXML
 	public void haandterUdregnKnap() {
-		pteController.setAreal(Double.parseDouble(tekstFeltAreal.getText()));
+		pteController.setIndtastAreal(Double.parseDouble(tekstFeltAreal.getText()));
 		tekstFeltSigmaN.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getSigmaN()));
 		pteController.setSigmaN(pteController.getSigmaN());
 		if (arealErAEndret) {
 			arealErAEndret = false;
-			pteController.setAreal(tekstfeltFormat.formaterStringTilDouble(tekstFeltAreal.getText()));
+			pteController.setIndtastAreal(tekstfeltFormat.formaterStringTilDouble(tekstFeltAreal.getText()));
 		}
 	}
 	@FXML
