@@ -2,7 +2,7 @@ package Logic;
 
 public class ForskydningspunktImpl extends PTEEntityImpl implements Forskydningspunkt {
 
-	private double forskydningspunkt;
+	private double forskydningspunkt=Double.NaN;
 
 	@Override
 	public double getForskydningspunkt() {

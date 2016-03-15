@@ -2,7 +2,7 @@ package Logic;
 
 public class InertimomentImpl extends PTEEntityImpl implements Inertimoment {
 	
-	private double inertimoment;
+	private double inertimoment = Double.NaN;
 
 	@Override
 	public double getInertimoment() {
