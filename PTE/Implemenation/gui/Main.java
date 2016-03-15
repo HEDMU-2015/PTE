@@ -43,6 +43,7 @@ public class Main extends Application {
 			Scene scene = new Scene(mainWindow);
 			stage.setScene(scene);
 			stage.show();
+			stage.setResizable(false);
 		} catch (IOException exc) {
 		}
 	}
