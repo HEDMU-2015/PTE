@@ -63,7 +63,6 @@ public class PaneUC3Controller extends PTEPane implements Initializable {
 
 	@Override
 	public void update(List<Tilstand> tilstande) {
-		
 		if (tilstande.contains(Tilstand.LAENGDE)) {
 			tekstFeltLaengde.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getLaengde()));
 
@@ -80,8 +79,10 @@ public class PaneUC3Controller extends PTEPane implements Initializable {
 
 	private void setLaengdeRetning() {
 		if (vinkelretPaaFt.isSelected()) {
+			labelKraft.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getForskydningkraft()));
 			pteController.setLaengdeRetning(LaengdeRetning.VINKELRET_TIL_FT);
 		} else {
+			labelKraft.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getDimensionerendeKraft()));
 			pteController.setLaengdeRetning(LaengdeRetning.VINKELRET_TIL_FDIM);
 		}
 	}
