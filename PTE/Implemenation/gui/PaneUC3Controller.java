@@ -4,6 +4,8 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import javax.swing.text.html.HTMLDocument.HTMLReader.FormAction;
+
 import Logic.LaengdeRetning;
 import Logic.Tilstand;
 import javafx.beans.value.ChangeListener;
@@ -84,8 +86,15 @@ public class PaneUC3Controller extends PTEPane implements Initializable {
 		}
 	}
 
+	private void formaterTekstfelt(TextField input) {
+		tekstfeltFormat.formaterTekstfeltInput(input);
+	}
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		formaterTekstfelt(tekstFeltBoejningsmoment);
+		formaterTekstfelt(tekstFeltLaengde);
+		
 		tekstFeltLaengde.focusedProperty().addListener(new ChangeListener<Boolean>() {
 			@Override
 			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
