@@ -14,8 +14,6 @@ public class DimensionerendeKraftTest {
 
 	DimensionerendeKraftImpl dimensionerendeKraft;
 
-	
-
 	@Test
 	public void GetDimensionerendeKraftNegativVaegtTest() {
 
@@ -59,13 +57,13 @@ public class DimensionerendeKraftTest {
 			// success
 		}
 	}
-	
+
 	@Test
 	public void getDimernsionerendeKraftNulstilTest() {
-	dimensionerendeKraft.setDimensionerendeKraft(5); 
-	dimensionerendeKraft.nulstil();
-	assertEquals(Double.NaN, dimensionerendeKraft.getDimensionerendeKraft(), 0.001);
-		
+		dimensionerendeKraft.setDimensionerendeKraft(5);
+		dimensionerendeKraft.nulstil();
+		assertEquals(Double.NaN, dimensionerendeKraft.getDimensionerendeKraft(), 0.001);
+
 	}
 
 	@Test
@@ -113,9 +111,33 @@ public class DimensionerendeKraftTest {
 
 	}
 
+	@Test
+	public void GetDimensionerendeKraftNegativTest() {
+		
+		try {
+			dimensionerendeKraft.setDimensionerendeKraft(-5);
+			fail("Exception bliver ikke kastet.");
+
+		} catch (DimensionerendeKraftException e) {
+			// success
+		}
+	}
+	
+	@Test
+	public void GetDimensionerendeKraftNulTest() {
+		
+		try {
+			dimensionerendeKraft.setDimensionerendeKraft(0);
+			fail("Exception bliver ikke kastet.");
+
+		} catch (DimensionerendeKraftException e) {
+			// success
+		}
+	}
+
 	@Before
 	public void setUp() throws Exception {
-		
+
 		dimensionerendeKraft = new DimensionerendeKraftImpl(new Vaegt() {
 
 			@Override

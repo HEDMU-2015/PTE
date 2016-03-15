@@ -46,6 +46,10 @@ class DimensionerendeKraftImpl extends PTEEntityImpl implements DimensionerendeK
 
 	@Override
 	public void setDimensionerendeKraft(double dimensionerendeKraft) {
+		if(dimensionerendeKraft <= 0){
+			throw new DimensionerendeKraftException();
+		}
+		
 		this.dimensionerendeKraft = dimensionerendeKraft;
 		nulstilBoern();
 	}

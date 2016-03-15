@@ -8,7 +8,7 @@ import org.junit.Test;
 import Exceptions.DiameterException;
 
 public class DiameterTest {
-	
+
 	DiameterImpl diameter;
 
 	@Before
@@ -43,20 +43,18 @@ public class DiameterTest {
 		assertEquals(4, diameter.getDiameter(), 0.001);
 
 	}
-	
-	
+
 	@Test
 	public void diameterNegativTest() {
 
-		diameter.setDiameter(-4);
-
 		try {
-			diameter.getDiameter();
+			diameter.setDiameter(-4);
 		} catch (DiameterException e) {
 			// Success
 		}
 
 	}
+
 	@Test
 	public void diameterKommaTest() {
 
