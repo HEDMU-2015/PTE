@@ -28,7 +28,8 @@ public class PaneUC9Controller extends PTEPane implements Initializable {
 	
 	@FXML
 	public void haandterUdregnKnap() {
-		
+		pteController.setFlydespaending(tekstfeltFormat.formaterStringTilDouble(tekstFlydeSpaending.getText()));
+		tekstFeltSikkerhedsFaktor.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getSikkerhedsfaktor()));
 	}
 	@FXML
 	public void haandterResetKnap() { 
@@ -37,6 +38,9 @@ public class PaneUC9Controller extends PTEPane implements Initializable {
 
 	@Override
 	public void update(List<Tilstand> tilstande) {
+		if (tilstande.contains(Tilstand.SIGMA_REF)) {
+			tekstFeltSigmaRef.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getSigmaRef()));
+		}
 			}
 
 	private void formaterTekstfelt(TextField input) {
