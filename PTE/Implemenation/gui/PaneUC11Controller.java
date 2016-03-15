@@ -28,17 +28,25 @@ public class PaneUC11Controller extends PTEPane implements Initializable {
 			System.out.println(profil);
 
 			if(profil == Profil.VANDRET){
-				tekstFeltfk.setText("cos( " + tekstfeltFormat.formaterDoubleTilString(pteController.getVinkel()) + ") * " + tekstfeltFormat.formaterDoubleTilString(pteController.getDimensionerendeKraft()));
+				tekstFeltfk.setText("cos( " + tekstfeltFormat.formaterDoubleTilString(pteController.getVinkel()) 
+					+ ") * " + tekstfeltFormat.formaterDoubleTilString(pteController.getDimensionerendeKraft()) 
+					+ " = " +tekstfeltFormat.formaterDoubleTilString(pteController.getForskydningkraft()));
 			}
 			else{
-				tekstFeltfk.setText("sin( " + tekstfeltFormat.formaterDoubleTilString(pteController.getVinkel()) + ") * " + tekstfeltFormat.formaterDoubleTilString(pteController.getDimensionerendeKraft()));
+				tekstFeltfk.setText("sin( " + tekstfeltFormat.formaterDoubleTilString(pteController.getVinkel()) 
+					+ ") * " + tekstfeltFormat.formaterDoubleTilString(pteController.getDimensionerendeKraft())
+					+ " = " +tekstfeltFormat.formaterDoubleTilString(pteController.getForskydningkraft()));
 			}
 			
 			if(profil == Profil.LODRET){
-				tekstFeltnk.setText("cos( " + tekstfeltFormat.formaterDoubleTilString(pteController.getVinkel()) + ") * " + tekstfeltFormat.formaterDoubleTilString(pteController.getDimensionerendeKraft()));
+				tekstFeltnk.setText("cos( " + tekstfeltFormat.formaterDoubleTilString(pteController.getVinkel()) 
+					+ ") * " + tekstfeltFormat.formaterDoubleTilString(pteController.getDimensionerendeKraft())
+					+ " = " +tekstfeltFormat.formaterDoubleTilString(pteController.getNormalkraft()));
 			}
 			else{
-				tekstFeltnk.setText("sin( " + tekstfeltFormat.formaterDoubleTilString(pteController.getVinkel()) + ") * " + tekstfeltFormat.formaterDoubleTilString(pteController.getDimensionerendeKraft()));
+				tekstFeltnk.setText("sin( " + tekstfeltFormat.formaterDoubleTilString(pteController.getVinkel()) 
+					+ ") * " + tekstfeltFormat.formaterDoubleTilString(pteController.getDimensionerendeKraft())
+					+ " = " +tekstfeltFormat.formaterDoubleTilString(pteController.getNormalkraft()));
 			}
 		}	
 			
@@ -46,28 +54,46 @@ public class PaneUC11Controller extends PTEPane implements Initializable {
 			
 			
 		if (tilstande.contains(Tilstand.VAEGT)){
-			tekstFeltkg.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getDimensionerendeKraft()) + " / " + tekstfeltFormat.formaterDoubleTilString(pteController.getTyngdekraft())); 
+			tekstFeltkg.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getDimensionerendeKraft()) 
+					+ " / " + tekstfeltFormat.formaterDoubleTilString(pteController.getTyngdekraft())
+					+ " = " +tekstfeltFormat.formaterDoubleTilString(pteController.getVaegt())); 
 		}
 		if (tilstande.contains(Tilstand.DIMENSIONERENDE_KRAFT)){
-			tekstFeltdk.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getVaegt()) + " * " + tekstfeltFormat.formaterDoubleTilString(pteController.getTyngdekraft())); 
+			tekstFeltdk.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getVaegt()) 
+					+ " * " + tekstfeltFormat.formaterDoubleTilString(pteController.getTyngdekraft())
+					+ " = " +tekstfeltFormat.formaterDoubleTilString(pteController.getDimensionerendeKraft())); 
 		}
 		if (tilstande.contains(Tilstand.BOEJNINGSMOMENT)){
-			tekstFeltmb.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getDimensionerendeKraft()) + " * " + tekstfeltFormat.formaterDoubleTilString(pteController.getLaengde())); 
+			tekstFeltmb.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getDimensionerendeKraft()) 
+					+ " * " + tekstfeltFormat.formaterDoubleTilString(pteController.getLaengde())
+					+ " = " +tekstfeltFormat.formaterDoubleTilString(pteController.getBoejningsMoment())); 
 		}
 		if (tilstande.contains(Tilstand.TAU_FORSKYDNINGSSPAENDING)){
-			tekstFeltfs.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getForskydningkraft()) + " / " + tekstfeltFormat.formaterDoubleTilString(pteController.getAreal())); 
+			tekstFeltfs.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getForskydningkraft()) 
+					+ " / " + tekstfeltFormat.formaterDoubleTilString(pteController.getAreal())
+					+ " = " +tekstfeltFormat.formaterDoubleTilString(pteController.getTau_ForskydningsSpaending())); 
 		}
 		if (tilstande.contains(Tilstand.SIGMAN)){
-			tekstFeltSigmaN.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getNormalkraft()) + " / " + tekstfeltFormat.formaterDoubleTilString(pteController.getAreal())); 
+			tekstFeltSigmaN.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getNormalkraft()) 
+					+ " / " + tekstfeltFormat.formaterDoubleTilString(pteController.getAreal())
+					+ " = " +tekstfeltFormat.formaterDoubleTilString(pteController.getSigmaN())); 
 		}
 		if (tilstande.contains(Tilstand.SIGMAB)){
-			tekstFeltSigmaB.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getForskydningkraft()) + " * " + tekstfeltFormat.formaterDoubleTilString(pteController.getForskydningspunkt()) + " / " + tekstfeltFormat.formaterDoubleTilString(pteController.getInertimoment())); 
+			tekstFeltSigmaB.setText("( " + tekstfeltFormat.formaterDoubleTilString(pteController.getForskydningkraft()) 
+					+ " * " + tekstfeltFormat.formaterDoubleTilString(pteController.getForskydningspunkt()) +" ) " 
+					+ " / " + tekstfeltFormat.formaterDoubleTilString(pteController.getInertimoment())
+					+ " = " +tekstfeltFormat.formaterDoubleTilString(pteController.getSigmaB())); 
 		}
 		if (tilstande.contains(Tilstand.SIGMA_REF)){
-			tekstFeltSigmaRef.setText(" √ ((" + tekstfeltFormat.formaterDoubleTilString(pteController.getSigmaB()) + " + " + tekstfeltFormat.formaterDoubleTilString(pteController.getSigmaN()) + ")² + 3 *" + tekstfeltFormat.formaterDoubleTilString(pteController.getTau_ForskydningsSpaending()) + "²)"); 
+			tekstFeltSigmaRef.setText(" √ ((" + tekstfeltFormat.formaterDoubleTilString(pteController.getSigmaB()) 
+				+ " + " + tekstfeltFormat.formaterDoubleTilString(pteController.getSigmaN()) + ")² + 3 *"
+				+ tekstfeltFormat.formaterDoubleTilString(pteController.getTau_ForskydningsSpaending()) + "²)"
+				+ " = " +tekstfeltFormat.formaterDoubleTilString(pteController.getSigmaRef())); 
 		}
 		if (tilstande.contains(Tilstand.SIKKERHEDSFAKTOR)){
-			tekstFeltSikkerhedsfaktor.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getFlydespaending()) + " / " + tekstfeltFormat.formaterDoubleTilString(pteController.getSigmaRef()));  
+			tekstFeltSikkerhedsfaktor.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getFlydespaending()) 
+					+ " / " + tekstfeltFormat.formaterDoubleTilString(pteController.getSigmaRef())
+					+ " = " +tekstfeltFormat.formaterDoubleTilString(pteController.getSikkerhedsfaktor()));  
 		}
 		/*if (tilstande.contains(Tilstand.AREAL)){
 			tekstFeltAreal.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getFlydespaending()) + " / " + tekstfeltFormat.formaterDoubleTilString(pteController.getSigmaRef()));  
