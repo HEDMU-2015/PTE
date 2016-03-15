@@ -12,8 +12,8 @@
       <Label layoutX="28.0" layoutY="74.0" text="Sigma ref (σref)" />
       <Button layoutX="238.0" layoutY="96.0" mnemonicParsing="false" onAction="#haandterUdregnKnap" text="Udregn" />
       <Button layoutX="302.0" layoutY="96.0" mnemonicParsing="false" onAction="#haandterResetKnap" text="Reset" />
-      <TextField fx:id="tekstFeltSigmaB" editable="false" layoutX="193.0" layoutY="33.0" prefHeight="25.0" prefWidth="155.0" />
+      <TextField fx:id="tekstFeltSigmaB" editable="false" layoutX="193.0" layoutY="33.0" prefHeight="25.0" prefWidth="155.0" promptText="Indtast σb her" />
       <TextField fx:id="tekstFeltSigmaRef" editable="false" layoutX="28.0" layoutY="96.0" prefHeight="25.0" prefWidth="155.0" promptText="Resultat" styleClass="test" stylesheets="@util/gui.css" />
-      <TextField fx:id="tekstFeltSigmaN" editable="false" layoutX="28.0" layoutY="33.0" prefHeight="25.0" prefWidth="155.0" />
+      <TextField fx:id="tekstFeltSigmaN" editable="false" layoutX="28.0" layoutY="33.0" prefHeight="25.0" prefWidth="155.0" promptText="Indtast σn her"/>
    </children>
 </AnchorPane>
