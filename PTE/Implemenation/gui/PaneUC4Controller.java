@@ -36,7 +36,11 @@ public class PaneUC4Controller extends PTEPane implements Initializable {
 			arealErAEndret = false;
 			pteController.setIndtastAreal(tekstfeltFormat.formaterStringTilDouble(tekstFeltAreal.getText()));
 		}
-		tekstFeltForskydningsspændingen.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getTau_ForskydningsSpaending()));
+		
+		if(forskydningsspaendingenErAEndret) {
+			forskydningsspaendingenErAEndret = false;
+			pteController.setTau_ForskydningsSpaending(tekstfeltFormat.formaterStringTilDouble(tekstFeltForskydningsspændingen.getText()));
+		}
 	}
 	
 	@FXML
@@ -47,7 +51,7 @@ public class PaneUC4Controller extends PTEPane implements Initializable {
 	@Override
 	public void update(List<Tilstand> tilstande) {
 		if (tilstande.contains(Tilstand.INDTAST_AREAL)) {
-			tekstFeltAreal.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getAreal()));
+			tekstFeltAreal.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getIndtastAreal()));
 
 			tekstFeltForskydningsspændingen
 					.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getTau_ForskydningsSpaending()));
