@@ -14,6 +14,7 @@ class SikkerhedsfaktorImpl extends PTEEntityImpl implements Sikkerhedsfaktor {
 	@Override
 	public void setSikkerhedsfaktor(double sikkerhedsfaktor) {
 		this.sikkerhedsfaktor = sikkerhedsfaktor;
+		nulstilBoern();
 	}
 
 	@Override
@@ -40,6 +41,12 @@ class SikkerhedsfaktorImpl extends PTEEntityImpl implements Sikkerhedsfaktor {
 	@Override
 	public void nulstil() {
 		sikkerhedsfaktor = Double.NaN;
+		nulstilBoern();
+	}
+	
+	public void nulstilBoern() {
+		flydespaending.nulstil();
+		sigmaRef.nulstil();
 	}
 
 }
