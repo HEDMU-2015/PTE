@@ -7,7 +7,7 @@ import org.junit.Test;
 
 public class SigmaBTest {
 
-	SigmaBImpl sigmaB;
+	BoejningsspaendingImpl boejningsspaending;
 	
 	
 	

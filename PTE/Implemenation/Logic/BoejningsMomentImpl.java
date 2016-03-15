@@ -1,5 +1,6 @@
 package Logic;
 
+import Exceptions.BoejningsMomentException;
 import Exceptions.UdefineretLaengdeRetningException;
 import Exceptions.UdefineretProfilException;
 
@@ -43,7 +44,9 @@ class BoejningsMomentImpl extends PTEEntityImpl implements BoejningsMoment {
 		if(!Double.isNaN(boejningsMoment)) {
 			return boejningsMoment;
 		}
-		
+		if(boejningsMoment <0){
+			throw new BoejningsMomentException();
+		}
 		
 		if (lr == LaengdeRetning.VINKELRET_TIL_FDIM) {
 			return (l * dimensionerendeKraft);
