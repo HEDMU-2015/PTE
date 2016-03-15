@@ -1,6 +1,7 @@
 package Logic;
 
 public interface LogicFactory {
+	
 	public Vinkel createVinkel();
 	public Vaegt createVaegt();
 	public Tyngdekraft craeteTyngdeKraft(); 
@@ -24,4 +25,5 @@ public interface LogicFactory {
 	public IndtastAreal createIndtastAreal();
 	public Flydespaending createFlydespaendning();
 	public Sikkerhedsfaktor createSikkerhedsfaktor(Flydespaending flydespaending, Referencespaending sigmaRef);
+	
 }
