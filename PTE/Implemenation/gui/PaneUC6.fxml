@@ -9,7 +9,7 @@
    <children>
       <Label layoutX="14.0" layoutY="6.0" prefHeight="17.0" prefWidth="31.0" text="Areal:" />
       <Label layoutX="354.0" layoutY="30.0" text="mm²" />
-      <Button layoutX="282.0" layoutY="67.0" mnemonicParsing="false" defaultButton="true" onAction="#haandterUdregnKnap" prefHeight="25.0" prefWidth="65.0" text="Angiv" />
+      <Button layoutX="282.0" layoutY="67.0" mnemonicParsing="false" onAction="#haandterUdregnKnap" prefHeight="25.0" prefWidth="65.0" text="Angiv" />
       <TextField fx:id="tekstFeltVaegt2" editable="false" layoutX="14.0" layoutY="26.0" onMouseReleased="#haandterCleartekstFeltDimensionerndeKraft" prefHeight="25.0" prefWidth="333.0" promptText="Indtast areal her" />
    </children>
 </AnchorPane>
