@@ -14,15 +14,7 @@ public class DimensionerendeKraftTest {
 
 	DimensionerendeKraftImpl dimensionerendeKraft;
 
-	@Test
-	public void getDimensionerendeKraftNulstilTest() {
-		
-		 
-		dimensionerendeKraft.setDimensionerendeKraft(5);		
-		dimensionerendeKraft.nulstil();
-		assertEquals(Double.NaN, dimensionerendeKraft.getDimensionerendeKraft(), 0.001);
-
-	}
+	
 
 	@Test
 	public void GetDimensionerendeKraftNegativVaegtTest() {

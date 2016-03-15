@@ -30,14 +30,16 @@ class DimensionerendeKraftImpl extends PTEEntityImpl implements DimensionerendeK
 	}
 
 	double getDimensionerendeKraft(double vaegt, double tyngdekraft) {
-
+		
+		if (vaegt == Double.NaN || tyngdekraft == Double.NaN || dimensionerendeKraft == Double.NaN) {
+			return dimensionerendeKraft;
+		}
+		
 		if (vaegt <= 0 || tyngdekraft <= 0) {
 			throw new DimensionerendeKraftException();
 		}
 
-		if (vaegt == Double.NaN || tyngdekraft == Double.NaN) {
-			return dimensionerendeKraft;
-		}
+		
 
 		return vaegt * tyngdekraft;
 	}
@@ -55,7 +57,7 @@ class DimensionerendeKraftImpl extends PTEEntityImpl implements DimensionerendeK
 
 	@Override
 	public void nulstil() {
-		setDimensionerendeKraft(Double.NaN);
+		dimensionerendeKraft = Double.NaN;
 		nulstilBoern();
 	}
 
