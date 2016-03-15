@@ -19,7 +19,7 @@ public class PaneUC11Controller extends PTEPane implements Initializable {
 	private Profil profil;
 
 	@FXML
-	private TextField tekstFeltSigmaB, tekstFeltSigmaN, tekstFeltkg, tekstFeltdk, tekstFeltSigmaRef, tekstFeltnk, tekstFeltfs, tekstFeltfk, tekstFeltmb;
+	private TextField tekstFeltSigmaB, tekstFeltSigmaN, tekstFeltkg, tekstFeltdk, tekstFeltSigmaRef, tekstFeltnk, tekstFeltfs, tekstFeltfk, tekstFeltmb, tekstFeltAreal, tekstFeltSikkerhedsfaktor;
 
 	@Override
 	public void update(List<Tilstand> tilstande) {
@@ -33,27 +33,33 @@ public class PaneUC11Controller extends PTEPane implements Initializable {
 				tekstFeltfk.setText("sin( " + pteController.getVinkel() + ") * " + pteController.getDimensionerendeKraft());
 			}
 		if (tilstande.contains(Tilstand.VAEGT)){
-			tekstFeltfk.setText(pteController.getDimensionerendeKraft() + ") / " + pteController.getTyngdekraft()); 
+			tekstFeltkg.setText(pteController.getDimensionerendeKraft() + ") / " + pteController.getTyngdekraft()); 
 		}
 		if (tilstande.contains(Tilstand.DIMENSIONERENDE_KRAFT)){
-			tekstFeltfk.setText(pteController.getVaegt() + ") * " + pteController.getTyngdekraft()); 
+			tekstFeltdk.setText(pteController.getVaegt() + ") * " + pteController.getTyngdekraft()); 
 		}
 		if (tilstande.contains(Tilstand.BOEJNINGSMOMENT)){
-			tekstFeltfk.setText(pteController.getDimensionerendeKraft() + ") * " + pteController.getInertimoment()); 
+			tekstFeltmb.setText(pteController.getDimensionerendeKraft() + ") * " + pteController.getInertimoment()); 
 		}
 		if (tilstande.contains(Tilstand.TAU_FORSKYDNINGSSPAENDING)){
-			tekstFeltfk.setText(pteController.getForskydningkraft() + ") / " + pteController.getAreal()); 
+			tekstFeltfs.setText(pteController.getForskydningkraft() + ") / " + pteController.getAreal()); 
 		}
 		if (tilstande.contains(Tilstand.SIGMAN)){
-			tekstFeltfk.setText(pteController.getNormalkraft() + ") / " + pteController.getAreal()); 
+			tekstFeltSigmaN.setText(pteController.getNormalkraft() + ") / " + pteController.getAreal()); 
 		}
 		if (tilstande.contains(Tilstand.SIGMAB)){
-			tekstFeltfk.setText(pteController.getForskydningkraft() + ") * " + pteController.getForskydningspunkt() + " / " + ); 
+			tekstFeltSigmaB.setText(pteController.getForskydningkraft() + ") * " + pteController.getForskydningspunkt() + " / " + pteController.getInertimoment()); 
 		}
-		if (tilstande.contains(Tilstand.TAU_FORSKYDNINGSSPAENDING)){
-			tekstFeltfk.setText(pteController.getForskydningkraft() + ") / " + pteController.getAreal()); 
+		if (tilstande.contains(Tilstand.SIGMA_REF)){
+			tekstFeltSigmaRef.setText(" √ ((" + pteController.getSigmaB() + "+" + pteController.getSigmaN() + ")² + 3 *" + pteController.getTau_ForskydningsSpaending() + "²)"); 
 		}
-		
+		if (tilstande.contains(Tilstand.SIKKERHEDSFAKTOR)){
+			tekstFeltSikkerhedsfaktor.setText(pteController.getFlydespaending() + ") / " + pteController.getSigmaRef());  
+		}
+		if (tilstande.contains(Tilstand.AREAL)){
+			tekstFeltAreal.setText(pteController.getFlydespaending() + ") / " + pteController.getSigmaRef());  
+		}
+		}	
 	}
 
 	private void formaterTekstfelt(TextField input) {
