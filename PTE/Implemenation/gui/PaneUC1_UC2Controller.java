@@ -48,6 +48,7 @@ public class PaneUC1_UC2Controller extends PTEPane implements Initializable {
 
 	@FXML
 	private void haandterUdregnKnap() {
+		
 		if (vaegtErAEndret) {
 
 			vaegtErAEndret = false;

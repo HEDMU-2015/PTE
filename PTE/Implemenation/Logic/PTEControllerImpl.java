@@ -105,8 +105,8 @@ public class PTEControllerImpl implements PTEController {
 		this.forskydningskraft.nulstil();
 		tilstande.addAll(forskydningskraft.getAfhaengigheder());
 
-		this.areal.nulstil();
-		tilstande.addAll(areal.getAfhaengigheder());
+		this.indtastAreal.nulstil();
+		tilstande.addAll(indtastAreal.getAfhaengigheder());
 
 		this.forskydningsspaending.nulstil();
 		tilstande.addAll(forskydningsspaending.getAfhaengigheder());
@@ -149,6 +149,12 @@ public class PTEControllerImpl implements PTEController {
 
 		this.referencespaending.nulstil();
 		tilstande.addAll(referencespaending.getAfhaengigheder());
+		
+		this.flydeSpaending.nulstil();
+		tilstande.addAll(flydeSpaending.getAfhaengigheder());
+		
+		this.sikkerhedsfaktor.nulstil();
+		tilstande.addAll(sikkerhedsfaktor.getAfhaengigheder());
 
 		notifyObservers(tilstande);
 	}
