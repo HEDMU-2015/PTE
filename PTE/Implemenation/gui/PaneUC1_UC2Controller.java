@@ -4,6 +4,8 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import Exceptions.VaegtException;
+import Exceptions.VinkelException;
 import Logic.Profil;
 import Logic.Tilstand;
 import javafx.beans.value.ChangeListener;
@@ -21,6 +23,8 @@ public class PaneUC1_UC2Controller extends PTEPane implements Initializable {
 	private boolean vaegtErAEndret = false;
 	private boolean dimensionerendeKraftErAEndret = false;
 	private boolean vinkelErAEndret = false;
+	private String error = "-fx-background-color: pink;";
+	private String css = "@util/gui.css";
 
 	@FXML
 	private TextField tekstFeltVaegt;
@@ -49,11 +53,18 @@ public class PaneUC1_UC2Controller extends PTEPane implements Initializable {
 	@FXML
 	private void haandterUdregnKnap() {
 		
-		if (vaegtErAEndret) {
+		tekstFeltVinkel.setStyle(css);
+		tekstFeltVaegt.setStyle(css);
 
+		if (vaegtErAEndret) {
+			try{
 			vaegtErAEndret = false;
+			
 
 			pteController.setVaegt(tekstfeltFormat.formaterStringTilDouble(tekstFeltVaegt.getText()));
+			}catch(VaegtException e){
+				tekstFeltVaegt.setStyle(error);
+			}
 		}
 
 		if (dimensionerendeKraftErAEndret) {
@@ -64,9 +75,14 @@ public class PaneUC1_UC2Controller extends PTEPane implements Initializable {
 		}
 
 		if (vinkelErAEndret) {
-			vinkelErAEndret = false;
-			pteController.setVinkel(tekstfeltFormat.formaterStringTilDouble(tekstFeltVinkel.getText()));
+			try{
+				vinkelErAEndret = false;
 
+				pteController.setVinkel(tekstfeltFormat.formaterStringTilDouble(tekstFeltVinkel.getText()));
+			}catch(VinkelException e){
+				tekstFeltVinkel.setStyle(error);
+			}
+	
 		}
 
 		if ((vandret.isSelected() && pteController.getProfil() != Profil.VANDRET)
@@ -161,7 +177,7 @@ public class PaneUC1_UC2Controller extends PTEPane implements Initializable {
 		}
 
 		if (tilstande.contains(Tilstand.VINKEL)) {
-
+			
 			tekstFeltVinkel.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getVinkel()));
 		}
 	}

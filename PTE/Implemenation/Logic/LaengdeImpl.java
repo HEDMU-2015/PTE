@@ -8,14 +8,15 @@ class LaengdeImpl extends PTEEntityImpl implements Laengde {
 
 	@Override
 	public double getLaengde() {
-		if (laengde < 0) {
-			throw new LaengdeException();
-		}
+		
 		return laengde;
 	}
 
 	@Override
 	public void setLaengde(double laengde) {
+		if (laengde < 0) {
+			throw new LaengdeException();
+		}
 		this.laengde = laengde;
 	}
 

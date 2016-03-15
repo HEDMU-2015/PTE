@@ -58,7 +58,6 @@ public class PaneUC9Controller extends PTEPane implements Initializable {
 			System.out.println("pteController " + pteController.erSikkerhedsfaktorForLavt());
 
 			if(tekstFeltSikkerhedsFaktor.getText()!= "" && pteController.erSikkerhedsfaktorForLavt()){
-				System.out.println("pteController " + pteController.erSikkerhedsfaktorForLavt());
 				tekstFeltSikkerhedsFaktor.setStyle("-fx-background-color: pink;");
 			}
 		}

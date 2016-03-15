@@ -109,7 +109,6 @@ public class PaneUC11Controller extends PTEPane implements Initializable {
 					+ (Double.isNaN(pteController.getSikkerhedsfaktor()) ? "" : " = ") + tekstfeltFormat.formaterDoubleTilString(pteController.getSikkerhedsfaktor()));  
 		
 			if(tekstFeltSikkerhedsfaktor.getText()!= "" && pteController.erSikkerhedsfaktorForLavt()){
-				System.out.println("pteController " + pteController.erSikkerhedsfaktorForLavt());
 				tekstFeltSikkerhedsfaktor.setStyle("-fx-background-color: pink;");
 			}
 		
