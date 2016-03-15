@@ -133,8 +133,6 @@ public class PaneUC1_UC2Controller extends PTEPane implements Initializable {
 
 	@Override
 	public void update(List<Tilstand> tilstande) {
-		// TODO slet syso
-		System.out.println("Update " + tilstande);
 
 		if (tilstande.contains(Tilstand.VAEGT)) {
 

@@ -22,69 +22,55 @@ import javafx.scene.transform.Rotate;
 public class KranTegner extends PTEPane {
 	
 	private AnchorPane ap;
-	Profil profil;
 	private Line kranArm, xAxis, yAxis;
 	private double x, y, height, width, nuvaerendeVinkel, rotateVinkel, katetA, vinkelSidePadding, vinkelHoejdePadding;
+	boolean erKranTegnet = false;
+	Profil profil;
 	Path snit;
 	Text vinkelVaerdi;
 	Arc arc;
-	private TextField tf = new TextField();
-	private Button button = new Button("Rotate kran arm");
-	
-	public KranTegner(double width, double height, Profil profil) {
+
+	public KranTegner(double width, double height) {
 		ap = new AnchorPane();
-		this.profil = profil;
         this.width = width;
         this.height = height;
         this.x = width/4;
         this.y = this.height - this.height/3;
-        nuvaerendeVinkel = 45;
+        
         vinkelSidePadding = 10;
         vinkelHoejdePadding = 17;
         
-        arc = new Arc();
-        
-        vinkelVaerdi = new Text(String.valueOf(nuvaerendeVinkel) + "°");
-        ap.getChildren().add(vinkelVaerdi);
+        kranArm = new Line(x, y, width - width/4, y);
+        arc = new Arc(); 
+        snit = new Path();
+        vinkelVaerdi = new Text();
         
         katetA = 30;
+        
+        tegnXYAxis();
 	}
 	
-	public void tegnKran() {
-		tegnXYAxis();
-		tilfoejArc();
-		tegnKranArm();
-		tegnBoelgeStreg();
-		rotateVandretKranArmOgSnit(nuvaerendeVinkel);
+	private void tegnKran() {
+		setUpKranArm();
+        setUpArc();
+		setUpBoelgeStreg();
+		ap.getChildren().addAll(kranArm, vinkelVaerdi, arc, snit);
 	}
 	
-	private void tilfoejArc() {
-		double katetB = udrengKatet_b();
-		arc.setCenterX(x);
-		arc.setCenterY(y);
-		arc.setRadiusX(katetB);
-		arc.setRadiusY(katetB);
-		arc.setStartAngle(0);
-		arc.setLength(nuvaerendeVinkel);
-		
+	private void setUpKranArm() {
+		kranArm.setStrokeWidth(10);
+		kranArm.setStroke(Color.web("#55A9FC"));
+		kranArm.setStrokeLineCap(StrokeLineCap.ROUND);
+	}
+	
+	private void setUpArc() {
 		arc.setStrokeWidth(2);
 		arc.setStroke(Color.web("#000000"));
 		arc.setFill(Color.CORNSILK.deriveColor(0, 0, 0, 0.0));
-		ap.getChildren().add(arc);
 	}
 	
 	private double udrengKatet_b() {
 		return katetA / Math.tan(Math.toRadians(nuvaerendeVinkel));
-	}
-	
-	private void tegnKranArm() {
-		kranArm = new Line(x, y, width - width/4, y);
-		kranArm.setStrokeWidth(10);
-		kranArm.setStroke(Color.web("#55A9FC"));
-		kranArm.setStrokeLineCap(StrokeLineCap.ROUND);
-		kranArm.getTransforms().add(new Rotate(-nuvaerendeVinkel, x, y));
-		
-		ap.getChildren().add(kranArm);
 	}
 	
 	private void tegnXYAxis() {
@@ -116,9 +102,7 @@ public class KranTegner extends PTEPane {
         ap.getChildren().add(yAxisHead2);
 	}
 	
-	private void tegnBoelgeStreg() {
-		snit = new Path();
-
+	private void setUpBoelgeStreg() {
 		snit.setStroke(Color.web("#F27D7D"));
 		snit.setStrokeWidth(3);
 		snit.setStrokeLineCap(StrokeLineCap.ROUND);
@@ -151,13 +135,9 @@ public class KranTegner extends PTEPane {
 	    curve2.setControlY2(y + 10);
 	    curve2.setX(x + 30);
 	    curve2.setY(y);
-	    
+	    snit.getTransforms().add(new Rotate(-90, x, y));
 	    snit.getElements().add(moveToCurve2);
 	    snit.getElements().add(curve2);
-	    
-	    snit.getTransforms().add(new Rotate(nuvaerendeVinkel, x, y));
-	    
-		ap.getChildren().add(snit);
 	}
 	
 	private void flytArcOgVinkelVandret() {
@@ -252,6 +232,7 @@ public class KranTegner extends PTEPane {
 			snit.getTransforms().add(snitRotate);
 			vinkelVaerdi.setText(String.valueOf(nuvaerendeVinkel) + "°");
 			flytArcOgVinkelLodret();
+			kranArm.getTransforms().clear();
 		}
 	}
 	
@@ -259,22 +240,23 @@ public class KranTegner extends PTEPane {
 		return ap;
 	}
 	
-	private void rotateKranArmOgSnit() {
+	private void rotateKranArmOgSnit(double vinkel) {
 		if(profil == Profil.VANDRET) {
-			rotateVandretKranArmOgSnit(nuvaerendeVinkel);
+			rotateVandretKranArmOgSnit(vinkel);
 		} else if(profil == Profil.LODRET) {
-			rotateLodretKranArmOgSnit(nuvaerendeVinkel);
+			rotateLodretKranArmOgSnit(vinkel);
 		}
 	}
 	
 	@Override
 	public void update(List<Tilstand> tilstande) {
-		if(tilstande.contains(Tilstand.PROFIL)) {
-			profil = pteController.getProfil();
-		}
 		if(tilstande.contains(Tilstand.VINKEL)) {
-			nuvaerendeVinkel = pteController.getVinkel();
-			rotateKranArmOgSnit();
+			profil = pteController.getProfil();
+			if(!erKranTegnet) {
+				tegnKran();
+				erKranTegnet = true;
+			}
+			rotateKranArmOgSnit(pteController.getVinkel());
 		}
 	}
 }

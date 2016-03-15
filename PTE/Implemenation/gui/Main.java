@@ -5,6 +5,7 @@ import java.io.IOException;
 import Logic.LogicFactoryImpl;
 import Logic.PTEController;
 import Logic.PTEControllerImpl;
+import Logic.Profil;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -51,6 +52,10 @@ public class Main extends Application {
 		VBox vboxICenter = new VBox();
 		PTEController pteController = new PTEControllerImpl(new LogicFactoryImpl());
 		try {
+			// Kran billede
+			KranTegner kran = new KranTegner(400, 515);
+			kran.setPTEController(pteController);
+			
 			// Pane UC1 og UC2
 			FXMLLoader loaderUC1_UC2 = new FXMLLoader();
 			loaderUC1_UC2.setLocation(Main.class.getResource("PaneUC1_UC2.fxml"));
@@ -201,6 +206,7 @@ public class Main extends Application {
 			scrollPane.setHbarPolicy(ScrollBarPolicy.NEVER);
 			mainWindow.setCenter(scrollPane);
 			mainWindow.setRight(paneUC11);
+			mainWindow.setLeft(kran.getNode());
 		} catch (IOException exc) {
 		}
 	}
