@@ -18,11 +18,11 @@ public class PaneUC8Controller extends PTEPane implements Initializable {
 
 	private boolean arealErAEndret = false;
 	
-	private boolean sigmaBErÆndret = false;
+	private boolean sigmaBErAEndret = false;
 	
-	private boolean sigmaNErÆndret = false;
+	private boolean sigmaNErAEndret = false;
 	
-	private boolean sigmaRefErÆndret = false;
+	private boolean sigmaRefErAEndret = false;
 
 	@FXML
 	private TextField tekstFeltSigmaB;
@@ -65,21 +65,21 @@ public class PaneUC8Controller extends PTEPane implements Initializable {
 		tekstFeltSigmaB.focusedProperty().addListener(new ChangeListener<Boolean>() {
 			@Override
 			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-				sigmaBErÆndret = true;
+				sigmaBErAEndret = true;
 			}
 		});
 		
 		tekstFeltSigmaN.focusedProperty().addListener(new ChangeListener<Boolean>() {
 			@Override
 			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-				sigmaNErÆndret = true;
+				sigmaNErAEndret = true;
 			}
 		});
 		
 		tekstFeltSigmaRef.focusedProperty().addListener(new ChangeListener<Boolean>() {
 			@Override
 			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-				sigmaRefErÆndret = true;
+				sigmaRefErAEndret = true;
 			}
 		});
 		

@@ -21,10 +21,10 @@ public class PaneUC10Controller extends PTEPane implements Initializable {
 	private TekstFormattering tekstfeltFormat = new TekstFormatteringImpl();
 
 	private boolean diameterAErndret = false;
-	private boolean hoejdeErÆndret = false;
-	private boolean breddeErÆndret = false;
-	private boolean godstykkelseErÆndret = false;
-	private boolean arealErÆndret = false;
+	private boolean hoejdeErAEndret = false;
+	private boolean breddeErAEndret = false;
+	private boolean godstykkelseErAEndret = false;
+	private boolean arealErAEndret = false;
 	private boolean profiltypeErAEndret = false;
 	private boolean cirkelErAEndret = false;
 	private boolean hultRoerErAEndret = false;
@@ -117,28 +117,28 @@ public class PaneUC10Controller extends PTEPane implements Initializable {
 		tekstFeltHoejde.focusedProperty().addListener(new ChangeListener<Boolean>() {
 			@Override
 			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-				hoejdeErÆndret = true;
+				hoejdeErAEndret = true;
 			}
 		});
 		
 		tekstFeltBredde.focusedProperty().addListener(new ChangeListener<Boolean>() {
 			@Override
 			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-				breddeErÆndret = true;
+				breddeErAEndret = true;
 			}
 		});
 		
 		tekstFeltAreal.focusedProperty().addListener(new ChangeListener<Boolean>() {
 			@Override
 			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-				arealErÆndret = true;
+				arealErAEndret = true;
 			}
 		});
 		
 		tekstFeltGodstykkelse.focusedProperty().addListener(new ChangeListener<Boolean>() {
 			@Override
 			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-				godstykkelseErÆndret = true;
+				godstykkelseErAEndret = true;
 			}
 		});
 		

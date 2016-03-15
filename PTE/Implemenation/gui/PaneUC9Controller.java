@@ -16,9 +16,9 @@ import javafx.scene.control.TextField;
 public class PaneUC9Controller extends PTEPane implements Initializable {
 
 	private TekstFormattering tekstfeltFormat = new TekstFormatteringImpl();
-	private boolean flydespaendingErÆndret = false;
-	private boolean sigmaRefErÆndret = false;
-	private boolean sikkerhedsFaktorErÆndret = false;
+	private boolean flydespaendingErAEndret = false;
+	private boolean sigmaRefErAEndret = false;
+	private boolean sikkerhedsFaktorErAEndret = false;
 	@FXML
 	private TextField tekstFlydeSpaending;
 	
@@ -58,21 +58,21 @@ public class PaneUC9Controller extends PTEPane implements Initializable {
 		tekstFeltSigmaRef.focusedProperty().addListener(new ChangeListener<Boolean>() {
 			@Override
 			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-				sigmaRefErÆndret = true;
+				sigmaRefErAEndret = true;
 			}
 		});
 		
 		tekstFlydeSpaending.focusedProperty().addListener(new ChangeListener<Boolean>() {
 			@Override
 			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-				flydespaendingErÆndret = true;
+				flydespaendingErAEndret = true;
 			}
 		});
 		
 		tekstFeltSikkerhedsFaktor.focusedProperty().addListener(new ChangeListener<Boolean>() {
 			@Override
 			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-				sikkerhedsFaktorErÆndret = true;
+				sikkerhedsFaktorErAEndret = true;
 			}
 		});
 	}
