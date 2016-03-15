@@ -27,11 +27,19 @@ public class ReferencespaendingImpl extends PTEEntityImpl implements Referencesp
 	@Override
 	public void nulstil() {
 		setSigmaRef(Double.NaN);
+		nulstilBoern();
+	}
+	
+	public void nulstilBoern() {
+		sigmaB.nulstil();
+		sigmaN.nulstil();
+		tau_ForskydningsSpaendingen.nulstil();
 	}
 
 	@Override
 	public void setSigmaRef(double sigmaRef) {
 		this.sigmaRef = sigmaRef;
+		nulstilBoern();
 	}
 
 	@Override
