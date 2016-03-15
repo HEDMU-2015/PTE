@@ -12,6 +12,7 @@ public class NormalspaendingImpl extends PTEEntityImpl implements Normalspaendin
 
 		this.areal = areal;
 		this.normalkraft = normalkraft;
+		System.out.println(this.areal);
 		this.areal.tilfoejAfhaengigEntitet(this);
 		this.normalkraft.tilfoejAfhaengigEntitet(this);
 	}
