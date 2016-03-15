@@ -180,13 +180,27 @@ public class Main extends Application {
 						PTEPane controllerPaneUC10 = loaderUC10.<PTEPane> getController();
 						controllerPaneUC10.setPTEController(pteController);
 						
+						
+
+						// Pane UC11
+						FXMLLoader loaderUC11 = new FXMLLoader();
+						loaderUC11.setLocation(Main.class.getResource("PaneUC11.fxml"));
+						AnchorPane paneUC11 = (AnchorPane) loaderUC11.load();
+						TitledPane tpUC11 = new TitledPane("Mellemregning", paneUC11);
+						tpUC11.setExpanded(false);
+						
+						PTEPane controllerPaneUC11 = loaderUC11.<PTEPane> getController();
+						controllerPaneUC11.setPTEController(pteController);
+						
 			
 			vboxICenter.getChildren().addAll(tpUC1_UC2, tpUC3, tpUC4, tpUC5, tpUC7, tpUC8, tpUC9, tpUC10);
+			
 			scrollPane = new ScrollPane(vboxICenter);
 			scrollPane.setFitToHeight(true);
 			scrollPane.setVbarPolicy(ScrollBarPolicy.AS_NEEDED);
 			scrollPane.setHbarPolicy(ScrollBarPolicy.NEVER);
 			mainWindow.setCenter(scrollPane);
+			mainWindow.setRight(paneUC11);
 		} catch (IOException exc) {
 		}
 	}
