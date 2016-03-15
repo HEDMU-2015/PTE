@@ -3,14 +3,14 @@ package Logic;
 import Exceptions.LaengdeException;
 
 class LaengdeImpl extends PTEEntityImpl implements Laengde {
+	
 	private double laengde;
 
 	@Override
 	public double getLaengde() {
-		if(laengde < 0){
+		if (laengde < 0) {
 			throw new LaengdeException();
 		}
-		
 		return laengde;
 	}
 
@@ -18,7 +18,7 @@ class LaengdeImpl extends PTEEntityImpl implements Laengde {
 	public void setLaengde(double laengde) {
 		this.laengde = laengde;
 	}
- 
+
 	@Override
 	public double Laengde() {
 		return laengde;

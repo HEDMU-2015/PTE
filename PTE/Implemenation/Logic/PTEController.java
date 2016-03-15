@@ -1,7 +1,6 @@
 package Logic;
 
 import java.util.List;
-import Logic.Observer;
 
 public interface PTEController {
 
@@ -40,7 +39,7 @@ public interface PTEController {
 	public void setDimensioneredndeKraft(double dimensioneredndeKraft);
 
 	public void setLaengdeRetning(LaengdeRetning laengdeRetning);
-	
+
 	public double getTau_ForskydningsSpaending();
 
 	public void setTau_ForskydningsSpaending(double tau_ForskydningsSpaending);
@@ -96,22 +95,23 @@ public interface PTEController {
 	public double getAreal();
 
 	public void setAreal(double areal);
-	
+
 	public ProfilType getProfilType();
-	
+
 	public void setProfilType(ProfilType profilType);
-	
+
 	public double getIndtastAreal();
-	
+
 	public void setIndtastAreal(double indtastAreal);
-	
+
 	public double getFlydespaending();
-	
+
 	public void setFlydespaending(double flydespaending);
-	
+
 	public void setSikkerhedsfaktor(double sikkerhedsfaktor);
-	
+
 	public double getSikkerhedsfaktor();
-	
+
 	public boolean erSikkerhedsfaktorForLavt();
+	
 }

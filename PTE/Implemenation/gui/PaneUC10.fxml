@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="262.0" prefWidth="383.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.PaneUC10Controller">
+   <children>
+      <Label layoutX="21.0" layoutY="103.0" text="Bredde:" />
+      <Label layoutX="193.0" layoutY="29.0" text="Diameter:" />
+      <Label fx:id="labelSigmaB" layoutX="22.0" layoutY="155.0" text="Godstykkelse:" />
+      <Button layoutX="232.0" layoutY="224.0" mnemonicParsing="false" onAction="#haandterUdregnKnap" text="Udregn" />
+      <Button layoutX="300.0" layoutY="224.0" mnemonicParsing="false" onAction="#haandterResetKnap" text="Reset" />
+      <TextField fx:id="tekstDiameter" layoutX="193.0" layoutY="53.0" prefHeight="25.0" prefWidth="155.0" promptText="Indtast diameter" />
+      <TextField fx:id="tekstFeltGodstykkelse" layoutX="22.0" layoutY="177.0" prefHeight="25.0" prefWidth="155.0" promptText="Indtast godstykkelse" styleClass="test" stylesheets="@util/gui.css" />
+      <TextField fx:id="tekstFeltBredde" layoutX="22.0" layoutY="120.0" prefHeight="25.0" prefWidth="155.0" promptText="Indtast bredde" />
+      <RadioButton fx:id="btnCirkel" layoutX="21.0" layoutY="40.0" mnemonicParsing="false" text="Cirkel">
+         <toggleGroup>
+            <ToggleGroup fx:id="profiltype" />
+         </toggleGroup></RadioButton>
+      <RadioButton fx:id="btnHultRoer" layoutX="117.0" layoutY="40.0" mnemonicParsing="false" text="Hult rør" toggleGroup="$profiltype" />
+      <RadioButton fx:id="btnKvadratRoer" layoutX="21.0" layoutY="67.0" mnemonicParsing="false" text="Kvadrat rør" toggleGroup="$profiltype" />
+      <RadioButton fx:id="btnKvadrat" layoutX="117.0" layoutY="67.0" mnemonicParsing="false" text="Kvadrat" toggleGroup="$profiltype" />
+      <Label layoutX="24.0" layoutY="13.0" text="Profiltype:" />
+      <TextField fx:id="tekstFeltHoejde" layoutX="197.0" layoutY="116.0" promptText="Indtast højde" />
+      <Label fx:id="labelSigmaB1" layoutX="198.0" layoutY="94.0" text="Højde:" />
+      <TextField fx:id="tekstFeltAreal" editable="false" layoutX="197.0" layoutY="176.0" />
+      <Label fx:id="labelSigmaB11" layoutX="198.0" layoutY="154.0" text="Areal:" />
+   </children>
+</AnchorPane>

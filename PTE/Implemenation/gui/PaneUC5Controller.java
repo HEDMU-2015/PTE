@@ -16,7 +16,11 @@ public class PaneUC5Controller extends PTEPane implements Initializable {
 
 	private TekstFormattering tekstfeltFormat = new TekstFormatteringImpl();
 
+	private boolean fnErAEndret = false;
+	private boolean sigmaNErAEndret = false;
 	private boolean arealErAEndret = false;
+	
+	
 
 	@FXML
 	private TextField tekstFeltFn;
@@ -65,10 +69,24 @@ public class PaneUC5Controller extends PTEPane implements Initializable {
 		formaterTekstfelt(tekstFeltAreal);
 		formaterTekstfelt(tekstFeltSigmaN);
 		
+		tekstFeltFn.focusedProperty().addListener(new ChangeListener<Boolean>() {
+			@Override
+			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+				fnErAEndret = true;
+			}
+		});
+		
 		tekstFeltAreal.focusedProperty().addListener(new ChangeListener<Boolean>() {
 			@Override
 			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
 				arealErAEndret = true;
+			}
+		});
+		
+		tekstFeltSigmaN.focusedProperty().addListener(new ChangeListener<Boolean>() {
+			@Override
+			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+				sigmaNErAEndret = true;
 			}
 		});
 	}

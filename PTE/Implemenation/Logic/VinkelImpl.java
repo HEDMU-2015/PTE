@@ -3,6 +3,7 @@ package Logic;
 import Exceptions.VinkelException;
 
 class VinkelImpl extends PTEEntityImpl implements Vinkel {
+
 	private double vinkel = Double.NaN;
 	private Profil profil = Profil.UDEFINERET;
 	private LaengdeRetning laengdeRetning;
@@ -11,13 +12,11 @@ class VinkelImpl extends PTEEntityImpl implements Vinkel {
 	public void setVinkel(double vinkel) {
 		if (vinkel > 90) {
 			throw new VinkelException();
-		} 
+		}
 		if (vinkel < 0) {
 			throw new VinkelException();
-			}
-	
+		}
 		this.vinkel = vinkel;
-		
 	}
 
 	@Override
@@ -45,9 +44,10 @@ class VinkelImpl extends PTEEntityImpl implements Vinkel {
 	protected Tilstand getEgenAfhaengighed() {
 		return Tilstand.VINKEL;
 	}
+
 	@Override
 	public void setLaengdeRetning(LaengdeRetning laengdeRetning) {
-		this.laengdeRetning = laengdeRetning;		
+		this.laengdeRetning = laengdeRetning;
 	}
 
 	@Override

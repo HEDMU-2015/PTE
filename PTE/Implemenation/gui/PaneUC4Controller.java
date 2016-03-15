@@ -17,6 +17,8 @@ public class PaneUC4Controller extends PTEPane implements Initializable {
 	private TekstFormattering tekstfeltFormat = new TekstFormatteringImpl();
 
 	private boolean arealErAEndret = false;
+	
+	private boolean forskydningsspændingenErAEndret = false;
 
 	@FXML
 	private TextField tekstFeltAreal;
@@ -66,6 +68,13 @@ public class PaneUC4Controller extends PTEPane implements Initializable {
 			@Override
 			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
 				arealErAEndret = true;
+			}
+		});
+		
+		tekstFeltForskydningsspændingen.focusedProperty().addListener(new ChangeListener<Boolean>() {
+			@Override
+			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+				forskydningsspændingenErAEndret = true;
 			}
 		});
 	}

@@ -4,7 +4,7 @@ public class LogicFactoryImpl implements LogicFactory {
 
 	@Override
 	public Vinkel createVinkel() {
-		return new VinkelImpl(); 
+		return new VinkelImpl();
 	}
 
 	@Override
@@ -31,19 +31,20 @@ public class LogicFactoryImpl implements LogicFactory {
 	public Normalkraft createNormalKraft(DimensionerendeKraft dimensionerendeKraft, Vinkel vinkel) {
 		return new NormalkraftImpl(dimensionerendeKraft, vinkel);
 	}
-	
+
 	@Override
 	public Forskydningsspaending createTau_ForskydningsSpaending(Areal areal, Forskydningskraft forskydningskraft) {
 		return new ForskydningsspaendingImpl(areal, forskydningskraft);
 	}
-	
+
 	@Override
 	public Laengde createLaengde() {
 		return new LaengdeImpl();
 	}
-	
+
 	@Override
-	public BoejningsMoment createBoejningsMoment(Vinkel v, Laengde l, DimensionerendeKraft dimensionerendeKraft, Forskydningskraft forskydningskraft) {
+	public BoejningsMoment createBoejningsMoment(Vinkel v, Laengde l, DimensionerendeKraft dimensionerendeKraft,
+			Forskydningskraft forskydningskraft) {
 		return new BoejningsMomentImpl(v, l, dimensionerendeKraft, forskydningskraft);
 	}
 
@@ -113,7 +114,7 @@ public class LogicFactoryImpl implements LogicFactory {
 	public Flydespaending createFlydespaendning() {
 		return new FlydespaendingImpl();
 	}
-	
+
 	@Override
 	public Sikkerhedsfaktor createSikkerhedsfaktor(Flydespaending flydespaending, Referencespaending sigmaRef) {
 		return new SikkerhedsfaktorImpl(flydespaending, sigmaRef);

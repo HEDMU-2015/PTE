@@ -2,7 +2,6 @@ package Logic;
 
 import java.util.List;
 
-
 public interface Observer {
 
 	/**
@@ -10,5 +9,5 @@ public interface Observer {
 	 * @param tilstande
 	 */
 	public void update(List<Tilstand> tilstande);
-	
+
 }

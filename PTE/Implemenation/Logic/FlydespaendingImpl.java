@@ -1,9 +1,9 @@
 package Logic;
 
 class FlydespaendingImpl extends PTEEntityImpl implements Flydespaending {
-	
-	double flydespaending = Double.NaN;
-	
+
+	private double flydespaending = Double.NaN;
+
 	@Override
 	public void setFlydespaending(double flydspaending) {
 		this.flydespaending = flydspaending;

@@ -16,7 +16,9 @@ import javafx.scene.control.TextField;
 public class PaneUC7Controller extends PTEPane implements Initializable {
 
 	private TekstFormattering tekstfeltFormat = new TekstFormatteringImpl();
-
+	private boolean forskydningspunktErAEndret = false;
+	private boolean intertimomentErAEndret= false;
+	private boolean sigmaBErAEndret = false;
 	@FXML
 	private TextField tekstFeltForskydningspunkt;
 	
@@ -28,10 +30,22 @@ public class PaneUC7Controller extends PTEPane implements Initializable {
 	
 	@FXML
 	public void haandterUdregnKnap() {
-		pteController.setForskydningspunkt(Double.parseDouble(tekstFeltForskydningspunkt.getText()));
-		pteController.setInertimoment(Double.parseDouble(tekstFeltIntertimoment.getText()));
-		tekstFeltSigmaB.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getSigmaB()));
-		pteController.setSigmaB(pteController.getSigmaB());
+		
+		if(forskydningspunktErAEndret) {
+			forskydningspunktErAEndret = false;
+			pteController.setForskydningspunkt(tekstfeltFormat.formaterStringTilDouble(tekstFeltForskydningspunkt.getText()));
+		}
+		
+		if (intertimomentErAEndret) {
+			intertimomentErAEndret = false;
+			pteController.setInertimoment(tekstfeltFormat.formaterStringTilDouble(tekstFeltIntertimoment.getText()));
+		}
+	
+		if (sigmaBErAEndret) {
+			sigmaBErAEndret = false;
+			pteController.setSigmaB(tekstfeltFormat.formaterStringTilDouble(tekstFeltSigmaB.getText()));
+		}
+		
 	}
 	@FXML
 	public void haandterResetKnap() { 
@@ -40,6 +54,17 @@ public class PaneUC7Controller extends PTEPane implements Initializable {
 
 	@Override
 	public void update(List<Tilstand> tilstande) {
+		if (tilstande.contains(Tilstand.FORSKYDNINGSPUNKT)) {
+			tekstFeltForskydningspunkt.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getForskydningspunkt()));
+		}
+		
+		if (tilstande.contains(Tilstand.INERTIMOMENT)) {
+			tekstFeltIntertimoment.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getInertimoment()));
+		}
+		
+		if (tilstande.contains(Tilstand.SIGMAB)) {
+			tekstFeltSigmaB.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getSigmaB()));
+		}
 			}
 
 	private void formaterTekstfelt(TextField input) {
@@ -51,6 +76,27 @@ public class PaneUC7Controller extends PTEPane implements Initializable {
 		formaterTekstfelt(tekstFeltForskydningspunkt);
 		formaterTekstfelt(tekstFeltIntertimoment);
 		formaterTekstfelt(tekstFeltSigmaB);
+		
+		tekstFeltForskydningspunkt.focusedProperty().addListener(new ChangeListener<Boolean>() {
+			@Override
+			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+				forskydningspunktErAEndret = true;
+			}
+		});
+		
+		tekstFeltIntertimoment.focusedProperty().addListener(new ChangeListener<Boolean>() {
+			@Override
+			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+				intertimomentErAEndret = true;
+			}
+		});
+		
+		tekstFeltSigmaB.focusedProperty().addListener(new ChangeListener<Boolean>() {
+			@Override
+			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+				sigmaBErAEndret = true;
+			}
+		});
 	}
 
 }

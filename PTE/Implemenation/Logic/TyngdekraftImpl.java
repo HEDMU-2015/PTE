@@ -5,10 +5,10 @@ import Exceptions.TyngdekraftException;
 class TyngdekraftImpl extends PTEEntityImpl implements Tyngdekraft {
 
 	private double tyngdekraft = 9.816;
-	
+
 	@Override
 	public double getTyngdekraft() {
-		if(tyngdekraft<=0){
+		if (tyngdekraft <= 0) {
 			throw new TyngdekraftException();
 		}
 		return tyngdekraft;
@@ -17,7 +17,6 @@ class TyngdekraftImpl extends PTEEntityImpl implements Tyngdekraft {
 	@Override
 	public void setTyngdekraft(double tyngdekraft) {
 		this.tyngdekraft = tyngdekraft;
-		
 	}
 
 	@Override

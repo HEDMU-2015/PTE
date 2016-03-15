@@ -101,7 +101,7 @@ public class SikkerhedsfaktorTest {
 			// TODO Auto-generated method stub
 			return 0;
 		}
-	},new SigmaRef() {
+	}, new Referencespaending() {
 		
 		@Override
 		public void tilfoejAfhaengigEntitet(PTEEntity entity) {
@@ -116,7 +116,7 @@ public class SikkerhedsfaktorTest {
 		}
 		
 		@Override
-		public void setReference(double refe) {
+		public void setSigmaRef(double sigmaRef) {
 			// TODO Auto-generated method stub
 			
 		}
