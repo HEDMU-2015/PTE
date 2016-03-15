@@ -4,9 +4,9 @@ public class ForskydningsspaendingImpl extends PTEEntityImpl implements Forskydn
 	
 	private double tau_ForskydningsSpaending = Double.NaN;
 	private Forskydningskraft forskydningskraft;
-	private Areal areal;
+	private IndtastAreal areal;
 
-	public ForskydningsspaendingImpl(Areal areal, Forskydningskraft forskydningskraft) {
+	public ForskydningsspaendingImpl(IndtastAreal areal, Forskydningskraft forskydningskraft) {
 		if (areal == null || forskydningskraft == null) {
 			throw new IllegalArgumentException();
 		}
@@ -33,7 +33,7 @@ public class ForskydningsspaendingImpl extends PTEEntityImpl implements Forskydn
 		if (!Double.isNaN(tau_ForskydningsSpaending)) {
 			return tau_ForskydningsSpaending;
 		}
-		return getTau_ForskydningsSpaending(forskydningskraft.getForskydningskraft(), areal.getAreal());
+		return getTau_ForskydningsSpaending(forskydningskraft.getForskydningskraft(), areal.getIndtastAreal());
 	}
 
 	double getTau_ForskydningsSpaending(double forskydningskraft, double areal) {

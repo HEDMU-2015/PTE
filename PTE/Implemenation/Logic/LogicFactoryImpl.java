@@ -33,7 +33,7 @@ public class LogicFactoryImpl implements LogicFactory {
 	}
 
 	@Override
-	public Forskydningsspaending createTau_ForskydningsSpaending(Areal areal, Forskydningskraft forskydningskraft) {
+	public Forskydningsspaending createTau_ForskydningsSpaending(IndtastAreal areal, Forskydningskraft forskydningskraft) {
 		return new ForskydningsspaendingImpl(areal, forskydningskraft);
 	}
 

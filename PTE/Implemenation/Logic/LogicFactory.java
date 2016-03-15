@@ -8,7 +8,7 @@ public interface LogicFactory {
 	public DimensionerendeKraft craeteDimensionerendeKraft(Vaegt vaegt, Tyngdekraft tyngdeKraft);
 	public Forskydningskraft createForskydningskraft(Vinkel vinkel, DimensionerendeKraft dimensionerendeKraft);
 	public Normalkraft createNormalKraft(DimensionerendeKraft dimensionerendeKraft, Vinkel vinkel);
-	public Forskydningsspaending createTau_ForskydningsSpaending(Areal areal, Forskydningskraft forskydningsKraft);
+	public Forskydningsspaending createTau_ForskydningsSpaending(IndtastAreal areal, Forskydningskraft forskydningsKraft);
 	public Laengde createLaengde();
 	public BoejningsMoment createBoejningsMoment(Vinkel v, Laengde l, DimensionerendeKraft dimensionerendeKraft, Forskydningskraft forskydningskraft);
 	public Normalspaending createSigmaN(IndtastAreal areal, Normalkraft normalKraft);

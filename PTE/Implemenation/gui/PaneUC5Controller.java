@@ -33,7 +33,6 @@ public class PaneUC5Controller extends PTEPane implements Initializable {
 	
 	@FXML
 	public void haandterUdregnKnap() {
-		
 		if (fnErAEndret) {
 			fnErAEndret = false;
 			pteController.setForskydningskraft(tekstfeltFormat.formaterStringTilDouble(tekstFeltFn.getText()));
@@ -56,7 +55,7 @@ public class PaneUC5Controller extends PTEPane implements Initializable {
 
 	@Override
 	public void update(List<Tilstand> tilstande) {
-		if (tilstande.contains(Tilstand.AREAL)) {
+		if (tilstande.contains(Tilstand.INDTAST_AREAL)) {
 			tekstFeltAreal.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getIndtastAreal()));
 		}
 		
