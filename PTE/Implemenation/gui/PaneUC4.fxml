@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="139.0" prefWidth="383.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.PaneUC4Controller">
+<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="139.0" prefWidth="383.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.PaneUC4Controller">
    <children>
       <Label layoutX="27.0" layoutY="16.0" text="Forskydningskraft:" />
       <Label layoutX="192.0" layoutY="16.0" text="Areal (mm²):" />
