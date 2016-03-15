@@ -1,6 +1,7 @@
 package Logic;
 
 import Exceptions.BoejningsMomentException;
+import Exceptions.DimensionerendeKraftException;
 import Exceptions.UdefineretLaengdeRetningException;
 
 class BoejningsMomentImpl extends PTEEntityImpl implements BoejningsMoment {
@@ -35,6 +36,9 @@ class BoejningsMomentImpl extends PTEEntityImpl implements BoejningsMoment {
 
 	@Override
 	public double getBoejningsMoment() {
+		if (boejningsMoment <= 0) {
+			throw new BoejningsMomentException();
+		}
 		return getBoejningsMoment(v.getLaengdeRetning(), l.getLaengde(), dimensionerendeKraft.getDimensionerendeKraft(),
 				forskydningskraft.getForskydningskraft());
 	}
@@ -43,7 +47,8 @@ class BoejningsMomentImpl extends PTEEntityImpl implements BoejningsMoment {
 		if (!Double.isNaN(boejningsMoment)) {
 			return boejningsMoment;
 		}
-		if (boejningsMoment <= 0){
+
+		if (boejningsMoment <= 0) {
 			throw new BoejningsMomentException();
 		}
 
