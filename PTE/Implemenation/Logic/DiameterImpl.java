@@ -11,7 +11,7 @@ public class DiameterImpl extends PTEEntityImpl implements Diameter {
 	}
 
 	public double getDiameter() {
-		if(diameter < 0){
+		if (diameter < 0) {
 			throw new DiameterException();
 		}
 		return diameter;

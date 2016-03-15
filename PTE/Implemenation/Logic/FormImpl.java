@@ -3,7 +3,7 @@ package Logic;
 public class FormImpl extends PTEEntityImpl implements Form {
 
 	private ProfilType profilType = ProfilType.UDEFINERET;
-	
+
 	@Override
 	public void setProfilType(ProfilType profilType) {
 		this.profilType = profilType;

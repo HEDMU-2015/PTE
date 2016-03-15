@@ -1,14 +1,14 @@
 package Logic;
 
 public class ForskydningspunktImpl extends PTEEntityImpl implements Forskydningspunkt {
-	
-	double forskydningspunkt;
+
+	private double forskydningspunkt;
 
 	@Override
 	public double getForskydningspunkt() {
 		return forskydningspunkt;
 	}
-	
+
 	@Override
 	public void setForskydningspunkt(double forskydningspunkt) {
 		this.forskydningspunkt = forskydningspunkt;
@@ -17,14 +17,12 @@ public class ForskydningspunktImpl extends PTEEntityImpl implements Forskydnings
 	@Override
 	public void nulstil() {
 		setForskydningspunkt(Double.NaN);
-		
+
 	}
 
 	@Override
 	protected Tilstand getEgenAfhaengighed() {
 		return Tilstand.FORSKYDNINGSPUNKT;
 	}
-	
-	
 
 }
