@@ -18,7 +18,7 @@ public class PaneUC4Controller extends PTEPane implements Initializable {
 
 	private boolean arealErAEndret = false;
 	
-	private boolean forskydningsspændingenErAEndret = false;
+	private boolean forskydningsspaendingenErAEndret = false;
 
 	@FXML
 	private TextField tekstFeltAreal;
@@ -34,7 +34,7 @@ public class PaneUC4Controller extends PTEPane implements Initializable {
 		labelKraft.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getForskydningkraft()));
 		if (arealErAEndret) {
 			arealErAEndret = false;
-			pteController.setAreal(tekstfeltFormat.formaterStringTilDouble(tekstFeltAreal.getText()));
+			pteController.setIndtastAreal(tekstfeltFormat.formaterStringTilDouble(tekstFeltAreal.getText()));
 		}
 		tekstFeltForskydningsspændingen.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getTau_ForskydningsSpaending()));
 	}
@@ -46,7 +46,7 @@ public class PaneUC4Controller extends PTEPane implements Initializable {
 
 	@Override
 	public void update(List<Tilstand> tilstande) {
-		if (tilstande.contains(Tilstand.AREAL)) {
+		if (tilstande.contains(Tilstand.INDTAST_AREAL)) {
 			tekstFeltAreal.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getAreal()));
 
 			tekstFeltForskydningsspændingen
@@ -74,7 +74,7 @@ public class PaneUC4Controller extends PTEPane implements Initializable {
 		tekstFeltForskydningsspændingen.focusedProperty().addListener(new ChangeListener<Boolean>() {
 			@Override
 			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-				forskydningsspændingenErAEndret = true;
+				forskydningsspaendingenErAEndret = true;
 			}
 		});
 	}
