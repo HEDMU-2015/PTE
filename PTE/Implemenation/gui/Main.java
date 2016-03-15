@@ -147,9 +147,25 @@ public class Main extends Application {
 			});
 			PTEPane controllerPaneUC8 = loaderUC8.<PTEPane> getController();
 			controllerPaneUC8.setPTEController(pteController);
+			
+			// Pane UC9
+						FXMLLoader loaderUC9 = new FXMLLoader();
+						loaderUC9.setLocation(Main.class.getResource("PaneUC9.fxml"));
+						AnchorPane paneUC9 = (AnchorPane) loaderUC9.load();
+						TitledPane tpUC9 = new TitledPane("Sikkerhedsfaktor", paneUC9);
+						tpUC9.setExpanded(false);
+						tpUC9.setOnMouseReleased(e -> {
+							if (tpUC9.isExpanded()) {
+							tpUC9.setMinHeight(164);
+							} else {
+								tpUC9.setMinHeight(25);
+							}
+						});
+						PTEPane controllerPaneUC9 = loaderUC9.<PTEPane> getController();
+						controllerPaneUC9.setPTEController(pteController);
 						
 			
-			vboxICenter.getChildren().addAll(tpUC1_UC2, tpUC3, tpUC4, tpUC5, tpUC7, tpUC8);
+			vboxICenter.getChildren().addAll(tpUC1_UC2, tpUC3, tpUC4, tpUC5, tpUC7, tpUC8, tpUC9);
 			scrollPane = new ScrollPane(vboxICenter);
 			scrollPane.setFitToHeight(true);
 			scrollPane.setVbarPolicy(ScrollBarPolicy.AS_NEEDED);
