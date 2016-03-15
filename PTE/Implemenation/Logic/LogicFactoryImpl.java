@@ -115,7 +115,7 @@ public class LogicFactoryImpl implements LogicFactory {
 	}
 	
 	@Override
-	public Sikkerhedsfaktor createSikkerhedsfaktor(Flydespaending flydespaending, SigmaRef sigmaRef) {
+	public Sikkerhedsfaktor createSikkerhedsfaktor(Flydespaending flydespaending, Referencespaending sigmaRef) {
 		return new SikkerhedsfaktorImpl(flydespaending, sigmaRef);
 	}
 }
