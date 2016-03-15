@@ -34,6 +34,8 @@ public class ArealImpl extends PTEEntityImpl implements Areal {
 		if (!Double.isNaN(areal)) {
 			return areal;
 		}
+		
+		
 
 		if (bredde == Double.NaN || diameter == Double.NaN || godstykkelse == Double.NaN || hoejde == Double.NaN) {
 			return Double.NaN;
@@ -47,11 +49,13 @@ public class ArealImpl extends PTEEntityImpl implements Areal {
 			return this.hoejde.getHoejde() * this.bredde.getBredde()
 					- (this.hoejde.getHoejde() * (this.godstykkelse.getGodstykkelse() * 2)) * (this.bredde.getBredde()
 							* (2 * this.godstykkelse.getGodstykkelse()));
-		} else { // this.form.getProfilType() == ProfilType.KVADRAT
+		} else {if(this.form.getProfilType() == ProfilType.KVADRAT){
 			return this.hoejde.getHoejde() * this.bredde.getBredde();
 		}
-	}
+		}return areal;
+		
 
+	} 
 	@Override
 	public void setAreal(double areal) {
 		this.areal = areal;
