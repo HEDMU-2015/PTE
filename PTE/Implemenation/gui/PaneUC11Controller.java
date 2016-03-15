@@ -30,26 +30,26 @@ public class PaneUC11Controller extends PTEPane implements Initializable {
 				tekstFeltfk.setText("cos( " 
 				+ (Double.isNaN(pteController.getVinkel()) ? "v" : tekstfeltFormat.formaterDoubleTilString(pteController.getVinkel())) 
 					+ ") * " + tekstfeltFormat.formaterDoubleTilString(pteController.getDimensionerendeKraft()) 
-					+ " = " + tekstfeltFormat.formaterDoubleTilString(pteController.getForskydningkraft()));
+					+ (Double.isNaN(pteController.getForskydningkraft()) ? "" : " = ") + tekstfeltFormat.formaterDoubleTilString(pteController.getForskydningkraft()));
 			}
 			else{
 				tekstFeltfk.setText("sin( " 
 				+ (Double.isNaN(pteController.getVinkel()) ? "v" : tekstfeltFormat.formaterDoubleTilString(pteController.getVinkel())) 
 					+ ") * " + tekstfeltFormat.formaterDoubleTilString(pteController.getDimensionerendeKraft())
-					+ " = " +tekstfeltFormat.formaterDoubleTilString(pteController.getForskydningkraft()));
+					+ (Double.isNaN(pteController.getForskydningkraft()) ? "" : " = ") + tekstfeltFormat.formaterDoubleTilString(pteController.getForskydningkraft()));
 			}
 			
 			if(profil == Profil.LODRET){
 				tekstFeltnk.setText("cos( " 
 				+ (Double.isNaN(pteController.getVinkel()) ? "v" : tekstfeltFormat.formaterDoubleTilString(pteController.getVinkel())) 
 					+ ") * " + tekstfeltFormat.formaterDoubleTilString(pteController.getDimensionerendeKraft())
-					+ " = " +tekstfeltFormat.formaterDoubleTilString(pteController.getNormalkraft()));
+					+ (Double.isNaN(pteController.getNormalkraft()) ? "" : " = ") + tekstfeltFormat.formaterDoubleTilString(pteController.getNormalkraft()));
 			}
 			else{
 				tekstFeltnk.setText("sin( "
-				+ (Double.isNaN(pteController.getVinkel()) ? "v" :tekstfeltFormat.formaterDoubleTilString(pteController.getVinkel())) 
+				+ (Double.isNaN(pteController.getVinkel()) ? "v" : tekstfeltFormat.formaterDoubleTilString(pteController.getVinkel())) 
 					+ ") * " + tekstfeltFormat.formaterDoubleTilString(pteController.getDimensionerendeKraft())
-					+ " = " +tekstfeltFormat.formaterDoubleTilString(pteController.getNormalkraft()));
+					+ (Double.isNaN(pteController.getNormalkraft()) ? "" : " = ") + tekstfeltFormat.formaterDoubleTilString(pteController.getNormalkraft()));
 			}
 		}	
 			
@@ -57,7 +57,7 @@ public class PaneUC11Controller extends PTEPane implements Initializable {
 			
 			
 		if (tilstande.contains(Tilstand.VAEGT)){
-			tekstFeltkg.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getDimensionerendeKraft()) 
+			tekstFeltkg.setText((Double.isNaN(pteController.getDimensionerendeKraft()) ? "Fdim" : tekstfeltFormat.formaterDoubleTilString(pteController.getDimensionerendeKraft())) 
 					+ " / " + tekstfeltFormat.formaterDoubleTilString(pteController.getTyngdekraft())
 					+ " = " +tekstfeltFormat.formaterDoubleTilString(pteController.getVaegt())); 
 		}
