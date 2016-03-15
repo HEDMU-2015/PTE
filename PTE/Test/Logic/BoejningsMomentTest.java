@@ -71,9 +71,6 @@ public class BoejningsMomentTest {
 	@Test
 	public void getBoejningsMomentNulFdimTest() {
 
-	
-	
-
 		try {
 			boejningsMoment.setBoejningsMoment(0);
 			
