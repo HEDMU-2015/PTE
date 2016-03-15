@@ -10,8 +10,8 @@
       <Label layoutX="27.0" layoutY="16.0" text="Flydespænding:" />
       <Label layoutX="192.0" layoutY="16.0" text="Sigma Ref:" />
       <Label fx:id="labelSigmaB" layoutX="28.0" layoutY="74.0" text="Sikkerhedsfaktor:" />
-      <Button defaultButton="true" layoutX="238.0" layoutY="96.0" mnemonicParsing="false" onAction="#haandterUdregnKnap" text="Udregn" />
-      <Button cancelButton="true" layoutX="302.0" layoutY="96.0" mnemonicParsing="false" onAction="#haandterResetKnap" text="Reset" />
+      <Button layoutX="238.0" layoutY="96.0" mnemonicParsing="false" defaultButton="true" onAction="#haandterUdregnKnap" text="Udregn" />
+      <Button layoutX="302.0" layoutY="96.0" mnemonicParsing="false" cancelButton="true" onAction="#haandterResetKnap" text="Reset" />
       <TextField fx:id="tekstFeltSigmaRef" editable="false" layoutX="193.0" layoutY="33.0" prefHeight="25.0" prefWidth="155.0" />
       <TextField fx:id="tekstFeltSikkerhedsFaktor" editable="false" layoutX="28.0" layoutY="96.0" prefHeight="25.0" prefWidth="155.0" styleClass="test" stylesheets="@util/gui.css" />
       <TextField fx:id="tekstFlydeSpænding" layoutX="28.0" layoutY="33.0" prefHeight="25.0" prefWidth="155.0" promptText="Indtast flydespænding her" />
