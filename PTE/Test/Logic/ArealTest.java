@@ -28,9 +28,10 @@ public class ArealTest {
 
 	@Test
 	public void getArealNegativTest() {
-		areal.setAreal(-60);
+		
 		try {
-			areal.getAreal();
+			areal.setAreal(-60);
+			
 			fail("Negativ areal");
 		} catch (ArealException e) {
 			// Success

@@ -71,11 +71,12 @@ public class BoejningsMomentTest {
 	@Test
 	public void getBoejningsMomentNulFdimTest() {
 
-		laengdeRetning = LaengdeRetning.VINKELRET_TIL_FDIM;
-		boejningsMoment.setBoejningsMoment(0);
+	
+	
 
 		try {
-			boejningsMoment.getBoejningsMoment();
+			boejningsMoment.setBoejningsMoment(0);
+			
 			fail("bøjningsmoment fejl blev ikke grappet");
 		} catch (BoejningsMomentException e) {
 			// succes

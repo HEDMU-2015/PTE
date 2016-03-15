@@ -24,10 +24,11 @@ public class ForskydningskraftTest {
 
 	@Test
 	public void getForskydningskraftNulstilTest() throws UdefineretProfilException {
-		vinkel.setProfil(Profil.VANDRET);
-		forskydningskraft.setForskydningskraft(5);
-		forskydningskraft.nulstil();
-		assertEquals(Double.NaN, forskydningskraft.getForskydningskraft(), 0.001);
+		profil = Profil.VANDRET;
+		double vinkel = 10;
+		double dimensionerendeKraft = 10;
+		
+		assertEquals(Double.NaN, forskydningskraft.getForskydningskraft(profil, vinkel, dimensionerendeKraft), 0.001);
 	}
 
 	
