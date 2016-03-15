@@ -32,6 +32,7 @@ public class PTEControllerImpl implements PTEController {
 	private Form form;
 	private IndtastAreal indtastAreal;
 	private Flydespaending flydeSpaending;
+	private Sikkerhedsfaktor sikkerhedsfaktor;
 
 	public PTEControllerImpl(LogicFactory logicFactory) {
 		vinkel = logicFactory.createVinkel();
@@ -59,6 +60,7 @@ public class PTEControllerImpl implements PTEController {
 		boejningsspaending = logicFactory.createSigmaB(boejningsmoment, forskydningspunkt, inertimoment);
 		referencespaending = logicFactory.createSigmaRef(boejningsspaending, normalspaending, forskydningsspaending);
 		indtastAreal = logicFactory.createIndtastAreal();
+		sikkerhedsfaktor = logicFactory.createSikkerhedsfaktor(flydeSpaending, referencespaending);
 		
 		observers = new ArrayList<Logic.Observer>();
 	}
@@ -437,5 +439,21 @@ public class PTEControllerImpl implements PTEController {
 	public void setFlydespaending(double flydespaending) {
 		this.flydeSpaending.setFlydespaending(flydespaending);
 	}
+	
+	@Override
+	public void setSikkerhedsfaktor(double sikkerhedsfaktor) {
+		this.sikkerhedsfaktor.setSikkerhedsfaktor(sikkerhedsfaktor);
+		notifyObservers(this.sikkerhedsfaktor.getAfhaengigheder());
+	}
 
+	@Override
+	public double getSikkerhedsfaktor() {
+		return sikkerhedsfaktor.getSikkerhedsfaktor();
+	}
+
+	@Override
+	public boolean erSikkerhedsfaktorForLavt() {
+		return sikkerhedsfaktor.erSikkerhedsfaktorForLavt();
+	}
+	
 }

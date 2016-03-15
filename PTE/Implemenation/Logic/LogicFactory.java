@@ -23,4 +23,5 @@ public interface LogicFactory {
 	public Form createForm();
 	public IndtastAreal createIndtastAreal();
 	public Flydespaending createFlydespaendning();
+	public Sikkerhedsfaktor createSikkerhedsfaktor(Flydespaending flydespaending, SigmaRef sigmaRef);
 }

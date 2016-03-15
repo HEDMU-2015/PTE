@@ -1,6 +1,6 @@
 package Logic;
 
-interface Sikkerhedsfaktor {
+interface Sikkerhedsfaktor extends PTEEntity {
 
 	void setSikkerhedsfaktor(double sikkerhedsfaktor);
 	double getSikkerhedsfaktor();

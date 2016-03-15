@@ -108,4 +108,10 @@ public interface PTEController {
 	public double getFlydespaending();
 	
 	public void setFlydespaending(double flydespaending);
+	
+	public void setSikkerhedsfaktor(double sikkerhedsfaktor);
+	
+	public double getSikkerhedsfaktor();
+	
+	public boolean erSikkerhedsfaktorForLavt();
 }
