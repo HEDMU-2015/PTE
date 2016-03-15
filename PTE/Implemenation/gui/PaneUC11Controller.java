@@ -70,12 +70,12 @@ public class PaneUC11Controller extends PTEPane implements Initializable {
 		}
 		if (tilstande.contains(Tilstand.TAU_FORSKYDNINGSSPAENDING)){
 			tekstFeltfs.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getForskydningkraft()) 
-					+ " / " + tekstfeltFormat.formaterDoubleTilString(pteController.getAreal())
+					+ " / " + tekstfeltFormat.formaterDoubleTilString(pteController.getIndtastAreal())
 					+ " = " +tekstfeltFormat.formaterDoubleTilString(pteController.getTau_ForskydningsSpaending())); 
 		}
 		if (tilstande.contains(Tilstand.SIGMAN)){
 			tekstFeltSigmaN.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getNormalkraft()) 
-					+ " / " + tekstfeltFormat.formaterDoubleTilString(pteController.getAreal())
+					+ " / " + tekstfeltFormat.formaterDoubleTilString(pteController.getIndtastAreal())
 					+ " = " +tekstfeltFormat.formaterDoubleTilString(pteController.getSigmaN())); 
 		}
 		if (tilstande.contains(Tilstand.SIGMAB)){
@@ -90,6 +90,7 @@ public class PaneUC11Controller extends PTEPane implements Initializable {
 				+ tekstfeltFormat.formaterDoubleTilString(pteController.getTau_ForskydningsSpaending()) + "²)"
 				+ " = " +tekstfeltFormat.formaterDoubleTilString(pteController.getSigmaRef())); 
 		}
+		
 		if (tilstande.contains(Tilstand.SIKKERHEDSFAKTOR)){
 			tekstFeltSikkerhedsfaktor.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getFlydespaending()) 
 					+ " / " + tekstfeltFormat.formaterDoubleTilString(pteController.getSigmaRef())
