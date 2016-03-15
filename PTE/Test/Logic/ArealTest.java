@@ -17,9 +17,9 @@ public class ArealTest {
 
 	@Test
 	public void getArealNulstilTest() {
-		
+
 		form.setProfilType(ProfilType.UDEFINERET);
-		
+
 		areal.setAreal(5);
 		areal.nulstil();
 
@@ -28,9 +28,10 @@ public class ArealTest {
 
 	@Test
 	public void getArealNegativTest() {
-		areal.setAreal(-60);
+
 		try {
-			areal.getAreal();
+			areal.setAreal(-60);
+
 			fail("Negativ areal");
 		} catch (ArealException e) {
 			// Success
@@ -53,9 +54,9 @@ public class ArealTest {
 
 	@Test
 	public void getArealNulTest() {
-		areal.setAreal(0);
+
 		try {
-			areal.getAreal();
+			areal.setAreal(0);
 			fail("Nul Areal");
 		} catch (ArealException e) {
 			// Success

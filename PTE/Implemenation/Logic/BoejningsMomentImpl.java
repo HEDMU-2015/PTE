@@ -30,15 +30,16 @@ class BoejningsMomentImpl extends PTEEntityImpl implements BoejningsMoment {
 
 	@Override
 	public void setBoejningsMoment(double boejningsMoment) {
+		if (boejningsMoment <= 0) {
+			throw new BoejningsMomentException();
+		}
 		this.boejningsMoment = boejningsMoment;
 		nulstilBoern();
 	}
 
 	@Override
 	public double getBoejningsMoment() {
-		if (boejningsMoment <= 0) {
-			throw new BoejningsMomentException();
-		}
+
 		return getBoejningsMoment(v.getLaengdeRetning(), l.getLaengde(), dimensionerendeKraft.getDimensionerendeKraft(),
 				forskydningskraft.getForskydningskraft());
 	}
@@ -46,10 +47,6 @@ class BoejningsMomentImpl extends PTEEntityImpl implements BoejningsMoment {
 	double getBoejningsMoment(LaengdeRetning lr, double l, double dimensionerendeKraft, double forskydningskraft) {
 		if (!Double.isNaN(boejningsMoment)) {
 			return boejningsMoment;
-		}
-
-		if (boejningsMoment <= 0) {
-			throw new BoejningsMomentException();
 		}
 
 		if (lr == LaengdeRetning.VINKELRET_TIL_FDIM) {

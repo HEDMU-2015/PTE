@@ -43,20 +43,19 @@ public class BreddeTest {
 		assertEquals(4, bredde.getBredde(), 0.001);
 
 	}
-	
-	
+
 	@Test
 	public void breddeNegativTest() {
 
-		bredde.setBredde(-4);
-
 		try {
-			bredde.getBredde();
+			bredde.setBredde(-4);
+
 		} catch (BreddeException e) {
 			// Success
 		}
 
 	}
+
 	@Test
 	public void breddeKommaTest() {
 

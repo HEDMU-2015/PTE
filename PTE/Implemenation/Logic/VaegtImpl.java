@@ -8,14 +8,15 @@ class VaegtImpl extends PTEEntityImpl implements Vaegt {
 
 	@Override
 	public double getVaegt() {
-		if (vaegt <= 0) {
-			throw new VaegtException();
-		}
+		
 		return vaegt;
 	}
 
 	@Override
 	public void setVaegt(double vaegt) {
+		if (vaegt <= 0) {
+			throw new VaegtException();
+		}
 		this.vaegt = vaegt;
 	}
 

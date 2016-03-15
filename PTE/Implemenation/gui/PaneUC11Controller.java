@@ -22,7 +22,6 @@ public class PaneUC11Controller extends PTEPane implements Initializable {
 	public void update(List<Tilstand> tilstande) {
 		if(tilstande.contains(Tilstand.VINKEL)){
 			profil = pteController.getProfil();
-			System.out.println(profil);
 
 			if(profil == Profil.VANDRET){
 
