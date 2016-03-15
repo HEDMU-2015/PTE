@@ -11,11 +11,11 @@
       <Label layoutX="28.0" layoutY="14.0" text="Vægt:" />
       <Label layoutX="200.0" layoutY="14.0" text="Dimensionerende kraft:" />
       <Label layoutX="28.0" layoutY="68.0" text="Vinkel:" />
-      <RadioButton fx:id="vandret" layoutX="28.0" layoutY="126.0" mnemonicParsing="false" selected="true" text="Vandret">
+      <RadioButton fx:id="vandret" layoutX="28.0" layoutY="128.0" mnemonicParsing="false" selected="true" text="Vandret">
          <toggleGroup>
             <ToggleGroup fx:id="profil" />
          </toggleGroup></RadioButton>
-      <RadioButton fx:id="lodret" layoutX="28.0" layoutY="155.0" mnemonicParsing="false" text="Lodret" toggleGroup="$profil" />
+      <RadioButton fx:id="lodret" layoutX="28.0" layoutY="157.0" mnemonicParsing="false" text="Lodret" toggleGroup="$profil" />
       <TextField fx:id="tekstFeltVaegt" layoutX="28.0" layoutY="32.0" onMouseReleased="#haandterCleartekstFeltDimensionerndeKraft" prefHeight="25.0" prefWidth="120" promptText="Indtast vægten her" />
       <Label layoutX="150" layoutY="36.0" text="Kg" />
       <TextField fx:id="tekstFeltDimensionerendeKraft" layoutX="200.0" layoutY="32.0" onMouseReleased="#haandterCleartekstFeltVaegt" prefHeight="25.0" prefWidth="125" promptText="Indtast Fdim her" />
