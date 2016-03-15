@@ -3,12 +3,12 @@ package Logic;
 import Exceptions.VaegtException;
 
 class VaegtImpl extends PTEEntityImpl implements Vaegt {
-	
+
 	private double vaegt = Double.NaN;
-	
+
 	@Override
-	public double getVaegt(){
-		if(vaegt<=0){
+	public double getVaegt() {
+		if (vaegt <= 0) {
 			throw new VaegtException();
 		}
 		return vaegt;
@@ -17,7 +17,7 @@ class VaegtImpl extends PTEEntityImpl implements Vaegt {
 	@Override
 	public void setVaegt(double vaegt) {
 		this.vaegt = vaegt;
-	} 
+	}
 
 	@Override
 	public void nulstil() {
