@@ -13,7 +13,7 @@ class DimensionerendeKraftImpl extends PTEEntityImpl implements DimensionerendeK
 		if (vaegt == null || tyngdekraft == null) {
 			throw new IllegalArgumentException();
 		}
-		
+
 		this.vaegt = vaegt;
 		this.tyngdekraft = tyngdekraft;
 		this.vaegt.tilfoejAfhaengigEntitet(this);
@@ -22,20 +22,24 @@ class DimensionerendeKraftImpl extends PTEEntityImpl implements DimensionerendeK
 
 	@Override
 	public double getDimensionerendeKraft() {
+		if (dimensionerendeKraft == Double.NaN) {
+			return dimensionerendeKraft;
+		}
+
 		return getDimensionerendeKraft(vaegt.getVaegt(), tyngdekraft.getTyngdekraft());
 	}
 
 	double getDimensionerendeKraft(double vaegt, double tyngdekraft) {
-		if (vaegt == Double.NaN) {
-			return dimensionerendeKraft;
-		}
 
 		if (vaegt <= 0 || tyngdekraft <= 0) {
 			throw new DimensionerendeKraftException();
 		}
 
-		dimensionerendeKraft = vaegt * tyngdekraft;
-		return dimensionerendeKraft;
+		if (vaegt == Double.NaN || tyngdekraft == Double.NaN) {
+			return dimensionerendeKraft;
+		}
+
+		return vaegt * tyngdekraft;
 	}
 
 	@Override

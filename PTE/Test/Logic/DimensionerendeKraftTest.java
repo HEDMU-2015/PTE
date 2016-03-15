@@ -1,118 +1,184 @@
 package Logic;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
+
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import Exceptions.DimensionerendeKraftException;
-import Exceptions.TyngdekraftException;
-import Exceptions.UdefineretProfilException;
-import Exceptions.VaegtException;
 
 public class DimensionerendeKraftTest {
 
-	VinkelImpl vinkel;
-	VaegtImpl vaegt;
-	TyngdekraftImpl tyngdekraft;
-	DimensionerendeKraftImpl dimensioneredeKraft;
-
-	@Before
-	public void setUp() throws Exception {
-
-		vaegt = new VaegtImpl();
-		tyngdekraft = new TyngdekraftImpl();
-		vinkel = new VinkelImpl();
-		dimensioneredeKraft = new DimensionerendeKraftImpl(vaegt, tyngdekraft);
-
-	}
+	DimensionerendeKraftImpl dimensionerendeKraft;
 
 	@Test
-	public void getDimensionerendeKraftNulstilTest(){
-		dimensioneredeKraft.setDimensionerendeKraft(5);
-		dimensioneredeKraft.nulstil();
-		assertEquals(Double.NaN, dimensioneredeKraft.getDimensionerendeKraft(), 0.001);
+	public void getDimensionerendeKraftNulstilTest() {
+		
+		 
+		dimensionerendeKraft.setDimensionerendeKraft(5);		
+		dimensionerendeKraft.nulstil();
+		assertEquals(Double.NaN, dimensionerendeKraft.getDimensionerendeKraft(), 0.001);
 
 	}
 
 	@Test
 	public void GetDimensionerendeKraftNegativVaegtTest() {
-		vaegt.setVaegt(-5);
-		tyngdekraft.setTyngdekraft(9.816);
+
+		double vaegt = -10;
+		double tyngdekraft = 10;
 
 		try {
-			dimensioneredeKraft.getDimensionerendeKraft();
+			dimensionerendeKraft.getDimensionerendeKraft(vaegt, tyngdekraft);
 			fail("Exception bliver ikke kastet.");
 
 		} catch (DimensionerendeKraftException e) {
 			// success
-		} catch (VaegtException e){
-			//success
+		}
+	}
+
+	@Test
+	public void GetDimensionerendeKraftNegativTyngdekraftTest() {
+
+		double vaegt = 10;
+		double tyngdekraft = -10;
+
+		try {
+			dimensionerendeKraft.getDimensionerendeKraft(vaegt, tyngdekraft);
+			fail("Exception bliver ikke kastet.");
+
+		} catch (DimensionerendeKraftException e) {
+			// success
 		}
 	}
 
 	@Test
 	public void GetDimensionerendeKraftNulVaegtTest() {
-		vaegt.setVaegt(0);
-		tyngdekraft.setTyngdekraft(9.816);
-		
+		double vaegt = 0;
+		double tyngdekraft = 10;
+
 		try {
-			dimensioneredeKraft.getDimensionerendeKraft();
+			dimensionerendeKraft.getDimensionerendeKraft(vaegt, tyngdekraft);
 			fail("Exception bliver ikke kastet.");
 
 		} catch (DimensionerendeKraftException e) {
 			// success
-		}catch (VaegtException e){
-			//success
 		}
 	}
 
 	@Test
 	public void GetDimensionerendeKraftNulTyngdekraftTest() {
-		vaegt.setVaegt(5);
-		tyngdekraft.setTyngdekraft(0);
+		double vaegt = 10;
+		double tyngdekraft = 0;
 
 		try {
-			dimensioneredeKraft.getDimensionerendeKraft();
+			dimensionerendeKraft.getDimensionerendeKraft(vaegt, tyngdekraft);
 			fail("Exception bliver ikke kastet.");
 
 		} catch (DimensionerendeKraftException e) {
 			// success
-		}catch (TyngdekraftException e){
-			//success
 		}
 	}
 
 	@Test
 	public void GetDimensionerendeKraftEnsVaegtOgTyngdeKraftTest() {
-		vaegt.setVaegt(5);
-		tyngdekraft.setTyngdekraft(5);
-		assertEquals(25, dimensioneredeKraft.getDimensionerendeKraft(), 0.001);
+		double vaegt = 10;
+		double tyngdekraft = 10;
+		assertEquals(100, dimensionerendeKraft.getDimensionerendeKraft(vaegt, tyngdekraft), 0.001);
 
 	}
 
 	@Test
 	public void GetDimensionerendeKraftAfrundTest() {
-		vaegt.setVaegt(3.03456);
-		tyngdekraft.setTyngdekraft(10);
-		assertEquals(30.346, dimensioneredeKraft.getDimensionerendeKraft(), 0.001);
+		double vaegt = 10.55555;
+		double tyngdekraft = 10;
+		assertEquals(105.556, dimensionerendeKraft.getDimensionerendeKraft(vaegt, tyngdekraft), 0.001);
 	}
 
 	@Test
 	public void GetDimensionerendeKraftTyngdekraftNaNTest() {
-		vaegt.setVaegt(5);
-		tyngdekraft.setTyngdekraft(5);
-		tyngdekraft.setTyngdekraft(Double.NaN);
-		assertEquals(Double.NaN, dimensioneredeKraft.getDimensionerendeKraft(), 0.001);
+		double vaegt = 10;
+		double tyngdekraft = Double.NaN;
+		assertEquals(Double.NaN, dimensionerendeKraft.getDimensionerendeKraft(vaegt, tyngdekraft), 0.001);
 
 	}
 
 	@Test
 	public void GetDimensionerendeKraftVaegtNaNTest() {
-		vaegt.setVaegt(5);
-		vaegt.setVaegt(Double.NaN);
-		tyngdekraft.setTyngdekraft(5);
-		assertEquals(Double.NaN, dimensioneredeKraft.getDimensionerendeKraft(), 0.001);
+		double vaegt = Double.NaN;
+		double tyngdekraft = 10;
+		assertEquals(Double.NaN, dimensionerendeKraft.getDimensionerendeKraft(vaegt, tyngdekraft), 0.001);
+
+	}
+
+	@Before
+	public void setUp() throws Exception {
+		
+		dimensionerendeKraft = new DimensionerendeKraftImpl(new Vaegt() {
+
+			@Override
+			public void tilfoejAfhaengigEntitet(PTEEntity entity) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public List<Tilstand> getAfhaengigheder() {
+				// TODO Auto-generated method stub
+				return null;
+			}
+
+			@Override
+			public void setVaegt(double vaegt) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void nulstil() {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public double getVaegt() {
+				// TODO Auto-generated method stub
+				return 0;
+			}
+		}, new Tyngdekraft() {
+
+			@Override
+			public void tilfoejAfhaengigEntitet(PTEEntity entity) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public List<Tilstand> getAfhaengigheder() {
+				// TODO Auto-generated method stub
+				return null;
+			}
+
+			@Override
+			public void setTyngdekraft(double tyngdekraft) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void nulstil() {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public double getTyngdekraft() {
+				// TODO Auto-generated method stub
+				return 0;
+			}
+		});
 
 	}
 }
