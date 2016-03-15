@@ -172,7 +172,7 @@ public class Main extends Application {
 						tpUC10.setExpanded(false);
 						tpUC10.setOnMouseReleased(e -> {
 							if (tpUC10.isExpanded()) {
-							tpUC10.setMinHeight(164);
+							tpUC10.setMinHeight(262);
 							} else {
 								tpUC10.setMinHeight(25);
 							}
