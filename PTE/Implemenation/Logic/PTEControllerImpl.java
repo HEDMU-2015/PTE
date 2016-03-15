@@ -61,7 +61,7 @@ public class PTEControllerImpl implements PTEController {
 		referencespaending = logicFactory.createSigmaRef(boejningsspaending, normalspaending, forskydningsspaending);
 		indtastAreal = logicFactory.createIndtastAreal();
 		sikkerhedsfaktor = logicFactory.createSikkerhedsfaktor(flydeSpaending, referencespaending);
-		
+
 		observers = new ArrayList<Logic.Observer>();
 	}
 
@@ -137,19 +137,19 @@ public class PTEControllerImpl implements PTEController {
 
 		this.godstykkelse.nulstil();
 		tilstande.addAll(godstykkelse.getAfhaengigheder());
-		
+
 		this.normalspaending.nulstil();
 		tilstande.addAll(normalspaending.getAfhaengigheder());
-		
+
 		this.forskydningspunkt.nulstil();
 		tilstande.addAll(forskydningspunkt.getAfhaengigheder());
-		
+
 		this.inertimoment.nulstil();
 		tilstande.addAll(inertimoment.getAfhaengigheder());
-		
+
 		this.referencespaending.nulstil();
 		tilstande.addAll(referencespaending.getAfhaengigheder());
-		
+
 		notifyObservers(tilstande);
 	}
 
@@ -300,9 +300,7 @@ public class PTEControllerImpl implements PTEController {
 	@Override
 	public void setForskydningspunkt(double forskydningspunkt) {
 		this.forskydningspunkt.setForskydningspunkt(forskydningspunkt);
-		;
 		notifyObservers(this.forskydningspunkt.getAfhaengigheder());
-
 	}
 
 	@Override
@@ -329,7 +327,6 @@ public class PTEControllerImpl implements PTEController {
 	public void setSigmaB(double sigmaB) {
 		this.boejningsspaending.setSigmaB(sigmaB);
 		notifyObservers(this.boejningsspaending.getAfhaengigheder());
-
 	}
 
 	@Override
@@ -439,7 +436,7 @@ public class PTEControllerImpl implements PTEController {
 	public void setFlydespaending(double flydespaending) {
 		this.flydeSpaending.setFlydespaending(flydespaending);
 	}
-	
+
 	@Override
 	public void setSikkerhedsfaktor(double sikkerhedsfaktor) {
 		this.sikkerhedsfaktor.setSikkerhedsfaktor(sikkerhedsfaktor);
@@ -455,5 +452,5 @@ public class PTEControllerImpl implements PTEController {
 	public boolean erSikkerhedsfaktorForLavt() {
 		return sikkerhedsfaktor.erSikkerhedsfaktorForLavt();
 	}
-	
+
 }
