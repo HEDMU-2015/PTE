@@ -33,9 +33,17 @@ public class PaneUC5Controller extends PTEPane implements Initializable {
 	
 	@FXML
 	public void haandterUdregnKnap() {
-		pteController.setIndtastAreal(Double.parseDouble(tekstFeltAreal.getText()));
-		tekstFeltSigmaN.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getSigmaN()));
-		pteController.setSigmaN(pteController.getSigmaN());
+		
+		if (fnErAEndret) {
+			fnErAEndret = false;
+			pteController.setForskydningskraft(tekstfeltFormat.formaterStringTilDouble(tekstFeltFn.getText()));
+		}
+		
+		if (sigmaNErAEndret) {
+			sigmaNErAEndret = false;
+			pteController.setSigmaN(tekstfeltFormat.formaterStringTilDouble(tekstFeltSigmaN.getText()));
+		}
+		
 		if (arealErAEndret) {
 			arealErAEndret = false;
 			pteController.setIndtastAreal(tekstfeltFormat.formaterStringTilDouble(tekstFeltAreal.getText()));
@@ -49,12 +57,15 @@ public class PaneUC5Controller extends PTEPane implements Initializable {
 	@Override
 	public void update(List<Tilstand> tilstande) {
 		if (tilstande.contains(Tilstand.AREAL)) {
-			tekstFeltAreal.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getAreal()));
-
-			
+			tekstFeltAreal.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getIndtastAreal()));
 		}
+		
 		if(tilstande.contains(Tilstand.NORMALKRAFT)){
 			tekstFeltFn.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getNormalkraft()));
+		}
+		
+		if (tilstande.contains(Tilstand.SIGMAN)) {
+			tekstFeltSigmaN.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getSigmaN()));
 		}
 	}
 

@@ -54,7 +54,7 @@ public class PTEControllerImpl implements PTEController {
 		forskydningsspaending = logicFactory.createTau_ForskydningsSpaending(areal, forskydningskraft);
 		laengde = logicFactory.createLaengde();
 		boejningsmoment = logicFactory.createBoejningsMoment(vinkel, laengde, dimensionerendeKraft, forskydningskraft);
-		normalspaending = logicFactory.createSigmaN(areal, normalkraft);
+		normalspaending = logicFactory.createSigmaN(indtastAreal, normalkraft);
 		forskydningspunkt = logicFactory.createForskydningspunkt();
 		inertimoment = logicFactory.createInertimoment();
 		boejningsspaending = logicFactory.createSigmaB(boejningsmoment, forskydningspunkt, inertimoment);

@@ -4,11 +4,11 @@ import Exceptions.UdefineretProfilException;
 
 public class NormalspaendingImpl extends PTEEntityImpl implements Normalspaending {
 
-	private Areal areal;
+	private IndtastAreal areal;
 	private Normalkraft normalkraft;
 	private double sigmaN = Double.NaN;
 
-	public NormalspaendingImpl(Areal areal, Normalkraft normalkraft) {
+	public NormalspaendingImpl(IndtastAreal areal, Normalkraft normalkraft) {
 
 		this.areal = areal;
 		this.normalkraft = normalkraft;
@@ -25,7 +25,7 @@ public class NormalspaendingImpl extends PTEEntityImpl implements Normalspaendin
 	@Override
 	public double getSigmaN() {
 		try {
-			sigmaN = normalkraft.getNormalkraft() / areal.getAreal();
+			sigmaN = normalkraft.getNormalkraft() / areal.getIndtastAreal();
 		} catch (UdefineretProfilException e) {
 
 		}
