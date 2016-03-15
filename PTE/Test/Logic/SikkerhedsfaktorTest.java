@@ -12,6 +12,24 @@ public class SikkerhedsfaktorTest {
 	SikkerhedsfaktorImpl sikkerhedsfaktor;
 
 	@Test
+	public void getSikkerhedsfaktornormalUnderEnTest() {
+	double sigmaRef = 5;
+	double flydespaending = 5;
+	
+	assertEquals(1, sikkerhedsfaktor.getSikkerhedsfaktor(flydespaending , sigmaRef ), 0.001);
+		
+	}
+	
+	@Test
+	public void getSikkerhedsfaktornormalOverEnTest() {
+	double sigmaRef = 10;
+	double flydespaending = 5;
+	
+	assertEquals
+		
+	}
+	
+	@Test
 	public void getSikkerhedsfaktornormaltest() {
 	double sigmaRef = 5;
 	double flydespaending = 10;
