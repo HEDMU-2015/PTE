@@ -33,6 +33,11 @@ public class PaneUC5Controller extends PTEPane implements Initializable {
 	
 	@FXML
 	public void haandterUdregnKnap() {
+
+		if (arealErAEndret) {
+			arealErAEndret = false;
+			pteController.setIndtastAreal(tekstfeltFormat.formaterStringTilDouble(tekstFeltAreal.getText()));
+		}
 		if (fnErAEndret) {
 			fnErAEndret = false;
 			pteController.setForskydningskraft(tekstfeltFormat.formaterStringTilDouble(tekstFeltFn.getText()));
@@ -43,10 +48,6 @@ public class PaneUC5Controller extends PTEPane implements Initializable {
 			pteController.setSigmaN(tekstfeltFormat.formaterStringTilDouble(tekstFeltSigmaN.getText()));
 		}
 		
-		if (arealErAEndret) {
-			arealErAEndret = false;
-			pteController.setIndtastAreal(tekstfeltFormat.formaterStringTilDouble(tekstFeltAreal.getText()));
-		}
 	}
 	@FXML
 	public void haandterResetKnap() { 
