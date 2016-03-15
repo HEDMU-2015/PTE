@@ -18,7 +18,7 @@ public class Tau_ForskydningsSpaendingTest {
 	VinkelImpl vinkel;
 	ForskydningskraftImpl forskydningskraft;
 	ArealImpl areal;
-	Tau_ForskydningsSpaendingImpl forskydningsSpaending;
+	ForskydningsspaendingImpl forskydningsSpaending;
 	
 	@Before
 	public void setUp() throws Exception {
@@ -28,7 +28,7 @@ public class Tau_ForskydningsSpaendingTest {
 	dimensioneredeKraft = new DimensionerendeKraftImpl(vaegt, tyngdekraft);
 	forskydningskraft = new ForskydningskraftImpl(vinkel, dimensioneredeKraft);
 	areal = new ArealImpl();	
-	forskydningsSpaending = new Tau_ForskydningsSpaendingImpl(areal, forskydningskraft);
+	forskydningsSpaending = new ForskydningsspaendingImpl(areal, forskydningskraft);
 	}
 
 	@Test
