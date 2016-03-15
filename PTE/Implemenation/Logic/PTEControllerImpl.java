@@ -339,7 +339,7 @@ public class PTEControllerImpl implements PTEController {
 	@Override
 	public void setSigmaRef(double sigmaRef) {
 		this.referencespaending.setSigmaRef(sigmaRef);
-		notifyObservers(this.boejningsspaending.getAfhaengigheder());
+		notifyObservers(this.referencespaending.getAfhaengigheder());
 	}
 
 	@Override
