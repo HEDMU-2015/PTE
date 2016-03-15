@@ -49,7 +49,7 @@ public class LogicFactoryImpl implements LogicFactory {
 	}
 
 	@Override
-	public Normalspaending createSigmaN(Areal areal, Normalkraft normalKraft) {
+	public Normalspaending createSigmaN(IndtastAreal areal, Normalkraft normalKraft) {
 		return new NormalspaendingImpl(areal, normalKraft);
 	}
 
