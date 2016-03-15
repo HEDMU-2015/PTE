@@ -10,7 +10,7 @@
 
 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="139.0" prefWidth="383.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.PaneUC5Controller">
    <children>
-      <Label layoutX="29.0" layoutY="16.0" text="Normalkraft:" />
+      <Label layoutX="29.0" layoutY="16.0" text="Normalkraft (Fn):" />
       <Label layoutX="194.0" layoutY="16.0" text="Areal (mm²):" />
       <Label layoutX="28.0" layoutY="74.0" text="Sigma n (σn):" />
       <Button layoutX="238.0" layoutY="96.0" mnemonicParsing="false" onAction="#haandterUdregnKnap" text="Udregn" />
