@@ -19,6 +19,7 @@ public class NormalspaendingImpl extends PTEEntityImpl implements Normalspaendin
 	@Override
 	public void setSigmaN(double sigmaN) {
 		this.sigmaN = sigmaN;
+		nulstilBoern();
 	}
 
 	@Override
@@ -34,6 +35,12 @@ public class NormalspaendingImpl extends PTEEntityImpl implements Normalspaendin
 	@Override
 	public void nulstil() {
 		setSigmaN(Double.NaN);
+		nulstilBoern();
+	}
+	
+	public void nulstilBoern() {
+		areal.nulstil();
+		normalkraft.nulstil();
 	}
 
 	@Override
