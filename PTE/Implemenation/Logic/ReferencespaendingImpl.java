@@ -7,7 +7,8 @@ public class ReferencespaendingImpl extends PTEEntityImpl implements Referencesp
 	private Normalspaending sigmaN;
 	private Forskydningsspaending tau_ForskydningsSpaendingen;
 
-	public ReferencespaendingImpl(Boejningsspaending sigmaB, Normalspaending sigmaN, Forskydningsspaending tau_ForskydningsSpaendingen) {
+	public ReferencespaendingImpl(Boejningsspaending sigmaB, Normalspaending sigmaN,
+			Forskydningsspaending tau_ForskydningsSpaendingen) {
 		this.sigmaB = sigmaB;
 		this.sigmaB.tilfoejAfhaengigEntitet(this);
 		this.sigmaN = sigmaN;
@@ -27,11 +28,19 @@ public class ReferencespaendingImpl extends PTEEntityImpl implements Referencesp
 	@Override
 	public void nulstil() {
 		setSigmaRef(Double.NaN);
+		nulstilBoern();
+	}
+
+	public void nulstilBoern() {
+		sigmaB.nulstil();
+		sigmaN.nulstil();
+		tau_ForskydningsSpaendingen.nulstil();
 	}
 
 	@Override
 	public void setSigmaRef(double sigmaRef) {
 		this.sigmaRef = sigmaRef;
+		nulstilBoern();
 	}
 
 	@Override

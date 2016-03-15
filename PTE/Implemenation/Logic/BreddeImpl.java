@@ -14,7 +14,6 @@ public class BreddeImpl extends PTEEntityImpl implements Bredde {
 		if (bredde < 0) {
 			throw new BreddeException();
 		}
-
 		return bredde;
 	}
 

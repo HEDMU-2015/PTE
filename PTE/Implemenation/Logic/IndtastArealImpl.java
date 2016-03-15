@@ -5,7 +5,7 @@ import Exceptions.ArealException;
 public class IndtastArealImpl extends PTEEntityImpl implements IndtastAreal {
 
 	private double areal = Double.NaN;
-	
+
 	@Override
 	public void setIndtastAreal(double areal) {
 		this.areal = areal;
@@ -13,8 +13,8 @@ public class IndtastArealImpl extends PTEEntityImpl implements IndtastAreal {
 
 	@Override
 	public double getIndtastAreal() {
-		if(areal<=0){
-			areal = Double.NaN; // fra OC ; slet dette input
+		if (areal <= 0) {
+			areal = Double.NaN;
 			throw new ArealException("Areal Exception : areal er 0 eller mindre.");
 		}
 		return areal;

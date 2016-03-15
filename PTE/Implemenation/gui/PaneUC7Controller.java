@@ -16,7 +16,9 @@ import javafx.scene.control.TextField;
 public class PaneUC7Controller extends PTEPane implements Initializable {
 
 	private TekstFormattering tekstfeltFormat = new TekstFormatteringImpl();
-
+	private boolean forskydningspunktErÆndret = false;
+	private boolean intertimomentErÆndret= false;
+	private boolean sigmaBErÆndret = false;
 	@FXML
 	private TextField tekstFeltForskydningspunkt;
 	
@@ -51,6 +53,27 @@ public class PaneUC7Controller extends PTEPane implements Initializable {
 		formaterTekstfelt(tekstFeltForskydningspunkt);
 		formaterTekstfelt(tekstFeltIntertimoment);
 		formaterTekstfelt(tekstFeltSigmaB);
+		
+		tekstFeltForskydningspunkt.focusedProperty().addListener(new ChangeListener<Boolean>() {
+			@Override
+			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+				forskydningspunktErÆndret = true;
+			}
+		});
+		
+		tekstFeltIntertimoment.focusedProperty().addListener(new ChangeListener<Boolean>() {
+			@Override
+			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+				intertimomentErÆndret = true;
+			}
+		});
+		
+		tekstFeltSigmaB.focusedProperty().addListener(new ChangeListener<Boolean>() {
+			@Override
+			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+				sigmaBErÆndret = true;
+			}
+		});
 	}
 
 }

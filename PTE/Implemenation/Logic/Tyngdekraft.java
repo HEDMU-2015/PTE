@@ -7,4 +7,5 @@ interface Tyngdekraft extends PTEEntity {
 	public void setTyngdekraft(double tyngdekraft);
 
 	public void nulstil();
+	
 }
