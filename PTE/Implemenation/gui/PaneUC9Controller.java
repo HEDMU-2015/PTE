@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BackgroundFill;
 
 public class PaneUC9Controller extends PTEPane implements Initializable {
 
@@ -30,9 +31,12 @@ public class PaneUC9Controller extends PTEPane implements Initializable {
 	
 	@FXML
 	public void haandterUdregnKnap() {
+		if(flydespaendingErAEndret){
+			flydespaendingErAEndret = false;
 		pteController.setFlydespaending(tekstfeltFormat.formaterStringTilDouble(tekstFlydeSpaending.getText()));
-		pteController.setSigmaRef(tekstfeltFormat.formaterStringTilDouble(tekstFeltSigmaRef.getText()));
-		pteController.getSikkerhedsfaktor();
+		//pteController.setSigmaRef(tekstfeltFormat.formaterStringTilDouble(tekstFeltSigmaRef.getText()));
+		//pteController.getSikkerhedsfaktor();
+		}		
 	}
 	@FXML
 	public void haandterResetKnap() { 
@@ -44,10 +48,20 @@ public class PaneUC9Controller extends PTEPane implements Initializable {
 		if (tilstande.contains(Tilstand.SIGMA_REF)) {
 			tekstFeltSigmaRef.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getSigmaRef()));
 		}
+		
+		if(tilstande.contains(Tilstand.FLYDESPAENDING)){
+			tekstFlydeSpaending.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getFlydespaending()));
+		}
+		
 		if(tilstande.contains(Tilstand.SIKKERHEDSFAKTOR)){
 			tekstFeltSikkerhedsFaktor.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getSikkerhedsfaktor()));
-		}
+			System.out.println("pteController " + pteController.erSikkerhedsfaktorForLavt());
+
+			if(tekstFeltSikkerhedsFaktor.getText()!= "" && pteController.erSikkerhedsfaktorForLavt()){
+				tekstFeltSikkerhedsFaktor.setStyle("-fx-background-color: pink;");
 			}
+		}
+	}
 
 	private void formaterTekstfelt(TextField input) {
 		tekstfeltFormat.formaterTekstfeltInput(input);

@@ -4,18 +4,19 @@ import Exceptions.LaengdeException;
 
 class LaengdeImpl extends PTEEntityImpl implements Laengde {
 	
-	private double laengde;
+	private double laengde = Double.NaN;
 
 	@Override
 	public double getLaengde() {
-		if (laengde < 0) {
-			throw new LaengdeException();
-		}
+		
 		return laengde;
 	}
 
 	@Override
 	public void setLaengde(double laengde) {
+		if (laengde < 0) {
+			throw new LaengdeException();
+		}
 		this.laengde = laengde;
 	}
 

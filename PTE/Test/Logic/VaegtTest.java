@@ -27,12 +27,11 @@ public class VaegtTest {
 
 	@Test
 	public void setVaegtNegativ() {
-		vaegt.setVaegt(-5);
 
 		try {
-			vaegt.getVaegt();
+			vaegt.setVaegt(-5);
 			fail("Exception bliver ikke kastet.");
-			
+
 		} catch (VaegtException e) {
 			// success
 		}
@@ -41,12 +40,11 @@ public class VaegtTest {
 
 	@Test
 	public void setVaegtNul() {
-		vaegt.setVaegt(0);
 
 		try {
-			vaegt.getVaegt(); 
+			vaegt.setVaegt(0);
 			fail("Exception bliver ikke kastet.");
-			
+
 		} catch (VaegtException e) {
 			// success
 		}
@@ -54,7 +52,7 @@ public class VaegtTest {
 
 	@Test
 	public void setVaegtAfrunding() {
-		
+
 		vaegt.setVaegt(3.03456);
 		assertEquals(3.035, vaegt.getVaegt(), 0.001);
 	}

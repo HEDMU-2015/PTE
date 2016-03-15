@@ -6,6 +6,8 @@ import java.util.ResourceBundle;
 
 import javax.swing.text.html.HTMLDocument.HTMLReader.FormAction;
 
+import Exceptions.BoejningsMomentException;
+import Exceptions.LaengdeException;
 import Logic.LaengdeRetning;
 import Logic.Tilstand;
 import javafx.beans.value.ChangeListener;
@@ -20,6 +22,9 @@ import javafx.scene.control.ToggleGroup;
 public class PaneUC3Controller extends PTEPane implements Initializable {
 
 	private TekstFormattering tekstfeltFormat = new TekstFormatteringImpl();
+	private String error = "-fx-background-color: pink;";
+	private String css = "@util/gui.css";
+
 
 	private boolean laengdeErAEndret = false;
 	private boolean boejningsmomentErAEndret = false;
@@ -31,7 +36,7 @@ public class PaneUC3Controller extends PTEPane implements Initializable {
 	private TextField tekstFeltBoejningsmoment;
 
 	@FXML
-	private Label labelKraft;
+	private TextField tekstFeltKraft;
 
 	@FXML
 	private RadioButton vinkelretPaaFt;
@@ -45,15 +50,26 @@ public class PaneUC3Controller extends PTEPane implements Initializable {
 	@FXML
 	public void haandterUdregnKnap() {
 		setLaengdeRetning();
+		tekstFeltBoejningsmoment.setStyle(css);
+		tekstFeltLaengde.setStyle(css);
+
 		if (laengdeErAEndret) {
+			try{
 			laengdeErAEndret = false;
 			pteController.setLaengde(tekstfeltFormat.formaterStringTilDouble(tekstFeltLaengde.getText()));
+			} catch (LaengdeException e){
+				tekstFeltLaengde.setStyle(error);
+			}
+			
 		}
 		if (boejningsmomentErAEndret) {
+			try{
 			boejningsmomentErAEndret = false;
 			pteController.setBoejningsMoment(tekstfeltFormat.formaterStringTilDouble(tekstFeltBoejningsmoment.getText()));
-		}
-		
+			} catch (BoejningsMomentException e){
+				tekstFeltBoejningsmoment.setStyle(error);
+			}
+		}		
 	}
 
 	@FXML
@@ -79,10 +95,10 @@ public class PaneUC3Controller extends PTEPane implements Initializable {
 
 	private void setLaengdeRetning() {
 		if (vinkelretPaaFt.isSelected()) {
-			labelKraft.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getForskydningkraft()));
+			tekstFeltKraft.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getForskydningkraft()));
 			pteController.setLaengdeRetning(LaengdeRetning.VINKELRET_TIL_FT);
 		} else {
-			labelKraft.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getDimensionerendeKraft()));
+			tekstFeltKraft.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getDimensionerendeKraft()));
 			pteController.setLaengdeRetning(LaengdeRetning.VINKELRET_TIL_FDIM);
 		}
 	}

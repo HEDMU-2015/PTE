@@ -1,5 +1,7 @@
 package Logic;
 
+import Exceptions.ArealException;
+
 public class ArealImpl extends PTEEntityImpl implements Areal {
 
 	private double areal = Double.NaN;
@@ -58,6 +60,9 @@ public class ArealImpl extends PTEEntityImpl implements Areal {
 
 	@Override
 	public void setAreal(double areal) {
+		if (areal <= 0){
+			throw new ArealException("Areal er 0 eller mindre");
+		}
 		this.areal = areal;
 	}
 

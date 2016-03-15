@@ -9,6 +9,8 @@ class SikkerhedsfaktorImpl extends PTEEntityImpl implements Sikkerhedsfaktor {
 	public SikkerhedsfaktorImpl(Flydespaending flydespaending, Referencespaending sigmaRef) {
 		this.flydespaending = flydespaending;
 		this.sigmaRef = sigmaRef;
+		this.flydespaending.tilfoejAfhaengigEntitet(this);
+		this.sigmaRef.tilfoejAfhaengigEntitet(this);
 	}
 
 	@Override
@@ -33,7 +35,7 @@ class SikkerhedsfaktorImpl extends PTEEntityImpl implements Sikkerhedsfaktor {
 
 	@Override
 	public boolean erSikkerhedsfaktorForLavt() {
-		return sikkerhedsfaktor <= 1;
+		return getSikkerhedsfaktor() <= 1;
 	}
 
 	@Override

@@ -441,6 +441,8 @@ public class PTEControllerImpl implements PTEController {
 	@Override
 	public void setFlydespaending(double flydespaending) {
 		this.flydeSpaending.setFlydespaending(flydespaending);
+		notifyObservers(this.flydeSpaending.getAfhaengigheder());
+
 	}
 
 	@Override

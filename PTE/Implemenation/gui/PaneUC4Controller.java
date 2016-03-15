@@ -27,11 +27,11 @@ public class PaneUC4Controller extends PTEPane implements Initializable {
 	private TextField tekstFeltForskydningsspændingen;
 
 	@FXML
-	private Label labelKraft;
+	private TextField tekstFeltKraft;
 
 	@FXML
 	public void haandterUdregnKnap() {
-		labelKraft.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getForskydningkraft()));
+		tekstFeltKraft.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getForskydningkraft()));
 		if (arealErAEndret) {
 			arealErAEndret = false;
 			pteController.setIndtastAreal(tekstfeltFormat.formaterStringTilDouble(tekstFeltAreal.getText()));
