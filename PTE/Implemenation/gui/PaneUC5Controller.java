@@ -54,8 +54,17 @@ public class PaneUC5Controller extends PTEPane implements Initializable {
 		}
 	}
 
+	
+	private void formaterTekstfelt(TextField input) {
+		tekstfeltFormat.formaterTekstfeltInput(input);
+	}
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		formaterTekstfelt(tekstFeltFn);
+		formaterTekstfelt(tekstFeltAreal);
+		formaterTekstfelt(tekstFeltSigmaN);
+		
 		tekstFeltAreal.focusedProperty().addListener(new ChangeListener<Boolean>() {
 			@Override
 			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {

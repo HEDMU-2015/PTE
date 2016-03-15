@@ -14,6 +14,6 @@
       <Button layoutX="302.0" layoutY="96.0" mnemonicParsing="false" onAction="#haandterResetKnap" text="Reset" />
       <TextField fx:id="tekstFeltSigmaRef" editable="false" layoutX="193.0" layoutY="33.0" prefHeight="25.0" prefWidth="155.0" />
       <TextField fx:id="tekstFeltSikkerhedsFaktor" editable="false" layoutX="28.0" layoutY="96.0" prefHeight="25.0" prefWidth="155.0" styleClass="test" stylesheets="@util/gui.css" />
-      <TextField fx:id="tekstFlydeSpænding" layoutX="28.0" layoutY="33.0" prefHeight="25.0" prefWidth="155.0" promptText="Indtast flydespænding her" />
+      <TextField fx:id="tekstFlydeSpaending" layoutX="28.0" layoutY="33.0" prefHeight="25.0" prefWidth="155.0" promptText="Indtast flydespænding her" />
    </children>
 </AnchorPane>

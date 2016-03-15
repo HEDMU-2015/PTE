@@ -18,7 +18,7 @@ public class PaneUC9Controller extends PTEPane implements Initializable {
 	private TekstFormattering tekstfeltFormat = new TekstFormatteringImpl();
 
 	@FXML
-	private TextField tekstFlydeSpænding;
+	private TextField tekstFlydeSpaending;
 	
 	@FXML
 	private TextField tekstFeltSigmaRef;
@@ -39,8 +39,15 @@ public class PaneUC9Controller extends PTEPane implements Initializable {
 	public void update(List<Tilstand> tilstande) {
 			}
 
+	private void formaterTekstfelt(TextField input) {
+		tekstfeltFormat.formaterTekstfeltInput(input);
+	}
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		formaterTekstfelt(tekstFlydeSpaending);
+		formaterTekstfelt(tekstFeltSikkerhedsFaktor);
+		formaterTekstfelt(tekstFeltSigmaRef);
 	}
 
 }

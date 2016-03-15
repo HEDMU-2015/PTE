@@ -46,8 +46,15 @@ public class PaneUC8Controller extends PTEPane implements Initializable {
 		}
 	}
 
+	private void formaterTekstfelt(TextField input) {
+		tekstfeltFormat.formaterTekstfeltInput(input);
+	}
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		formaterTekstfelt(tekstFeltSigmaB);
+		formaterTekstfelt(tekstFeltSigmaN);
+		formaterTekstfelt(tekstFeltSigmaRef);
 	}
 
 }

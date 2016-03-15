@@ -59,6 +59,8 @@ public class PaneUC4Controller extends PTEPane implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		formaterTekstfelt(tekstFeltAreal);
+		formaterTekstfelt(tekstFeltForskydningsspændingen);
+		
 		
 		tekstFeltAreal.focusedProperty().addListener(new ChangeListener<Boolean>() {
 			@Override

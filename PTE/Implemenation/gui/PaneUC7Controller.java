@@ -42,8 +42,15 @@ public class PaneUC7Controller extends PTEPane implements Initializable {
 	public void update(List<Tilstand> tilstande) {
 			}
 
+	private void formaterTekstfelt(TextField input) {
+		tekstfeltFormat.formaterTekstfeltInput(input);
+	}
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		formaterTekstfelt(tekstFeltForskydningspunkt);
+		formaterTekstfelt(tekstFeltIntertimoment);
+		formaterTekstfelt(tekstFeltSigmaB);
 	}
 
 }
