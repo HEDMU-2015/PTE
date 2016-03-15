@@ -15,8 +15,8 @@
       <Label layoutX="28.0" layoutY="74.0" text="Forskydningsspændingen (τ):" />
       <Button layoutX="238.0" layoutY="96.0" mnemonicParsing="false" onAction="#haandterUdregnKnap" text="Udregn" />
       <Button layoutX="302.0" layoutY="96.0" mnemonicParsing="false" onAction="#haandterResetKnap" text="Reset" />
-      <Label fx:id="labelKraft" layoutX="28.0" layoutY="37.0" text="Kraft" />
       <TextField fx:id="tekstFeltAreal" layoutX="193.0" layoutY="33.0" prefHeight="25.0" prefWidth="155.0" promptText="Indtast areal her" />
       <TextField fx:id="tekstFeltForskydningsspændingen" editable="false" layoutX="28.0" layoutY="96.0" prefHeight="25.0" prefWidth="155.0" promptText="Resultat" styleClass="test" stylesheets="@util/gui.css" />
+      <TextField fx:id="labelKraft" layoutX="28.0" layoutY="33.0" prefHeight="25.0" prefWidth="155.0" promptText="Hentes fra tidligere" styleClass="test" stylesheets="@util/gui.css" />
    </children>
 </AnchorPane>

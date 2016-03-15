@@ -8,7 +8,6 @@
 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="187.0" prefWidth="383.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.PaneUC3Controller">
    <children>
       <Label layoutX="28.0" layoutY="19.0" text="Kraft:" />
-      <Label fx:id="labelKraft" layoutX="28.0" layoutY="43.0" text="Kraft" />
       <Label layoutX="197.0" layoutY="19.0" text="Længde (mm):" />
       <TextField fx:id="tekstFeltLaengde" layoutX="197.0" layoutY="39.0" promptText="Indtast længde her" />
       <RadioButton fx:id="vinkelretPaaFt" layoutX="28.0" layoutY="83.0" mnemonicParsing="false" selected="true" text="90° på Ft">
@@ -20,5 +19,6 @@
       <TextField fx:id="tekstFeltBoejningsmoment" editable="false" layoutX="197.0" layoutY="104.0" promptText="Resultat" styleClass="test" stylesheets="@util/gui.css" />
       <Button fx:id="btnUdregn" layoutX="238.0" layoutY="139.0" mnemonicParsing="false" onAction="#haandterUdregnKnap" text="Udregn" />
       <Button fx:id="btnReset" layoutX="302.0" layoutY="138.0" mnemonicParsing="false" onAction="#haandterResetKnap" text="Reset" />
+      <TextField fx:id="labelKraft" editable="false" layoutX="28.0" layoutY="39.0" promptText="Hentes fra tidligere" styleClass="test" stylesheets="@util/gui.css" />
    </children>
 </AnchorPane>

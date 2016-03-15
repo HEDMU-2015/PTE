@@ -31,7 +31,7 @@ public class PaneUC3Controller extends PTEPane implements Initializable {
 	private TextField tekstFeltBoejningsmoment;
 
 	@FXML
-	private Label labelKraft;
+	private TextField labelKraft;
 
 	@FXML
 	private RadioButton vinkelretPaaFt;

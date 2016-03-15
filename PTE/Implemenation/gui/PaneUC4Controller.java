@@ -27,7 +27,7 @@ public class PaneUC4Controller extends PTEPane implements Initializable {
 	private TextField tekstFeltForskydningsspændingen;
 
 	@FXML
-	private Label labelKraft;
+	private TextField labelKraft;
 
 	@FXML
 	public void haandterUdregnKnap() {
