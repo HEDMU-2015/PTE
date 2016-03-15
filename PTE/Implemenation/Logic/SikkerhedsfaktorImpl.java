@@ -2,15 +2,15 @@ package Logic;
 
 class SikkerhedsfaktorImpl extends PTEEntityImpl implements Sikkerhedsfaktor {
 
-	double sikkerhedsfaktor = Double.NaN;
-	Flydespaending flydespaending;
-	Referencespaending sigmaRef;
-	
+	private double sikkerhedsfaktor = Double.NaN;
+	private Flydespaending flydespaending;
+	private Referencespaending sigmaRef;
+
 	public SikkerhedsfaktorImpl(Flydespaending flydespaending, Referencespaending sigmaRef) {
 		this.flydespaending = flydespaending;
 		this.sigmaRef = sigmaRef;
 	}
-	
+
 	@Override
 	public void setSikkerhedsfaktor(double sikkerhedsfaktor) {
 		this.sikkerhedsfaktor = sikkerhedsfaktor;
@@ -19,15 +19,13 @@ class SikkerhedsfaktorImpl extends PTEEntityImpl implements Sikkerhedsfaktor {
 
 	@Override
 	public double getSikkerhedsfaktor() {
-		
-		return getSikkerhedsfaktor (flydespaending.getFlydespaending() , sigmaRef.getSigmaRef());
+		return getSikkerhedsfaktor(flydespaending.getFlydespaending(), sigmaRef.getSigmaRef());
 	}
 
-	double getSikkerhedsfaktor(double flydespaending, double referencespaending){
+	double getSikkerhedsfaktor(double flydespaending, double referencespaending) {
 		return flydespaending / referencespaending;
-		
 	}
-	
+
 	@Override
 	protected Tilstand getEgenAfhaengighed() {
 		return Tilstand.SIKKERHEDSFAKTOR;
@@ -37,13 +35,13 @@ class SikkerhedsfaktorImpl extends PTEEntityImpl implements Sikkerhedsfaktor {
 	public boolean erSikkerhedsfaktorForLavt() {
 		return sikkerhedsfaktor <= 1;
 	}
-	
+
 	@Override
 	public void nulstil() {
 		sikkerhedsfaktor = Double.NaN;
 		nulstilBoern();
 	}
-	
+
 	public void nulstilBoern() {
 		flydespaending.nulstil();
 		sigmaRef.nulstil();
