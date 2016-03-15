@@ -1,9 +1,9 @@
 package gui;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import javafx.geometry.Point2D;
+import Logic.Profil;
+import Logic.Tilstand;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -15,52 +15,39 @@ import javafx.scene.shape.CubicCurveTo;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
-import javafx.scene.shape.Polygon;
 import javafx.scene.shape.StrokeLineCap;
 import javafx.scene.text.Text;
 import javafx.scene.transform.Rotate;
 
-public class KranTegner{
+public class KranTegner extends PTEPane {
 	
 	private AnchorPane ap;
+	Profil profil;
 	private Line kranArm, xAxis, yAxis;
-	private double x, y, height, width, nuvaerendeVinkel, rotateVinkel, katetA;
+	private double x, y, height, width, nuvaerendeVinkel, rotateVinkel, katetA, vinkelSidePadding, vinkelHoejdePadding;
 	Path snit;
 	Text vinkelVaerdi;
-	
 	Arc arc;
-	
 	private TextField tf = new TextField();
 	private Button button = new Button("Rotate kran arm");
 	
-	public KranTegner(double width, double height) {
+	public KranTegner(double width, double height, Profil profil) {
 		ap = new AnchorPane();
+		this.profil = profil;
         this.width = width;
         this.height = height;
         this.x = width/4;
         this.y = this.height - this.height/3;
         nuvaerendeVinkel = 45;
+        vinkelSidePadding = 10;
+        vinkelHoejdePadding = 17;
         
         arc = new Arc();
         
-        vinkelVaerdi = new Text(x + 40, y - 10, String.valueOf(nuvaerendeVinkel) + "°");
+        vinkelVaerdi = new Text(String.valueOf(nuvaerendeVinkel) + "°");
         ap.getChildren().add(vinkelVaerdi);
         
         katetA = 30;
-        
-        // Skal slettes
-        ap.getChildren().add(tf);
-		ap.getChildren().add(button);
-		HBox hb = new HBox();
-		hb.getChildren().add(tf);
-		hb.getChildren().add(button);
-		ap.getChildren().add(hb);
-		button.setOnAction( ae -> {
-			double slutVinkel = Double.valueOf(tf.getText());
-			
-//			rotateVandretKranArmOgSnit(slutVinkel);
-			rotateLodretKranArmOgSnit(slutVinkel);
-		});
 	}
 	
 	public void tegnKran() {
@@ -68,8 +55,7 @@ public class KranTegner{
 		tilfoejArc();
 		tegnKranArm();
 		tegnBoelgeStreg();
-//		rotateVandretKranArmOgSnit(nuvaerendeVinkel);
-		rotateLodretKranArmOgSnit(nuvaerendeVinkel);
+		rotateVandretKranArmOgSnit(nuvaerendeVinkel);
 	}
 	
 	private void tilfoejArc() {
@@ -174,19 +160,9 @@ public class KranTegner{
 		ap.getChildren().add(snit);
 	}
 	
-	private void flytArcVandret() {
-		double katetB = udrengKatet_b();
-		arc.setCenterX(x);
-		arc.setCenterY(y);
-		arc.setRadiusX(katetB);
-		arc.setRadiusY(katetB);
-		arc.setStartAngle(0);
-		arc.setLength(nuvaerendeVinkel);
-	}
-	
-	private void flytArcLodret() {
+	private void flytArcOgVinkelVandret() {
 		double katetB;
-		if(nuvaerendeVinkel > 45) {
+		if(nuvaerendeVinkel >= 45) {
 			katetB = katetA;
 		} else {
 			katetB = udrengKatet_b();
@@ -195,8 +171,44 @@ public class KranTegner{
 		arc.setCenterY(y);
 		arc.setRadiusX(katetB);
 		arc.setRadiusY(katetB);
+		arc.setStartAngle(0);
+		arc.setLength(nuvaerendeVinkel);
+		if(nuvaerendeVinkel <= 10) {
+			vinkelVaerdi.setX(x*3 + vinkelSidePadding);
+			vinkelVaerdi.setY(y - vinkelHoejdePadding);
+			arc.setRadiusX(x*2 - x/3);
+			arc.setRadiusY(x*2 - x/3);
+		} else {
+			vinkelVaerdi.setX(x + katetB + vinkelSidePadding);
+			vinkelVaerdi.setY(y - vinkelHoejdePadding);
+		}
+	}
+	
+	private void flytArcOgVinkelLodret() {
+		double katetB;
+		if(nuvaerendeVinkel >= 45) {
+			katetB = katetA;
+		} else {
+			katetB = udrengKatet_b();
+		}
+		arc.setCenterX(x);
+		arc.setCenterY(y);
 		arc.setStartAngle(90 - nuvaerendeVinkel);
 		arc.setLength(nuvaerendeVinkel);
+		arc.setRadiusX(katetB);
+		arc.setRadiusY(katetB);
+		if(nuvaerendeVinkel > 10 && nuvaerendeVinkel <= 22) {
+			vinkelVaerdi.setX(x + vinkelSidePadding);
+			vinkelVaerdi.setY(y - katetB - vinkelHoejdePadding - vinkelSidePadding);
+		} else if(nuvaerendeVinkel <= 10) {
+			vinkelVaerdi.setX(x + vinkelSidePadding);
+			vinkelVaerdi.setY(y - y/2 - vinkelHoejdePadding*2);
+			arc.setRadiusX(y - y/2);
+			arc.setRadiusY(y - y/2);
+		} else {
+			vinkelVaerdi.setX(x + vinkelSidePadding);
+			vinkelVaerdi.setY(y - katetB - vinkelHoejdePadding);
+		}
 	}
 	
 	private void rotateVandretKranArmOgSnit(double vinkel) {
@@ -216,13 +228,8 @@ public class KranTegner{
 			}
 			kranArm.getTransforms().add(kranRotate);
 			snit.getTransforms().add(snitRotate);
-			if(nuvaerendeVinkel >= 0 && nuvaerendeVinkel <= 12) {
-				vinkelVaerdi.setTranslateX(vinkelVaerdi.getX() + 60);
-			} else if(nuvaerendeVinkel > 12 && nuvaerendeVinkel <= 20) {
-				vinkelVaerdi.setTranslateX(vinkelVaerdi.getX() - 70);
-			}
 			vinkelVaerdi.setText(String.valueOf(nuvaerendeVinkel) + "°");
-			flytArcVandret();
+			flytArcOgVinkelVandret();
 		}
 	}
 	
@@ -243,17 +250,31 @@ public class KranTegner{
 			}
 			kranArm.getTransforms().add(kranRotate);
 			snit.getTransforms().add(snitRotate);
-			if(nuvaerendeVinkel >= 0 && nuvaerendeVinkel <= 12) {
-				vinkelVaerdi.setTranslateX(vinkelVaerdi.getX() + 60);
-			} else if(nuvaerendeVinkel > 12 && nuvaerendeVinkel <= 20) {
-				vinkelVaerdi.setTranslateX(vinkelVaerdi.getX() - 70);
-			}
 			vinkelVaerdi.setText(String.valueOf(nuvaerendeVinkel) + "°");
-			flytArcLodret();
+			flytArcOgVinkelLodret();
 		}
 	}
 	
 	public Node getNode() {
 		return ap;
+	}
+	
+	private void rotateKranArmOgSnit() {
+		if(profil == Profil.VANDRET) {
+			rotateVandretKranArmOgSnit(nuvaerendeVinkel);
+		} else if(profil == Profil.LODRET) {
+			rotateLodretKranArmOgSnit(nuvaerendeVinkel);
+		}
+	}
+	
+	@Override
+	public void update(List<Tilstand> tilstande) {
+		if(tilstande.contains(Tilstand.PROFIL)) {
+			profil = pteController.getProfil();
+		}
+		if(tilstande.contains(Tilstand.VINKEL)) {
+			nuvaerendeVinkel = pteController.getVinkel();
+			rotateKranArmOgSnit();
+		}
 	}
 }
