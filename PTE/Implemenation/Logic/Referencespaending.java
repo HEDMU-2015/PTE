@@ -1,6 +1,6 @@
 package Logic;
 
-public interface SigmaRef extends PTEEntity {
+public interface Referencespaending extends PTEEntity {
 
 	public double getSigmaRef();
 	

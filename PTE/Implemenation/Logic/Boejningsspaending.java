@@ -1,6 +1,6 @@
 package Logic;
 
-public interface SigmaB extends PTEEntity {
+public interface Boejningsspaending extends PTEEntity {
 	
 	public void setSigmaB(double sigmaB);
 	public double getSigmaB();

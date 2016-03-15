@@ -4,9 +4,9 @@ class SikkerhedsfaktorImpl extends PTEEntityImpl implements Sikkerhedsfaktor {
 
 	double sikkerhedsfaktor = Double.NaN;
 	Flydespaending flydespaending;
-	SigmaRef sigmaRef;
+	Referencespaending sigmaRef;
 	
-	public SikkerhedsfaktorImpl(Flydespaending flydespaending, SigmaRef sigmaRef) {
+	public SikkerhedsfaktorImpl(Flydespaending flydespaending, Referencespaending sigmaRef) {
 		this.flydespaending = flydespaending;
 		this.sigmaRef = sigmaRef;
 	}

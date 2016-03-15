@@ -3,7 +3,7 @@ package Logic;
 import Exceptions.SigmaBException;
 import Exceptions.UdefineretProfilException;
 
-public class SigmaBImpl extends PTEEntityImpl implements SigmaB {
+public class BoejningsspaendingImpl extends PTEEntityImpl implements Boejningsspaending {
 
 	private double sigmaB = Double.NaN;
 	private Forskydningspunkt forskydningspunkt;
@@ -13,7 +13,7 @@ public class SigmaBImpl extends PTEEntityImpl implements SigmaB {
 
 
 
-	public SigmaBImpl(BoejningsMoment boejningsMoment, Forskydningspunkt forskydningspunkt, Inertimoment inertimoment) {
+	public BoejningsspaendingImpl(BoejningsMoment boejningsMoment, Forskydningspunkt forskydningspunkt, Inertimoment inertimoment) {
 		this.forskydningspunkt = forskydningspunkt;
 		this.inertimoment = inertimoment;
 		this.boejningsMoment = boejningsMoment;

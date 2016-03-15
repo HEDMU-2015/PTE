@@ -1,13 +1,13 @@
 package Logic;
 
-public class SigmaRefImpl extends PTEEntityImpl implements SigmaRef {
+public class ReferencespaendingImpl extends PTEEntityImpl implements Referencespaending {
 
 	private double sigmaRef = Double.NaN;
-	private SigmaB sigmaB;
-	private SigmaN sigmaN;
-	private Tau_ForskydningsSpaending tau_ForskydningsSpaendingen;
+	private Boejningsspaending sigmaB;
+	private Normalspaending sigmaN;
+	private Forskydningsspaending tau_ForskydningsSpaendingen;
 
-	public SigmaRefImpl(SigmaB sigmaB, SigmaN sigmaN, Tau_ForskydningsSpaending tau_ForskydningsSpaendingen) {
+	public ReferencespaendingImpl(Boejningsspaending sigmaB, Normalspaending sigmaN, Forskydningsspaending tau_ForskydningsSpaendingen) {
 		this.sigmaB = sigmaB;
 		this.sigmaB.tilfoejAfhaengigEntitet(this);
 		this.sigmaN = sigmaN;
