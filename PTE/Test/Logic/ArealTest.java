@@ -18,13 +18,12 @@ public class ArealTest {
 	@Test
 	public void getArealNulstilTest() {
 		
-		form.getProfilType()
-		double bredde = 5;
-		double hoejde = 5;
-		double godstykkelse = 2;
-		double diameter = 2;
+		form.setProfilType(ProfilType.UDEFINERET);
+		
+		areal.setAreal(5);
+		areal.nulstil();
 
-		assertEquals(10, areal.getAreal(bredde, diameter, godstykkelse, hoejde), 0.001);
+		assertEquals(Double.NaN, areal.getAreal(), 0.001);
 	}
 
 	@Test

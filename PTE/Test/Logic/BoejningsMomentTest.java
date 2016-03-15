@@ -12,23 +12,11 @@ import Exceptions.VaegtException;
 
 public class BoejningsMomentTest {
 
-	VaegtImpl vaegt;
-	TyngdekraftImpl tyngdekraft;
-	VinkelImpl vinkel;
-	DimensionerendeKraftImpl dimensionderendeKraft;
-	ForskydningskraftImpl forskydningskraft;
-	LaengdeImpl laengde;
-	BoejningsMomentImpl boejningsMoment;
+	
 
 	@Before
 	public void setUp() throws Exception {
-		vaegt = new VaegtImpl();
-		tyngdekraft = new TyngdekraftImpl();
-		vinkel = new VinkelImpl();
-		dimensionderendeKraft = new DimensionerendeKraftImpl(vaegt, tyngdekraft);
-		laengde = new LaengdeImpl();
-		forskydningskraft = new ForskydningskraftImpl(vinkel, dimensionderendeKraft);
-		boejningsMoment = new BoejningsMomentImpl(vinkel, laengde, dimensionderendeKraft, forskydningskraft);
+		
 	}
 
 	@Test
