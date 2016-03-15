@@ -2,7 +2,7 @@ package Logic;
 
 import Exceptions.UdefineretProfilException;
 
-public class SigmaNImpl extends PTEEntityImpl implements SigmaN{
+public class NormalspaendingImpl extends PTEEntityImpl implements Normalspaending{
 	
 	private Areal areal;
 	private Normalkraft normalkraft;
@@ -10,7 +10,7 @@ public class SigmaNImpl extends PTEEntityImpl implements SigmaN{
 	
 	
 
-	public SigmaNImpl(Areal areal, Normalkraft normalkraft) {
+	public NormalspaendingImpl(Areal areal, Normalkraft normalkraft) {
 		
 		this.areal = areal;
 		this.normalkraft = normalkraft;

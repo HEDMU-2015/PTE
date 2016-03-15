@@ -33,8 +33,8 @@ public class LogicFactoryImpl implements LogicFactory {
 	}
 	
 	@Override
-	public Tau_ForskydningsSpaending createTau_ForskydningsSpaending(Areal areal, Forskydningskraft forskydningskraft) {
-		return new Tau_ForskydningsSpaendingImpl(areal, forskydningskraft);
+	public Forskydningsspaending createTau_ForskydningsSpaending(Areal areal, Forskydningskraft forskydningskraft) {
+		return new ForskydningsspaendingImpl(areal, forskydningskraft);
 	}
 	
 	@Override
@@ -48,8 +48,8 @@ public class LogicFactoryImpl implements LogicFactory {
 	}
 
 	@Override
-	public SigmaN createSigmaN(Areal areal, Normalkraft normalKraft) {
-		return new SigmaNImpl(areal, normalKraft);
+	public Normalspaending createSigmaN(Areal areal, Normalkraft normalKraft) {
+		return new NormalspaendingImpl(areal, normalKraft);
 	}
 
 	@Override
@@ -63,15 +63,15 @@ public class LogicFactoryImpl implements LogicFactory {
 	}
 
 	@Override
-	public SigmaB createSigmaB(BoejningsMoment boejningsMoment, Forskydningspunkt forskydningspunkt,
+	public Boejningsspaending createSigmaB(BoejningsMoment boejningsMoment, Forskydningspunkt forskydningspunkt,
 			Inertimoment inertimoment) {
-		return new SigmaBImpl(boejningsMoment, forskydningspunkt, inertimoment);
+		return new BoejningsspaendingImpl(boejningsMoment, forskydningspunkt, inertimoment);
 	}
 
 	@Override
-	public SigmaRef createSigmaRef(SigmaB sigmaB, SigmaN sigmaN,
-			Tau_ForskydningsSpaending tau_ForskydningsSpaendingen) {
-		return new SigmaRefImpl(sigmaB, sigmaN, tau_ForskydningsSpaendingen);
+	public Referencespaending createSigmaRef(Boejningsspaending sigmaB, Normalspaending sigmaN,
+			Forskydningsspaending tau_ForskydningsSpaendingen) {
+		return new ReferencespaendingImpl(sigmaB, sigmaN, tau_ForskydningsSpaendingen);
 	}
 
 	@Override

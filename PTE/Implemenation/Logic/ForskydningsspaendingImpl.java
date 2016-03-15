@@ -10,14 +10,14 @@ import Exceptions.UdefineretProfilException;
  *
  */
 
-public class Tau_ForskydningsSpaendingImpl extends PTEEntityImpl implements Tau_ForskydningsSpaending {
+public class ForskydningsspaendingImpl extends PTEEntityImpl implements Forskydningsspaending {
 	private double tau_ForskydningsSpaending = Double.NaN;
 	private Forskydningskraft forskydningskraft;
 	private Areal areal;
 	
 	
 
-	public Tau_ForskydningsSpaendingImpl (Areal areal, Forskydningskraft forskydningskraft){
+	public ForskydningsspaendingImpl (Areal areal, Forskydningskraft forskydningskraft){
 		if (areal == null || forskydningskraft == null) {
 			throw new IllegalArgumentException();
 		}
