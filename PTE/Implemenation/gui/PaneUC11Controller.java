@@ -6,11 +6,8 @@ import java.util.ResourceBundle;
 
 import Logic.Profil;
 import Logic.Tilstand;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 public class PaneUC11Controller extends PTEPane implements Initializable {
@@ -28,23 +25,30 @@ public class PaneUC11Controller extends PTEPane implements Initializable {
 			System.out.println(profil);
 
 			if(profil == Profil.VANDRET){
-				tekstFeltfk.setText("cos( " + tekstfeltFormat.formaterDoubleTilString(pteController.getVinkel()) 
+
+				
+				
+				tekstFeltfk.setText("cos( " 
+				+ (Double.isNaN(pteController.getVinkel()) ? "v" : tekstfeltFormat.formaterDoubleTilString(pteController.getVinkel())) 
 					+ ") * " + tekstfeltFormat.formaterDoubleTilString(pteController.getDimensionerendeKraft()) 
-					+ " = " +tekstfeltFormat.formaterDoubleTilString(pteController.getForskydningkraft()));
+					+ " = " + tekstfeltFormat.formaterDoubleTilString(pteController.getForskydningkraft()));
 			}
 			else{
-				tekstFeltfk.setText("sin( " + tekstfeltFormat.formaterDoubleTilString(pteController.getVinkel()) 
+				tekstFeltfk.setText("sin( " 
+				+ (Double.isNaN(pteController.getVinkel()) ? "v" : tekstfeltFormat.formaterDoubleTilString(pteController.getVinkel())) 
 					+ ") * " + tekstfeltFormat.formaterDoubleTilString(pteController.getDimensionerendeKraft())
 					+ " = " +tekstfeltFormat.formaterDoubleTilString(pteController.getForskydningkraft()));
 			}
 			
 			if(profil == Profil.LODRET){
-				tekstFeltnk.setText("cos( " + tekstfeltFormat.formaterDoubleTilString(pteController.getVinkel()) 
+				tekstFeltnk.setText("cos( " 
+				+ (Double.isNaN(pteController.getVinkel()) ? "v" : tekstfeltFormat.formaterDoubleTilString(pteController.getVinkel())) 
 					+ ") * " + tekstfeltFormat.formaterDoubleTilString(pteController.getDimensionerendeKraft())
 					+ " = " +tekstfeltFormat.formaterDoubleTilString(pteController.getNormalkraft()));
 			}
 			else{
-				tekstFeltnk.setText("sin( " + tekstfeltFormat.formaterDoubleTilString(pteController.getVinkel()) 
+				tekstFeltnk.setText("sin( "
+				+ (Double.isNaN(pteController.getVinkel()) ? "v" :tekstfeltFormat.formaterDoubleTilString(pteController.getVinkel())) 
 					+ ") * " + tekstfeltFormat.formaterDoubleTilString(pteController.getDimensionerendeKraft())
 					+ " = " +tekstfeltFormat.formaterDoubleTilString(pteController.getNormalkraft()));
 			}
@@ -96,15 +100,9 @@ public class PaneUC11Controller extends PTEPane implements Initializable {
 					+ " / " + tekstfeltFormat.formaterDoubleTilString(pteController.getSigmaRef())
 					+ " = " +tekstfeltFormat.formaterDoubleTilString(pteController.getSikkerhedsfaktor()));  
 		}
-		/*if (tilstande.contains(Tilstand.AREAL)){
-			tekstFeltAreal.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getFlydespaending()) + " / " + tekstfeltFormat.formaterDoubleTilString(pteController.getSigmaRef()));  
-		}*/
-		}	
+		
+	}	
 	
-
-	private void formaterTekstfelt(TextField input) {
-		tekstfeltFormat.formaterTekstfeltInput(input);
-	}
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {

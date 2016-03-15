@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BackgroundFill;
 
 public class PaneUC9Controller extends PTEPane implements Initializable {
 
@@ -54,6 +55,12 @@ public class PaneUC9Controller extends PTEPane implements Initializable {
 		
 		if(tilstande.contains(Tilstand.SIKKERHEDSFAKTOR)){
 			tekstFeltSikkerhedsFaktor.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getSikkerhedsfaktor()));
+			System.out.println("pteController " + pteController.erSikkerhedsfaktorForLavt());
+
+			if(tekstFeltSikkerhedsFaktor.getText()!= "" && pteController.erSikkerhedsfaktorForLavt()){
+				System.out.println("pteController " + pteController.erSikkerhedsfaktorForLavt());
+				tekstFeltSikkerhedsFaktor.setStyle("-fx-background-color: pink;");
+			}
 		}
 	}
 

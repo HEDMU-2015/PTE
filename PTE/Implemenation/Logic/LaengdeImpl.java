@@ -4,7 +4,7 @@ import Exceptions.LaengdeException;
 
 class LaengdeImpl extends PTEEntityImpl implements Laengde {
 	
-	private double laengde;
+	private double laengde = Double.NaN;
 
 	@Override
 	public double getLaengde() {

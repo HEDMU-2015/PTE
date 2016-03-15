@@ -35,7 +35,7 @@ class SikkerhedsfaktorImpl extends PTEEntityImpl implements Sikkerhedsfaktor {
 
 	@Override
 	public boolean erSikkerhedsfaktorForLavt() {
-		return sikkerhedsfaktor <= 1;
+		return getSikkerhedsfaktor() <= 1;
 	}
 
 	@Override
