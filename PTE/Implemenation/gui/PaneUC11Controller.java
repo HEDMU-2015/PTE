@@ -8,6 +8,7 @@ import Logic.Profil;
 import Logic.Tilstand;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
 public class PaneUC11Controller extends PTEPane implements Initializable {
@@ -16,10 +17,19 @@ public class PaneUC11Controller extends PTEPane implements Initializable {
 	private Profil profil;
 	private static final String ADVARSEL = "-fx-background-color: pink;";	
 	private static final String CSS = "@util/gui.css";
+	
+	@FXML
+	private Button pdf;
 
 	@FXML
 	private TextField tekstFeltSigmaB, tekstFeltSigmaN, tekstFeltkg, tekstFeltdk, tekstFeltSigmaRef, tekstFeltnk, tekstFeltfs, tekstFeltfk, tekstFeltmb, tekstFeltAreal, tekstFeltSikkerhedsfaktor;
 
+	@FXML
+	private void haandterEkporterKnap(){
+		
+	}
+	
+	
 	@Override
 	public void update(List<Tilstand> tilstande) {
 		if(tilstande.contains(Tilstand.VINKEL)){

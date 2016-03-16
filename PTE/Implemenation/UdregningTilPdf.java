@@ -41,11 +41,11 @@ public class UdregningTilPdf {
 		}
 
 		String mb = createStringFromDouble(pteController.getBoejningsMoment());
-		if (mb == "") {
+		if (Double.isNaN(pteController.getBoejningsMoment())) {
 			mb = INGEN_RESULTAT;
 		}
 
-		return mb + " = " + laengde + " * " + kraft;
+		return "MB = " + laengde + "mm" + " * " + kraft + "N" + " = " + mb + "MB";
 	}
 
 	public String dimensionerendeKraftTilPdf() {
@@ -69,8 +69,8 @@ public class UdregningTilPdf {
 			boejningsspaending = BOEJNINGSSPAENDING;
 		}
 
-		return "Sigma B " + boejningsMoment + " * " + forskydningspunkt + " / " + inertimoment + " = "
-				+ boejningsspaending;
+		return "Sigma B " + boejningsMoment + "MB" + " * " + forskydningspunkt + "e" + " / " + inertimoment + "e "
+				+ " = " + boejningsspaending + "Sigma B";
 	}
 
 	public String boejningsspaendingTilPdf() {
@@ -89,7 +89,7 @@ public class UdregningTilPdf {
 			fdim = FDIM;
 		}
 
-		return "Fdim = " + vaegt + " * " + tyngdekraft + " = " + fdim;
+		return "Fdim = " + vaegt + "kg" + " * " + tyngdekraft + "m/s2" + " = " + fdim + "N";
 	}
 
 	public String forskydningskraftTilPdf() {
@@ -111,7 +111,7 @@ public class UdregningTilPdf {
 			ft = FT;
 		}
 
-		return "Ft = " + vinkel + " * " + fdim + " = " + ft;
+		return "Ft = " + vinkel + "o" + " * " + fdim + "N" + " = " + ft + "N";
 	}
 
 	public String normalkraftTilPdf() {
@@ -133,7 +133,7 @@ public class UdregningTilPdf {
 			fn = FN;
 		}
 
-		return "Fn = " + vinkel + " * " + fdim + " = " + fn;
+		return "Fn = " + vinkel + "o" + " * " + fdim + "N" + " = " + fn + "N";
 	}
 
 }

@@ -15,10 +15,6 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="573.0" prefWidth="383.0">
                <children>
-                  <Label layoutX="35.0" layoutY="76.0" text="Dimensionerende Kraft" />
-                  
-                  <Label layoutX="35.0" layoutY="131.0" text="Forskydningskraft" />
-                  <Label layoutX="35.0" layoutY="186.0" text="Normalkraft" />
                   <Label layoutX="35.0" layoutY="241.0" text="Bøjningsmoment (MB)" />
                   <Label layoutX="35.0" layoutY="296.0" text="Forskydningsspænding" />
                   <Label layoutX="35.0" layoutY="351.0" text="Sigma N" />
@@ -39,7 +35,12 @@
                   
                   <TextField fx:id="tekstFeltSigmaRef" editable="false" layoutX="30.0" layoutY="481.0" prefHeight="25.0" prefWidth="309.0" />
                   <TextField fx:id="tekstFeltSikkerhedsfaktor" editable="false" layoutX="30.0" layoutY="536.0" prefHeight="25.0" prefWidth="309.0" />
-                  <Label layoutX="35.0" layoutY="21.0" text="Kilogram" />                  
+                  <Label layoutX="35.0" layoutY="21.0" text="Kilogram" />
+                  <Button fx:id="pdf" layoutX="286.0" layoutY="6.0" mnemonicParsing="false" onAction="#haandterEkporterKnap" text="Eksporter" />
+                  <Label layoutX="35.0" layoutY="76.0" text="Dimensionerende Kraft" />
+                  
+                  <Label layoutX="35.0" layoutY="131.0" text="Forskydningskraft" />
+                  <Label layoutX="35.0" layoutY="186.0" text="Normalkraft" />                  
                   
                </children>
             </AnchorPane>
