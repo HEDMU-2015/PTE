@@ -19,8 +19,8 @@ public class ReferencespaendingImpl extends PTEEntityImpl implements Referencesp
 
 	@Override
 	public double getSigmaRef() {
-		sigmaRef = Math.sqrt(Math.pow(sigmaB.getSigmaB() + sigmaN.getSigmaN(), 2)
-				+ 3 * tau_ForskydningsSpaendingen.getTau_ForskydningsSpaending());
+		sigmaRef = Math.sqrt(Math.pow(sigmaB.getSigmaB() + sigmaN.getSigmaN(), 2) 
+				+ 3 * Math.pow(tau_ForskydningsSpaendingen.getTau_ForskydningsSpaending(), 2));
 
 		return sigmaRef;
 	}
