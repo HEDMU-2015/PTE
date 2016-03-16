@@ -20,6 +20,10 @@ public class PaneUC9Controller extends PTEPane implements Initializable {
 	private boolean flydespaendingErAEndret = false;
 	private boolean sigmaRefErAEndret = false;
 	private boolean sikkerhedsFaktorErAEndret = false;
+	private static final String ADVARSEL = "-fx-background-color: pink;";	
+	private static final String CSS = "@util/gui.css";
+	
+	
 	@FXML
 	private TextField tekstFlydeSpaending;
 	
@@ -34,12 +38,12 @@ public class PaneUC9Controller extends PTEPane implements Initializable {
 		if(flydespaendingErAEndret){
 			flydespaendingErAEndret = false;
 		pteController.setFlydespaending(tekstfeltFormat.formaterStringTilDouble(tekstFlydeSpaending.getText()));
-		//pteController.setSigmaRef(tekstfeltFormat.formaterStringTilDouble(tekstFeltSigmaRef.getText()));
-		//pteController.getSikkerhedsfaktor();
+		
 		}		
 	}
 	@FXML
 	public void haandterResetKnap() { 
+		tekstFeltSikkerhedsFaktor.setStyle(CSS);
 		pteController.nulstil();
 	}
 
@@ -57,7 +61,7 @@ public class PaneUC9Controller extends PTEPane implements Initializable {
 			tekstFeltSikkerhedsFaktor.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getSikkerhedsfaktor()));
 
 			if(tekstFeltSikkerhedsFaktor.getText()!= "" && pteController.erSikkerhedsfaktorForLavt()){
-				tekstFeltSikkerhedsFaktor.setStyle("-fx-background-color: pink;");
+				tekstFeltSikkerhedsFaktor.setStyle(ADVARSEL);
 			}
 		}
 	}

@@ -4,6 +4,8 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import Exceptions.ArealException;
+import Exceptions.ForskydningskraftException;
 import Logic.Tilstand;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -19,6 +21,11 @@ public class PaneUC4Controller extends PTEPane implements Initializable {
 	private boolean arealErAEndret = false;
 	
 	private boolean forskydningsspaendingenErAEndret = false;
+	
+	private static final String ERROR = "-fx-background-color: red;";
+	
+	private static final String CSS = "@util/gui.css";
+
 
 	@FXML
 	private TextField tekstFeltAreal;
@@ -31,20 +38,31 @@ public class PaneUC4Controller extends PTEPane implements Initializable {
 
 	@FXML
 	public void haandterUdregnKnap() {
+		
+		tekstFeltAreal.setStyle(CSS);
 		tekstFeltKraft.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getForskydningkraft()));
 		if (arealErAEndret) {
+			try{
 			arealErAEndret = false;
 			pteController.setIndtastAreal(tekstfeltFormat.formaterStringTilDouble(tekstFeltAreal.getText()));
+			} catch(ArealException e) {
+				
+				tekstFeltAreal.setStyle(ERROR);				
+			}
 		}
-		
+
 		if(forskydningsspaendingenErAEndret) {
+			
 			forskydningsspaendingenErAEndret = false;
 			pteController.setTau_ForskydningsSpaending(tekstfeltFormat.formaterStringTilDouble(tekstFeltForskydningsspændingen.getText()));
+			
 		}
 	}
 	
 	@FXML
 	public void haandterResetKnap() { 
+		tekstFeltAreal.setStyle(CSS);
+
 		pteController.nulstil();
 	}
 

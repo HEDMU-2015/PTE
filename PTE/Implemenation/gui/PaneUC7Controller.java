@@ -5,12 +5,12 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import Exceptions.SigmaBException;
 import Logic.Tilstand;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 public class PaneUC7Controller extends PTEPane implements Initializable {
@@ -19,6 +19,10 @@ public class PaneUC7Controller extends PTEPane implements Initializable {
 	private boolean forskydningspunktErAEndret = false;
 	private boolean intertimomentErAEndret= false;
 	private boolean sigmaBErAEndret = false;
+	private static final String ERROR = "-fx-background-color: red;";	
+	private static final String CSS = "@util/gui.css";
+
+	
 	@FXML
 	private TextField tekstFeltForskydningspunkt;
 	
@@ -31,7 +35,10 @@ public class PaneUC7Controller extends PTEPane implements Initializable {
 	@FXML
 	public void haandterUdregnKnap() {
 		
-		if(forskydningspunktErAEndret) {
+		tekstFeltSigmaB.setStyle(CSS);
+
+		
+		if(forskydningspunktErAEndret) {			
 			forskydningspunktErAEndret = false;
 			pteController.setForskydningspunkt(tekstfeltFormat.formaterStringTilDouble(tekstFeltForskydningspunkt.getText()));
 		}
@@ -42,13 +49,19 @@ public class PaneUC7Controller extends PTEPane implements Initializable {
 		}
 	
 		if (sigmaBErAEndret) {
+			try{
 			sigmaBErAEndret = false;
 			pteController.setSigmaB(tekstfeltFormat.formaterStringTilDouble(tekstFeltSigmaB.getText()));
+			} catch(SigmaBException e){
+				tekstFeltSigmaB.setStyle(ERROR);
+			}
 		}
 		
 	}
 	@FXML
 	public void haandterResetKnap() { 
+		tekstFeltSigmaB.setStyle(CSS);
+
 		pteController.nulstil();
 	}
 

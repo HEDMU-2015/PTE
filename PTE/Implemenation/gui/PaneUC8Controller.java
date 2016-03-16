@@ -18,6 +18,9 @@ public class PaneUC8Controller extends PTEPane implements Initializable {
 	private boolean sigmaBErAEndret = false;
 	private boolean sigmaNErAEndret = false;
 	private boolean sigmaRefErAEndret = false;
+	private static final String ERROR = "-fx-background-color: red;";	
+	private static final String CSS = "@util/gui.css";
+
 
 	@FXML
 	private TextField tekstFeltSigmaB;
@@ -30,7 +33,10 @@ public class PaneUC8Controller extends PTEPane implements Initializable {
 
 	@FXML
 	public void haandterUdregnKnap() {
+		/*if(sigmaRefErAEndret){
+			
 		tekstFeltSigmaRef.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getSigmaRef()));
+		}*/
 	}
 
 	@Override

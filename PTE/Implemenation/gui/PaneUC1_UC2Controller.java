@@ -24,8 +24,9 @@ public class PaneUC1_UC2Controller extends PTEPane implements Initializable {
 	private boolean vaegtErAEndret = false;
 	private boolean dimensionerendeKraftErAEndret = false;
 	private boolean vinkelErAEndret = false;
-	private String error = "-fx-background-color: red;";
-	private String css = "@util/gui.css";
+	private static final String ERROR = "-fx-background-color: red;";
+	private static final String CSS = "@util/gui.css";
+
 
 	@FXML
 	private TextField tekstFeltVaegt;
@@ -54,9 +55,9 @@ public class PaneUC1_UC2Controller extends PTEPane implements Initializable {
 	@FXML
 	private void haandterUdregnKnap() {
 		
-		tekstFeltVinkel.setStyle(css);
-		tekstFeltVaegt.setStyle(css);
-		tekstFeltDimensionerendeKraft.setStyle(css);
+		tekstFeltVinkel.setStyle(CSS);
+		tekstFeltVaegt.setStyle(CSS);
+		tekstFeltDimensionerendeKraft.setStyle(CSS);
 
 		if (vaegtErAEndret) {
 			try{
@@ -64,7 +65,7 @@ public class PaneUC1_UC2Controller extends PTEPane implements Initializable {
 
 			pteController.setVaegt(tekstfeltFormat.formaterStringTilDouble(tekstFeltVaegt.getText()));
 			}catch(VaegtException e){
-				tekstFeltVaegt.setStyle(error);
+				tekstFeltVaegt.setStyle(ERROR);
 			}
 		}
 
@@ -75,7 +76,7 @@ public class PaneUC1_UC2Controller extends PTEPane implements Initializable {
 			pteController.setDimensioneredndeKraft(
 					tekstfeltFormat.formaterStringTilDouble(tekstFeltDimensionerendeKraft.getText()));
 			}catch(DimensionerendeKraftException e){
-				tekstFeltDimensionerendeKraft.setStyle(error);
+				tekstFeltDimensionerendeKraft.setStyle(ERROR);
 			}
 		}
 
@@ -85,7 +86,7 @@ public class PaneUC1_UC2Controller extends PTEPane implements Initializable {
 
 				pteController.setVinkel(tekstfeltFormat.formaterStringTilDouble(tekstFeltVinkel.getText()));
 			}catch(VinkelException e){
-				tekstFeltVinkel.setStyle(error);
+				tekstFeltVinkel.setStyle(ERROR);
 			}
 	
 		}
@@ -99,9 +100,9 @@ public class PaneUC1_UC2Controller extends PTEPane implements Initializable {
 
 	@FXML
 	private void haandterResetKnap() {
-		tekstFeltVinkel.setStyle(css);
-		tekstFeltVaegt.setStyle(css);
-		tekstFeltDimensionerendeKraft.setStyle(css);
+		tekstFeltVinkel.setStyle(CSS);
+		tekstFeltVaegt.setStyle(CSS);
+		tekstFeltDimensionerendeKraft.setStyle(CSS);
 		pteController.nulstil();
 	}
 

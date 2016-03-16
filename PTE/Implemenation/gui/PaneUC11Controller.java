@@ -14,6 +14,8 @@ public class PaneUC11Controller extends PTEPane implements Initializable {
 
 	private TekstFormattering tekstfeltFormat = new TekstFormatteringImpl();
 	private Profil profil;
+	private static final String ADVARSEL = "-fx-background-color: pink;";	
+	private static final String CSS = "@util/gui.css";
 
 	@FXML
 	private TextField tekstFeltSigmaB, tekstFeltSigmaN, tekstFeltkg, tekstFeltdk, tekstFeltSigmaRef, tekstFeltnk, tekstFeltfs, tekstFeltfk, tekstFeltmb, tekstFeltAreal, tekstFeltSikkerhedsfaktor;
@@ -110,7 +112,9 @@ public class PaneUC11Controller extends PTEPane implements Initializable {
 					+ (Double.isNaN(pteController.getSikkerhedsfaktor()) ? "" : " = ") + tekstfeltFormat.formaterDoubleTilString(pteController.getSikkerhedsfaktor()));  
 		
 			if(tekstFeltSikkerhedsfaktor.getText()!= "" && pteController.erSikkerhedsfaktorForLavt()){
-				tekstFeltSikkerhedsfaktor.setStyle("-fx-background-color: pink;");
+				tekstFeltSikkerhedsfaktor.setStyle(ADVARSEL);
+			}else{
+				tekstFeltSikkerhedsfaktor.setStyle(CSS);
 			}
 		
 		

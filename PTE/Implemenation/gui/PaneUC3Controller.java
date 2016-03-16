@@ -22,8 +22,8 @@ import javafx.scene.control.ToggleGroup;
 public class PaneUC3Controller extends PTEPane implements Initializable {
 
 	private TekstFormattering tekstfeltFormat = new TekstFormatteringImpl();
-	private String error = "-fx-background-color: red;";
-	private String css = "@util/gui.css";
+	private static final String ERROR = "-fx-background-color: red;";
+	private static final String CSS = "@util/gui.css";
 
 
 	private boolean laengdeErAEndret = false;
@@ -50,30 +50,32 @@ public class PaneUC3Controller extends PTEPane implements Initializable {
 	@FXML
 	public void haandterUdregnKnap() {
 		setLaengdeRetning();
-		tekstFeltBoejningsmoment.setStyle(css);
-		tekstFeltLaengde.setStyle(css);
+		tekstFeltBoejningsmoment.setStyle(CSS);
+		tekstFeltLaengde.setStyle(CSS);
 
 		if (laengdeErAEndret) {
 			try{
-			laengdeErAEndret = false;
-			pteController.setLaengde(tekstfeltFormat.formaterStringTilDouble(tekstFeltLaengde.getText()));
+				laengdeErAEndret = false;
+				pteController.setLaengde(tekstfeltFormat.formaterStringTilDouble(tekstFeltLaengde.getText()));
 			} catch (LaengdeException e){
-				tekstFeltLaengde.setStyle(error);
+				tekstFeltLaengde.setStyle(ERROR);
 			}
-			
+
 		}
 		if (boejningsmomentErAEndret) {
 			try{
-			boejningsmomentErAEndret = false;
-			pteController.setBoejningsMoment(tekstfeltFormat.formaterStringTilDouble(tekstFeltBoejningsmoment.getText()));
+				boejningsmomentErAEndret = false;
+				pteController.setBoejningsMoment(tekstfeltFormat.formaterStringTilDouble(tekstFeltBoejningsmoment.getText()));
 			} catch (BoejningsMomentException e){
-				tekstFeltBoejningsmoment.setStyle(error);
+				tekstFeltBoejningsmoment.setStyle(ERROR);
 			}
 		}		
 	}
 
 	@FXML
 	public void haandterResetKnap() {
+		tekstFeltBoejningsmoment.setStyle(CSS);
+		tekstFeltLaengde.setStyle(CSS);
 		pteController.nulstil();
 	}
 
@@ -83,14 +85,14 @@ public class PaneUC3Controller extends PTEPane implements Initializable {
 			tekstFeltLaengde.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getLaengde()));
 
 			tekstFeltBoejningsmoment
-					.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getBoejningsMoment()));
+			.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getBoejningsMoment()));
 		}
-		
+
 		if(tilstande.contains(Tilstand.BOEJNINGSMOMENT)) {
 			tekstFeltBoejningsmoment
 			.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getBoejningsMoment()));
 		}
-		
+
 	}
 
 	private void setLaengdeRetning() {
@@ -106,19 +108,19 @@ public class PaneUC3Controller extends PTEPane implements Initializable {
 	private void formaterTekstfelt(TextField input) {
 		tekstfeltFormat.formaterTekstfeltInput(input);
 	}
-	
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		formaterTekstfelt(tekstFeltBoejningsmoment);
 		formaterTekstfelt(tekstFeltLaengde);
-		
+
 		tekstFeltLaengde.focusedProperty().addListener(new ChangeListener<Boolean>() {
 			@Override
 			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
 				laengdeErAEndret = true;
 			}
 		});
-		
+
 		tekstFeltBoejningsmoment.focusedProperty().addListener(new ChangeListener<Boolean>() {
 			@Override
 			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
@@ -126,7 +128,7 @@ public class PaneUC3Controller extends PTEPane implements Initializable {
 			}
 		});
 	}
-	
-	
+
+
 
 }
