@@ -1,5 +1,7 @@
 package Logic;
 
+import Exceptions.ForskydningskraftException;
+
 class ForskydningskraftImpl extends PTEEntityImpl implements Forskydningskraft {
 
 	private double forskydningskraft = Double.NaN;
@@ -19,6 +21,10 @@ class ForskydningskraftImpl extends PTEEntityImpl implements Forskydningskraft {
 
 	@Override
 	public void setForskydningskraft(double forskydningskraft) {
+		if(forskydningskraft <= 0){
+			throw new ForskydningskraftException();
+		}
+		
 		this.forskydningskraft = forskydningskraft;
 		nulstilBoern();
 	}

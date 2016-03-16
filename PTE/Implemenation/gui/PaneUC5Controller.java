@@ -4,6 +4,8 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import Exceptions.ArealException;
+import Exceptions.ForskydningskraftException;
 import Logic.Tilstand;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -20,7 +22,10 @@ public class PaneUC5Controller extends PTEPane implements Initializable {
 	private boolean sigmaNErAEndret = false;
 	private boolean arealErAEndret = false;
 	
+	private static final String ERROR = "-fx-background-color: red;";
 	
+	private static final String CSS = "@util/gui.css";
+
 
 	@FXML
 	private TextField tekstFeltFn;
@@ -33,24 +38,39 @@ public class PaneUC5Controller extends PTEPane implements Initializable {
 	
 	@FXML
 	public void haandterUdregnKnap() {
+		
+		tekstFeltAreal.setStyle(CSS);
+		tekstFeltFn.setStyle(CSS);
+
 
 		if (arealErAEndret) {
+			try{
 			arealErAEndret = false;
 			pteController.setIndtastAreal(tekstfeltFormat.formaterStringTilDouble(tekstFeltAreal.getText()));
+			} catch (ArealException e){
+				tekstFeltAreal.setStyle(ERROR);
+			}
 		}
 		if (fnErAEndret) {
+			try{
 			fnErAEndret = false;
 			pteController.setForskydningskraft(tekstfeltFormat.formaterStringTilDouble(tekstFeltFn.getText()));
+			} catch (ForskydningskraftException e){
+				tekstFeltFn.setStyle(ERROR);
+			}
 		}
 		
 		if (sigmaNErAEndret) {
+			
 			sigmaNErAEndret = false;
 			pteController.setSigmaN(tekstfeltFormat.formaterStringTilDouble(tekstFeltSigmaN.getText()));
-		}
-		
+		}		
 	}
+	
 	@FXML
 	public void haandterResetKnap() { 
+		tekstFeltAreal.setStyle(CSS);
+		tekstFeltFn.setStyle(CSS);
 		pteController.nulstil();
 	}
 

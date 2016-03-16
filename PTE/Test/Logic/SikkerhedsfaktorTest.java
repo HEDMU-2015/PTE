@@ -14,18 +14,18 @@ public class SikkerhedsfaktorTest {
 	@Test
 	public void getSikkerhedsfaktornormalUnderEnTest() {
 	double sigmaRef = 5;
-	double flydespaending = 5;
+	double flydespaending = 2.5;
 	
-	assertEquals(1, sikkerhedsfaktor.getSikkerhedsfaktor(flydespaending , sigmaRef ), 0.001);
+	assertEquals(0.5, sikkerhedsfaktor.getSikkerhedsfaktor(flydespaending , sigmaRef ), 0.001);
 		
 	}
 	
 	@Test
 	public void getSikkerhedsfaktornormalOverEnTest() {
-	double sigmaRef = 10;
-	double flydespaending = 5;
+	double referencespaending = 10;
+	double flydespaending = 20;
 	
-	assertEquals
+	assertEquals(2, sikkerhedsfaktor.getSikkerhedsfaktor(flydespaending, referencespaending), 0.001);
 		
 	}
 	

@@ -14,6 +14,8 @@ public class PaneUC11Controller extends PTEPane implements Initializable {
 
 	private TekstFormattering tekstfeltFormat = new TekstFormatteringImpl();
 	private Profil profil;
+	private static final String ADVARSEL = "-fx-background-color: pink;";	
+	private static final String CSS = "@util/gui.css";
 
 	@FXML
 	private TextField tekstFeltSigmaB, tekstFeltSigmaN, tekstFeltkg, tekstFeltdk, tekstFeltSigmaRef, tekstFeltnk, tekstFeltfs, tekstFeltfk, tekstFeltmb, tekstFeltAreal, tekstFeltSikkerhedsfaktor;
@@ -52,7 +54,7 @@ public class PaneUC11Controller extends PTEPane implements Initializable {
 				
 		if (tilstande.contains(Tilstand.VAEGT)){
 			tekstFeltkg.setText(
-					(Double.isNaN(pteController.getDimensionerendeKraft()) ? "Fdim" : tekstfeltFormat.formaterDoubleTilString(pteController.getDimensionerendeKraft()))
+					(Double.isNaN(pteController.getDimensionerendeKraft()) ? "F"+String.valueOf(Character.toChars(Integer.parseInt("209C", 16)))  : tekstfeltFormat.formaterDoubleTilString(pteController.getDimensionerendeKraft()))
 					+ " / " + tekstfeltFormat.formaterDoubleTilString(pteController.getTyngdekraft())
 					+ (Double.isNaN(pteController.getVaegt()) ? "" : " = ") + tekstfeltFormat.formaterDoubleTilString(pteController.getVaegt())); 
 		}
@@ -63,6 +65,7 @@ public class PaneUC11Controller extends PTEPane implements Initializable {
 					+ (Double.isNaN(pteController.getDimensionerendeKraft()) ? "" : " = ") + tekstfeltFormat.formaterDoubleTilString(pteController.getDimensionerendeKraft())); 
 		}
 		if (tilstande.contains(Tilstand.BOEJNINGSMOMENT)){
+			
 			tekstFeltmb.setText(
 					(Double.isNaN(pteController.getDimensionerendeKraft()) ? "Fdim" : tekstfeltFormat.formaterDoubleTilString(pteController.getDimensionerendeKraft()))
 					+ " * " 
@@ -109,7 +112,9 @@ public class PaneUC11Controller extends PTEPane implements Initializable {
 					+ (Double.isNaN(pteController.getSikkerhedsfaktor()) ? "" : " = ") + tekstfeltFormat.formaterDoubleTilString(pteController.getSikkerhedsfaktor()));  
 		
 			if(tekstFeltSikkerhedsfaktor.getText()!= "" && pteController.erSikkerhedsfaktorForLavt()){
-				tekstFeltSikkerhedsfaktor.setStyle("-fx-background-color: pink;");
+				tekstFeltSikkerhedsfaktor.setStyle(ADVARSEL);
+			}else{
+				tekstFeltSikkerhedsfaktor.setStyle(CSS);
 			}
 		
 		
