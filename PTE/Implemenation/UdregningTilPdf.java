@@ -45,7 +45,7 @@ public class UdregningTilPdf {
 			mb = INGEN_RESULTAT;
 		}
 
-		return "MB = " + laengde + "mm" + " * " + kraft + "N" + " = " + mb;
+		return "MB = " + laengde + "mm" + " * " + kraft + "N" + " = " + mb + "MB";
 	}
 
 	public String dimensionerendeKraftTilPdf() {
@@ -69,8 +69,8 @@ public class UdregningTilPdf {
 			boejningsspaending = BOEJNINGSSPAENDING;
 		}
 
-		return "Sigma B " + boejningsMoment + " * " + forskydningspunkt + " / " + inertimoment + " = "
-				+ boejningsspaending;
+		return "Sigma B " + boejningsMoment + "MB" + " * " + forskydningspunkt + "e" + " / " + inertimoment + "e "
+				+ " = " + boejningsspaending + "Sigma B";
 	}
 
 	public String boejningsspaendingTilPdf() {
