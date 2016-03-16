@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import Exceptions.DimensionerendeKraftException;
 import Exceptions.VaegtException;
 import Exceptions.VinkelException;
 import Logic.Profil;
@@ -23,7 +24,7 @@ public class PaneUC1_UC2Controller extends PTEPane implements Initializable {
 	private boolean vaegtErAEndret = false;
 	private boolean dimensionerendeKraftErAEndret = false;
 	private boolean vinkelErAEndret = false;
-	private String error = "-fx-background-color: pink;";
+	private String error = "-fx-background-color: red;";
 	private String css = "@util/gui.css";
 
 	@FXML
@@ -55,11 +56,11 @@ public class PaneUC1_UC2Controller extends PTEPane implements Initializable {
 		
 		tekstFeltVinkel.setStyle(css);
 		tekstFeltVaegt.setStyle(css);
+		tekstFeltDimensionerendeKraft.setStyle(css);
 
 		if (vaegtErAEndret) {
 			try{
 			vaegtErAEndret = false;
-			
 
 			pteController.setVaegt(tekstfeltFormat.formaterStringTilDouble(tekstFeltVaegt.getText()));
 			}catch(VaegtException e){
@@ -68,10 +69,14 @@ public class PaneUC1_UC2Controller extends PTEPane implements Initializable {
 		}
 
 		if (dimensionerendeKraftErAEndret) {
+			try{
 			dimensionerendeKraftErAEndret = false;
 
 			pteController.setDimensioneredndeKraft(
 					tekstfeltFormat.formaterStringTilDouble(tekstFeltDimensionerendeKraft.getText()));
+			}catch(DimensionerendeKraftException e){
+				tekstFeltDimensionerendeKraft.setStyle(error);
+			}
 		}
 
 		if (vinkelErAEndret) {
@@ -94,6 +99,9 @@ public class PaneUC1_UC2Controller extends PTEPane implements Initializable {
 
 	@FXML
 	private void haandterResetKnap() {
+		tekstFeltVinkel.setStyle(css);
+		tekstFeltVaegt.setStyle(css);
+		tekstFeltDimensionerendeKraft.setStyle(css);
 		pteController.nulstil();
 	}
 

@@ -22,7 +22,7 @@ import javafx.scene.control.ToggleGroup;
 public class PaneUC3Controller extends PTEPane implements Initializable {
 
 	private TekstFormattering tekstfeltFormat = new TekstFormatteringImpl();
-	private String error = "-fx-background-color: pink;";
+	private String error = "-fx-background-color: red;";
 	private String css = "@util/gui.css";
 
 

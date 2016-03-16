@@ -55,7 +55,6 @@ public class PaneUC9Controller extends PTEPane implements Initializable {
 		
 		if(tilstande.contains(Tilstand.SIKKERHEDSFAKTOR)){
 			tekstFeltSikkerhedsFaktor.setText(tekstfeltFormat.formaterDoubleTilString(pteController.getSikkerhedsfaktor()));
-			System.out.println("pteController " + pteController.erSikkerhedsfaktorForLavt());
 
 			if(tekstFeltSikkerhedsFaktor.getText()!= "" && pteController.erSikkerhedsfaktorForLavt()){
 				tekstFeltSikkerhedsFaktor.setStyle("-fx-background-color: pink;");

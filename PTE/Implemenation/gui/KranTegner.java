@@ -191,62 +191,60 @@ public class KranTegner extends PTEPane {
 		}
 	}
 	
-	private void rotateVandretKranArmOgSnit(double vinkel) {
+	private void rotateKranArmOgSnit(double vinkel) {
 		if(vinkel <= 90 && vinkel >= 0) {
-			Rotate kranRotate = null;
-			Rotate snitRotate = null;
-			if(vinkel > nuvaerendeVinkel) {
-				rotateVinkel = vinkel - nuvaerendeVinkel;
-				nuvaerendeVinkel = vinkel;
-				kranRotate = new Rotate(-rotateVinkel, x, y);
-				snitRotate = new Rotate(-rotateVinkel, x, y);
-			} else {
-				rotateVinkel = nuvaerendeVinkel - vinkel;
-				nuvaerendeVinkel = vinkel;
-				kranRotate = new Rotate(rotateVinkel, x, y);
-				snitRotate = new Rotate(rotateVinkel, x, y);
+			nuvaerendeVinkel = vinkel;
+			kranArm.getTransforms().clear();
+			snit.getTransforms().clear();
+			snit.getTransforms().add(new Rotate(-90, x, y));
+			if(profil == Profil.VANDRET) {
+				kranArm.getTransforms().add(new Rotate(-vinkel, x, y));
+				snit.getTransforms().add(new Rotate(-vinkel, x, y));
+				vinkelVaerdi.setText(String.valueOf(vinkel) + "°");
+				flytArcOgVinkelVandret();
+			} else if(profil == Profil.LODRET) {
+				kranArm.getTransforms().add(new Rotate(-(90 - vinkel), x, y));
+				snit.getTransforms().add(new Rotate(-(90 - vinkel), x, y));
+				vinkelVaerdi.setText(String.valueOf(vinkel) + "°");
+				flytArcOgVinkelLodret();
 			}
-			kranArm.getTransforms().add(kranRotate);
-			snit.getTransforms().add(snitRotate);
-			vinkelVaerdi.setText(String.valueOf(nuvaerendeVinkel) + "°");
-			flytArcOgVinkelVandret();
 		}
 	}
 	
-	private void rotateLodretKranArmOgSnit(double vinkel) {
-		if(vinkel <= 90 && vinkel >= 0) {
-			Rotate kranRotate = null;
-			Rotate snitRotate = null;
-			if(vinkel > nuvaerendeVinkel) {
-				rotateVinkel = vinkel - nuvaerendeVinkel;
-				nuvaerendeVinkel = vinkel;
-				kranRotate = new Rotate(rotateVinkel, x, y);
-				snitRotate = new Rotate(rotateVinkel, x, y);
-			} else {
-				rotateVinkel = nuvaerendeVinkel - vinkel;
-				nuvaerendeVinkel = vinkel;
-				kranRotate = new Rotate(-rotateVinkel, x, y);
-				snitRotate = new Rotate(-rotateVinkel, x, y);
-			}
-			kranArm.getTransforms().add(kranRotate);
-			snit.getTransforms().add(snitRotate);
-			vinkelVaerdi.setText(String.valueOf(nuvaerendeVinkel) + "°");
-			flytArcOgVinkelLodret();
-			kranArm.getTransforms().clear();
-		}
-	}
+//	private void rotateLodretKranArmOgSnit(double vinkel) {
+//		if(vinkel <= 90 && vinkel >= 0) {
+//			Rotate kranRotate = null;
+//			Rotate snitRotate = null;
+//			if(vinkel > nuvaerendeVinkel) {
+//				rotateVinkel = vinkel - nuvaerendeVinkel;
+//				nuvaerendeVinkel = vinkel;
+//				kranRotate = new Rotate(rotateVinkel, x, y);
+//				snitRotate = new Rotate(rotateVinkel, x, y);
+//			} else {
+//				rotateVinkel = nuvaerendeVinkel - vinkel;
+//				nuvaerendeVinkel = vinkel;
+//				kranRotate = new Rotate(-rotateVinkel, x, y);
+//				snitRotate = new Rotate(-rotateVinkel, x, y);
+//			}
+//			kranArm.getTransforms().add(kranRotate);
+//			snit.getTransforms().add(snitRotate);
+//			vinkelVaerdi.setText(String.valueOf(nuvaerendeVinkel) + "°");
+//			flytArcOgVinkelLodret();
+//			kranArm.getTransforms().clear();
+//		}
+//	}
 	
 	public Node getNode() {
 		return ap;
 	}
 	
-	private void rotateKranArmOgSnit(double vinkel) {
-		if(profil == Profil.VANDRET) {
-			rotateVandretKranArmOgSnit(vinkel);
-		} else if(profil == Profil.LODRET) {
-			rotateLodretKranArmOgSnit(vinkel);
-		}
-	}
+//	private void rotateKranArmOgSnit(double vinkel) {
+//		if(profil == Profil.VANDRET) {
+//			rotateVandretKranArmOgSnit(vinkel);
+//		} else if(profil == Profil.LODRET) {
+//			rotateLodretKranArmOgSnit(vinkel);
+//		}
+//	}
 	
 	@Override
 	public void update(List<Tilstand> tilstande) {
