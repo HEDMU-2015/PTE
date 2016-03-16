@@ -61,6 +61,7 @@ public class KranTegner extends PTEPane {
 		kranArm.setStrokeWidth(10);
 		kranArm.setStroke(Color.web("#55A9FC"));
 		kranArm.setStrokeLineCap(StrokeLineCap.ROUND);
+		kranArm.toFront();
 	}
 	
 	private void setUpArc() {
