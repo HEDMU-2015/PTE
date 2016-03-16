@@ -41,11 +41,11 @@ public class UdregningTilPdf {
 		}
 
 		String mb = createStringFromDouble(pteController.getBoejningsMoment());
-		if (mb == "") {
+		if (Double.isNaN(pteController.getBoejningsMoment())) {
 			mb = INGEN_RESULTAT;
 		}
 
-		return mb + " = " + laengde + " * " + kraft;
+		return mb + " = " + laengde + " * " + kraft + " = " + mb;
 	}
 
 	public String dimensionerendeKraftTilPdf() {
