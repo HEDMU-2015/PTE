@@ -45,7 +45,7 @@ public class UdregningTilPdf {
 			mb = INGEN_RESULTAT;
 		}
 
-		return mb + " = " + laengde + " * " + kraft + " = " + mb;
+		return "MB = " + laengde + "mm" + " * " + kraft + "N" + " = " + mb;
 	}
 
 	public String dimensionerendeKraftTilPdf() {
@@ -89,7 +89,7 @@ public class UdregningTilPdf {
 			fdim = FDIM;
 		}
 
-		return "Fdim = " + vaegt + " * " + tyngdekraft + " = " + fdim;
+		return "Fdim = " + vaegt + "kg" + " * " + tyngdekraft + "m/s2" + " = " + fdim + "N";
 	}
 
 	public String forskydningskraftTilPdf() {
@@ -111,7 +111,7 @@ public class UdregningTilPdf {
 			ft = FT;
 		}
 
-		return "Ft = " + vinkel + " * " + fdim + " = " + ft;
+		return "Ft = " + vinkel + "o" + " * " + fdim + "N" + " = " + ft + "N";
 	}
 
 	public String normalkraftTilPdf() {
@@ -133,7 +133,7 @@ public class UdregningTilPdf {
 			fn = FN;
 		}
 
-		return "Fn = " + vinkel + " * " + fdim + " = " + fn;
+		return "Fn = " + vinkel + "o" + " * " + fdim + "N" + " = " + fn + "N";
 	}
 
 }
