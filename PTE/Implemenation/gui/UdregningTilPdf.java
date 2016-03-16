@@ -1,4 +1,7 @@
 package gui;
+import java.util.ArrayList;
+import java.util.List;
+
 import Logic.LaengdeRetning;
 import Logic.PTEController;
 import Logic.Profil;
@@ -20,24 +23,52 @@ public class UdregningTilPdf {
 	public final static String BOEJNINGSSPAENDING = "SigmaB";
 	public final static String VAEGT = "vægt";
 	public final static String TYNGDEKRAFT = "Tyngdekraft";
+	public final static String FLYDESPAENDING = "σtill";
+	public final static String LAENGDE = "l";
 	public static final String INGEN_RESULTAT = "?";
 	
 	private String resultat;
 	
 	private PTEController pteController;
-
+	private List<String> hoejreListe;
+	private List<String> underListe;
+	
 	public UdregningTilPdf(PTEController pteController) {
 		this.pteController = pteController;
+		hoejreListe = new ArrayList<String>();
+		underListe = new ArrayList<String>();
 	}
-
+	
+	public List<String> getHoejreListe() {
+		hoejreListe.add(normalkraftTilPdf());
+		hoejreListe.add(forskydningskraftTilPdf());
+		hoejreListe.add(dimensionerendeKraftTilPdf());
+		hoejreListe.add(boejningsmomentTilPdf());
+		return hoejreListe;
+	}
+	
+	public List<String> getUnderListe() {
+		underListe.add(foskydningsspaendingTilPdf());
+		underListe.add(normalspaendingTilPdf());
+		underListe.add(boejningsspaendingTilPdf());
+		underListe.add(referencespaendingTilPdf());
+		underListe.add(sikkerhedsfaktorTilPdf());
+		return underListe;
+	}
+	
 	private String createStringFromDouble(double value) {
 		return String.valueOf(value);
 	}
 
 	public String boejningsmomentTilPdf() {
-		String laengde = createStringFromDouble(pteController.getLaengde());
+		String laengde = "";
 		String kraft = "";
 
+		if(Double.isNaN(pteController.getLaengde())) {
+			laengde = LAENGDE;
+		} else {
+			laengde = createStringFromDouble(pteController.getLaengde());
+		}
 		if (pteController.getLaengdeRetning() == LaengdeRetning.VINKELRET_TIL_FDIM) {
 			if (Double.isNaN(pteController.getDimensionerendeKraft())) {
 				kraft = FDIM;
@@ -104,7 +135,7 @@ public class UdregningTilPdf {
 			resultat = createStringFromDouble(pteController.getDimensionerendeKraft());
 		}
 
-		return FDIM + " = " + vaegt + " * " + tyngdekraft + " = " + resultat + " N";
+		return FDIM + " = " + vaegt + " * " + tyngdekraft + " = " + resultat + " [N]";
 	}
 
 	public String forskydningskraftTilPdf() {
@@ -127,7 +158,7 @@ public class UdregningTilPdf {
 			resultat = createStringFromDouble(pteController.getForskydningkraft());
 		}
 
-		return FT + " = " + vinkel + " * " + fdim + " = " + resultat + " N";
+		return FT + " = " + vinkel + " * " + fdim + " = " + resultat + " [N]";
 	}
 
 	public String normalkraftTilPdf() {
@@ -150,7 +181,7 @@ public class UdregningTilPdf {
 			resultat = createStringFromDouble(pteController.getNormalkraft());
 		}
 
-		return FN + " = " + vinkel + " * " + fdim + " = " + resultat + " N" ;
+		return FN + " = " + vinkel + " * " + fdim + " = " + resultat + " [N]" ;
 	}
 	
 	public String foskydningsspaendingTilPdf() {
@@ -233,7 +264,7 @@ public class UdregningTilPdf {
 		String flydespaending;
 		String sigmaRef;
 		if(Double.isNaN(pteController.getFlydespaending())) {
-			flydespaending = FN;
+			flydespaending = FLYDESPAENDING;
 		} else {
 			flydespaending = createStringFromDouble(pteController.getFlydespaending());
 		}

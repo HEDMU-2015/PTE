@@ -26,6 +26,8 @@ public class PaneUC11Controller extends PTEPane implements Initializable {
 
 	@FXML
 	private void haandterEkporterKnap(){
+		UdregningTilPdf pdfData = new UdregningTilPdf(this.pteController);
+		System.out.println(pdfData.getHoejreListe());
 		
 	}
 	
