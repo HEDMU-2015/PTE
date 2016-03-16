@@ -96,7 +96,7 @@ public class PaneUC11Controller extends PTEPane implements Initializable {
 			tekstFeltSigmaRef.setText(" √ ((" 
 				+ (Double.isNaN(pteController.getSigmaB()) ? "σB" : tekstfeltFormat.formaterDoubleTilString(pteController.getSigmaB())) 
 				+ " + " 
-				+ (Double.isNaN(pteController.getSigmaN()) ? "σN" : tekstfeltFormat.formaterDoubleTilString(pteController.getSigmaN())) + ")² + 3 *"
+				+ (Double.isNaN(pteController.getSigmaN()) ? "σN" : tekstfeltFormat.formaterDoubleTilString(pteController.getSigmaN())) + ")² + 3 * "
 				+ (Double.isNaN(pteController.getTau_ForskydningsSpaending()) ? "τ" : tekstfeltFormat.formaterDoubleTilString(pteController.getTau_ForskydningsSpaending())) + "²)"
 				+ (Double.isNaN(pteController.getSigmaRef()) ? "" : " = ") + tekstfeltFormat.formaterDoubleTilString(pteController.getSigmaRef())); 
 		}
