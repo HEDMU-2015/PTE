@@ -92,7 +92,7 @@ public class Main extends Application {
 			FXMLLoader loaderUC4 = new FXMLLoader();
 			loaderUC4.setLocation(Main.class.getResource("PaneUC4.fxml"));
 			AnchorPane paneUC4 = (AnchorPane) loaderUC4.load();
-			TitledPane tpUC4 = new TitledPane("Forskydningsspændingen", paneUC4);
+			TitledPane tpUC4 = new TitledPane("Forskydningsspænding", paneUC4);
 			tpUC4.setExpanded(false);
 			tpUC4.setOnMouseReleased(e -> {
 				if (tpUC4.isExpanded()) {
