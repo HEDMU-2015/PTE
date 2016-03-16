@@ -35,6 +35,8 @@ public class PaneUC9Controller extends PTEPane implements Initializable {
 	
 	@FXML
 	public void haandterUdregnKnap() {
+		tekstFeltSikkerhedsFaktor.setStyle(CSS);
+
 		if(flydespaendingErAEndret){
 			flydespaendingErAEndret = false;
 		pteController.setFlydespaending(tekstfeltFormat.formaterStringTilDouble(tekstFlydeSpaending.getText()));
