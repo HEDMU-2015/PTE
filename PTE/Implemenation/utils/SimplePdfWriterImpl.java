@@ -3,7 +3,9 @@ package utils;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 
+import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
@@ -11,8 +13,12 @@ import com.itextpdf.text.Font;
 import com.itextpdf.text.Font.FontFamily;
 import com.itextpdf.text.Font.FontStyle;
 import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.Image;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Rectangle;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 /**
  * @author Tsvetelin Tsonev <tsvetelin.tsonev@yahoo.co.uk>
@@ -128,5 +134,58 @@ public class SimplePdfWriterImpl implements SimplePdfWriter {
 	@Override
 	public void close() {
 		document.close();
+	}
+
+	@Override
+	public void addImage(String imagePath, float height, float width) {
+		Image iTextImage = null;
+		
+			try {
+				iTextImage = Image.getInstance(imagePath);
+			} catch (BadElementException | IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+		iTextImage.scaleToFit(width, height);
+		addToDocument(iTextImage);
+	}
+	
+	public static PdfPCell createImageCell(Image image) {
+	    PdfPCell cell = new PdfPCell(image, true);
+	    cell.setBorder(Rectangle.NO_BORDER);
+	    return cell;
+	}
+	
+	public static PdfPCell createTextCell(String text) {
+	    PdfPCell cell = new PdfPCell();
+	    Paragraph p = new Paragraph(text);
+	    p.setAlignment(Element.ALIGN_RIGHT);
+	    cell.setPaddingTop(100);
+	    cell.addElement(p);
+	    cell.setVerticalAlignment(Element.ALIGN_TOP);
+	    cell.setBorder(Rectangle.NO_BORDER);
+	    return cell;
+	}
+
+	@Override
+	public void addImageWithText(String imagePath, String text) {
+		Image image = null;
+		try {
+			image = Image.getInstance(imagePath);
+		} catch (BadElementException | IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		    PdfPTable table = new PdfPTable(2);
+		    table.setWidthPercentage(100);
+		    try {
+				table.setWidths(new int[]{2, 2});
+			} catch (DocumentException e) {
+				e.printStackTrace();
+			}
+		    table.addCell(createImageCell(image));
+		    table.addCell(createTextCell(text));
+		    addToDocument(table);
 	}
 }

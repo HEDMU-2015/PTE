@@ -3,6 +3,7 @@ package utils;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.Font.FontFamily;
 import com.itextpdf.text.Font.FontStyle;
+import com.itextpdf.text.Image;
 /**
  * @author Tsvetelin Tsonev <tsvetelin.tsonev@yahoo.co.uk>
  */
@@ -77,4 +78,8 @@ public interface SimplePdfWriter {
 	 * Closes the document. After the document is closed it is no longer possible to add content to document's body.
 	 */
 	public void close();
+	
+	public void addImage(String imagePath, float height, float width);
+	
+	public void addImageWithText(String imagePath, String text);
 }

@@ -55,7 +55,7 @@ public class Main extends Application {
 			// Kran billede
 			KranTegner kran = new KranTegner(400, 515);
 			kran.setPTEController(pteController);
-			
+
 			// Pane UC1 og UC2
 			FXMLLoader loaderUC1_UC2 = new FXMLLoader();
 			loaderUC1_UC2.setLocation(Main.class.getResource("PaneUC1_UC2.fxml"));

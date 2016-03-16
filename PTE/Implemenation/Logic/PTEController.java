@@ -3,6 +3,8 @@ package Logic;
 import java.util.List;
 
 public interface PTEController {
+	
+	public final static String PTE_FOLDER = "PTECalculator";
 
 	public void vaelgProfil(Profil profil);
 

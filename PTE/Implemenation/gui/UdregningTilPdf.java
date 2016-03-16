@@ -1,4 +1,5 @@
 package gui;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,6 +9,8 @@ import Logic.Profil;
 
 public class UdregningTilPdf {
 
+	private DecimalFormat format = new DecimalFormat("#.###");
+	
 	public final static String FDIM = "Fdim";
 	public static final String FN = "Fn";
 	public final static String FT = "Ft";
@@ -35,32 +38,34 @@ public class UdregningTilPdf {
 	
 	public UdregningTilPdf(PTEController pteController) {
 		this.pteController = pteController;
+		
 		hoejreListe = new ArrayList<String>();
-		underListe = new ArrayList<String>();
-	}
-	
-	public List<String> getHoejreListe() {
 		hoejreListe.add(normalkraftTilPdf());
 		hoejreListe.add(forskydningskraftTilPdf());
 		hoejreListe.add(dimensionerendeKraftTilPdf());
 		hoejreListe.add(boejningsmomentTilPdf());
-		return hoejreListe;
-	}
-	
-	public List<String> getUnderListe() {
+		
+		underListe = new ArrayList<String>();
 		underListe.add(foskydningsspaendingTilPdf());
 		underListe.add(normalspaendingTilPdf());
 		underListe.add(boejningsspaendingTilPdf());
 		underListe.add(referencespaendingTilPdf());
 		underListe.add(sikkerhedsfaktorTilPdf());
+	}
+	
+	public List<String> getHoejreListe() {
+		return hoejreListe;
+	}
+	
+	public List<String> getUnderListe() {
 		return underListe;
 	}
 	
 	private String createStringFromDouble(double value) {
-		return String.valueOf(value);
+		return format.format(value);
 	}
 
-	public String boejningsmomentTilPdf() {
+	private String boejningsmomentTilPdf() {
 		String laengde = "";
 		String kraft = "";
 
@@ -92,7 +97,7 @@ public class UdregningTilPdf {
 		return BOEJNINGSMOMENT + " = " + laengde + " * " + kraft + " = " + resultat;
 	}
 
-	public String boejningsspaendingTilPdf() {
+	private String boejningsspaendingTilPdf() {
 		String boejningsMoment = createStringFromDouble(pteController.getBoejningsMoment());
 		if (Double.isNaN(pteController.getBoejningsMoment())) {
 			boejningsMoment = BOEJNINGSMOMENT;
@@ -118,7 +123,7 @@ public class UdregningTilPdf {
 				+ resultat;
 	}
 
-	public String dimensionerendeKraftTilPdf() {
+	private String dimensionerendeKraftTilPdf() {
 		String vaegt = createStringFromDouble(pteController.getVaegt());
 		if (Double.isNaN(pteController.getVaegt())) {
 			vaegt = VAEGT;
@@ -138,7 +143,7 @@ public class UdregningTilPdf {
 		return FDIM + " = " + vaegt + " * " + tyngdekraft + " = " + resultat + " [N]";
 	}
 
-	public String forskydningskraftTilPdf() {
+	private String forskydningskraftTilPdf() {
 		String vinkel = createStringFromDouble(pteController.getVinkel());
 		if (pteController.getProfil() == Profil.VANDRET) {
 			vinkel = "cos(" + vinkel + ")";
@@ -161,7 +166,7 @@ public class UdregningTilPdf {
 		return FT + " = " + vinkel + " * " + fdim + " = " + resultat + " [N]";
 	}
 
-	public String normalkraftTilPdf() {
+	private String normalkraftTilPdf() {
 		String vinkel = createStringFromDouble(pteController.getVinkel());
 		if (pteController.getProfil() == Profil.VANDRET) {
 			vinkel = "sin(" + vinkel + ")";
@@ -180,11 +185,11 @@ public class UdregningTilPdf {
 		} else {
 			resultat = createStringFromDouble(pteController.getNormalkraft());
 		}
-
+		
 		return FN + " = " + vinkel + " * " + fdim + " = " + resultat + " [N]" ;
 	}
 	
-	public String foskydningsspaendingTilPdf() {
+	private String foskydningsspaendingTilPdf() {
 		String forskydningskraft;
 		String areal;
 		if(Double.isNaN(pteController.getForskydningkraft())) {
@@ -208,7 +213,7 @@ public class UdregningTilPdf {
 		
 	}
 	
-	public String normalspaendingTilPdf() {
+	private String normalspaendingTilPdf() {
 		String normalkraft;
 		String areal;
 		if(Double.isNaN(pteController.getNormalkraft())) {
@@ -232,7 +237,7 @@ public class UdregningTilPdf {
 		
 	}
 	
-	public String referencespaendingTilPdf() {
+	private String referencespaendingTilPdf() {
 		String sigmaB;
 		String sigmaN;
 		String tau;
@@ -260,7 +265,7 @@ public class UdregningTilPdf {
 		
 	}
 	
-	public String sikkerhedsfaktorTilPdf() {
+	private String sikkerhedsfaktorTilPdf() {
 		String flydespaending;
 		String sigmaRef;
 		if(Double.isNaN(pteController.getFlydespaending())) {
