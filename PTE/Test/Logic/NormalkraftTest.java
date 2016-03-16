@@ -105,6 +105,7 @@ public class NormalkraftTest{
 	/**
 	 * Test af integrationen mellem NormalkraftImpl 
 	 * og alle underliggende klasser
+	 * Denne test er lavet af Anders på klassen
 	 */
 	@Test
 	public void testNulstilNormalkraftHierarki() {
