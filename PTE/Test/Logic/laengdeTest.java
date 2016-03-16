@@ -28,9 +28,9 @@ public class laengdeTest {
 
 	@Test
 	public void setLaengdeNegativTest() {
-		laengde.setLaengde(-60);
+		
 		try {
-			laengde.getLaengde();
+			laengde.setLaengde(-60);
 			fail("Negativ Længde");
 		} catch (LaengdeException e) {
 			// Success
