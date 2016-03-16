@@ -207,6 +207,7 @@ public class Main extends Application {
 			mainWindow.setCenter(scrollPane);
 			mainWindow.setRight(paneUC11);
 			mainWindow.setLeft(kran.getNode());
+			mainWindow.getLeft().setStyle("-fx-padding: 10 20 10 20;");
 		} catch (IOException exc) {
 		}
 	}
