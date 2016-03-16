@@ -54,7 +54,7 @@ public class PaneUC11Controller extends PTEPane implements Initializable {
 				
 		if (tilstande.contains(Tilstand.VAEGT)){
 			tekstFeltkg.setText(
-					(Double.isNaN(pteController.getDimensionerendeKraft()) ? "F"+String.valueOf(Character.toChars(Integer.parseInt("209C", 16)))  : tekstfeltFormat.formaterDoubleTilString(pteController.getDimensionerendeKraft()))
+					(Double.isNaN(pteController.getDimensionerendeKraft()) ? "vægt"  : tekstfeltFormat.formaterDoubleTilString(pteController.getDimensionerendeKraft()))
 					+ " / " + tekstfeltFormat.formaterDoubleTilString(pteController.getTyngdekraft())
 					+ (Double.isNaN(pteController.getVaegt()) ? "" : " = ") + tekstfeltFormat.formaterDoubleTilString(pteController.getVaegt())); 
 		}
