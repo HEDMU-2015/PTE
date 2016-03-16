@@ -2,6 +2,8 @@ package Logic;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -67,6 +69,7 @@ public class NormalkraftTest{
 		}
 	}
 
+	
 	@Test
 	public void getNormalkraftNormalTest() throws UdefineretProfilException {
 		vaegt.setVaegt(2);
@@ -98,4 +101,141 @@ public class NormalkraftTest{
 		vinkel.setVinkel(5);
 		assertEquals(Double.NaN, normalkraft.getNormalkraft(), 0.001);
 	}
+	
+	/**
+	 * Test af integrationen mellem NormalkraftImpl 
+	 * og alle underliggende klasser
+	 */
+	@Test
+	public void testNulstilNormalkraftHierarki() {
+		// 3. Setup
+		vaegt.setVaegt(50);
+		tyngdekraft.setTyngdekraft(20);
+		vinkel.setVinkel(75);
+		vinkel.setProfil(Profil.LODRET);
+		assertEquals(50 * 20, dimensionerendeKraft.getDimensionerendeKraft(), 0.001);
+		assertEquals(Math.cos(Math.toRadians(75)) * 50 * 20, normalkraft.getNormalkraft(), 0.001);
+		
+		// 2. Execution
+		normalkraft.nulstil();
+		
+		// 1. Verification
+		assertEquals(Double.NaN, vaegt.getVaegt(), 0.001);
+		assertEquals(9.816, tyngdekraft.getTyngdekraft(), 0.001);
+		assertEquals(Double.NaN, dimensionerendeKraft.getDimensionerendeKraft(), 0.001);
+		assertEquals(Double.NaN, vinkel.getVinkel(), 0.001);
+		assertEquals(Double.NaN, normalkraft.getNormalkraft(), 0.001);
+	}
+	
+	/**
+	 * Unit test af NormalkraftImpl
+	 */
+	@Test
+	public void testNulstilBoernTilNormalkraft() {
+		// 3. Setup
+		NulstilbarDimensionerendeKraftMock fdimMock = new NulstilbarDimensionerendeKraftMock();
+		NulstilbarVinkelMock vinkelMock = new NulstilbarVinkelMock();
+		normalkraft = new NormalkraftImpl(fdimMock, vinkelMock);
+		
+		// 2. Execution
+		normalkraft.nulstil();
+		
+		// 1. Verification
+		assertEquals(1, fdimMock.nulstilTaeller);
+		assertEquals(1, vinkelMock.nulstilTaeller);
+		assertEquals(Double.NaN, normalkraft.getNormalkraft(), 0.001);
+		
+		// 4. Teardown
+		// Nothing to tear down...
+	}
+
+	private class NulstilbarVinkelMock implements Vinkel {
+
+		public int nulstilTaeller = 0;
+
+		@Override
+		public List<Tilstand> getAfhaengigheder() {
+			fail("getAfhaengigheder kaldt i Vinkel");
+			return null;
+		}
+
+		@Override
+		public void tilfoejAfhaengigEntitet(PTEEntity entity) {
+		}
+
+		@Override
+		public void setVinkel(double vinkel) {
+			fail("setVinkel kaldt i Vinkel");
+		}
+
+		@Override
+		public double getVinkel() {
+			return Double.NaN;
+		}
+
+		@Override
+		public void setProfil(Profil profil) {
+			fail("setProfil kaldt i Vinkel");
+		}
+
+		@Override
+		public Profil getProfil() {
+			return Profil.VANDRET;
+		}
+
+		@Override
+		public void setLaengdeRetning(LaengdeRetning laengdeRetning) {
+			fail("setLaengdeRetning kaldt i Vinkel");
+		}
+
+		@Override
+		public LaengdeRetning getLaengdeRetning() {
+			fail("getLaengdeRetning kaldt i Vinkel");
+			return null;
+		}
+
+		@Override
+		public void nulstil() {
+			nulstilTaeller++;
+		}
+
+	}
+
+	private class NulstilbarDimensionerendeKraftMock implements DimensionerendeKraft {
+
+		public int nulstilTaeller = 0;
+
+		@Override
+		public List<Tilstand> getAfhaengigheder() {
+			fail("getAfhaengigheder kaldt i DimensionerendeKraft");
+			return null;
+		}
+
+		@Override
+		public void tilfoejAfhaengigEntitet(PTEEntity entity) {
+		}
+
+		@Override
+		public double getDimensionerendeKraft() {
+			return Double.NaN;
+		}
+
+		@Override
+		public void setDimensionerendeKraft(double dimensionerendeKraft) {
+			fail("setDimensionerendeKraft kaldt i DimensionerendeKraft");
+		}
+
+		@Override
+		public double dimensionerendeKraftTilVaegt() {
+			fail("dimensionerendeKraftTilVaegt kaldt i DimensionerendeKraft");
+			return 0;
+		}
+
+		@Override
+		public void nulstil() {
+			nulstilTaeller++;
+		}
+
+	}
+
 }

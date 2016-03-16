@@ -45,7 +45,7 @@ class NormalkraftImpl extends PTEEntityImpl implements Normalkraft {
 
 	@Override
 	public void nulstil() {
-		setNormalkraft(Double.NaN);
+		normalkraft = Double.NaN;
 		nulstilBoern();
 	}
 
