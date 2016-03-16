@@ -136,5 +136,4 @@ public class UdregningTilPdf {
 		return "Fn = " + vinkel + " * " + fdim + " = " + fn;
 	}
 
-	// mainWindow.getLeft().setStyle("-fx-padding: 10 20 10 20;");
 }
