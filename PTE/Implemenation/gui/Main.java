@@ -169,7 +169,7 @@ public class Main extends Application {
 						controllerPaneUC9.setPTEController(pteController);
 						
 						
-						// Pane UC10
+					/*	// Pane UC10
 						FXMLLoader loaderUC10 = new FXMLLoader();
 						loaderUC10.setLocation(Main.class.getResource("PaneUC10.fxml"));
 						AnchorPane paneUC10 = (AnchorPane) loaderUC10.load();
@@ -184,7 +184,7 @@ public class Main extends Application {
 						});
 						PTEPane controllerPaneUC10 = loaderUC10.<PTEPane> getController();
 						controllerPaneUC10.setPTEController(pteController);
-						
+						*/
 						
 
 						// Pane UC11
@@ -198,7 +198,7 @@ public class Main extends Application {
 						controllerPaneUC11.setPTEController(pteController);
 						
 			
-			vboxICenter.getChildren().addAll(tpUC1_UC2, tpUC3, tpUC4, tpUC5, tpUC7, tpUC8, tpUC9, tpUC10);
+			vboxICenter.getChildren().addAll(tpUC1_UC2, tpUC3, tpUC4, tpUC5, tpUC7, tpUC8, tpUC9/*, tpUC10*/);
 			
 			scrollPane = new ScrollPane(vboxICenter);
 			scrollPane.setFitToHeight(true);
