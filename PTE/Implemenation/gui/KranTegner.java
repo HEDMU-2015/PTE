@@ -21,7 +21,7 @@ import javafx.scene.transform.Rotate;
 
 public class KranTegner extends PTEPane {
 	
-	private AnchorPane ap;
+	private static AnchorPane ap;
 	private Line kranArm, xAxis, yAxis;
 	private double x, y, height, width, nuvaerendeVinkel, rotateVinkel, katetA, vinkelSidePadding, vinkelHoejdePadding;
 	boolean erKranTegnet = false;
@@ -235,7 +235,7 @@ public class KranTegner extends PTEPane {
 //		}
 //	}
 	
-	public Node getNode() {
+	public static Node getNode() {
 		return ap;
 	}
 	
