@@ -51,10 +51,10 @@ public class KranTegner extends PTEPane {
 	}
 	
 	private void tegnKran() {
-		setUpKranArm();
         setUpArc();
+        setUpKranArm();
 		setUpBoelgeStreg();
-		ap.getChildren().addAll(kranArm, vinkelVaerdi, arc, snit);
+		ap.getChildren().addAll(arc, kranArm, vinkelVaerdi, snit);
 	}
 	
 	private void setUpKranArm() {
