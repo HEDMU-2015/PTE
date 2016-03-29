@@ -14,19 +14,18 @@ public class UdregningTilPdf {
 	public final static String FDIM = "Fdim";
 	public static final String FN = "Fn";
 	public final static String FT = "Ft";
-	public static final String TAU = "Τ";
+	public static final String TAU = "Tau";
 	public final static String BOEJNINGSMOMENT = "MB";
 	public final static String INTERTIMOMENT = "i";
 	public final static String FORSKYDNINGSPUNKT = "e";
 	public static final String AREAL = "A";
-	public static final String SIGMA_N = "σn";
-	public static final String SIGMA_REF = "σref";
+	public static final String SIGMA_N = "SigmaN";
+	public static final String SIGMA_REF = "SigmaRef";
 	public static final String SIGMA_B = "σb";
 	public static final String SF = "SF";
-	public final static String BOEJNINGSSPAENDING = "SigmaB";
 	public final static String VAEGT = "vægt";
 	public final static String TYNGDEKRAFT = "Tyngdekraft";
-	public final static String FLYDESPAENDING = "σtill";
+	public final static String FLYDESPAENDING = "SigmaTill";
 	public final static String LAENGDE = "l";
 	public static final String INGEN_RESULTAT = "?";
 	
@@ -209,7 +208,7 @@ public class UdregningTilPdf {
 		}
 		StringBuilder sb = new StringBuilder();
 		return sb.append(TAU).append(" = ").append(forskydningskraft)
-				.append(" / ").append(areal).append(" = ").append(resultat).append("N/mm2").toString();
+				.append(" / ").append(areal).append(" = ").append(resultat).append(" N/mm2").toString();
 		
 	}
 	
