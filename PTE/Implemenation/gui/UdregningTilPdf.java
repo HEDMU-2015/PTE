@@ -21,7 +21,7 @@ public class UdregningTilPdf {
 	public static final String AREAL = "A";
 	public static final String SIGMA_N = "SigmaN";
 	public static final String SIGMA_REF = "SigmaRef";
-	public static final String SIGMA_B = "σb";
+	public static final String SIGMA_B = "SigmaB";
 	public static final String SF = "SF";
 	public final static String VAEGT = "vægt";
 	public final static String TYNGDEKRAFT = "Tyngdekraft";
@@ -103,7 +103,7 @@ public class UdregningTilPdf {
 		}
 
 		String forskydningspunkt = createStringFromDouble(pteController.getForskydningspunkt());
-		if (Double.isNaN(pteController.getDimensionerendeKraft())) {
+		if (Double.isNaN(pteController.getForskydningspunkt())) {
 			forskydningspunkt = FORSKYDNINGSPUNKT;
 		}
 
