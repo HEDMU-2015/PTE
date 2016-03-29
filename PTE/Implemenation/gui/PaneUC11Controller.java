@@ -2,16 +2,12 @@ package gui;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
 import javax.imageio.ImageIO;
-
-import com.itextpdf.text.BadElementException;
-import com.itextpdf.text.Image;
 
 import Logic.PTEController;
 import Logic.Profil;

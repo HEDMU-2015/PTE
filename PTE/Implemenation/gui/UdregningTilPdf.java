@@ -232,7 +232,7 @@ public class UdregningTilPdf {
 		}
 		StringBuilder sb = new StringBuilder();
 		return sb.append(SIGMA_N).append(" = ").append(normalkraft)
-				.append(" / ").append(areal).append(" = ").append(resultat).append("N/mm2").toString();
+				.append(" / ").append(areal).append(" = ").append(resultat).append(" N/mm2").toString();
 		
 	}
 	
@@ -260,7 +260,7 @@ public class UdregningTilPdf {
 		} else {
 			resultat = createStringFromDouble(pteController.getSigmaRef());
 		}
-		return SIGMA_REF + " = " + "sqrt(pow(" + sigmaB + " + " + sigmaN + ") + 3 * " + "pow(" + tau + "))" + resultat + "N/mm2"; 
+		return SIGMA_REF + " = " + "sqrt(pow(" + sigmaB + " + " + sigmaN + ") + 3 * " + "pow(" + tau + ")) = " + resultat + " N/mm2"; 
 		
 	}
 	
