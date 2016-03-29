@@ -196,7 +196,7 @@ public class UdregningTilPdf {
 		} else {
 			forskydningskraft = createStringFromDouble(pteController.getForskydningkraft());
 		}
-		if(Double.isNaN(pteController.getAreal())) {
+		if(Double.isNaN(pteController.getIndtastAreal())) {
 			areal = AREAL;
 		} else {
 			areal = createStringFromDouble(pteController.getIndtastAreal());
