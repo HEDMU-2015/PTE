@@ -220,10 +220,10 @@ public class UdregningTilPdf {
 		} else {
 			normalkraft = createStringFromDouble(pteController.getNormalkraft());
 		}
-		if(Double.isNaN(pteController.getAreal())) {
+		if(Double.isNaN(pteController.getIndtastAreal())) {
 			areal = AREAL;
 		} else {
-			areal = createStringFromDouble(pteController.getAreal());
+			areal = createStringFromDouble(pteController.getIndtastAreal());
 		}
 		if(Double.isNaN(pteController.getSigmaN())) {
 			resultat = INGEN_RESULTAT;
