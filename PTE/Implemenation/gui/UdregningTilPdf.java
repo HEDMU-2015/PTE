@@ -204,7 +204,7 @@ public class UdregningTilPdf {
 		if(Double.isNaN(pteController.getForskydningkraft())) {
 			resultat = INGEN_RESULTAT;
 		} else {
-			resultat = createStringFromDouble(pteController.getForskydningkraft());
+			resultat = createStringFromDouble(pteController.getTau_ForskydningsSpaending());
 		}
 		StringBuilder sb = new StringBuilder();
 		return sb.append(TAU).append(" = ").append(forskydningskraft)
